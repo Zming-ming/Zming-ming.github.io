@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="明明～">
+    
+    <meta name="description" content="Zming-ming">
+    
+    
+    
+    
+    
+    
+    <title>Markdown 语法 | 明明～</title>
+    <link href="”https://zming-ming.github.io“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-navbar-collapse" aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://zming-ming.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">明明～</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class>
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class>
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/categories/PHP/">PHP</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/服务器/">服务器</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/前端/">前端</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/categories">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/Excel/">Excel</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Laravel/">Laravel</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/markdown/">markdown</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/tags">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class>
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://zming-ming.github.io">明明～</a>
+        >
+        <span>Markdown 语法</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2018/09/21/Markdown-语法/">Markdown 语法</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/markdown/">markdown</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-09-21
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2018/09/21/Markdown-语法/">Markdown 语法</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2018-09-21
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/markdown/">markdown</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h1 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h1><h6 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h6><blockquote>
+<p>注：# 后面保持空格</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># h1</span><br><span class="line">## h2</span><br><span class="line">### h3</span><br><span class="line">#### h4</span><br><span class="line">##### h5</span><br><span class="line">###### h6</span><br><span class="line">####### h7      // 错误代码</span><br><span class="line">######## h8     // 错误代码</span><br><span class="line">######### h9    // 错误代码</span><br><span class="line">########## h10  // 错误代码</span><br></pre></td></tr></table></figure>
+
+<h6 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h6><h1 id="h1"><a href="#h1" class="headerlink" title="h1"></a>h1</h1><h2 id="h2"><a href="#h2" class="headerlink" title="h2"></a>h2</h2><h3 id="h3"><a href="#h3" class="headerlink" title="h3"></a>h3</h3><h4 id="h4"><a href="#h4" class="headerlink" title="h4"></a>h4</h4><h5 id="h5"><a href="#h5" class="headerlink" title="h5"></a>h5</h5><h6 id="h6"><a href="#h6" class="headerlink" title="h6"></a>h6</h6><p>####### h7</p>
+<p>######## h8</p>
+<p>######### h9</p>
+<p>########## h10</p>
+<hr>
+<h1 id="2-分级标题"><a href="#2-分级标题" class="headerlink" title="2.分级标题"></a>2.分级标题</h1><h6 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h6><blockquote>
+<p>注：= - 最少可以只写一个，兼容性一般</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">一级标题</span><br><span class="line">======================</span><br><span class="line">二级标题</span><br><span class="line">---------------------</span><br></pre></td></tr></table></figure>
+
+<h6 id="演示-1"><a href="#演示-1" class="headerlink" title="演示"></a>演示</h6><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><hr>
+<h1 id="3-TOC"><a href="#3-TOC" class="headerlink" title="3.TOC"></a>3.TOC</h1><blockquote>
+<p>注：根据标题生成目录，兼容性一般</p>
+</blockquote>
+<h6 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[TOC]</span><br></pre></td></tr></table></figure>
+
+<h6 id="演示-2"><a href="#演示-2" class="headerlink" title="演示"></a>演示</h6><p><img src="https://www.zhang-mingming.cn/images/1537494120.jpg" alt="TOC" title="TOC"></p>
+<hr>
+<h1 id="4-引用"><a href="#4-引用" class="headerlink" title="4.引用"></a>4.引用</h1><h6 id="代码1-单行式"><a href="#代码1-单行式" class="headerlink" title="代码1(单行式)"></a>代码1(单行式)</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; hello world!</span><br></pre></td></tr></table></figure>
+
+<h6 id="演示-3"><a href="#演示-3" class="headerlink" title="演示"></a>演示</h6><blockquote>
+<p>hello world!</p>
+</blockquote>
+<h6 id="代码2-多行式"><a href="#代码2-多行式" class="headerlink" title="代码2(多行式)"></a>代码2(多行式)</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; hello world!</span><br><span class="line">hello world!</span><br><span class="line">hello world!</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; hello world!</span><br><span class="line">&gt; hello world!</span><br><span class="line">&gt; hello world!</span><br></pre></td></tr></table></figure>
+
+<h6 id="演示-4"><a href="#演示-4" class="headerlink" title="演示"></a>演示</h6><p>相同的结果</p>
+<blockquote>
+<p>hello world!
+hello world!
+hello world!</p>
+</blockquote>
+<h6 id="代码3-多层嵌套"><a href="#代码3-多层嵌套" class="headerlink" title="代码3(多层嵌套)"></a>代码3(多层嵌套)</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; aaaaaaaaa</span><br><span class="line">&gt;&gt; bbbbbbbbb</span><br><span class="line">&gt;&gt;&gt; cccccccccc</span><br></pre></td></tr></table></figure>
+
+<h6 id="演示-5"><a href="#演示-5" class="headerlink" title="演示"></a>演示</h6><blockquote>
+<p>aaaaaaaaa</p>
+<blockquote>
+<p>bbbbbbbbb</p>
+<blockquote>
+<p>cccccccccc</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<hr>
+<h1 id="5、字体"><a href="#5、字体" class="headerlink" title="5、字体"></a>5、字体</h1><ul>
+<li>加粗<h6 id="要加粗的文字左右分别用两个-号包起来"><a href="#要加粗的文字左右分别用两个-号包起来" class="headerlink" title="要加粗的文字左右分别用两个*号包起来"></a>要加粗的文字左右分别用两个*号包起来</h6></li>
+<li>斜体<h6 id="要倾斜的文字左右分别用一个-号包起来"><a href="#要倾斜的文字左右分别用一个-号包起来" class="headerlink" title="要倾斜的文字左右分别用一个*号包起来"></a>要倾斜的文字左右分别用一个*号包起来</h6></li>
+<li>斜体加粗<h6 id="要倾斜和加粗的文字左右分别用三个-号包起来"><a href="#要倾斜和加粗的文字左右分别用三个-号包起来" class="headerlink" title="要倾斜和加粗的文字左右分别用三个*号包起来"></a>要倾斜和加粗的文字左右分别用三个*号包起来</h6></li>
+<li>删除线<h6 id="要加删除线的文字左右分别用两个-号包起来"><a href="#要加删除线的文字左右分别用两个-号包起来" class="headerlink" title="要加删除线的文字左右分别用两个~~号包起来"></a>要加删除线的文字左右分别用两个~~号包起来</h6><h5 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">**这是加粗的文字**</span><br><span class="line">*这是倾斜的文字*`</span><br><span class="line">***这是斜体加粗的文字***</span><br><span class="line">~~这是加删除线的文字~~</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h6 id="效果如下："><a href="#效果如下：" class="headerlink" title="效果如下："></a>效果如下：</h6><p><strong>这是加粗的文字</strong><br><em>这是倾斜的文字</em>`
+<strong><em>这是斜体加粗的文字</em></strong><br><del>这是加删除线的文字</del></p>
+<hr>
+<h1 id="6、分割线"><a href="#6、分割线" class="headerlink" title="6、分割线"></a>6、分割线</h1><h6 id="三个或者三个以上的-或者-都可以。"><a href="#三个或者三个以上的-或者-都可以。" class="headerlink" title="三个或者三个以上的 - 或者 * 都可以。"></a>三个或者三个以上的 - 或者 * 都可以。</h6><h6 id="示例：-1"><a href="#示例：-1" class="headerlink" title="示例："></a>示例：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">----</span><br><span class="line">***</span><br><span class="line">*****</span><br></pre></td></tr></table></figure>
+
+<h6 id="效果如下：-1"><a href="#效果如下：-1" class="headerlink" title="效果如下："></a>效果如下：</h6><h6 id="可以看到，显示效果是一样的。"><a href="#可以看到，显示效果是一样的。" class="headerlink" title="可以看到，显示效果是一样的。"></a>可以看到，显示效果是一样的。</h6><hr>
+<hr>
+<hr>
+<hr>
+<h1 id="7、图片"><a href="#7、图片" class="headerlink" title="7、图片"></a>7、图片</h1><h6 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![图片alt](图片地址 &apos;&apos;图片title&apos;&apos;)</span><br><span class="line">图片alt就是显示在图片下面的文字，相当于对图片内容的解释。</span><br><span class="line">图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br></pre></td></tr></table></figure>
+
+<h6 id="示例：-2"><a href="#示例：-2" class="headerlink" title="示例："></a>示例：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![blockchain](https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/</span><br><span class="line">u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg &quot;区块链&quot;)</span><br></pre></td></tr></table></figure>
+
+<h6 id="效果如下：-2"><a href="#效果如下：-2" class="headerlink" title="效果如下："></a>效果如下：</h6><p><img src="https://www.zhang-mingming.cn/images/1537495165.jpg" alt="blockchain" title="区块链"></p>
+<hr>
+<h1 id="8、超链接"><a href="#8、超链接" class="headerlink" title="8、超链接"></a>8、超链接</h1><h6 id="语法：-1"><a href="#语法：-1" class="headerlink" title="语法："></a>语法：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[超链接名](超链接地址 &quot;超链接title&quot;)</span><br><span class="line">title可加可不加</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[简书](http://jianshu.com)</span><br><span class="line">[百度](http://baidu.com)</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：<br><a href="http://jianshu.com" target="_blank" rel="noopener">简书</a><br><a href="http://baidu.com" target="_blank" rel="noopener">百度</a></p>
+<blockquote>
+<p>注：markdown本身语法不支持链接在新页面中打开，貌似简书做了处理，是可以的。别的平台可能就不行了，如果想要在新页面中打开的话可以用html语言的a标签代替。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;超链接地址&quot; target=&quot;_blank&quot;&gt;超链接名&lt;/a&gt;</span><br><span class="line">例&lt;a href=&quot;https://www.jianshu.com/u/1f5ac0cf6a8b&quot; target=&quot;_blank&quot;&gt;简书&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="9、列表"><a href="#9、列表" class="headerlink" title="9、列表"></a>9、列表</h1><h6 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h6><h6 id="语法：-2"><a href="#语法：-2" class="headerlink" title="语法："></a>语法：</h6><h6 id="无序列表用-任何一种都可以"><a href="#无序列表用-任何一种都可以" class="headerlink" title="无序列表用 - + * 任何一种都可以"></a>无序列表用 - + * 任何一种都可以</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 列表内容</span><br><span class="line">+ 列表内容</span><br><span class="line">* 列表内容</span><br><span class="line">注意：- + * 跟内容之间都要有一个空格</span><br></pre></td></tr></table></figure>
+
+<h6 id="效果如下：-3"><a href="#效果如下：-3" class="headerlink" title="效果如下："></a>效果如下：</h6><ul>
+<li>列表内容</li>
+<li>列表内容</li>
+<li>列表内容<h6 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h6><h6 id="语法：-3"><a href="#语法：-3" class="headerlink" title="语法："></a>语法：</h6><h6 id="数字加点"><a href="#数字加点" class="headerlink" title="数字加点"></a>数字加点</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.列表内容</span><br><span class="line">2.列表内容</span><br><span class="line">3.列表内容</span><br><span class="line">注意：序号跟内容之间要有空格</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h6 id="效果如下：-4"><a href="#效果如下：-4" class="headerlink" title="效果如下："></a>效果如下：</h6><p>1.列表内容<br>2.列表内容<br>3.列表内容</p>
+<h6 id="列表嵌套"><a href="#列表嵌套" class="headerlink" title="列表嵌套"></a>列表嵌套</h6><h6 id="上一级和下一级之间敲三个空格即可"><a href="#上一级和下一级之间敲三个空格即可" class="headerlink" title="上一级和下一级之间敲三个空格即可"></a>上一级和下一级之间敲三个空格即可</h6><ul>
+<li><p>一级无序列表内容</p>
+<ul>
+<li>二级无序列表内容</li>
+<li>二级无序列表内容</li>
+<li>二级无序列表内容</li>
+</ul>
+</li>
+<li><p>一级无序列表内容</p>
+<ol>
+<li>二级有序列表内容</li>
+<li>二级有序列表内容</li>
+<li>二级有序列表内容</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li><p>一级有序列表内容</p>
+<ul>
+<li>二级无序列表内容</li>
+<li>二级无序列表内容</li>
+<li>二级无序列表内容</li>
+</ul>
+</li>
+<li><p>一级有序列表内容</p>
+<ol>
+<li>二级有序列表内容</li>
+<li>二级有序列表内容</li>
+<li>二级有序列表内容</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h1 id="10、表格"><a href="#10、表格" class="headerlink" title="10、表格"></a>10、表格</h1><h6 id="语法：-4"><a href="#语法：-4" class="headerlink" title="语法："></a>语法：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">表头|表头|表头</span><br><span class="line">---|:--:|---:</span><br><span class="line">内容|内容|内容</span><br><span class="line">内容|内容|内容</span><br><span class="line"></span><br><span class="line">第二行分割表头和内容。</span><br><span class="line">- 有一个就行，为了对齐，多加了几个</span><br><span class="line">文字默认居左</span><br><span class="line">-两边加：表示文字居中</span><br><span class="line">-右边加：表示文字居右</span><br><span class="line">注：原生的语法两边都要用 | 包起来。此处省略</span><br></pre></td></tr></table></figure>
+
+<h6 id="效果如下：-5"><a href="#效果如下：-5" class="headerlink" title="效果如下："></a>效果如下：</h6><table>
+<thead>
+<tr>
+<th>姓名</th>
+<th align="center">技能</th>
+<th align="right">排行</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>刘备</td>
+<td align="center">哭</td>
+<td align="right">大哥</td>
+</tr>
+<tr>
+<td>关羽</td>
+<td align="center">打</td>
+<td align="right">二哥</td>
+</tr>
+<tr>
+<td>张飞</td>
+<td align="center">骂</td>
+<td align="right">三弟</td>
+</tr>
+<tr>
+<td>***</td>
+<td align="center"></td>
+<td align="right"></td>
+</tr>
+</tbody></table>
+<h1 id="11、代码"><a href="#11、代码" class="headerlink" title="11、代码"></a>11、代码</h1><h6 id="语法：-5"><a href="#语法：-5" class="headerlink" title="语法："></a>语法：</h6><h6 id="单行代码：代码之间分别用一个反引号包起来"><a href="#单行代码：代码之间分别用一个反引号包起来" class="headerlink" title="单行代码：代码之间分别用一个反引号包起来"></a>单行代码：代码之间分别用一个反引号包起来</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">`代码内容`</span><br><span class="line">```    </span><br><span class="line">###### 代码块：代码之间分别用三个反引号包起来，且两边的反引号单独占一行</span><br></pre></td></tr></table></figure>
+
+<p>(<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  代码...</span><br><span class="line">  代码...</span><br><span class="line">  代码...</span><br><span class="line">(```)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注：为了防止转译，前后三个反引号处加了小括号，实际是没有的。这里只是用来演示，实际中去掉两边小括号即可。</p>
+</blockquote>
+<h6 id="示例：-3"><a href="#示例：-3" class="headerlink" title="示例："></a>示例：</h6><h6 id="单行代码"><a href="#单行代码" class="headerlink" title="单行代码"></a>单行代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`create database hero;`</span><br></pre></td></tr></table></figure>
+
+<h6 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(```)</span><br><span class="line">    function fun()&#123;</span><br><span class="line">         echo &quot;这是一句非常牛逼的代码&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    fun();</span><br><span class="line">(```)</span><br></pre></td></tr></table></figure>
+
+<h6 id="效果如下：-6"><a href="#效果如下：-6" class="headerlink" title="效果如下："></a>效果如下：</h6><h6 id="单行代码-1"><a href="#单行代码-1" class="headerlink" title="单行代码"></a>单行代码</h6><p><code>create database hero;</code></p>
+<h6 id="代码块-1"><a href="#代码块-1" class="headerlink" title="代码块"></a>代码块</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function fun()&#123;</span><br><span class="line">  echo &quot;这是一句非常牛逼的代码&quot;;</span><br><span class="line">&#125;</span><br><span class="line">fun();</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get" action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            明明～
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140" alt="个人头像" class="author-image">
+            <p class="author-description"></p><p>Zming-ming</p>
+<p></p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/23/MySQL-函数/">MySQL 函数</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/Linux-守护进程的启动方法/">Linux 守护进程的启动方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/常用-Git-命令清单/">常用 Git 命令清单</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/30/基于个推（GeTui）官方SDK集成-Laravel-5/">基于个推（GeTui）官方SDK集成 Laravel 5.* </a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/19/laravel5-5的定时任务详解/">laravel5.5的定时任务详解</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/17/微信小程序的更新机制/">微信小程序的更新机制</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/21/Markdown-语法/">Markdown 语法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/21/Laravel-Excel-实现-Excel-CSV-文件导入导出功能/">Laravel Excel 实现 Excel/CSV 文件导入导出功能</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/17/npm启动内存溢出问题/">npm启动内存溢出问题</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/redis安装及数据类型简介/">redis安装及数据类型简介</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/21/Laravel-Excel-实现-Excel-CSV-文件导入导出功能/">Laravel Excel 实现 Excel/CSV 文件导入导出功能</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/07/hello-world/">Hello World</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/laravel的资源路由resource/">laravel的资源路由resource</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/17/npm启动内存溢出问题/">npm启动内存溢出问题</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/24/保存网络图片/">php如何实现保存网络图片</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/常用-Git-命令/">常用 Git 命令</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/常用-Git-命令清单/">常用 Git 命令清单</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/07/搭建hexo/">搭建hexo</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/25/laravel-Valet安装使用教程/">Valet 安装使用详细教程</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/laravel小程序微信支付/">laravel小程序微信支付</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2018/09/21/Markdown-语法/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2018/09/21/Markdown-语法/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2018/09/21/Markdown-语法/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/Excel/" style="font-size: 12.490789641470336px;" class="tag-cloud-link">Excel</a>
+    
+    <a href="/tags/Laravel/" style="font-size: 14.388144775193595px;" class="tag-cloud-link">Laravel</a>
+    
+    <a href="/tags/markdown/" style="font-size: 15.22261727483733px;" class="tag-cloud-link">markdown</a>
+    
+    <a href="/tags/Linux/" style="font-size: 14.499968735921541px;" class="tag-cloud-link">Linux</a>
+    
+    <a href="/tags/定时任务/" style="font-size: 18.962854907690758px;" class="tag-cloud-link">定时任务</a>
+    
+    <a href="/tags/npm/" style="font-size: 13.76650604284593px;" class="tag-cloud-link">npm</a>
+    
+    <a href="/tags/vue/" style="font-size: 11.258488121760823px;" class="tag-cloud-link">vue</a>
+    
+    <a href="/tags/PHP/" style="font-size: 17.97227779066661px;" class="tag-cloud-link">PHP</a>
+    
+    <a href="/tags/GeTui/" style="font-size: 14.520065326791958px;" class="tag-cloud-link">GeTui</a>
+    
+    <a href="/tags/composer/" style="font-size: 13.569910646364146px;" class="tag-cloud-link">composer</a>
+    
+    <a href="/tags/GIT/" style="font-size: 15.07285827994259px;" class="tag-cloud-link">GIT</a>
+    
+    <a href="/tags/小程序/" style="font-size: 10.022352243841517px;" class="tag-cloud-link">小程序</a>
+    
+    <a href="/tags/支付/" style="font-size: 8.62203888679341px;" class="tag-cloud-link">支付</a>
+    
+    <a href="/tags/Redis/" style="font-size: 14.290473480725218px;" class="tag-cloud-link">Redis</a>
+    
+    <a href="/tags/MySql/" style="font-size: 19.844429728959454px;" class="tag-cloud-link">MySql</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://kdays.net/days/" target="_blank">KDays Forum</a>
+    </li>
+    
+    <li>
+        <a href="http://www.gal123.com/" target="_blank">绅士导航♂</a>
+    </li>
+    
+    <li>
+        <a href="http://www.moe123.com/" target="_blank">萌导航</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/ZEROKISEKI/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com/people/aonosora/activities" target="_blank">知乎</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 明明～ Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+</html>

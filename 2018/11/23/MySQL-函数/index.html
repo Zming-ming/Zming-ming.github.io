@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="明明～">
+    
+    <meta name="description" content="Zming-ming">
+    
+    
+    
+    
+    
+    
+    <title>MySQL 函数 | 明明～</title>
+    <link href="”https://zming-ming.github.io“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-navbar-collapse" aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://zming-ming.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">明明～</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class>
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class>
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/categories/PHP/">PHP</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/服务器/">服务器</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/前端/">前端</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/categories">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/Excel/">Excel</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Laravel/">Laravel</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/markdown/">markdown</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/tags">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class>
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://zming-ming.github.io">明明～</a>
+        >
+        <span>MySQL 函数</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2018/11/23/MySQL-函数/">MySQL 函数</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/MySql/">MySql</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-11-23
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2018/11/23/MySQL-函数/">MySQL 函数</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2018-11-23
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/MySql/">MySql</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h3 id="MySQL-字符串函数"><a href="#MySQL-字符串函数" class="headerlink" title="MySQL 字符串函数"></a>MySQL 字符串函数</h3><h6 id="ASCII-s"><a href="#ASCII-s" class="headerlink" title="ASCII(s)"></a>ASCII(s)</h6><h6 id="返回字符串-s-的第一个字符的-ASCII-码。"><a href="#返回字符串-s-的第一个字符的-ASCII-码。" class="headerlink" title="返回字符串 s 的第一个字符的 ASCII 码。"></a>返回字符串 s 的第一个字符的 ASCII 码。</h6><h6 id="返回-CustomerName-字段第一个字母的-ASCII-码："><a href="#返回-CustomerName-字段第一个字母的-ASCII-码：" class="headerlink" title="返回 CustomerName 字段第一个字母的 ASCII 码："></a>返回 CustomerName 字段第一个字母的 ASCII 码：</h6><blockquote>
+<p>SELECT ASCII(CustomerName) AS NumCodeOfFirstChar<br>FROM Customers;</p>
+</blockquote>
+<h6 id="CHAR-LENGTH-s"><a href="#CHAR-LENGTH-s" class="headerlink" title="CHAR_LENGTH(s)"></a>CHAR_LENGTH(s)</h6><h6 id="返回字符串-s-的字符数"><a href="#返回字符串-s-的字符数" class="headerlink" title="返回字符串 s 的字符数"></a>返回字符串 s 的字符数</h6><h6 id="返回字符串-RUNOOB-的字符数："><a href="#返回字符串-RUNOOB-的字符数：" class="headerlink" title="返回字符串 RUNOOB 的字符数："></a>返回字符串 RUNOOB 的字符数：</h6><blockquote>
+<p>SELECT CHAR_LENGTH(“RUNOOB”) AS LengthOfString;</p>
+</blockquote>
+<h6 id="CHARACTER-LENGTH-s"><a href="#CHARACTER-LENGTH-s" class="headerlink" title="CHARACTER_LENGTH(s)"></a>CHARACTER_LENGTH(s)</h6><h6 id="返回字符串-s-的字符数-1"><a href="#返回字符串-s-的字符数-1" class="headerlink" title="返回字符串 s 的字符数"></a>返回字符串 s 的字符数</h6><h6 id="返回字符串-RUNOOB-的字符数：-1"><a href="#返回字符串-RUNOOB-的字符数：-1" class="headerlink" title="返回字符串 RUNOOB 的字符数："></a>返回字符串 RUNOOB 的字符数：</h6><blockquote>
+<p>SELECT CHARACTER_LENGTH(“RUNOOB”) AS LengthOfString;</p>
+</blockquote>
+<h6 id="CONCAT-s1-s2…sn"><a href="#CONCAT-s1-s2…sn" class="headerlink" title="CONCAT(s1,s2…sn)"></a>CONCAT(s1,s2…sn)</h6><h6 id="字符串-s1-s2-等多个字符串合并为一个字符串"><a href="#字符串-s1-s2-等多个字符串合并为一个字符串" class="headerlink" title="字符串 s1,s2 等多个字符串合并为一个字符串"></a>字符串 s1,s2 等多个字符串合并为一个字符串</h6><h6 id="合并多个字符串"><a href="#合并多个字符串" class="headerlink" title="合并多个字符串"></a>合并多个字符串</h6><blockquote>
+<p>SELECT CONCAT(“SQL “, “Runoob “, “Gooogle “, “Facebook”) AS ConcatenatedString;</p>
+</blockquote>
+<h6 id="CONCAT-WS-x-s1-s2…sn"><a href="#CONCAT-WS-x-s1-s2…sn" class="headerlink" title="CONCAT_WS(x, s1,s2…sn)"></a>CONCAT_WS(x, s1,s2…sn)</h6><h6 id="同-CONCAT-s1-s2-…-函数，但是每个字符串直接要加上-x，x-可以是分隔符"><a href="#同-CONCAT-s1-s2-…-函数，但是每个字符串直接要加上-x，x-可以是分隔符" class="headerlink" title="同 CONCAT(s1,s2,…) 函数，但是每个字符串直接要加上 x，x 可以是分隔符"></a>同 CONCAT(s1,s2,…) 函数，但是每个字符串直接要加上 x，x 可以是分隔符</h6><h6 id="合并多个字符串，并添加分隔符："><a href="#合并多个字符串，并添加分隔符：" class="headerlink" title="合并多个字符串，并添加分隔符："></a>合并多个字符串，并添加分隔符：</h6><blockquote>
+<p>SELECT CONCAT_WS(“-“, “SQL”, “Tutorial”, “is”, “fun!”)AS ConcatenatedString;</p>
+</blockquote>
+<h6 id="FIELD-s-s1-s2…"><a href="#FIELD-s-s1-s2…" class="headerlink" title="FIELD(s,s1,s2…)"></a>FIELD(s,s1,s2…)</h6><h6 id="返回第一个字符串-s-在字符串列表-s1-s2…-中的位置"><a href="#返回第一个字符串-s-在字符串列表-s1-s2…-中的位置" class="headerlink" title="返回第一个字符串 s 在字符串列表(s1,s2…)中的位置"></a>返回第一个字符串 s 在字符串列表(s1,s2…)中的位置</h6><h6 id="返回字符串-c-在列表值中的位置："><a href="#返回字符串-c-在列表值中的位置：" class="headerlink" title="返回字符串 c 在列表值中的位置："></a>返回字符串 c 在列表值中的位置：</h6><blockquote>
+<p>SELECT FIELD(“c”, “a”, “b”, “c”, “d”, “e”);</p>
+</blockquote>
+<h6 id="FIND-IN-SET-s1-s2"><a href="#FIND-IN-SET-s1-s2" class="headerlink" title="FIND_IN_SET(s1,s2)"></a>FIND_IN_SET(s1,s2)</h6><h6 id="返回在字符串s2中与s1匹配的字符串的位置"><a href="#返回在字符串s2中与s1匹配的字符串的位置" class="headerlink" title="返回在字符串s2中与s1匹配的字符串的位置"></a>返回在字符串s2中与s1匹配的字符串的位置</h6><h6 id="返回字符串-c-在指定字符串中的位置："><a href="#返回字符串-c-在指定字符串中的位置：" class="headerlink" title="返回字符串 c 在指定字符串中的位置："></a>返回字符串 c 在指定字符串中的位置：</h6><blockquote>
+<p>SELECT FIND_IN_SET(“c”, “a,b,c,d,e”);</p>
+</blockquote>
+<h6 id="FORMAT-x-n"><a href="#FORMAT-x-n" class="headerlink" title="FORMAT(x,n)"></a>FORMAT(x,n)</h6><h6 id="函数可以将数字-x-进行格式化-“-”-将-x-保留到小数点后-n-位，最后一位四舍五入。"><a href="#函数可以将数字-x-进行格式化-“-”-将-x-保留到小数点后-n-位，最后一位四舍五入。" class="headerlink" title="函数可以将数字 x 进行格式化 “#,###.##”, 将 x 保留到小数点后 n 位，最后一位四舍五入。"></a>函数可以将数字 x 进行格式化 “#,###.##”, 将 x 保留到小数点后 n 位，最后一位四舍五入。</h6><h6 id="格式化数字-“-”-形式："><a href="#格式化数字-“-”-形式：" class="headerlink" title="格式化数字 “#,###.##” 形式："></a>格式化数字 “#,###.##” 形式：</h6><blockquote>
+<p>SELECT FORMAT(250500.5634, 2);     – 输出 250,500.56</p>
+</blockquote>
+<h6 id="INSERT-s1-x-len-s2"><a href="#INSERT-s1-x-len-s2" class="headerlink" title="INSERT(s1,x,len,s2)"></a>INSERT(s1,x,len,s2)</h6><h6 id="字符串-s2-替换-s1-的-x-位置开始长度为-len-的字符串"><a href="#字符串-s2-替换-s1-的-x-位置开始长度为-len-的字符串" class="headerlink" title="字符串 s2 替换 s1 的 x 位置开始长度为 len 的字符串"></a>字符串 s2 替换 s1 的 x 位置开始长度为 len 的字符串</h6><h6 id="从字符串第一个位置开始的-6-个字符替换为-runoob："><a href="#从字符串第一个位置开始的-6-个字符替换为-runoob：" class="headerlink" title="从字符串第一个位置开始的 6 个字符替换为 runoob："></a>从字符串第一个位置开始的 6 个字符替换为 runoob：</h6><blockquote>
+<p>SELECT INSERT(“google.com”, 1, 6, “runnob”);  – 输出：runoob.com</p>
+</blockquote>
+<h6 id="LOCATE-s1-s"><a href="#LOCATE-s1-s" class="headerlink" title="LOCATE(s1,s)"></a>LOCATE(s1,s)</h6><h6 id="从字符串-s-中获取-s1-的开始位置"><a href="#从字符串-s-中获取-s1-的开始位置" class="headerlink" title="从字符串 s 中获取 s1 的开始位置"></a>从字符串 s 中获取 s1 的开始位置</h6><h6 id="获取-b-在字符串-abc-中的位置："><a href="#获取-b-在字符串-abc-中的位置：" class="headerlink" title="获取 b 在字符串 abc 中的位置："></a>获取 b 在字符串 abc 中的位置：</h6><blockquote>
+<p>SELECT LOCATE(‘st’,’myteststring’);  – 5</p>
+</blockquote>
+<h6 id="LCASE-s"><a href="#LCASE-s" class="headerlink" title="LCASE(s)"></a>LCASE(s)</h6><h6 id="将字符串-s-的所有字母变成小写字母"><a href="#将字符串-s-的所有字母变成小写字母" class="headerlink" title="将字符串 s 的所有字母变成小写字母"></a>将字符串 s 的所有字母变成小写字母</h6><h6 id="字符串-RUNOOB-转换为小写："><a href="#字符串-RUNOOB-转换为小写：" class="headerlink" title="字符串 RUNOOB 转换为小写："></a>字符串 RUNOOB 转换为小写：</h6><blockquote>
+<p>SELECT LOWER(‘RUNOOB’) – runoob</p>
+</blockquote>
+<h6 id="LEFT-s-n"><a href="#LEFT-s-n" class="headerlink" title="LEFT(s,n)"></a>LEFT(s,n)</h6><h6 id="返回字符串-s-的前-n-个字符"><a href="#返回字符串-s-的前-n-个字符" class="headerlink" title="返回字符串 s 的前 n 个字符"></a>返回字符串 s 的前 n 个字符</h6><h6 id="返回字符串-runoob-中的前两个字符："><a href="#返回字符串-runoob-中的前两个字符：" class="headerlink" title="返回字符串 runoob 中的前两个字符："></a>返回字符串 runoob 中的前两个字符：</h6><blockquote>
+<p>SELECT LEFT(‘runoob’,2) – ru</p>
+</blockquote>
+<h6 id="LEFT-s-n-1"><a href="#LEFT-s-n-1" class="headerlink" title="LEFT(s,n)"></a>LEFT(s,n)</h6><h6 id="返回字符串-s-的前-n-个字符-1"><a href="#返回字符串-s-的前-n-个字符-1" class="headerlink" title="返回字符串 s 的前 n 个字符"></a>返回字符串 s 的前 n 个字符</h6><h6 id="返回字符串-abcde-的前两个字符："><a href="#返回字符串-abcde-的前两个字符：" class="headerlink" title="返回字符串 abcde 的前两个字符："></a>返回字符串 abcde 的前两个字符：</h6><blockquote>
+<p>SELECT LEFT(‘abcde’,2) – ab</p>
+</blockquote>
+<h6 id="LOCATE-s1-s-1"><a href="#LOCATE-s1-s-1" class="headerlink" title="LOCATE(s1,s)"></a>LOCATE(s1,s)</h6><h6 id="从字符串-s-中获取-s1-的开始位置-1"><a href="#从字符串-s-中获取-s1-的开始位置-1" class="headerlink" title="从字符串 s 中获取 s1 的开始位置"></a>从字符串 s 中获取 s1 的开始位置</h6><h6 id="返回字符串-abc-中-b-的位置："><a href="#返回字符串-abc-中-b-的位置：" class="headerlink" title="返回字符串 abc 中 b 的位置："></a>返回字符串 abc 中 b 的位置：</h6><blockquote>
+<p>SELECT LOCATE(‘b’, ‘abc’) – 2</p>
+</blockquote>
+<h6 id="LOWER-s"><a href="#LOWER-s" class="headerlink" title="LOWER(s)"></a>LOWER(s)</h6><h6 id="将字符串-s-的所有字母变成小写字母-1"><a href="#将字符串-s-的所有字母变成小写字母-1" class="headerlink" title="将字符串 s 的所有字母变成小写字母"></a>将字符串 s 的所有字母变成小写字母</h6><h6 id="字符串-RUNOOB-转换为小写：-1"><a href="#字符串-RUNOOB-转换为小写：-1" class="headerlink" title="字符串 RUNOOB 转换为小写："></a>字符串 RUNOOB 转换为小写：</h6><blockquote>
+<p>SELECT LOWER(‘RUNOOB’) – runoob</p>
+</blockquote>
+<h6 id="LPAD-s1-len-s2"><a href="#LPAD-s1-len-s2" class="headerlink" title="LPAD(s1,len,s2)"></a>LPAD(s1,len,s2)</h6><h6 id="在字符串-s1-的开始处填充字符串-s2，使字符串长度达到-len"><a href="#在字符串-s1-的开始处填充字符串-s2，使字符串长度达到-len" class="headerlink" title="在字符串 s1 的开始处填充字符串 s2，使字符串长度达到 len"></a>在字符串 s1 的开始处填充字符串 s2，使字符串长度达到 len</h6><h6 id="将字符串-xx-填充到-abc-字符串的开始处："><a href="#将字符串-xx-填充到-abc-字符串的开始处：" class="headerlink" title="将字符串 xx 填充到 abc 字符串的开始处："></a>将字符串 xx 填充到 abc 字符串的开始处：</h6><blockquote>
+<p>SELECT LPAD(‘abc’,5,’xx’) – xxabc</p>
+</blockquote>
+<h6 id="LTRIM-s"><a href="#LTRIM-s" class="headerlink" title="LTRIM(s)"></a>LTRIM(s)</h6><h6 id="去掉字符串-s-开始处的空格"><a href="#去掉字符串-s-开始处的空格" class="headerlink" title="去掉字符串 s 开始处的空格"></a>去掉字符串 s 开始处的空格</h6><h6 id="去掉字符串-RUNOOB开始处的空格："><a href="#去掉字符串-RUNOOB开始处的空格：" class="headerlink" title="去掉字符串 RUNOOB开始处的空格："></a>去掉字符串 RUNOOB开始处的空格：</h6><blockquote>
+<p>SELECT LTRIM(“    RUNOOB”) AS LeftTrimmedString;– RUNOOB</p>
+</blockquote>
+<h6 id="MID-s-n-len"><a href="#MID-s-n-len" class="headerlink" title="MID(s,n,len)"></a>MID(s,n,len)</h6><h6 id="从字符串-s-的-start-位置截取长度为-length-的子字符串，同-SUBSTRING-s-n-len"><a href="#从字符串-s-的-start-位置截取长度为-length-的子字符串，同-SUBSTRING-s-n-len" class="headerlink" title="从字符串 s 的 start 位置截取长度为 length 的子字符串，同 SUBSTRING(s,n,len)"></a>从字符串 s 的 start 位置截取长度为 length 的子字符串，同 SUBSTRING(s,n,len)</h6><h6 id="从字符串-RUNOOB-中的第-2-个位置截取-3个-字符："><a href="#从字符串-RUNOOB-中的第-2-个位置截取-3个-字符：" class="headerlink" title="从字符串 RUNOOB 中的第 2 个位置截取 3个 字符："></a>从字符串 RUNOOB 中的第 2 个位置截取 3个 字符：</h6><blockquote>
+<p>SELECT MID(“RUNOOB”, 2, 3) AS ExtractString; – UNO</p>
+</blockquote>
+<h6 id="POSITION-s1-IN-s"><a href="#POSITION-s1-IN-s" class="headerlink" title="POSITION(s1 IN s)"></a>POSITION(s1 IN s)</h6><h6 id="从字符串-s-中获取-s1-的开始位置-2"><a href="#从字符串-s-中获取-s1-的开始位置-2" class="headerlink" title="从字符串 s 中获取 s1 的开始位置"></a>从字符串 s 中获取 s1 的开始位置</h6><h6 id="返回字符串-abc-中-b-的位置：-1"><a href="#返回字符串-abc-中-b-的位置：-1" class="headerlink" title="返回字符串 abc 中 b 的位置："></a>返回字符串 abc 中 b 的位置：</h6><blockquote>
+<p>SELECT POSITION(‘b’ in ‘abc’) – 2</p>
+</blockquote>
+<h6 id="REPEAT-s-n"><a href="#REPEAT-s-n" class="headerlink" title="REPEAT(s,n)"></a>REPEAT(s,n)</h6><h6 id="将字符串-s-重复-n-次"><a href="#将字符串-s-重复-n-次" class="headerlink" title="将字符串 s 重复 n 次"></a>将字符串 s 重复 n 次</h6><h6 id="将字符串-runoob-重复三次："><a href="#将字符串-runoob-重复三次：" class="headerlink" title="将字符串 runoob 重复三次："></a>将字符串 runoob 重复三次：</h6><blockquote>
+<p>SELECT REPEAT(‘runoob’,3) – runoobrunoobrunoob</p>
+</blockquote>
+<h6 id="REPLACE-s-s1-s2"><a href="#REPLACE-s-s1-s2" class="headerlink" title="REPLACE(s,s1,s2)"></a>REPLACE(s,s1,s2)</h6><h6 id="将字符串-s2-替代字符串-s-中的字符串-s1"><a href="#将字符串-s2-替代字符串-s-中的字符串-s1" class="headerlink" title="将字符串 s2 替代字符串 s 中的字符串 s1"></a>将字符串 s2 替代字符串 s 中的字符串 s1</h6><h6 id="将字符串-abc-中的字符-a-替换为字符-x："><a href="#将字符串-abc-中的字符-a-替换为字符-x：" class="headerlink" title="将字符串 abc 中的字符 a 替换为字符 x："></a>将字符串 abc 中的字符 a 替换为字符 x：</h6><blockquote>
+<p>SELECT REPLACE(‘abc’,’a’,’x’) –xbc</p>
+</blockquote>
+<h6 id="REVERSE-s"><a href="#REVERSE-s" class="headerlink" title="REVERSE(s)"></a>REVERSE(s)</h6><h6 id="将字符串s的顺序反过来"><a href="#将字符串s的顺序反过来" class="headerlink" title="将字符串s的顺序反过来"></a>将字符串s的顺序反过来</h6><h6 id="将字符串-abc-的顺序反过来："><a href="#将字符串-abc-的顺序反过来：" class="headerlink" title="将字符串 abc 的顺序反过来："></a>将字符串 abc 的顺序反过来：</h6><blockquote>
+<p>SELECT REVERSE(‘abc’) – cba</p>
+</blockquote>
+<h6 id="RIGHT-s-n"><a href="#RIGHT-s-n" class="headerlink" title="RIGHT(s,n)"></a>RIGHT(s,n)</h6><h6 id="返回字符串-s-的后-n-个字符"><a href="#返回字符串-s-的后-n-个字符" class="headerlink" title="返回字符串 s 的后 n 个字符"></a>返回字符串 s 的后 n 个字符</h6><h6 id="返回字符串-runoob-的后两个字符："><a href="#返回字符串-runoob-的后两个字符：" class="headerlink" title="返回字符串 runoob 的后两个字符："></a>返回字符串 runoob 的后两个字符：</h6><blockquote>
+<p>SELECT RIGHT(‘runoob’,2) – ob</p>
+</blockquote>
+<h6 id="RPAD-s1-len-s2"><a href="#RPAD-s1-len-s2" class="headerlink" title="RPAD(s1,len,s2)"></a>RPAD(s1,len,s2)</h6><h6 id="在字符串-s1-的结尾处添加字符串-s1，使字符串的长度达到-len"><a href="#在字符串-s1-的结尾处添加字符串-s1，使字符串的长度达到-len" class="headerlink" title="在字符串 s1 的结尾处添加字符串 s1，使字符串的长度达到 len"></a>在字符串 s1 的结尾处添加字符串 s1，使字符串的长度达到 len</h6><h6 id="将字符串-xx-填充到-abc-字符串的结尾处："><a href="#将字符串-xx-填充到-abc-字符串的结尾处：" class="headerlink" title="将字符串 xx 填充到 abc 字符串的结尾处："></a>将字符串 xx 填充到 abc 字符串的结尾处：</h6><blockquote>
+<p>SELECT RPAD(‘abc’,5,’xx’) – abcxx</p>
+</blockquote>
+<h6 id="RTRIM-s"><a href="#RTRIM-s" class="headerlink" title="RTRIM(s)"></a>RTRIM(s)</h6><h6 id="去掉字符串-s-结尾处的空格"><a href="#去掉字符串-s-结尾处的空格" class="headerlink" title="去掉字符串 s 结尾处的空格"></a>去掉字符串 s 结尾处的空格</h6><h6 id="去掉字符串-RUNOOB-的末尾空格："><a href="#去掉字符串-RUNOOB-的末尾空格：" class="headerlink" title="去掉字符串 RUNOOB 的末尾空格："></a>去掉字符串 RUNOOB 的末尾空格：</h6><blockquote>
+<p>SELECT RTRIM(“RUNOOB     “) AS RightTrimmedString;   – RUNOOB</p>
+</blockquote>
+<h6 id="SPACE-n"><a href="#SPACE-n" class="headerlink" title="SPACE(n)"></a>SPACE(n)</h6><h6 id="返回-n-个空格"><a href="#返回-n-个空格" class="headerlink" title="返回 n 个空格"></a>返回 n 个空格</h6><h6 id="返回-10-个空格："><a href="#返回-10-个空格：" class="headerlink" title="返回 10 个空格："></a>返回 10 个空格：</h6><blockquote>
+<p>SELECT SPACE(10);</p>
+</blockquote>
+<h6 id="STRCMP-s1-s2"><a href="#STRCMP-s1-s2" class="headerlink" title="STRCMP(s1,s2)"></a>STRCMP(s1,s2)</h6><h6 id="比较字符串-s1-和-s2，如果-s1-与-s2-相等返回-0-，如果-s1-gt-s2-返回-1，如果-s1-lt-s2-返回-1"><a href="#比较字符串-s1-和-s2，如果-s1-与-s2-相等返回-0-，如果-s1-gt-s2-返回-1，如果-s1-lt-s2-返回-1" class="headerlink" title="比较字符串 s1 和 s2，如果 s1 与 s2 相等返回 0 ，如果 s1&gt;s2 返回 1，如果 s1&lt;s2 返回 -1"></a>比较字符串 s1 和 s2，如果 s1 与 s2 相等返回 0 ，如果 s1&gt;s2 返回 1，如果 s1&lt;s2 返回 -1</h6><h6 id="比较字符串："><a href="#比较字符串：" class="headerlink" title="比较字符串："></a>比较字符串：</h6><blockquote>
+<p>SELECT STRCMP(“runoob”, “runoob”);  – 0</p>
+</blockquote>
+<h6 id="SUBSTR-s-start-length"><a href="#SUBSTR-s-start-length" class="headerlink" title="SUBSTR(s, start, length)"></a>SUBSTR(s, start, length)</h6><h6 id="从字符串-s-的-start-位置截取长度为-length-的子字符串"><a href="#从字符串-s-的-start-位置截取长度为-length-的子字符串" class="headerlink" title="从字符串 s 的 start 位置截取长度为 length 的子字符串"></a>从字符串 s 的 start 位置截取长度为 length 的子字符串</h6><h6 id="从字符串-RUNOOB-中的第-2-个位置截取-3个-字符：-1"><a href="#从字符串-RUNOOB-中的第-2-个位置截取-3个-字符：-1" class="headerlink" title="从字符串 RUNOOB 中的第 2 个位置截取 3个 字符："></a>从字符串 RUNOOB 中的第 2 个位置截取 3个 字符：</h6><blockquote>
+<p>SELECT SUBSTR(“RUNOOB”, 2, 3) AS ExtractString; – UNO</p>
+</blockquote>
+<h6 id="SUBSTRING-s-start-length"><a href="#SUBSTRING-s-start-length" class="headerlink" title="SUBSTRING(s, start, length)"></a>SUBSTRING(s, start, length)</h6><h6 id="从字符串-s-的-start-位置截取长度为-length-的子字符串-1"><a href="#从字符串-s-的-start-位置截取长度为-length-的子字符串-1" class="headerlink" title="从字符串 s 的 start 位置截取长度为 length 的子字符串"></a>从字符串 s 的 start 位置截取长度为 length 的子字符串</h6><h6 id="从字符串-RUNOOB-中的第-2-个位置截取-3个-字符：-2"><a href="#从字符串-RUNOOB-中的第-2-个位置截取-3个-字符：-2" class="headerlink" title="从字符串 RUNOOB 中的第 2 个位置截取 3个 字符："></a>从字符串 RUNOOB 中的第 2 个位置截取 3个 字符：</h6><blockquote>
+<p>SELECT SUBSTRING(“RUNOOB”, 2, 3) AS ExtractString; – UNO</p>
+</blockquote>
+<h6 id="SUBSTRING-INDEX-s-delimiter-number"><a href="#SUBSTRING-INDEX-s-delimiter-number" class="headerlink" title="SUBSTRING_INDEX(s, delimiter, number)"></a>SUBSTRING_INDEX(s, delimiter, number)</h6><h6 id="返回从字符串-s-的第-number-个出现的分隔符-delimiter-之后的子串。"><a href="#返回从字符串-s-的第-number-个出现的分隔符-delimiter-之后的子串。" class="headerlink" title="返回从字符串 s 的第 number 个出现的分隔符 delimiter 之后的子串。"></a>返回从字符串 s 的第 number 个出现的分隔符 delimiter 之后的子串。</h6><h6 id="如果-number-是正数，返回第-number-个字符左边的字符串。"><a href="#如果-number-是正数，返回第-number-个字符左边的字符串。" class="headerlink" title="如果 number 是正数，返回第 number 个字符左边的字符串。"></a>如果 number 是正数，返回第 number 个字符左边的字符串。</h6><h6 id="如果-number-是负数，返回第-number-的绝对值-从右边数-个字符右边的字符串。"><a href="#如果-number-是负数，返回第-number-的绝对值-从右边数-个字符右边的字符串。" class="headerlink" title="如果 number 是负数，返回第(number 的绝对值(从右边数))个字符右边的字符串。"></a>如果 number 是负数，返回第(number 的绝对值(从右边数))个字符右边的字符串。</h6><blockquote>
+<p>SELECT SUBSTRING_INDEX(‘a<em>b’,’</em>‘,1) – a<br>SELECT SUBSTRING_INDEX(‘a<em>b’,’</em>‘,-1)    – b<br>SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(‘a<em>b</em>c<em>d</em>e’,’<em>‘,3),’</em>‘,-1)    – c</p>
+</blockquote>
+<h6 id="TRIM-s"><a href="#TRIM-s" class="headerlink" title="TRIM(s)"></a>TRIM(s)</h6><h6 id="去掉字符串-s-开始和结尾处的空格"><a href="#去掉字符串-s-开始和结尾处的空格" class="headerlink" title="去掉字符串 s 开始和结尾处的空格"></a>去掉字符串 s 开始和结尾处的空格</h6><h6 id="去掉字符串-RUNOOB-的首尾空格："><a href="#去掉字符串-RUNOOB-的首尾空格：" class="headerlink" title="去掉字符串 RUNOOB 的首尾空格："></a>去掉字符串 RUNOOB 的首尾空格：</h6><blockquote>
+<p>SELECT TRIM(‘    RUNOOB    ‘) AS TrimmedString;</p>
+</blockquote>
+<h6 id="UCASE-s"><a href="#UCASE-s" class="headerlink" title="UCASE(s)"></a>UCASE(s)</h6><h6 id="将字符串转换为大写"><a href="#将字符串转换为大写" class="headerlink" title="将字符串转换为大写"></a>将字符串转换为大写</h6><h6 id="将字符串-runoob-转换为大写："><a href="#将字符串-runoob-转换为大写：" class="headerlink" title="将字符串 runoob 转换为大写："></a>将字符串 runoob 转换为大写：</h6><blockquote>
+<p>SELECT UCASE(“runoob”); – RUNOOB</p>
+</blockquote>
+<h6 id="UPPER-s"><a href="#UPPER-s" class="headerlink" title="UPPER(s)"></a>UPPER(s)</h6><h6 id="将字符串转换为大写-1"><a href="#将字符串转换为大写-1" class="headerlink" title="将字符串转换为大写"></a>将字符串转换为大写</h6><h6 id="将字符串-runoob-转换为大写：-1"><a href="#将字符串-runoob-转换为大写：-1" class="headerlink" title="将字符串 runoob 转换为大写："></a>将字符串 runoob 转换为大写：</h6><blockquote>
+<p>SELECT UPPER(“runoob”); – RUNOOB</p>
+</blockquote>
+<h3 id="MySQL-数字函数"><a href="#MySQL-数字函数" class="headerlink" title="MySQL 数字函数"></a>MySQL 数字函数</h3><h6 id="ABS-x"><a href="#ABS-x" class="headerlink" title="ABS(x)"></a>ABS(x)</h6><h6 id="返回-x-的绝对值"><a href="#返回-x-的绝对值" class="headerlink" title="返回 x 的绝对值　　"></a>返回 x 的绝对值　　</h6><h6 id="返回-1-的绝对值："><a href="#返回-1-的绝对值：" class="headerlink" title="返回 -1 的绝对值："></a>返回 -1 的绝对值：</h6><blockquote>
+<p>SELECT ABS(-1) – 返回1</p>
+</blockquote>
+<h6 id="ACOS-x"><a href="#ACOS-x" class="headerlink" title="ACOS(x)"></a>ACOS(x)</h6><h6 id="求-x-的反余弦值-参数是弧度"><a href="#求-x-的反余弦值-参数是弧度" class="headerlink" title="求 x 的反余弦值(参数是弧度)"></a>求 x 的反余弦值(参数是弧度)</h6><blockquote>
+<p>SELECT ACOS(0.25);</p>
+</blockquote>
+<h6 id="ASIN-x"><a href="#ASIN-x" class="headerlink" title="ASIN(x)"></a>ASIN(x)</h6><h6 id="求反正弦值-参数是弧度"><a href="#求反正弦值-参数是弧度" class="headerlink" title="求反正弦值(参数是弧度)"></a>求反正弦值(参数是弧度)</h6><blockquote>
+<p>SELECT ASIN(0.25);</p>
+</blockquote>
+<h6 id="ATAN-x"><a href="#ATAN-x" class="headerlink" title="ATAN(x)"></a>ATAN(x)</h6><h6 id="求反正切值-参数是弧度"><a href="#求反正切值-参数是弧度" class="headerlink" title="求反正切值(参数是弧度)"></a>求反正切值(参数是弧度)</h6><blockquote>
+<p>SELECT ATAN(2.5);</p>
+</blockquote>
+<h6 id="ATAN2-n-m"><a href="#ATAN2-n-m" class="headerlink" title="ATAN2(n, m)"></a>ATAN2(n, m)</h6><h6 id="求反正切值-参数是弧度-1"><a href="#求反正切值-参数是弧度-1" class="headerlink" title="求反正切值(参数是弧度)"></a>求反正切值(参数是弧度)</h6><blockquote>
+<p>SELECT ATAN2(-0.8, 2);</p>
+</blockquote>
+<h6 id="AVG-expression"><a href="#AVG-expression" class="headerlink" title="AVG(expression)"></a>AVG(expression)</h6><h6 id="返回一个表达式的平均值，expression-是一个字段"><a href="#返回一个表达式的平均值，expression-是一个字段" class="headerlink" title="返回一个表达式的平均值，expression 是一个字段"></a>返回一个表达式的平均值，expression 是一个字段</h6><h6 id="返回-Products-表中Price-字段的平均值："><a href="#返回-Products-表中Price-字段的平均值：" class="headerlink" title="返回 Products 表中Price 字段的平均值："></a>返回 Products 表中Price 字段的平均值：</h6><blockquote>
+<p>SELECT AVG(Price) AS AveragePrice FROM Products;</p>
+</blockquote>
+<h6 id="CEIL-x"><a href="#CEIL-x" class="headerlink" title="CEIL(x)"></a>CEIL(x)</h6><h6 id="返回大于或等于-x-的最小整数"><a href="#返回大于或等于-x-的最小整数" class="headerlink" title="返回大于或等于 x 的最小整数　"></a>返回大于或等于 x 的最小整数　</h6><blockquote>
+<p>SELECT CEIL(1.5) – 返回2</p>
+</blockquote>
+<h6 id="CEILING-x"><a href="#CEILING-x" class="headerlink" title="CEILING(x)"></a>CEILING(x)</h6><h6 id="返回大于或等于-x-的最小整数-1"><a href="#返回大于或等于-x-的最小整数-1" class="headerlink" title="返回大于或等于 x 的最小整数　"></a>返回大于或等于 x 的最小整数　</h6><blockquote>
+<p>SELECT CEIL(1.5) – 返回2</p>
+</blockquote>
+<h6 id="COS-x"><a href="#COS-x" class="headerlink" title="COS(x)"></a>COS(x)</h6><h6 id="求余弦值-参数是弧度"><a href="#求余弦值-参数是弧度" class="headerlink" title="求余弦值(参数是弧度)"></a>求余弦值(参数是弧度)</h6><blockquote>
+<p>SELECT COS(2);</p>
+</blockquote>
+<h6 id="COT-x"><a href="#COT-x" class="headerlink" title="COT(x)"></a>COT(x)</h6><h6 id="求余切值-参数是弧度"><a href="#求余切值-参数是弧度" class="headerlink" title="求余切值(参数是弧度)"></a>求余切值(参数是弧度)</h6><blockquote>
+<p>SELECT COT(6);</p>
+</blockquote>
+<h6 id="COUNT-expression"><a href="#COUNT-expression" class="headerlink" title="COUNT(expression)"></a>COUNT(expression)</h6><h6 id="返回查询的记录总数，expression-参数是一个字段或者-号"><a href="#返回查询的记录总数，expression-参数是一个字段或者-号" class="headerlink" title="返回查询的记录总数，expression 参数是一个字段或者 * 号"></a>返回查询的记录总数，expression 参数是一个字段或者 * 号</h6><h6 id="返回-Products-表中-products-字段总共有多少条记录："><a href="#返回-Products-表中-products-字段总共有多少条记录：" class="headerlink" title="返回 Products 表中 products 字段总共有多少条记录："></a>返回 Products 表中 products 字段总共有多少条记录：</h6><blockquote>
+<p>SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;</p>
+</blockquote>
+<h6 id="DEGREES-x"><a href="#DEGREES-x" class="headerlink" title="DEGREES(x)"></a>DEGREES(x)</h6><h6 id="将弧度转换为角度"><a href="#将弧度转换为角度" class="headerlink" title="将弧度转换为角度　　"></a>将弧度转换为角度　　</h6><blockquote>
+<p>SELECT DEGREES(3.1415926535898) – 180</p>
+</blockquote>
+<h6 id="n-DIV-m"><a href="#n-DIV-m" class="headerlink" title="n DIV m"></a>n DIV m</h6><h6 id="整除，n-为被除数，m-为除数"><a href="#整除，n-为被除数，m-为除数" class="headerlink" title="整除，n 为被除数，m 为除数"></a>整除，n 为被除数，m 为除数</h6><h6 id="计算-10-除于-5："><a href="#计算-10-除于-5：" class="headerlink" title="计算 10 除于 5："></a>计算 10 除于 5：</h6><blockquote>
+<p>SELECT 10 DIV 5;  – 2</p>
+</blockquote>
+<h6 id="EXP-x"><a href="#EXP-x" class="headerlink" title="EXP(x)"></a>EXP(x)</h6><h6 id="返回-e-的-x-次方"><a href="#返回-e-的-x-次方" class="headerlink" title="返回 e 的 x 次方　　"></a>返回 e 的 x 次方　　</h6><h6 id="计算-e-的三次方："><a href="#计算-e-的三次方：" class="headerlink" title="计算 e 的三次方："></a>计算 e 的三次方：</h6><blockquote>
+<p>SELECT EXP(3) – 20.085536923188</p>
+</blockquote>
+<h6 id="FLOOR-x"><a href="#FLOOR-x" class="headerlink" title="FLOOR(x)"></a>FLOOR(x)</h6><h6 id="返回小于或等于-x-的最大整数"><a href="#返回小于或等于-x-的最大整数" class="headerlink" title="返回小于或等于 x 的最大整数　　"></a>返回小于或等于 x 的最大整数　　</h6><h6 id="小于或等于-1-5-的整数："><a href="#小于或等于-1-5-的整数：" class="headerlink" title="小于或等于 1.5 的整数："></a>小于或等于 1.5 的整数：</h6><blockquote>
+<p>SELECT FLOOR(1.5) – 返回1</p>
+</blockquote>
+<h6 id="GREATEST-expr1-expr2-expr3-…"><a href="#GREATEST-expr1-expr2-expr3-…" class="headerlink" title="GREATEST(expr1, expr2, expr3, …)"></a>GREATEST(expr1, expr2, expr3, …)</h6><h6 id="返回列表中的最大值"><a href="#返回列表中的最大值" class="headerlink" title="返回列表中的最大值"></a>返回列表中的最大值</h6><h6 id="返回以下数字列表中的最大值："><a href="#返回以下数字列表中的最大值：" class="headerlink" title="返回以下数字列表中的最大值："></a>返回以下数字列表中的最大值：</h6><blockquote>
+<p>SELECT GREATEST(3, 12, 34, 8, 25); – 34</p>
+</blockquote>
+<h6 id="返回以下字符串列表中的最大值："><a href="#返回以下字符串列表中的最大值：" class="headerlink" title="返回以下字符串列表中的最大值："></a>返回以下字符串列表中的最大值：</h6><blockquote>
+<p>SELECT GREATEST(“Google”, “Runoob”, “Apple”);   – Runoob</p>
+</blockquote>
+<h6 id="LEAST-expr1-expr2-expr3-…"><a href="#LEAST-expr1-expr2-expr3-…" class="headerlink" title="LEAST(expr1, expr2, expr3, …)"></a>LEAST(expr1, expr2, expr3, …)</h6><h6 id="返回列表中的最小值"><a href="#返回列表中的最小值" class="headerlink" title="返回列表中的最小值"></a>返回列表中的最小值</h6><h6 id="返回以下数字列表中的最小值："><a href="#返回以下数字列表中的最小值：" class="headerlink" title="返回以下数字列表中的最小值："></a>返回以下数字列表中的最小值：</h6><blockquote>
+<p>SELECT LEAST(3, 12, 34, 8, 25); – 3</p>
+</blockquote>
+<h6 id="返回以下字符串列表中的最小值："><a href="#返回以下字符串列表中的最小值：" class="headerlink" title="返回以下字符串列表中的最小值："></a>返回以下字符串列表中的最小值：</h6><blockquote>
+<p>SELECT LEAST(“Google”, “Runoob”, “Apple”);   – Apple</p>
+</blockquote>
+<h6 id="LN"><a href="#LN" class="headerlink" title="LN"></a>LN</h6><h6 id="返回数字的自然对数"><a href="#返回数字的自然对数" class="headerlink" title="返回数字的自然对数"></a>返回数字的自然对数</h6><h6 id="返回-2-的自然对数："><a href="#返回-2-的自然对数：" class="headerlink" title="返回 2 的自然对数："></a>返回 2 的自然对数：</h6><blockquote>
+<p>SELECT LN(2);  – 0.6931471805599453</p>
+</blockquote>
+<h6 id="LOG-x"><a href="#LOG-x" class="headerlink" title="LOG(x)"></a>LOG(x)</h6><h6 id="返回自然对数-以-e-为底的对数"><a href="#返回自然对数-以-e-为底的对数" class="headerlink" title="返回自然对数(以 e 为底的对数)　　"></a>返回自然对数(以 e 为底的对数)　　</h6><blockquote>
+<p>SELECT LOG(20.085536923188) – 3</p>
+</blockquote>
+<h6 id="LOG10-x"><a href="#LOG10-x" class="headerlink" title="LOG10(x)"></a>LOG10(x)</h6><h6 id="返回以-10-为底的对数"><a href="#返回以-10-为底的对数" class="headerlink" title="返回以 10 为底的对数　　"></a>返回以 10 为底的对数　　</h6><blockquote>
+<p>SELECT LOG10(100) – 2</p>
+</blockquote>
+<h6 id="LOG2-x"><a href="#LOG2-x" class="headerlink" title="LOG2(x)"></a>LOG2(x)</h6><h6 id="返回以-2-为底的对数"><a href="#返回以-2-为底的对数" class="headerlink" title="返回以 2 为底的对数"></a>返回以 2 为底的对数</h6><h6 id="返回以-2-为底-6-的对数："><a href="#返回以-2-为底-6-的对数：" class="headerlink" title="返回以 2 为底 6 的对数："></a>返回以 2 为底 6 的对数：</h6><blockquote>
+<p>SELECT LOG2(6);  – 2.584962500721156</p>
+</blockquote>
+<h6 id="MAX-expression"><a href="#MAX-expression" class="headerlink" title="MAX(expression)"></a>MAX(expression)</h6><h6 id="返回字段-expression-中的最大值"><a href="#返回字段-expression-中的最大值" class="headerlink" title="返回字段 expression 中的最大值"></a>返回字段 expression 中的最大值</h6><h6 id="返回数据表-Products-中字段-Price-的最大值："><a href="#返回数据表-Products-中字段-Price-的最大值：" class="headerlink" title="返回数据表 Products 中字段 Price 的最大值："></a>返回数据表 Products 中字段 Price 的最大值：</h6><blockquote>
+<p>SELECT MAX(Price) AS LargestPrice FROM Products;</p>
+</blockquote>
+<h6 id="MIN-expression"><a href="#MIN-expression" class="headerlink" title="MIN(expression)"></a>MIN(expression)</h6><h6 id="返回字段-expression-中的最小值"><a href="#返回字段-expression-中的最小值" class="headerlink" title="返回字段 expression 中的最小值"></a>返回字段 expression 中的最小值</h6><h6 id="返回数据表-Products-中字段-Price-的最小值："><a href="#返回数据表-Products-中字段-Price-的最小值：" class="headerlink" title="返回数据表 Products 中字段 Price 的最小值："></a>返回数据表 Products 中字段 Price 的最小值：</h6><blockquote>
+<p>SELECT MIN(Price) AS LargestPrice FROM Products;</p>
+</blockquote>
+<h6 id="MOD-x-y"><a href="#MOD-x-y" class="headerlink" title="MOD(x,y)"></a>MOD(x,y)</h6><h6 id="返回-x-除以-y-以后的余数"><a href="#返回-x-除以-y-以后的余数" class="headerlink" title="返回 x 除以 y 以后的余数　"></a>返回 x 除以 y 以后的余数　</h6><h6 id="5-除于-2-的余数："><a href="#5-除于-2-的余数：" class="headerlink" title="5 除于 2 的余数："></a>5 除于 2 的余数：</h6><blockquote>
+<p>SELECT MOD(5,2) – 1</p>
+</blockquote>
+<h6 id="PI"><a href="#PI" class="headerlink" title="PI()"></a>PI()</h6><h6 id="返回圆周率-3-141593）"><a href="#返回圆周率-3-141593）" class="headerlink" title="返回圆周率(3.141593）　　"></a>返回圆周率(3.141593）　　</h6><blockquote>
+<p>SELECT PI() –3.141593</p>
+</blockquote>
+<h6 id="POW-x-y"><a href="#POW-x-y" class="headerlink" title="POW(x,y)"></a>POW(x,y)</h6><h6 id="返回-x-的-y-次方"><a href="#返回-x-的-y-次方" class="headerlink" title="返回 x 的 y 次方　"></a>返回 x 的 y 次方　</h6><h6 id="2-的-3-次方："><a href="#2-的-3-次方：" class="headerlink" title="2 的 3 次方："></a>2 的 3 次方：</h6><blockquote>
+<p>SELECT POW(2,3) – 8</p>
+</blockquote>
+<h6 id="POWER-x-y"><a href="#POWER-x-y" class="headerlink" title="POWER(x,y)"></a>POWER(x,y)</h6><h6 id="返回-x-的-y-次方-1"><a href="#返回-x-的-y-次方-1" class="headerlink" title="返回 x 的 y 次方　"></a>返回 x 的 y 次方　</h6><h6 id="2-的-3-次方：-1"><a href="#2-的-3-次方：-1" class="headerlink" title="2 的 3 次方："></a>2 的 3 次方：</h6><blockquote>
+<p>SELECT POWER(2,3) – 8</p>
+</blockquote>
+<h6 id="RADIANS-x"><a href="#RADIANS-x" class="headerlink" title="RADIANS(x)"></a>RADIANS(x)</h6><h6 id="将角度转换为弧度"><a href="#将角度转换为弧度" class="headerlink" title="将角度转换为弧度　　"></a>将角度转换为弧度　　</h6><h6 id="180-度转换为弧度："><a href="#180-度转换为弧度：" class="headerlink" title="180 度转换为弧度："></a>180 度转换为弧度：</h6><blockquote>
+<p>SELECT RADIANS(180) – 3.1415926535898</p>
+</blockquote>
+<h6 id="RAND"><a href="#RAND" class="headerlink" title="RAND()"></a>RAND()</h6><h6 id="返回-0-到-1-的随机数"><a href="#返回-0-到-1-的随机数" class="headerlink" title="返回 0 到 1 的随机数　　"></a>返回 0 到 1 的随机数　　</h6><blockquote>
+<p>SELECT RAND() –0.93099315644334</p>
+</blockquote>
+<h6 id="ROUND-x"><a href="#ROUND-x" class="headerlink" title="ROUND(x)"></a>ROUND(x)</h6><h6 id="返回离-x-最近的整数"><a href="#返回离-x-最近的整数" class="headerlink" title="返回离 x 最近的整数"></a>返回离 x 最近的整数</h6><blockquote>
+<p>SELECT ROUND(1.23456) –1</p>
+</blockquote>
+<h6 id="SIGN-x"><a href="#SIGN-x" class="headerlink" title="SIGN(x)"></a>SIGN(x)</h6><h6 id="返回-x-的符号，x-是负数、0、正数分别返回-1、0-和-1"><a href="#返回-x-的符号，x-是负数、0、正数分别返回-1、0-和-1" class="headerlink" title="返回 x 的符号，x 是负数、0、正数分别返回 -1、0 和 1　"></a>返回 x 的符号，x 是负数、0、正数分别返回 -1、0 和 1　</h6><blockquote>
+<p>SELECT SIGN(-10) – (-1)</p>
+</blockquote>
+<h6 id="SIN-x"><a href="#SIN-x" class="headerlink" title="SIN(x)"></a>SIN(x)</h6><h6 id="求正弦值-参数是弧度"><a href="#求正弦值-参数是弧度" class="headerlink" title="求正弦值(参数是弧度)　　"></a>求正弦值(参数是弧度)　　</h6><blockquote>
+<p>SELECT SIN(RADIANS(30)) – 0.5</p>
+</blockquote>
+<h6 id="SQRT-x"><a href="#SQRT-x" class="headerlink" title="SQRT(x)"></a>SQRT(x)</h6><h6 id="返回x的平方根"><a href="#返回x的平方根" class="headerlink" title="返回x的平方根　　"></a>返回x的平方根　　</h6><h6 id="25-的平方根："><a href="#25-的平方根：" class="headerlink" title="25 的平方根："></a>25 的平方根：</h6><blockquote>
+<p>SELECT SQRT(25) – 5</p>
+</blockquote>
+<h6 id="SUM-expression"><a href="#SUM-expression" class="headerlink" title="SUM(expression)"></a>SUM(expression)</h6><h6 id="返回指定字段的总和"><a href="#返回指定字段的总和" class="headerlink" title="返回指定字段的总和"></a>返回指定字段的总和</h6><h6 id="计算-OrderDetails-表中字段-Quantity-的总和："><a href="#计算-OrderDetails-表中字段-Quantity-的总和：" class="headerlink" title="计算 OrderDetails 表中字段 Quantity 的总和："></a>计算 OrderDetails 表中字段 Quantity 的总和：</h6><blockquote>
+<p>SELECT SUM(Quantity) AS TotalItemsOrdered FROM OrderDetails;</p>
+</blockquote>
+<h6 id="TAN-x"><a href="#TAN-x" class="headerlink" title="TAN(x)"></a>TAN(x)</h6><h6 id="求正切值-参数是弧度"><a href="#求正切值-参数是弧度" class="headerlink" title="求正切值(参数是弧度)"></a>求正切值(参数是弧度)</h6><blockquote>
+<p>SELECT TAN(1.75);  – -5.52037992250933</p>
+</blockquote>
+<h6 id="TRUNCATE-x-y"><a href="#TRUNCATE-x-y" class="headerlink" title="TRUNCATE(x,y)"></a>TRUNCATE(x,y)</h6><h6 id="返回数值-x-保留到小数点后-y-位的值（与-ROUND-最大的区别是不会进行四舍五入）"><a href="#返回数值-x-保留到小数点后-y-位的值（与-ROUND-最大的区别是不会进行四舍五入）" class="headerlink" title="返回数值 x 保留到小数点后 y 位的值（与 ROUND 最大的区别是不会进行四舍五入）"></a>返回数值 x 保留到小数点后 y 位的值（与 ROUND 最大的区别是不会进行四舍五入）</h6><blockquote>
+<p>SELECT TRUNCATE(1.23456,3) – 1.234</p>
+</blockquote>
+<h3 id="MySQL-日期函数"><a href="#MySQL-日期函数" class="headerlink" title="MySQL 日期函数"></a>MySQL 日期函数</h3><h6 id="ADDDATE-d-n"><a href="#ADDDATE-d-n" class="headerlink" title="ADDDATE(d,n)"></a>ADDDATE(d,n)</h6><h6 id="计算其实日期-d-加上-n-天的日期"><a href="#计算其实日期-d-加上-n-天的日期" class="headerlink" title="计算其实日期 d 加上 n 天的日期"></a>计算其实日期 d 加上 n 天的日期</h6><blockquote>
+<p>SELECT ADDDATE(“2017-06-15”, INTERVAL 10 DAY);<br>-&gt;2017-06-25</p>
+</blockquote>
+<h6 id="ADDTIME-t-n"><a href="#ADDTIME-t-n" class="headerlink" title="ADDTIME(t,n)"></a>ADDTIME(t,n)</h6><h6 id="时间-t-加上-n-秒的时间"><a href="#时间-t-加上-n-秒的时间" class="headerlink" title="时间 t 加上 n 秒的时间"></a>时间 t 加上 n 秒的时间</h6><blockquote>
+<p>SELECT ADDTIME(‘2011-11-11 11:11:11’, 5)<br>-&gt;2011-11-11 11:11:16 (秒)</p>
+</blockquote>
+<h6 id="CURDATE"><a href="#CURDATE" class="headerlink" title="CURDATE()"></a>CURDATE()</h6><h6 id="返回当前日期"><a href="#返回当前日期" class="headerlink" title="返回当前日期"></a>返回当前日期</h6><blockquote>
+<p>SELECT CURDATE();<br>-&gt; 2018-09-19</p>
+</blockquote>
+<h6 id="CURRENT-DATE"><a href="#CURRENT-DATE" class="headerlink" title="CURRENT_DATE()"></a>CURRENT_DATE()</h6><h6 id="返回当前日期-1"><a href="#返回当前日期-1" class="headerlink" title="返回当前日期"></a>返回当前日期</h6><blockquote>
+<p>SELECT CURRENT_DATE();<br>-&gt; 2018-09-19</p>
+</blockquote>
+<h6 id="CURRENT-TIME"><a href="#CURRENT-TIME" class="headerlink" title="CURRENT_TIME"></a>CURRENT_TIME</h6><h6 id="返回当前时间"><a href="#返回当前时间" class="headerlink" title="返回当前时间"></a>返回当前时间</h6><blockquote>
+<p>SELECT CURRENT_TIME();<br>-&gt; 19:59:02</p>
+</blockquote>
+<h6 id="CURRENT-TIMESTAMP"><a href="#CURRENT-TIMESTAMP" class="headerlink" title="CURRENT_TIMESTAMP()"></a>CURRENT_TIMESTAMP()</h6><h6 id="返回当前日期和时间"><a href="#返回当前日期和时间" class="headerlink" title="返回当前日期和时间"></a>返回当前日期和时间</h6><blockquote>
+<p>SELECT CURRENT_TIMESTAMP()<br>-&gt; 2018-09-19 20:57:43</p>
+</blockquote>
+<h6 id="CURTIME"><a href="#CURTIME" class="headerlink" title="CURTIME()"></a>CURTIME()</h6><h6 id="返回当前时间-1"><a href="#返回当前时间-1" class="headerlink" title="返回当前时间"></a>返回当前时间</h6><blockquote>
+<p>SELECT CURTIME();<br>-&gt; 19:59:02</p>
+</blockquote>
+<h6 id="DATE"><a href="#DATE" class="headerlink" title="DATE()"></a>DATE()</h6><h6 id="从日期或日期时间表达式中提取日期值"><a href="#从日期或日期时间表达式中提取日期值" class="headerlink" title="从日期或日期时间表达式中提取日期值"></a>从日期或日期时间表达式中提取日期值</h6><blockquote>
+<p>SELECT DATE(“2017-06-15”);<br>-&gt; 2017-06-15</p>
+</blockquote>
+<h6 id="DATEDIFF-d1-d2"><a href="#DATEDIFF-d1-d2" class="headerlink" title="DATEDIFF(d1,d2)"></a>DATEDIFF(d1,d2)</h6><h6 id="计算日期-d1-gt-d2-之间相隔的天数"><a href="#计算日期-d1-gt-d2-之间相隔的天数" class="headerlink" title="计算日期 d1-&gt;d2 之间相隔的天数"></a>计算日期 d1-&gt;d2 之间相隔的天数</h6><blockquote>
+<p>SELECT DATEDIFF(‘2001-01-01’,’2001-02-02’)<br>-&gt; -32</p>
+</blockquote>
+<h6 id="DATE-ADD-d，INTERVAL-expr-type"><a href="#DATE-ADD-d，INTERVAL-expr-type" class="headerlink" title="DATE_ADD(d，INTERVAL expr type)"></a>DATE_ADD(d，INTERVAL expr type)</h6><h6 id="计算起始日期-d-加上一个时间段后的日期"><a href="#计算起始日期-d-加上一个时间段后的日期" class="headerlink" title="计算起始日期 d 加上一个时间段后的日期"></a>计算起始日期 d 加上一个时间段后的日期</h6><blockquote>
+<p>SELECT ADDDATE(‘2011-11-11 11:11:11’,1)<br>-&gt; 2011-11-12 11:11:11    (默认是天)</p>
+</blockquote>
+<blockquote>
+<p>SELECT ADDDATE(‘2011-11-11 11:11:11’, INTERVAL 5 MINUTE)<br>-&gt; 2011-11-11 11:16:11 (TYPE的取值与上面那个列出来的函数类似)</p>
+</blockquote>
+<h6 id="DATE-FORMAT-d-f"><a href="#DATE-FORMAT-d-f" class="headerlink" title="DATE_FORMAT(d,f)"></a>DATE_FORMAT(d,f)</h6><h6 id="按表达式-f的要求显示日期-d"><a href="#按表达式-f的要求显示日期-d" class="headerlink" title="按表达式 f的要求显示日期 d"></a>按表达式 f的要求显示日期 d</h6><blockquote>
+<p>SELECT DATE_FORMAT(‘2011-11-11 11:11:11’,’%Y-%m-%d %r’)<br>-&gt; 2011-11-11 11:11:11 AM</p>
+</blockquote>
+<h6 id="DATE-SUB-date-INTERVAL-expr-type"><a href="#DATE-SUB-date-INTERVAL-expr-type" class="headerlink" title="DATE_SUB(date,INTERVAL expr type)"></a>DATE_SUB(date,INTERVAL expr type)</h6><h6 id="函数从日期减去指定的时间间隔。"><a href="#函数从日期减去指定的时间间隔。" class="headerlink" title="函数从日期减去指定的时间间隔。"></a>函数从日期减去指定的时间间隔。</h6><h6 id="Orders-表中-OrderDate-字段减去-2-天："><a href="#Orders-表中-OrderDate-字段减去-2-天：" class="headerlink" title="Orders 表中 OrderDate 字段减去 2 天："></a>Orders 表中 OrderDate 字段减去 2 天：</h6><blockquote>
+<p>SELECT OrderId,DATE_SUB(OrderDate,INTERVAL 2 DAY) AS OrderPayDate<br>FROM Orders</p>
+</blockquote>
+<h6 id="DAY-d"><a href="#DAY-d" class="headerlink" title="DAY(d)"></a>DAY(d)</h6><h6 id="返回日期值-d-的日期部分"><a href="#返回日期值-d-的日期部分" class="headerlink" title="返回日期值 d 的日期部分"></a>返回日期值 d 的日期部分</h6><blockquote>
+<p>SELECT DAY(“2017-06-15”);<br>-&gt; 15</p>
+</blockquote>
+<h6 id="DAYNAME-d"><a href="#DAYNAME-d" class="headerlink" title="DAYNAME(d)"></a>DAYNAME(d)</h6><h6 id="返回日期-d-是星期几，如-Monday-Tuesday"><a href="#返回日期-d-是星期几，如-Monday-Tuesday" class="headerlink" title="返回日期 d 是星期几，如 Monday,Tuesday"></a>返回日期 d 是星期几，如 Monday,Tuesday</h6><blockquote>
+<p>SELECT DAYNAME(‘2011-11-11 11:11:11’)<br>-&gt;Friday</p>
+</blockquote>
+<h6 id="DAYOFMONTH-d"><a href="#DAYOFMONTH-d" class="headerlink" title="DAYOFMONTH(d)"></a>DAYOFMONTH(d)</h6><h6 id="计算日期-d-是本月的第几天"><a href="#计算日期-d-是本月的第几天" class="headerlink" title="计算日期 d 是本月的第几天"></a>计算日期 d 是本月的第几天</h6><blockquote>
+<p>SELECT DAYOFMONTH(‘2011-11-11 11:11:11’)<br>-&gt;11</p>
+</blockquote>
+<h6 id="DAYOFWEEK-d"><a href="#DAYOFWEEK-d" class="headerlink" title="DAYOFWEEK(d)"></a>DAYOFWEEK(d)</h6><h6 id="日期-d-今天是星期几，1-星期日，2-星期一，以此类推"><a href="#日期-d-今天是星期几，1-星期日，2-星期一，以此类推" class="headerlink" title="日期 d 今天是星期几，1 星期日，2 星期一，以此类推"></a>日期 d 今天是星期几，1 星期日，2 星期一，以此类推</h6><blockquote>
+<p>SELECT DAYOFWEEK(‘2011-11-11 11:11:11’)<br>-&gt;6</p>
+</blockquote>
+<h6 id="DAYOFYEAR-d"><a href="#DAYOFYEAR-d" class="headerlink" title="DAYOFYEAR(d)"></a>DAYOFYEAR(d)</h6><h6 id="计算日期-d-是本年的第几天"><a href="#计算日期-d-是本年的第几天" class="headerlink" title="计算日期 d 是本年的第几天"></a>计算日期 d 是本年的第几天</h6><blockquote>
+<p>SELECT DAYOFYEAR(‘2011-11-11 11:11:11’)<br>-&gt;315</p>
+</blockquote>
+<h6 id="EXTRACT-type-FROM-d"><a href="#EXTRACT-type-FROM-d" class="headerlink" title="EXTRACT(type FROM d)"></a>EXTRACT(type FROM d)</h6><h6 id="从日期-d-中获取指定的值，type-指定返回的值。"><a href="#从日期-d-中获取指定的值，type-指定返回的值。" class="headerlink" title="从日期 d 中获取指定的值，type 指定返回的值。"></a>从日期 d 中获取指定的值，type 指定返回的值。</h6><h6 id="type可取值为："><a href="#type可取值为：" class="headerlink" title="type可取值为："></a>type可取值为：</h6><p>·MICROSECOND<br>·SECOND<br>·MINUTE<br>·HOUR<br>·DAY<br>·WEEK<br>·MONTH<br>·QUARTER<br>·YEAR<br>·SECOND_MICROSECOND<br>·MINUTE_MICROSECOND<br>·MINUTE_SECOND<br>·HOUR_MICROSECOND<br>·HOUR_SECOND<br>·HOUR_MINUTE<br>·DAY_MICROSECOND<br>·DAY_SECOND<br>·DAY_MINUTE<br>·DAY_HOUR<br>·YEAR_MONTH</p>
+<blockquote>
+<p>SELECT EXTRACT(MINUTE FROM ‘2011-11-11 11:11:11’)<br>-&gt; 11</p>
+</blockquote>
+<h6 id="FROM-DAYS-n"><a href="#FROM-DAYS-n" class="headerlink" title="FROM_DAYS(n)"></a>FROM_DAYS(n)</h6><h6 id="计算从-0000-年-1-月-1-日开始-n-天后的日期"><a href="#计算从-0000-年-1-月-1-日开始-n-天后的日期" class="headerlink" title="计算从 0000 年 1 月 1 日开始 n 天后的日期"></a>计算从 0000 年 1 月 1 日开始 n 天后的日期</h6><blockquote>
+<p>SELECT FROM_DAYS(1111)<br>-&gt; 0003-01-16</p>
+</blockquote>
+<h6 id="HOUR-t"><a href="#HOUR-t" class="headerlink" title="HOUR(t)"></a>HOUR(t)</h6><h6 id="返回-t-中的小时值"><a href="#返回-t-中的小时值" class="headerlink" title="返回 t 中的小时值"></a>返回 t 中的小时值</h6><blockquote>
+<p>SELECT HOUR(‘1:2:3’)<br>-&gt; 1</p>
+</blockquote>
+<h6 id="LAST-DAY-d"><a href="#LAST-DAY-d" class="headerlink" title="LAST_DAY(d)"></a>LAST_DAY(d)</h6><h6 id="返回给给定日期的那一月份的最后一天"><a href="#返回给给定日期的那一月份的最后一天" class="headerlink" title="返回给给定日期的那一月份的最后一天"></a>返回给给定日期的那一月份的最后一天</h6><blockquote>
+<p>SELECT LAST_DAY(“2017-06-20”);<br>-&gt; 2017-06-30</p>
+</blockquote>
+<h6 id="LOCALTIME"><a href="#LOCALTIME" class="headerlink" title="LOCALTIME()"></a>LOCALTIME()</h6><h6 id="返回当前日期和时间-1"><a href="#返回当前日期和时间-1" class="headerlink" title="返回当前日期和时间"></a>返回当前日期和时间</h6><blockquote>
+<p>SELECT LOCALTIME()<br>-&gt; 2018-09-19 20:57:43</p>
+</blockquote>
+<h6 id="LOCALTIMESTAMP"><a href="#LOCALTIMESTAMP" class="headerlink" title="LOCALTIMESTAMP()"></a>LOCALTIMESTAMP()</h6><h6 id="返回当前日期和时间-2"><a href="#返回当前日期和时间-2" class="headerlink" title="返回当前日期和时间"></a>返回当前日期和时间</h6><blockquote>
+<p>SELECT LOCALTIMESTAMP()<br>-&gt; 2018-09-19 20:57:43</p>
+</blockquote>
+<h6 id="MAKEDATE-year-day-of-year"><a href="#MAKEDATE-year-day-of-year" class="headerlink" title="MAKEDATE(year, day-of-year)"></a>MAKEDATE(year, day-of-year)</h6><h6 id="基于给定参数年份-year-和所在年中的天数序号-day-of-year-返回一个日期"><a href="#基于给定参数年份-year-和所在年中的天数序号-day-of-year-返回一个日期" class="headerlink" title="基于给定参数年份 year 和所在年中的天数序号 day-of-year 返回一个日期"></a>基于给定参数年份 year 和所在年中的天数序号 day-of-year 返回一个日期</h6><blockquote>
+<p>SELECT MAKEDATE(2017, 3);<br>-&gt; 2017-01-03</p>
+</blockquote>
+<h6 id="MAKETIME-hour-minute-second"><a href="#MAKETIME-hour-minute-second" class="headerlink" title="MAKETIME(hour, minute, second)"></a>MAKETIME(hour, minute, second)</h6><h6 id="组合时间，参数分别为小时、分钟、秒"><a href="#组合时间，参数分别为小时、分钟、秒" class="headerlink" title="组合时间，参数分别为小时、分钟、秒"></a>组合时间，参数分别为小时、分钟、秒</h6><blockquote>
+<p>SELECT MAKETIME(11, 35, 4);<br>-&gt; 11:35:04</p>
+</blockquote>
+<h6 id="MICROSECOND-date"><a href="#MICROSECOND-date" class="headerlink" title="MICROSECOND(date)"></a>MICROSECOND(date)</h6><h6 id="返回日期参数所对应的毫秒数"><a href="#返回日期参数所对应的毫秒数" class="headerlink" title="返回日期参数所对应的毫秒数"></a>返回日期参数所对应的毫秒数</h6><blockquote>
+<p>SELECT MICROSECOND(“2017-06-20 09:34:00.000023”);<br>-&gt; 23</p>
+</blockquote>
+<h6 id="MINUTE-t"><a href="#MINUTE-t" class="headerlink" title="MINUTE(t)"></a>MINUTE(t)</h6><h6 id="返回-t-中的分钟值"><a href="#返回-t-中的分钟值" class="headerlink" title="返回 t 中的分钟值"></a>返回 t 中的分钟值</h6><blockquote>
+<p>SELECT MINUTE(‘1:2:3’)<br>-&gt; 2</p>
+</blockquote>
+<h6 id="MONTHNAME-d"><a href="#MONTHNAME-d" class="headerlink" title="MONTHNAME(d)"></a>MONTHNAME(d)</h6><h6 id="返回日期当中的月份名称，如-Janyary"><a href="#返回日期当中的月份名称，如-Janyary" class="headerlink" title="返回日期当中的月份名称，如 Janyary"></a>返回日期当中的月份名称，如 Janyary</h6><blockquote>
+<p>SELECT MONTHNAME(‘2011-11-11 11:11:11’)<br>-&gt; November</p>
+</blockquote>
+<h6 id="MONTH-d"><a href="#MONTH-d" class="headerlink" title="MONTH(d)"></a>MONTH(d)</h6><h6 id="返回日期d中的月份值，1-到-12"><a href="#返回日期d中的月份值，1-到-12" class="headerlink" title="返回日期d中的月份值，1 到 12"></a>返回日期d中的月份值，1 到 12</h6><blockquote>
+<p>SELECT MONTH(‘2011-11-11 11:11:11’)<br>-&gt;11</p>
+</blockquote>
+<h6 id="NOW"><a href="#NOW" class="headerlink" title="NOW()"></a>NOW()</h6><h6 id="返回当前日期和时间-3"><a href="#返回当前日期和时间-3" class="headerlink" title="返回当前日期和时间"></a>返回当前日期和时间</h6><blockquote>
+<p>SELECT NOW()<br>-&gt; 2018-09-19 20:57:43</p>
+</blockquote>
+<h6 id="PERIOD-ADD-period-number"><a href="#PERIOD-ADD-period-number" class="headerlink" title="PERIOD_ADD(period, number)"></a>PERIOD_ADD(period, number)</h6><h6 id="为-年-月-组合日期添加一个时段"><a href="#为-年-月-组合日期添加一个时段" class="headerlink" title="为 年-月 组合日期添加一个时段"></a>为 年-月 组合日期添加一个时段</h6><blockquote>
+<p>SELECT PERIOD_ADD(201703, 5);<br>-&gt; 201708</p>
+</blockquote>
+<h6 id="PERIOD-DIFF-period1-period2"><a href="#PERIOD-DIFF-period1-period2" class="headerlink" title="PERIOD_DIFF(period1, period2)"></a>PERIOD_DIFF(period1, period2)</h6><h6 id="返回两个时段之间的月份差值"><a href="#返回两个时段之间的月份差值" class="headerlink" title="返回两个时段之间的月份差值"></a>返回两个时段之间的月份差值</h6><blockquote>
+<p>SELECT PERIOD_DIFF(201710, 201703);<br>-&gt; 7</p>
+</blockquote>
+<h6 id="QUARTER-d"><a href="#QUARTER-d" class="headerlink" title="QUARTER(d)"></a>QUARTER(d)</h6><h6 id="返回日期d是第几季节，返回-1-到-4"><a href="#返回日期d是第几季节，返回-1-到-4" class="headerlink" title="返回日期d是第几季节，返回 1 到 4"></a>返回日期d是第几季节，返回 1 到 4</h6><blockquote>
+<p>SELECT QUARTER(‘2011-11-11 11:11:11’)<br>-&gt; 4</p>
+</blockquote>
+<h6 id="SECOND-t"><a href="#SECOND-t" class="headerlink" title="SECOND(t)"></a>SECOND(t)</h6><h6 id="返回-t-中的秒钟值"><a href="#返回-t-中的秒钟值" class="headerlink" title="返回 t 中的秒钟值"></a>返回 t 中的秒钟值</h6><blockquote>
+<p>SELECT SECOND(‘1:2:3’)<br>-&gt; 3</p>
+</blockquote>
+<h6 id="SEC-TO-TIME-s"><a href="#SEC-TO-TIME-s" class="headerlink" title="SEC_TO_TIME(s)"></a>SEC_TO_TIME(s)</h6><h6 id="将以秒为单位的时间-s-转换为时分秒的格式"><a href="#将以秒为单位的时间-s-转换为时分秒的格式" class="headerlink" title="将以秒为单位的时间 s 转换为时分秒的格式"></a>将以秒为单位的时间 s 转换为时分秒的格式</h6><blockquote>
+<p>SELECT SEC_TO_TIME(4320)<br>-&gt; 01:12:00</p>
+</blockquote>
+<h6 id="STR-TO-DATE-string-format-mask"><a href="#STR-TO-DATE-string-format-mask" class="headerlink" title="STR_TO_DATE(string, format_mask)"></a>STR_TO_DATE(string, format_mask)</h6><h6 id="将字符串转变为日期"><a href="#将字符串转变为日期" class="headerlink" title="将字符串转变为日期"></a>将字符串转变为日期</h6><blockquote>
+<p>SELECT STR_TO_DATE(“August 10 2017”, “%M %d %Y”);<br>-&gt; 2017-08-10</p>
+</blockquote>
+<h6 id="SUBDATE-d-n"><a href="#SUBDATE-d-n" class="headerlink" title="SUBDATE(d,n)"></a>SUBDATE(d,n)</h6><h6 id="日期-d-减去-n-天后的日期"><a href="#日期-d-减去-n-天后的日期" class="headerlink" title="日期 d 减去 n 天后的日期"></a>日期 d 减去 n 天后的日期</h6><blockquote>
+<p>SELECT SUBDATE(‘2011-11-11 11:11:11’, 1)<br>-&gt;2011-11-10 11:11:11 (默认是天)</p>
+</blockquote>
+<h6 id="SUBTIME-t-n"><a href="#SUBTIME-t-n" class="headerlink" title="SUBTIME(t,n)"></a>SUBTIME(t,n)</h6><h6 id="时间-t-减去-n-秒的时间"><a href="#时间-t-减去-n-秒的时间" class="headerlink" title="时间 t 减去 n 秒的时间"></a>时间 t 减去 n 秒的时间</h6><blockquote>
+<p>SELECT SUBTIME(‘2011-11-11 11:11:11’, 5)<br>-&gt;2011-11-11 11:11:06 (秒)</p>
+</blockquote>
+<h6 id="SYSDATE"><a href="#SYSDATE" class="headerlink" title="SYSDATE()"></a>SYSDATE()</h6><h6 id="返回当前日期和时间-4"><a href="#返回当前日期和时间-4" class="headerlink" title="返回当前日期和时间"></a>返回当前日期和时间</h6><blockquote>
+<p>SELECT SYSDATE()<br>-&gt; 2018-09-19 20:57:43</p>
+</blockquote>
+<h6 id="TIME-expression"><a href="#TIME-expression" class="headerlink" title="TIME(expression)"></a>TIME(expression)</h6><h6 id="提取传入表达式的时间部分"><a href="#提取传入表达式的时间部分" class="headerlink" title="提取传入表达式的时间部分"></a>提取传入表达式的时间部分</h6><blockquote>
+<p>SELECT TIME(“19:30:10”);<br>-&gt; 19:30:10</p>
+</blockquote>
+<h6 id="TIME-FORMAT-t-f"><a href="#TIME-FORMAT-t-f" class="headerlink" title="TIME_FORMAT(t,f)"></a>TIME_FORMAT(t,f)</h6><h6 id="按表达式-f-的要求显示时间-t"><a href="#按表达式-f-的要求显示时间-t" class="headerlink" title="按表达式 f 的要求显示时间 t"></a>按表达式 f 的要求显示时间 t</h6><blockquote>
+<p>SELECT TIME_FORMAT(‘11:11:11’,’%r’)<br>11:11:11 AM</p>
+</blockquote>
+<h6 id="TIME-TO-SEC-t"><a href="#TIME-TO-SEC-t" class="headerlink" title="TIME_TO_SEC(t)"></a>TIME_TO_SEC(t)</h6><h6 id="将时间-t-转换为秒"><a href="#将时间-t-转换为秒" class="headerlink" title="将时间 t 转换为秒"></a>将时间 t 转换为秒</h6><blockquote>
+<p>SELECT TIME_TO_SEC(‘1:12:00’)<br>-&gt; 4320</p>
+</blockquote>
+<h6 id="TIMEDIFF-time1-time2"><a href="#TIMEDIFF-time1-time2" class="headerlink" title="TIMEDIFF(time1, time2)"></a>TIMEDIFF(time1, time2)</h6><h6 id="计算时间差值"><a href="#计算时间差值" class="headerlink" title="计算时间差值"></a>计算时间差值</h6><blockquote>
+<p>SELECT TIMEDIFF(“13:10:11”, “13:10:10”);<br>-&gt; 00:00:01</p>
+</blockquote>
+<h6 id="TIMESTAMP-expression-interval"><a href="#TIMESTAMP-expression-interval" class="headerlink" title="TIMESTAMP(expression, interval)"></a>TIMESTAMP(expression, interval)</h6><h6 id="单个参数时，函数返回日期或日期时间表达式；有2个参数时，将参数加和"><a href="#单个参数时，函数返回日期或日期时间表达式；有2个参数时，将参数加和" class="headerlink" title="单个参数时，函数返回日期或日期时间表达式；有2个参数时，将参数加和"></a>单个参数时，函数返回日期或日期时间表达式；有2个参数时，将参数加和</h6><blockquote>
+<p>SELECT TIMESTAMP(“2017-07-23”,  “13:10:11”);<br>-&gt; 2017-07-23 13:10:11</p>
+</blockquote>
+<h6 id="TO-DAYS-d"><a href="#TO-DAYS-d" class="headerlink" title="TO_DAYS(d)"></a>TO_DAYS(d)</h6><h6 id="计算日期-d-距离-0000-年-1-月-1-日的天数"><a href="#计算日期-d-距离-0000-年-1-月-1-日的天数" class="headerlink" title="计算日期 d 距离 0000 年 1 月 1 日的天数"></a>计算日期 d 距离 0000 年 1 月 1 日的天数</h6><blockquote>
+<p>SELECT TO_DAYS(‘0001-01-01 01:01:01’)<br>-&gt; 366</p>
+</blockquote>
+<h6 id="WEEK-d"><a href="#WEEK-d" class="headerlink" title="WEEK(d)"></a>WEEK(d)</h6><h6 id="计算日期-d-是本年的第几个星期，范围是-0-到-53"><a href="#计算日期-d-是本年的第几个星期，范围是-0-到-53" class="headerlink" title="计算日期 d 是本年的第几个星期，范围是 0 到 53"></a>计算日期 d 是本年的第几个星期，范围是 0 到 53</h6><blockquote>
+<p>SELECT WEEK(‘2011-11-11 11:11:11’)<br>-&gt; 45</p>
+</blockquote>
+<h6 id="WEEKDAY-d"><a href="#WEEKDAY-d" class="headerlink" title="WEEKDAY(d)"></a>WEEKDAY(d)</h6><h6 id="日期-d-是星期几，0-表示星期一，1-表示星期二"><a href="#日期-d-是星期几，0-表示星期一，1-表示星期二" class="headerlink" title="日期 d 是星期几，0 表示星期一，1 表示星期二"></a>日期 d 是星期几，0 表示星期一，1 表示星期二</h6><blockquote>
+<p>SELECT WEEKDAY(“2017-06-15”);<br>-&gt; 3</p>
+</blockquote>
+<h6 id="WEEKOFYEAR-d"><a href="#WEEKOFYEAR-d" class="headerlink" title="WEEKOFYEAR(d)"></a>WEEKOFYEAR(d)</h6><h6 id="计算日期-d-是本年的第几个星期，范围是-0-到-53-1"><a href="#计算日期-d-是本年的第几个星期，范围是-0-到-53-1" class="headerlink" title="计算日期 d 是本年的第几个星期，范围是 0 到 53"></a>计算日期 d 是本年的第几个星期，范围是 0 到 53</h6><blockquote>
+<p>SELECT WEEKOFYEAR(‘2011-11-11 11:11:11’)<br>-&gt; 45</p>
+</blockquote>
+<h6 id="YEAR-d"><a href="#YEAR-d" class="headerlink" title="YEAR(d)"></a>YEAR(d)</h6><h6 id="返回年份"><a href="#返回年份" class="headerlink" title="返回年份"></a>返回年份</h6><blockquote>
+<p>SELECT YEAR(“2017-06-15”);<br>-&gt; 2017</p>
+</blockquote>
+<h6 id="YEARWEEK-date-mode"><a href="#YEARWEEK-date-mode" class="headerlink" title="YEARWEEK(date, mode)"></a>YEARWEEK(date, mode)</h6><h6 id="返回年份及第几周（0到53），mode-中-0-表示周天，1表示周一，以此类推"><a href="#返回年份及第几周（0到53），mode-中-0-表示周天，1表示周一，以此类推" class="headerlink" title="返回年份及第几周（0到53），mode 中 0 表示周天，1表示周一，以此类推"></a>返回年份及第几周（0到53），mode 中 0 表示周天，1表示周一，以此类推</h6><blockquote>
+<p>SELECT YEARWEEK(“2017-06-15”);<br>-&gt; 201724</p>
+</blockquote>
+<h3 id="MySQL-高级函数"><a href="#MySQL-高级函数" class="headerlink" title="MySQL 高级函数"></a>MySQL 高级函数</h3><h6 id="BIN-x"><a href="#BIN-x" class="headerlink" title="BIN(x)"></a>BIN(x)</h6><h6 id="返回-x-的二进制编码"><a href="#返回-x-的二进制编码" class="headerlink" title="返回 x 的二进制编码"></a>返回 x 的二进制编码</h6><h6 id="15-的-2-进制编码"><a href="#15-的-2-进制编码" class="headerlink" title="15 的 2 进制编码:"></a>15 的 2 进制编码:</h6><blockquote>
+<p>SELECT BIN(15); – 1111</p>
+</blockquote>
+<h6 id="BINARY-s"><a href="#BINARY-s" class="headerlink" title="BINARY(s)"></a>BINARY(s)</h6><h6 id="将字符串-s-转换为二进制字符串"><a href="#将字符串-s-转换为二进制字符串" class="headerlink" title="将字符串 s 转换为二进制字符串"></a>将字符串 s 转换为二进制字符串</h6><blockquote>
+<p>SELECT BINARY “RUNOOB”;<br>-&gt; RUNOOB</p>
+</blockquote>
+<h6 id="CASE-expression"><a href="#CASE-expression" class="headerlink" title="CASE expression"></a>CASE expression</h6><pre><code>WHEN condition1 THEN result1
+WHEN condition2 THEN result2
+。。。
+WHEN conditionN THEN resultN
+ELSE result</code></pre><h6 id="END-CASE-表示函数开始，END-表示函数结束。如果-condition1-成立，则返回-result1-如果-condition2-成立，则返回-result2，当全部不成立则返回-result，而当有一个成立之后，后面的就不执行了。"><a href="#END-CASE-表示函数开始，END-表示函数结束。如果-condition1-成立，则返回-result1-如果-condition2-成立，则返回-result2，当全部不成立则返回-result，而当有一个成立之后，后面的就不执行了。" class="headerlink" title="END    CASE 表示函数开始，END 表示函数结束。如果 condition1 成立，则返回 result1, 如果 condition2 成立，则返回 result2，当全部不成立则返回 result，而当有一个成立之后，后面的就不执行了。"></a>END    CASE 表示函数开始，END 表示函数结束。如果 condition1 成立，则返回 result1, 如果 condition2 成立，则返回 result2，当全部不成立则返回 result，而当有一个成立之后，后面的就不执行了。</h6><blockquote>
+<p>SELECT CASE<br>　　WHEN 1 &gt; 0<br>　　THEN ‘1 &gt; 0’<br>　　WHEN 2 &gt; 0<br>　　THEN ‘2 &gt; 0’<br>　　ELSE ‘3 &gt; 0’<br>　　END<br>-&gt;1 &gt; 0</p>
+</blockquote>
+<h6 id="CAST-x-AS-type"><a href="#CAST-x-AS-type" class="headerlink" title="CAST(x AS type)"></a>CAST(x AS type)</h6><h6 id="转换数据类型"><a href="#转换数据类型" class="headerlink" title="转换数据类型"></a>转换数据类型</h6><h6 id="字符串日期转换为日期："><a href="#字符串日期转换为日期：" class="headerlink" title="字符串日期转换为日期："></a>字符串日期转换为日期：</h6><blockquote>
+<p>SELECT CAST(“2017-08-29” AS DATE);<br>-&gt; 2017-08-29</p>
+</blockquote>
+<h6 id="COALESCE-expr1-expr2-…-expr-n"><a href="#COALESCE-expr1-expr2-…-expr-n" class="headerlink" title="COALESCE(expr1, expr2, …., expr_n)"></a>COALESCE(expr1, expr2, …., expr_n)</h6><h6 id="返回参数中的第一个非空表达式（从左向右）"><a href="#返回参数中的第一个非空表达式（从左向右）" class="headerlink" title="返回参数中的第一个非空表达式（从左向右）"></a>返回参数中的第一个非空表达式（从左向右）</h6><blockquote>
+<p>SELECT COALESCE(NULL, NULL, NULL, ‘runoob.com’, NULL, ‘google.com’);<br>-&gt; runoob.com</p>
+</blockquote>
+<h6 id="CONNECTION-ID"><a href="#CONNECTION-ID" class="headerlink" title="CONNECTION_ID()"></a>CONNECTION_ID()</h6><h6 id="返回服务器的连接数"><a href="#返回服务器的连接数" class="headerlink" title="返回服务器的连接数"></a>返回服务器的连接数</h6><blockquote>
+<p>SELECT CONNECTION_ID();<br>-&gt; 4292835</p>
+</blockquote>
+<h6 id="CONV-x-f1-f2"><a href="#CONV-x-f1-f2" class="headerlink" title="CONV(x,f1,f2)"></a>CONV(x,f1,f2)</h6><h6 id="返回-f1-进制数变成-f2-进制数"><a href="#返回-f1-进制数变成-f2-进制数" class="headerlink" title="返回 f1 进制数变成 f2 进制数"></a>返回 f1 进制数变成 f2 进制数</h6><blockquote>
+<p>SELECT CONV(15, 10, 2);<br>-&gt; 1111</p>
+</blockquote>
+<h6 id="CONVERT-s-USING-cs"><a href="#CONVERT-s-USING-cs" class="headerlink" title="CONVERT(s USING cs)"></a>CONVERT(s USING cs)</h6><h6 id="函数将字符串-s-的字符集变成-cs"><a href="#函数将字符串-s-的字符集变成-cs" class="headerlink" title="函数将字符串 s 的字符集变成 cs"></a>函数将字符串 s 的字符集变成 cs</h6><blockquote>
+<p>SELECT CHARSET(‘ABC’)<br>-&gt;utf-8    </p>
+</blockquote>
+<blockquote>
+<p>SELECT CHARSET(CONVERT(‘ABC’ USING gbk))<br>-&gt;gbk</p>
+</blockquote>
+<h6 id="CURRENT-USER"><a href="#CURRENT-USER" class="headerlink" title="CURRENT_USER()"></a>CURRENT_USER()</h6><h6 id="返回当前用户"><a href="#返回当前用户" class="headerlink" title="返回当前用户"></a>返回当前用户</h6><blockquote>
+<p>SELECT CURRENT_USER();<br>-&gt; guest@%</p>
+</blockquote>
+<h6 id="DATABASE"><a href="#DATABASE" class="headerlink" title="DATABASE()"></a>DATABASE()</h6><h6 id="返回当前数据库名"><a href="#返回当前数据库名" class="headerlink" title="返回当前数据库名"></a>返回当前数据库名</h6><blockquote>
+<p>SELECT DATABASE();<br>-&gt; runoob</p>
+</blockquote>
+<h6 id="IF-expr-v1-v2"><a href="#IF-expr-v1-v2" class="headerlink" title="IF(expr,v1,v2)"></a>IF(expr,v1,v2)</h6><h6 id="如果表达式-expr-成立，返回结果-v1；否则，返回结果-v2。"><a href="#如果表达式-expr-成立，返回结果-v1；否则，返回结果-v2。" class="headerlink" title="如果表达式 expr 成立，返回结果 v1；否则，返回结果 v2。"></a>如果表达式 expr 成立，返回结果 v1；否则，返回结果 v2。</h6><blockquote>
+<p>SELECT IF(1 &gt; 0,’正确’,’错误’)<br>-&gt;正确</p>
+</blockquote>
+<h6 id="IFNULL-v1-v2"><a href="#IFNULL-v1-v2" class="headerlink" title="IFNULL(v1,v2)"></a>IFNULL(v1,v2)</h6><h6 id="如果-v1-的值不为-NULL，则返回-v1，否则返回-v2。"><a href="#如果-v1-的值不为-NULL，则返回-v1，否则返回-v2。" class="headerlink" title="如果 v1 的值不为 NULL，则返回 v1，否则返回 v2。"></a>如果 v1 的值不为 NULL，则返回 v1，否则返回 v2。</h6><blockquote>
+<p>SELECT IFNULL(null,’Hello Word’)<br>-&gt;Hello Word</p>
+</blockquote>
+<h6 id="ISNULL-expression"><a href="#ISNULL-expression" class="headerlink" title="ISNULL(expression)"></a>ISNULL(expression)</h6><h6 id="判断表达式是否为-NULL"><a href="#判断表达式是否为-NULL" class="headerlink" title="判断表达式是否为 NULL"></a>判断表达式是否为 NULL</h6><blockquote>
+<p>SELECT ISNULL(NULL);<br>-&gt;1</p>
+</blockquote>
+<h6 id="LAST-INSERT-ID"><a href="#LAST-INSERT-ID" class="headerlink" title="LAST_INSERT_ID()"></a>LAST_INSERT_ID()</h6><h6 id="返回最近生成的-AUTO-INCREMENT-值"><a href="#返回最近生成的-AUTO-INCREMENT-值" class="headerlink" title="返回最近生成的 AUTO_INCREMENT 值"></a>返回最近生成的 AUTO_INCREMENT 值</h6><blockquote>
+<p>SELECT LAST_INSERT_ID();<br>-&gt;6</p>
+</blockquote>
+<h6 id="NULLIF-expr1-expr2"><a href="#NULLIF-expr1-expr2" class="headerlink" title="NULLIF(expr1, expr2)"></a>NULLIF(expr1, expr2)</h6><h6 id="比较两个字符串，如果字符串-expr1-与-expr2-相等-返回-NULL，否则返回-expr1"><a href="#比较两个字符串，如果字符串-expr1-与-expr2-相等-返回-NULL，否则返回-expr1" class="headerlink" title="比较两个字符串，如果字符串 expr1 与 expr2 相等 返回 NULL，否则返回 expr1"></a>比较两个字符串，如果字符串 expr1 与 expr2 相等 返回 NULL，否则返回 expr1</h6><blockquote>
+<p>SELECT NULLIF(25, 25);<br>-&gt;</p>
+</blockquote>
+<h6 id="SESSION-USER"><a href="#SESSION-USER" class="headerlink" title="SESSION_USER()"></a>SESSION_USER()</h6><h6 id="返回当前用户-1"><a href="#返回当前用户-1" class="headerlink" title="返回当前用户"></a>返回当前用户</h6><blockquote>
+<p>SELECT SESSION_USER();<br>-&gt; guest@%</p>
+</blockquote>
+<h6 id="SYSTEM-USER"><a href="#SYSTEM-USER" class="headerlink" title="SYSTEM_USER()"></a>SYSTEM_USER()</h6><h6 id="返回当前用户-2"><a href="#返回当前用户-2" class="headerlink" title="返回当前用户"></a>返回当前用户</h6><blockquote>
+<p>SELECT SYSTEM_USER();<br>-&gt; guest@%</p>
+</blockquote>
+<h6 id="USER"><a href="#USER" class="headerlink" title="USER()"></a>USER()</h6><h6 id="返回当前用户-3"><a href="#返回当前用户-3" class="headerlink" title="返回当前用户"></a>返回当前用户</h6><blockquote>
+<p>SELECT USER();<br>-&gt; guest@%</p>
+</blockquote>
+<h6 id="VERSION"><a href="#VERSION" class="headerlink" title="VERSION()"></a>VERSION()</h6><h6 id="返回数据库的版本号"><a href="#返回数据库的版本号" class="headerlink" title="返回数据库的版本号"></a>返回数据库的版本号</h6><blockquote>
+<p>SELECT VERSION()<br>-&gt; 5.6.34</p>
+</blockquote>
+
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get" action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            明明～
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140" alt="个人头像" class="author-image">
+            <p class="author-description"></p><p>Zming-ming</p>
+<p></p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/23/MySQL-函数/">MySQL 函数</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/Linux-守护进程的启动方法/">Linux 守护进程的启动方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/常用-Git-命令清单/">常用 Git 命令清单</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/30/基于个推（GeTui）官方SDK集成-Laravel-5/">基于个推（GeTui）官方SDK集成 Laravel 5.* </a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/19/laravel5-5的定时任务详解/">laravel5.5的定时任务详解</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/17/微信小程序的更新机制/">微信小程序的更新机制</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/21/Markdown-语法/">Markdown 语法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/21/Laravel-Excel-实现-Excel-CSV-文件导入导出功能/">Laravel Excel 实现 Excel/CSV 文件导入导出功能</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/17/npm启动内存溢出问题/">npm启动内存溢出问题</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/redis安装及数据类型简介/">redis安装及数据类型简介</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/21/Laravel-Excel-实现-Excel-CSV-文件导入导出功能/">Laravel Excel 实现 Excel/CSV 文件导入导出功能</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/07/hello-world/">Hello World</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/17/npm启动内存溢出问题/">npm启动内存溢出问题</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/常用-Git-命令/">常用 Git 命令</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/17/微信小程序的更新机制/">微信小程序的更新机制</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/Linux-守护进程的启动方法/">Linux 守护进程的启动方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/laravel小程序微信支付/">laravel小程序微信支付</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/redis安装及数据类型简介/">redis安装及数据类型简介</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/24/递归方法/">php实现无限极分类的方法：递归方法和引用方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/13/ySql函数字典/">MySql函数字典</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2018/11/23/MySQL-函数/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2018/11/23/MySQL-函数/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2018/11/23/MySQL-函数/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/Excel/" style="font-size: 18.044109075240087px;" class="tag-cloud-link">Excel</a>
+    
+    <a href="/tags/Laravel/" style="font-size: 17.397134510037134px;" class="tag-cloud-link">Laravel</a>
+    
+    <a href="/tags/markdown/" style="font-size: 9.725576375152418px;" class="tag-cloud-link">markdown</a>
+    
+    <a href="/tags/Linux/" style="font-size: 16.229226751441104px;" class="tag-cloud-link">Linux</a>
+    
+    <a href="/tags/定时任务/" style="font-size: 19.40486088721086px;" class="tag-cloud-link">定时任务</a>
+    
+    <a href="/tags/npm/" style="font-size: 10.935363632978811px;" class="tag-cloud-link">npm</a>
+    
+    <a href="/tags/vue/" style="font-size: 9.443497022319413px;" class="tag-cloud-link">vue</a>
+    
+    <a href="/tags/PHP/" style="font-size: 8.170081542696789px;" class="tag-cloud-link">PHP</a>
+    
+    <a href="/tags/GeTui/" style="font-size: 13.273658463980748px;" class="tag-cloud-link">GeTui</a>
+    
+    <a href="/tags/composer/" style="font-size: 9.038197397476221px;" class="tag-cloud-link">composer</a>
+    
+    <a href="/tags/GIT/" style="font-size: 11.527388674128535px;" class="tag-cloud-link">GIT</a>
+    
+    <a href="/tags/小程序/" style="font-size: 13.067679056740678px;" class="tag-cloud-link">小程序</a>
+    
+    <a href="/tags/支付/" style="font-size: 12.848543715430164px;" class="tag-cloud-link">支付</a>
+    
+    <a href="/tags/Redis/" style="font-size: 12.988274055646425px;" class="tag-cloud-link">Redis</a>
+    
+    <a href="/tags/MySql/" style="font-size: 19.741048592157643px;" class="tag-cloud-link">MySql</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://kdays.net/days/" target="_blank">KDays Forum</a>
+    </li>
+    
+    <li>
+        <a href="http://www.gal123.com/" target="_blank">绅士导航♂</a>
+    </li>
+    
+    <li>
+        <a href="http://www.moe123.com/" target="_blank">萌导航</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/ZEROKISEKI/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com/people/aonosora/activities" target="_blank">知乎</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 明明～ Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+</html>

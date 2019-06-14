@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="明明～">
+    
+    <meta name="description" content="Zming-ming">
+    
+    
+    
+    
+    
+    
+    <title>laravel5.5的定时任务详解 | 明明～</title>
+    <link href="”https://zming-ming.github.io“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-navbar-collapse" aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://zming-ming.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">明明～</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class>
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class>
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/categories/PHP/">PHP</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/服务器/">服务器</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/前端/">前端</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/categories">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/Excel/">Excel</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Laravel/">Laravel</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/markdown/">markdown</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/tags">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class>
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://zming-ming.github.io">明明～</a>
+        >
+        <span>laravel5.5的定时任务详解</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2018/10/19/laravel5-5的定时任务详解/">laravel5.5的定时任务详解</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Laravel/">Laravel</a>, 
+                
+                <a href="/tags/定时任务/">定时任务</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-10-19
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2018/10/19/laravel5-5的定时任务详解/">laravel5.5的定时任务详解</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2018-10-19
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Laravel/">Laravel</a>, 
+                
+                <a href="/tags/定时任务/">定时任务</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h3 id="一、创建定时任务的步骤"><a href="#一、创建定时任务的步骤" class="headerlink" title="一、创建定时任务的步骤"></a>一、创建定时任务的步骤</h3><h4 id="1、根据文档，创建命令"><a href="#1、根据文档，创建命令" class="headerlink" title="1、根据文档，创建命令"></a>1、根据文档，创建命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">首先进入到laravel/app/console 目录下，Console 目录包含应用所有自定义的 Artisan 命令，这些命令类可以使用 make:command 命令生成。该目录下还有 Console/Kernel 类，在这里可以注册自定义的 Artisan 命令以及定义调度任务。</span><br></pre></td></tr></table></figure>
+
+<h5 id="例如我们创建一个定时任务，名称为Test"><a href="#例如我们创建一个定时任务，名称为Test" class="headerlink" title="例如我们创建一个定时任务，名称为Test:"></a>例如我们创建一个定时任务，名称为Test:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//这里使用laravel给定的  php artisan来生成命令，此处的Test就是我们要生成的文件</span><br><span class="line">//这里的artisan代表的不仅仅是laravel自带的命令，他其实是laravel下的artisan目录，因为这个目录没有x，也就是可执行权限，所以不能使用  ./artisan 来执行，只能通过php来执行</span><br><span class="line">php artisan make:command Test</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、创建完之后，打开console目录下的commands目录，我们会发现里面已经有了一个文件"><a href="#2、创建完之后，打开console目录下的commands目录，我们会发现里面已经有了一个文件" class="headerlink" title="2、创建完之后，打开console目录下的commands目录，我们会发现里面已经有了一个文件"></a>2、创建完之后，打开console目录下的commands目录，我们会发现里面已经有了一个文件</h4><h5 id="大致的代码如下："><a href="#大致的代码如下：" class="headerlink" title="大致的代码如下："></a>大致的代码如下：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">namespace App\Console\Commands;</span><br><span class="line"></span><br><span class="line">use App\Services\CalculateDataService;</span><br><span class="line">use Illuminate\Console\Command;</span><br><span class="line"></span><br><span class="line">class Test extends Command</span><br><span class="line">&#123;</span><br><span class="line">    //此处代表laravel自动生成的名称，下面执行的时候能用到</span><br><span class="line">    protected $signature = &apos;test:data&apos;;</span><br><span class="line"></span><br><span class="line">    //此处代表的是描述，并没有什么用的</span><br><span class="line">    protected $description = &apos;test data&apos;;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 计算数据服务的 service 属性</span><br><span class="line">     *这里由于要用到我们的逻辑，所以提前定义一下，方便下面使用</span><br><span class="line">     * @var CalculateDataService</span><br><span class="line">     */</span><br><span class="line">    protected $service;</span><br><span class="line"></span><br><span class="line">   //这个是laravel自带的构造方法。初始状态下是空的。</span><br><span class="line">   //我这里由于要调用CalculateDataService 类的一个方法，所有就用依赖注入的方式引入了一下。</span><br><span class="line">    public function __construct(CalculateDataService $service)</span><br><span class="line">    &#123;</span><br><span class="line">        parent::__construct();</span><br><span class="line"></span><br><span class="line">        $this-&gt;service = $service;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Execute the console command.</span><br><span class="line">     *这里就是我们执行操作的地方，里面是command要处理的业务。根据我们的需求，</span><br><span class="line">     *调用类中的calculateData（）方法，该方法是我们自己的需求逻辑部分。</span><br><span class="line">     * @return mixed</span><br><span class="line">     */</span><br><span class="line">    public function handle()</span><br><span class="line">    &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            $this-&gt;service-&gt;calculateData();</span><br><span class="line">        &#125; catch (\Exception $e) &#123;</span><br><span class="line">            $this-&gt;error($e-&gt;getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">        //  line()方法是command类中自带的方法，可以输出我们自定义的信息</span><br><span class="line">        $this-&gt;line(&apos;calculate Data Success!&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、定时命令创建好之后，我们需要修改kernel-php文件"><a href="#3、定时命令创建好之后，我们需要修改kernel-php文件" class="headerlink" title="3、定时命令创建好之后，我们需要修改kernel.php文件"></a>3、定时命令创建好之后，我们需要修改kernel.php文件</h4><pre><code>kernel.php文件里面，主要是定义命令的调度时间，定义命令的执行先后顺序等。
+这部分参考laravel官方文档:[http://laravelacademy.org/post/8484.html]
+(http://laravelacademy.org/post/8484.html)</code></pre><h4 id="4、我的kernel-php文件"><a href="#4、我的kernel-php文件" class="headerlink" title="4、我的kernel.php文件"></a>4、我的kernel.php文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//此处省略了命名空间部分</span><br><span class="line">class Kernel extends ConsoleKernel</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * The Artisan commands provided by your application.</span><br><span class="line">     *注：此处是引入我们新创建的类。由于我们此处是使用命令名来操作的，所以没用上这个类名。不过还是引入比较标准</span><br><span class="line">     * 可以使用 command 方法通过命令名或类来调度一个 Artisan 命令：</span><br><span class="line">     * $schedule-&gt;command(&apos;emails:send --force&apos;)-&gt;daily();</span><br><span class="line">     * $schedule-&gt;command(EmailsCommand::class, [&apos;--force&apos;])-&gt;daily();</span><br><span class="line">     *</span><br><span class="line">     * @var array</span><br><span class="line">     */</span><br><span class="line">    protected $commands = [</span><br><span class="line">        Test::class,</span><br><span class="line">        CalculateData::class,</span><br><span class="line">        UpdateOffset::class,</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Define the application&apos;s command schedule.</span><br><span class="line">     * 注：</span><br><span class="line">     * 1、这个方法按照自己的需求，确定定时方法的执行顺序。通过after，before等关键词来控制</span><br><span class="line">     * 2、此处相当于规定同意的定时执行时间，如都在0:30分执行下面的几个定时任务</span><br><span class="line">     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule</span><br><span class="line">     * @return void</span><br><span class="line">     */</span><br><span class="line">    protected function schedule(Schedule $schedule)</span><br><span class="line">    &#123;</span><br><span class="line">        // 每天凌晨 0.45 执行同步 aliyun 数据的任务，并发送邮件给 ***</span><br><span class="line">         $schedule-&gt;command(&apos;iot:sync Flow&apos;)</span><br><span class="line">            -&gt;after(function() &#123;</span><br><span class="line">                 //更新偏移量,after里面不能加参数</span><br><span class="line">                Artisan::call(&apos;Test:data&apos;);</span><br><span class="line">            &#125;)</span><br><span class="line">            -&gt;after(function () &#123;</span><br><span class="line">                // 执行同步数据命令完成后 则执行计算数据任务</span><br><span class="line">                Artisan::call(&apos;calculate:data&apos;);</span><br><span class="line">             &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Register the commands for the application.</span><br><span class="line">     * //这个部分是laravel自动生成的，引入我们生成的命令文件</span><br><span class="line">     * @return void</span><br><span class="line">     */</span><br><span class="line">    protected function commands()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;load(__DIR__.&apos;/Commands&apos;);</span><br><span class="line"></span><br><span class="line">        require base_path(&apos;routes/console.php&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>关于具体的调度方法schedule（），大家可以去laravel文档看看，里面可以规定很多东西。我这边是使用的钩子函数。在同时要执行多个定时任务的时候，通过after，before等方法，可以让多个定时任务变得有序起来。</p>
+</blockquote>
+<h3 id="二、执行我们的定时"><a href="#二、执行我们的定时" class="headerlink" title="二、执行我们的定时"></a>二、执行我们的定时</h3><blockquote>
+<p>虽然laravel的定时任务一直都说的很强大，但本质上还是离不开服务器上的cron脚本。。</p>
+</blockquote>
+<h4 id="1、先查看服务器上的定时条目"><a href="#1、先查看服务器上的定时条目" class="headerlink" title="1、先查看服务器上的定时条目"></a>1、先查看服务器上的定时条目</h4><pre><code>crontab -l</code></pre><h4 id="2、新增或编辑cron-条目"><a href="#2、新增或编辑cron-条目" class="headerlink" title="2、新增或编辑cron 条目"></a>2、新增或编辑cron 条目</h4><pre><code>crontab -e</code></pre>
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get" action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            明明～
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140" alt="个人头像" class="author-image">
+            <p class="author-description"></p><p>Zming-ming</p>
+<p></p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/23/MySQL-函数/">MySQL 函数</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/Linux-守护进程的启动方法/">Linux 守护进程的启动方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/常用-Git-命令清单/">常用 Git 命令清单</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/30/基于个推（GeTui）官方SDK集成-Laravel-5/">基于个推（GeTui）官方SDK集成 Laravel 5.* </a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/19/laravel5-5的定时任务详解/">laravel5.5的定时任务详解</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/17/微信小程序的更新机制/">微信小程序的更新机制</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/21/Markdown-语法/">Markdown 语法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/21/Laravel-Excel-实现-Excel-CSV-文件导入导出功能/">Laravel Excel 实现 Excel/CSV 文件导入导出功能</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/17/npm启动内存溢出问题/">npm启动内存溢出问题</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/redis安装及数据类型简介/">redis安装及数据类型简介</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/laravel的资源路由resource/">laravel的资源路由resource</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/24/保存网络图片/">php如何实现保存网络图片</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/常用-Git-命令/">常用 Git 命令</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/常用-Git-命令清单/">常用 Git 命令清单</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/07/搭建hexo/">搭建hexo</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/Linux-守护进程的启动方法/">Linux 守护进程的启动方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/25/laravel-Valet安装使用教程/">Valet 安装使用详细教程</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/laravel小程序微信支付/">laravel小程序微信支付</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/redis安装及数据类型简介/">redis安装及数据类型简介</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/24/递归方法/">php实现无限极分类的方法：递归方法和引用方法</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2018/10/19/laravel5-5的定时任务详解/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2018/10/19/laravel5-5的定时任务详解/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2018/10/19/laravel5-5的定时任务详解/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/Excel/" style="font-size: 9.973666932385665px;" class="tag-cloud-link">Excel</a>
+    
+    <a href="/tags/Laravel/" style="font-size: 9.890294383467259px;" class="tag-cloud-link">Laravel</a>
+    
+    <a href="/tags/markdown/" style="font-size: 9.386311687799402px;" class="tag-cloud-link">markdown</a>
+    
+    <a href="/tags/Linux/" style="font-size: 16.961693727926964px;" class="tag-cloud-link">Linux</a>
+    
+    <a href="/tags/定时任务/" style="font-size: 11.132877713924886px;" class="tag-cloud-link">定时任务</a>
+    
+    <a href="/tags/npm/" style="font-size: 15.695901239877564px;" class="tag-cloud-link">npm</a>
+    
+    <a href="/tags/vue/" style="font-size: 16.983971673759665px;" class="tag-cloud-link">vue</a>
+    
+    <a href="/tags/PHP/" style="font-size: 9.128657876956087px;" class="tag-cloud-link">PHP</a>
+    
+    <a href="/tags/GeTui/" style="font-size: 15.871006637821306px;" class="tag-cloud-link">GeTui</a>
+    
+    <a href="/tags/composer/" style="font-size: 17.197470990457678px;" class="tag-cloud-link">composer</a>
+    
+    <a href="/tags/GIT/" style="font-size: 11.77490977652469px;" class="tag-cloud-link">GIT</a>
+    
+    <a href="/tags/小程序/" style="font-size: 14.913458932222632px;" class="tag-cloud-link">小程序</a>
+    
+    <a href="/tags/支付/" style="font-size: 9.698581276875723px;" class="tag-cloud-link">支付</a>
+    
+    <a href="/tags/Redis/" style="font-size: 13.209086510634688px;" class="tag-cloud-link">Redis</a>
+    
+    <a href="/tags/MySql/" style="font-size: 19.738486354841267px;" class="tag-cloud-link">MySql</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://kdays.net/days/" target="_blank">KDays Forum</a>
+    </li>
+    
+    <li>
+        <a href="http://www.gal123.com/" target="_blank">绅士导航♂</a>
+    </li>
+    
+    <li>
+        <a href="http://www.moe123.com/" target="_blank">萌导航</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/ZEROKISEKI/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com/people/aonosora/activities" target="_blank">知乎</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 明明～ Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+</html>

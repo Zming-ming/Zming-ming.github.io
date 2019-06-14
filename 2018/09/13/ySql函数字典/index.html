@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="明明～">
+    
+    <meta name="description" content="Zming-ming">
+    
+    
+    
+    
+    
+    
+    <title>MySql函数字典 | 明明～</title>
+    <link href="”https://zming-ming.github.io“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-navbar-collapse" aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://zming-ming.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">明明～</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class>
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class>
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/categories/PHP/">PHP</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/服务器/">服务器</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/前端/">前端</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/categories">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/Excel/">Excel</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Laravel/">Laravel</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/markdown/">markdown</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/tags">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class>
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://zming-ming.github.io">明明～</a>
+        >
+        <span>MySql函数字典</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2018/09/13/ySql函数字典/">MySql函数字典</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/MySql/">MySql</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-09-13
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2018/09/13/ySql函数字典/">MySql函数字典</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2018-09-13
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/MySql/">MySql</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h6 id="对于针对字符串位置的操作，第一个位置被标记为1。"><a href="#对于针对字符串位置的操作，第一个位置被标记为1。" class="headerlink" title="对于针对字符串位置的操作，第一个位置被标记为1。"></a>对于针对字符串位置的操作，第一个位置被标记为1。</h6><h6 id="ASCII-str"><a href="#ASCII-str" class="headerlink" title="ASCII(str)"></a>ASCII(str)</h6><h6 id="返回字符串str的最左面字符的ASCII代码值。如果str是空字符串，返回0。如果str是NULL，返回NULL。"><a href="#返回字符串str的最左面字符的ASCII代码值。如果str是空字符串，返回0。如果str是NULL，返回NULL。" class="headerlink" title="返回字符串str的最左面字符的ASCII代码值。如果str是空字符串，返回0。如果str是NULL，返回NULL。"></a>返回字符串str的最左面字符的ASCII代码值。如果str是空字符串，返回0。如果str是NULL，返回NULL。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select ASCII(&apos;2&apos;);</span><br><span class="line">    -&gt; 50</span><br><span class="line">mysql&gt; select ASCII(2);</span><br><span class="line">    -&gt; 50</span><br><span class="line">mysql&gt; select ASCII(&apos;dx&apos;);</span><br><span class="line">    -&gt; 100</span><br></pre></td></tr></table></figure>
+
+<h6 id="也可参见ORD-函数。"><a href="#也可参见ORD-函数。" class="headerlink" title="也可参见ORD()函数。"></a>也可参见ORD()函数。</h6><h6 id="ORD-str"><a href="#ORD-str" class="headerlink" title="ORD(str)"></a>ORD(str)</h6><h6 id="如果字符串str最左面字符是一个多字节字符，通过以格式-first-byte-ASCII-code-256-second-byte-ASCII-code-256-third-byte-ASCII-code…-返回字符的ASCII代码值来返回多字节字符代码。如果最左面的字符不是一个多字节字符。返回与ASCII-函数返回的相同值。"><a href="#如果字符串str最左面字符是一个多字节字符，通过以格式-first-byte-ASCII-code-256-second-byte-ASCII-code-256-third-byte-ASCII-code…-返回字符的ASCII代码值来返回多字节字符代码。如果最左面的字符不是一个多字节字符。返回与ASCII-函数返回的相同值。" class="headerlink" title="如果字符串str最左面字符是一个多字节字符，通过以格式((first byte ASCII code)256+(second byte ASCII code))[256+third byte ASCII code…]返回字符的ASCII代码值来返回多字节字符代码。如果最左面的字符不是一个多字节字符。返回与ASCII()函数返回的相同值。"></a>如果字符串str最左面字符是一个多字节字符，通过以格式((first byte ASCII code)<em>256+(second byte ASCII code))[</em>256+third byte ASCII code…]返回字符的ASCII代码值来返回多字节字符代码。如果最左面的字符不是一个多字节字符。返回与ASCII()函数返回的相同值。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select ORD(&apos;2&apos;);</span><br><span class="line">    -&gt; 50</span><br></pre></td></tr></table></figure>
+
+<h6 id="CONV-N-from-base-to-base"><a href="#CONV-N-from-base-to-base" class="headerlink" title="CONV(N,from_base,to_base)"></a>CONV(N,from_base,to_base)</h6><h6 id="在不同的数字基之间变换数字。返回数字N的字符串数字，从from-base基变换为to-base基，如果任何参数是NULL，返回NULL。参数N解释为一个整数，但是可以指定为一个整数或一个字符串。最小基是2且最大的基是36。如果to-base是一个负数，N被认为是一个有符号数，否则，N被当作无符号数。-CONV以64位点精度工作。"><a href="#在不同的数字基之间变换数字。返回数字N的字符串数字，从from-base基变换为to-base基，如果任何参数是NULL，返回NULL。参数N解释为一个整数，但是可以指定为一个整数或一个字符串。最小基是2且最大的基是36。如果to-base是一个负数，N被认为是一个有符号数，否则，N被当作无符号数。-CONV以64位点精度工作。" class="headerlink" title="在不同的数字基之间变换数字。返回数字N的字符串数字，从from_base基变换为to_base基，如果任何参数是NULL，返回NULL。参数N解释为一个整数，但是可以指定为一个整数或一个字符串。最小基是2且最大的基是36。如果to_base是一个负数，N被认为是一个有符号数，否则，N被当作无符号数。 CONV以64位点精度工作。"></a>在不同的数字基之间变换数字。返回数字N的字符串数字，从from_base基变换为to_base基，如果任何参数是NULL，返回NULL。参数N解释为一个整数，但是可以指定为一个整数或一个字符串。最小基是2且最大的基是36。如果to_base是一个负数，N被认为是一个有符号数，否则，N被当作无符号数。 CONV以64位点精度工作。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select CONV(&quot;a&quot;,16,2);</span><br><span class="line">    -&gt; &apos;1010&apos;</span><br><span class="line">mysql&gt; select CONV(&quot;6E&quot;,18,8);</span><br><span class="line">    -&gt; &apos;172&apos;</span><br><span class="line">mysql&gt; select CONV(-17,10,-18);</span><br><span class="line">    -&gt; &apos;-H&apos;</span><br><span class="line">mysql&gt; select CONV(10+&quot;10&quot;+&apos;10&apos;+0xa,10,10);</span><br><span class="line">    -&gt; &apos;40&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="BIN-N"><a href="#BIN-N" class="headerlink" title="BIN(N)"></a>BIN(N)</h6><h6 id="返回二进制值N的一个字符串表示，在此N是一个长整数-BIGINT-数字，这等价于CONV-N-10-2-。如果N是NULL，返回NULL。"><a href="#返回二进制值N的一个字符串表示，在此N是一个长整数-BIGINT-数字，这等价于CONV-N-10-2-。如果N是NULL，返回NULL。" class="headerlink" title="返回二进制值N的一个字符串表示，在此N是一个长整数(BIGINT)数字，这等价于CONV(N,10,2)。如果N是NULL，返回NULL。"></a>返回二进制值N的一个字符串表示，在此N是一个长整数(BIGINT)数字，这等价于CONV(N,10,2)。如果N是NULL，返回NULL。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select BIN(12);</span><br><span class="line">    -&gt; &apos;1100&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="OCT-N"><a href="#OCT-N" class="headerlink" title="OCT(N)"></a>OCT(N)</h6><h6 id="返回八进制值N的一个字符串的表示，在此N是一个长整型数字，这等价于CONV-N-10-8-。如果N是NULL，返回NULL。"><a href="#返回八进制值N的一个字符串的表示，在此N是一个长整型数字，这等价于CONV-N-10-8-。如果N是NULL，返回NULL。" class="headerlink" title="返回八进制值N的一个字符串的表示，在此N是一个长整型数字，这等价于CONV(N,10,8)。如果N是NULL，返回NULL。"></a>返回八进制值N的一个字符串的表示，在此N是一个长整型数字，这等价于CONV(N,10,8)。如果N是NULL，返回NULL。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select OCT(12);</span><br><span class="line">    -&gt; &apos;14&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="HEX-N"><a href="#HEX-N" class="headerlink" title="HEX(N)"></a>HEX(N)</h6><h6 id="返回十六进制值N一个字符串的表示，在此N是一个长整型-BIGINT-数字，这等价于CONV-N-10-16-。如果N是NULL，返回NULL。"><a href="#返回十六进制值N一个字符串的表示，在此N是一个长整型-BIGINT-数字，这等价于CONV-N-10-16-。如果N是NULL，返回NULL。" class="headerlink" title="返回十六进制值N一个字符串的表示，在此N是一个长整型(BIGINT)数字，这等价于CONV(N,10,16)。如果N是NULL，返回NULL。"></a>返回十六进制值N一个字符串的表示，在此N是一个长整型(BIGINT)数字，这等价于CONV(N,10,16)。如果N是NULL，返回NULL。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select HEX(255);</span><br><span class="line">    -&gt; &apos;FF&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="CHAR-N-…"><a href="#CHAR-N-…" class="headerlink" title="CHAR(N,…)"></a>CHAR(N,…)</h6><h6 id="CHAR-将参数解释为整数并且返回由这些整数的ASCII代码字符组成的一个字符串。NULL值被跳过。"><a href="#CHAR-将参数解释为整数并且返回由这些整数的ASCII代码字符组成的一个字符串。NULL值被跳过。" class="headerlink" title="CHAR()将参数解释为整数并且返回由这些整数的ASCII代码字符组成的一个字符串。NULL值被跳过。"></a>CHAR()将参数解释为整数并且返回由这些整数的ASCII代码字符组成的一个字符串。NULL值被跳过。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select CHAR(77,121,83,81,&apos;76&apos;);</span><br><span class="line">    -&gt; &apos;MySQL&apos;</span><br><span class="line">mysql&gt; select CHAR(77,77.3,&apos;77.3&apos;);</span><br><span class="line">    -&gt; &apos;MMM&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="CONCAT-str1-str2-…"><a href="#CONCAT-str1-str2-…" class="headerlink" title="CONCAT(str1,str2,…)"></a>CONCAT(str1,str2,…)</h6><h6 id="返回来自于参数连结的字符串。如果任何参数是NULL，返回NULL。可以有超过2个的参数。一个数字参数被变换为等价的字符串形式。"><a href="#返回来自于参数连结的字符串。如果任何参数是NULL，返回NULL。可以有超过2个的参数。一个数字参数被变换为等价的字符串形式。" class="headerlink" title="返回来自于参数连结的字符串。如果任何参数是NULL，返回NULL。可以有超过2个的参数。一个数字参数被变换为等价的字符串形式。"></a>返回来自于参数连结的字符串。如果任何参数是NULL，返回NULL。可以有超过2个的参数。一个数字参数被变换为等价的字符串形式。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select CONCAT(&apos;My&apos;, &apos;S&apos;, &apos;QL&apos;);</span><br><span class="line">    -&gt; &apos;MySQL&apos;</span><br><span class="line">mysql&gt; select CONCAT(&apos;My&apos;, NULL, &apos;QL&apos;);</span><br><span class="line">    -&gt; NULL</span><br><span class="line">mysql&gt; select CONCAT(14.3);</span><br><span class="line">    -&gt; &apos;14.3&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="LENGTH-str"><a href="#LENGTH-str" class="headerlink" title="LENGTH(str) 　"></a>LENGTH(str) 　</h6><h6 id="OCTET-LENGTH-str"><a href="#OCTET-LENGTH-str" class="headerlink" title="OCTET_LENGTH(str) 　"></a>OCTET_LENGTH(str) 　</h6><h6 id="CHAR-LENGTH-str"><a href="#CHAR-LENGTH-str" class="headerlink" title="CHAR_LENGTH(str)"></a>CHAR_LENGTH(str)</h6><h6 id="CHARACTER-LENGTH-str"><a href="#CHARACTER-LENGTH-str" class="headerlink" title="CHARACTER_LENGTH(str)"></a>CHARACTER_LENGTH(str)</h6><h6 id="返回字符串str的长度。"><a href="#返回字符串str的长度。" class="headerlink" title="返回字符串str的长度。"></a>返回字符串str的长度。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select LENGTH(&apos;text&apos;);</span><br><span class="line">    -&gt; 4</span><br><span class="line">mysql&gt; select OCTET_LENGTH(&apos;text&apos;);</span><br><span class="line">    -&gt; 4</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意，对于多字节字符，其CHAR_LENGTH()仅计算一次。 </p>
+</blockquote>
+<h6 id="LOCATE-substr-str"><a href="#LOCATE-substr-str" class="headerlink" title="LOCATE(substr,str) 　"></a>LOCATE(substr,str) 　</h6><h6 id="POSITION-substr-IN-str"><a href="#POSITION-substr-IN-str" class="headerlink" title="POSITION(substr IN str)"></a>POSITION(substr IN str)</h6><h6 id="返回子串substr在字符串str第一个出现的位置，如果substr不是在str里面，返回0"><a href="#返回子串substr在字符串str第一个出现的位置，如果substr不是在str里面，返回0" class="headerlink" title="返回子串substr在字符串str第一个出现的位置，如果substr不是在str里面，返回0."></a>返回子串substr在字符串str第一个出现的位置，如果substr不是在str里面，返回0.</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select LOCATE(&apos;bar&apos;, &apos;foobarbar&apos;);</span><br><span class="line">    -&gt; 4</span><br><span class="line">mysql&gt; select LOCATE(&apos;xbar&apos;, &apos;foobar&apos;);</span><br><span class="line">    -&gt; 0</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该函数是多字节可靠的。 </p>
+</blockquote>
+<h6 id="LOCATE-substr-str-pos"><a href="#LOCATE-substr-str-pos" class="headerlink" title="LOCATE(substr,str,pos)"></a>LOCATE(substr,str,pos)</h6><h6 id="返回子串substr在字符串str第一个出现的位置，从位置pos开始。如果substr不是在str里面，返回0。"><a href="#返回子串substr在字符串str第一个出现的位置，从位置pos开始。如果substr不是在str里面，返回0。" class="headerlink" title="返回子串substr在字符串str第一个出现的位置，从位置pos开始。如果substr不是在str里面，返回0。"></a>返回子串substr在字符串str第一个出现的位置，从位置pos开始。如果substr不是在str里面，返回0。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select LOCATE(&apos;bar&apos;, &apos;foobarbar&apos;,5);</span><br><span class="line">    -&gt; 7</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这函数是多字节可靠的。 </p>
+</blockquote>
+<h6 id="INSTR-str-substr"><a href="#INSTR-str-substr" class="headerlink" title="INSTR(str,substr)"></a>INSTR(str,substr)</h6><h6 id="返回子串substr在字符串str中的第一个出现的位置。这与有2个参数形式的LOCATE-相同，除了参数被颠倒。"><a href="#返回子串substr在字符串str中的第一个出现的位置。这与有2个参数形式的LOCATE-相同，除了参数被颠倒。" class="headerlink" title="返回子串substr在字符串str中的第一个出现的位置。这与有2个参数形式的LOCATE()相同，除了参数被颠倒。"></a>返回子串substr在字符串str中的第一个出现的位置。这与有2个参数形式的LOCATE()相同，除了参数被颠倒。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select INSTR(&apos;foobarbar&apos;, &apos;bar&apos;);</span><br><span class="line">    -&gt; 4</span><br><span class="line">mysql&gt; select INSTR(&apos;xbar&apos;, &apos;foobar&apos;);</span><br><span class="line">    -&gt; 0</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这函数是多字节可靠的。 </p>
+</blockquote>
+<h6 id="LPAD-str-len-padstr"><a href="#LPAD-str-len-padstr" class="headerlink" title="LPAD(str,len,padstr)"></a>LPAD(str,len,padstr)</h6><h6 id="返回字符串str，左面用字符串padstr填补直到str是len个字符长。"><a href="#返回字符串str，左面用字符串padstr填补直到str是len个字符长。" class="headerlink" title="返回字符串str，左面用字符串padstr填补直到str是len个字符长。"></a>返回字符串str，左面用字符串padstr填补直到str是len个字符长。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select LPAD(&apos;hi&apos;,4,&apos;??&apos;);</span><br><span class="line">    -&gt; &apos;??hi&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="RPAD-str-len-padstr"><a href="#RPAD-str-len-padstr" class="headerlink" title="RPAD(str,len,padstr)"></a>RPAD(str,len,padstr)</h6><h6 id="返回字符串str，右面用字符串padstr填补直到str是len个字符长。"><a href="#返回字符串str，右面用字符串padstr填补直到str是len个字符长。" class="headerlink" title="返回字符串str，右面用字符串padstr填补直到str是len个字符长。"></a>返回字符串str，右面用字符串padstr填补直到str是len个字符长。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select RPAD(&apos;hi&apos;,5,&apos;?&apos;);</span><br><span class="line">    -&gt; &apos;hi???&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="LEFT-str-len"><a href="#LEFT-str-len" class="headerlink" title="LEFT(str,len)"></a>LEFT(str,len)</h6><h6 id="返回字符串str的最左面len个字符。"><a href="#返回字符串str的最左面len个字符。" class="headerlink" title="返回字符串str的最左面len个字符。"></a>返回字符串str的最左面len个字符。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select LEFT(&apos;foobarbar&apos;, 5);</span><br><span class="line">    -&gt; &apos;fooba&apos;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该函数是多字节可靠的。 </p>
+</blockquote>
+<h6 id="RIGHT-str-len"><a href="#RIGHT-str-len" class="headerlink" title="RIGHT(str,len)"></a>RIGHT(str,len)</h6><h6 id="返回字符串str的最右面len个字符。"><a href="#返回字符串str的最右面len个字符。" class="headerlink" title="返回字符串str的最右面len个字符。"></a>返回字符串str的最右面len个字符。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select RIGHT(&apos;foobarbar&apos;, 4);</span><br><span class="line">    -&gt; &apos;rbar&apos;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该函数是多字节可靠的。 </p>
+</blockquote>
+<h6 id="SUBSTRING-str-pos-len"><a href="#SUBSTRING-str-pos-len" class="headerlink" title="SUBSTRING(str,pos,len)"></a>SUBSTRING(str,pos,len)</h6><h6 id="SUBSTRING-str-FROM-pos-FOR-len"><a href="#SUBSTRING-str-FROM-pos-FOR-len" class="headerlink" title="SUBSTRING(str FROM pos FOR len)"></a>SUBSTRING(str FROM pos FOR len)</h6><h6 id="MID-str-pos-len"><a href="#MID-str-pos-len" class="headerlink" title="MID(str,pos,len)"></a>MID(str,pos,len)</h6><h6 id="从字符串str返回一个len个字符的子串，从位置pos开始。使用FROM的变种形式是ANSI-SQL92语法。"><a href="#从字符串str返回一个len个字符的子串，从位置pos开始。使用FROM的变种形式是ANSI-SQL92语法。" class="headerlink" title="从字符串str返回一个len个字符的子串，从位置pos开始。使用FROM的变种形式是ANSI SQL92语法。"></a>从字符串str返回一个len个字符的子串，从位置pos开始。使用FROM的变种形式是ANSI SQL92语法。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select SUBSTRING(&apos;Quadratically&apos;,5,6);</span><br><span class="line">    -&gt; &apos;ratica&apos;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该函数是多字节可靠的。 </p>
+</blockquote>
+<h6 id="SUBSTRING-str-pos"><a href="#SUBSTRING-str-pos" class="headerlink" title="SUBSTRING(str,pos) 　"></a>SUBSTRING(str,pos) 　</h6><h6 id="SUBSTRING-str-FROM-pos"><a href="#SUBSTRING-str-FROM-pos" class="headerlink" title="SUBSTRING(str FROM pos)"></a>SUBSTRING(str FROM pos)</h6><h6 id="从字符串str的起始位置pos返回一个子串。"><a href="#从字符串str的起始位置pos返回一个子串。" class="headerlink" title="从字符串str的起始位置pos返回一个子串。"></a>从字符串str的起始位置pos返回一个子串。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select SUBSTRING(&apos;Quadratically&apos;,5);</span><br><span class="line">    -&gt; &apos;ratically&apos;</span><br><span class="line">mysql&gt; select SUBSTRING(&apos;foobarbar&apos; FROM 4);</span><br><span class="line">    -&gt; &apos;barbar&apos;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该函数是多字节可靠的。 </p>
+</blockquote>
+<h6 id="SUBSTRING-INDEX-str-delim-count"><a href="#SUBSTRING-INDEX-str-delim-count" class="headerlink" title="SUBSTRING_INDEX(str,delim,count)"></a>SUBSTRING_INDEX(str,delim,count)</h6><h6 id="返回从字符串str的第count个出现的分隔符delim之后的子串。如果count是正数，返回最后的分隔符到左边-从左边数-的所有字符。如果count是负数，返回最后的分隔符到右边的所有字符-从右边数-。"><a href="#返回从字符串str的第count个出现的分隔符delim之后的子串。如果count是正数，返回最后的分隔符到左边-从左边数-的所有字符。如果count是负数，返回最后的分隔符到右边的所有字符-从右边数-。" class="headerlink" title="返回从字符串str的第count个出现的分隔符delim之后的子串。如果count是正数，返回最后的分隔符到左边(从左边数) 的所有字符。如果count是负数，返回最后的分隔符到右边的所有字符(从右边数)。"></a>返回从字符串str的第count个出现的分隔符delim之后的子串。如果count是正数，返回最后的分隔符到左边(从左边数) 的所有字符。如果count是负数，返回最后的分隔符到右边的所有字符(从右边数)。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select SUBSTRING_INDEX(&apos;www.mysql.com&apos;, &apos;.&apos;, 2);</span><br><span class="line">    -&gt; &apos;www.mysql&apos;</span><br><span class="line">mysql&gt; select SUBSTRING_INDEX(&apos;www.mysql.com&apos;, &apos;.&apos;, -2);</span><br><span class="line">    -&gt; &apos;mysql.com&apos;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该函数对多字节是可靠的。 </p>
+</blockquote>
+<h6 id="LTRIM-str"><a href="#LTRIM-str" class="headerlink" title="LTRIM(str)"></a>LTRIM(str)</h6><h6 id="返回删除了其前置空格字符的字符串str。"><a href="#返回删除了其前置空格字符的字符串str。" class="headerlink" title="返回删除了其前置空格字符的字符串str。"></a>返回删除了其前置空格字符的字符串str。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select LTRIM(&apos; barbar&apos;);</span><br><span class="line">    -&gt; &apos;barbar&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="RTRIM-str"><a href="#RTRIM-str" class="headerlink" title="RTRIM(str)"></a>RTRIM(str)</h6><h6 id="返回删除了其拖后空格字符的字符串str。"><a href="#返回删除了其拖后空格字符的字符串str。" class="headerlink" title="返回删除了其拖后空格字符的字符串str。"></a>返回删除了其拖后空格字符的字符串str。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select RTRIM(&apos;barbar   &apos;);</span><br><span class="line">    -&gt; &apos;barbar&apos;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该函数对多字节是可靠的。 </p>
+</blockquote>
+<h6 id="TRIM-BOTH-LEA"><a href="#TRIM-BOTH-LEA" class="headerlink" title="TRIM([[BOTH | LEA"></a>TRIM([[BOTH | LEA</h6><h6 id="DING-TRAILING-remstr-FROM-str"><a href="#DING-TRAILING-remstr-FROM-str" class="headerlink" title="DING | TRAILING] [remstr] FROM] str)"></a>DING | TRAILING] [remstr] FROM] str)</h6><h6 id="返回字符串str，其所有remstr前缀或后缀被删除了。如果没有修饰符BOTH、LEADING或TRAILING给出，BOTH被假定。如果remstr没被指定，空格被删除。"><a href="#返回字符串str，其所有remstr前缀或后缀被删除了。如果没有修饰符BOTH、LEADING或TRAILING给出，BOTH被假定。如果remstr没被指定，空格被删除。" class="headerlink" title="返回字符串str，其所有remstr前缀或后缀被删除了。如果没有修饰符BOTH、LEADING或TRAILING给出，BOTH被假定。如果remstr没被指定，空格被删除。"></a>返回字符串str，其所有remstr前缀或后缀被删除了。如果没有修饰符BOTH、LEADING或TRAILING给出，BOTH被假定。如果remstr没被指定，空格被删除。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select TRIM(&apos; bar   &apos;);</span><br><span class="line">    -&gt; &apos;bar&apos;</span><br><span class="line">mysql&gt; select TRIM(LEADING &apos;x&apos; FROM &apos;xxxbarxxx&apos;);</span><br><span class="line">    -&gt; &apos;barxxx&apos;</span><br><span class="line">mysql&gt; select TRIM(BOTH &apos;x&apos; FROM &apos;xxxbarxxx&apos;);</span><br><span class="line">    -&gt; &apos;bar&apos;</span><br><span class="line">mysql&gt; select TRIM(TRAILING &apos;xyz&apos; FROM &apos;barxxyz&apos;);</span><br><span class="line">    -&gt; &apos;barx&apos;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该函数对多字节是可靠的。 </p>
+</blockquote>
+<h6 id="SOUNDEX-str"><a href="#SOUNDEX-str" class="headerlink" title="SOUNDEX(str)"></a>SOUNDEX(str)</h6><h6 id="返回str的一个同音字符串。听起来“大致相同”的2个字符串应该有相同的同音字符串。一个“标准”的同音字符串长是4个字符，但是SOUNDEX-函数返回一个任意长的字符串。你可以在结果上使用SUBSTRING-得到一个“标准”的-同音串。所有非数字字母字符在给定的字符串中被忽略。所有在A-Z之外的字符国际字母被当作元音。"><a href="#返回str的一个同音字符串。听起来“大致相同”的2个字符串应该有相同的同音字符串。一个“标准”的同音字符串长是4个字符，但是SOUNDEX-函数返回一个任意长的字符串。你可以在结果上使用SUBSTRING-得到一个“标准”的-同音串。所有非数字字母字符在给定的字符串中被忽略。所有在A-Z之外的字符国际字母被当作元音。" class="headerlink" title="返回str的一个同音字符串。听起来“大致相同”的2个字符串应该有相同的同音字符串。一个“标准”的同音字符串长是4个字符，但是SOUNDEX()函数返回一个任意长的字符串。你可以在结果上使用SUBSTRING()得到一个“标准”的 同音串。所有非数字字母字符在给定的字符串中被忽略。所有在A-Z之外的字符国际字母被当作元音。"></a>返回str的一个同音字符串。听起来“大致相同”的2个字符串应该有相同的同音字符串。一个“标准”的同音字符串长是4个字符，但是SOUNDEX()函数返回一个任意长的字符串。你可以在结果上使用SUBSTRING()得到一个“标准”的 同音串。所有非数字字母字符在给定的字符串中被忽略。所有在A-Z之外的字符国际字母被当作元音。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select SOUNDEX(&apos;Hello&apos;);</span><br><span class="line">    -&gt; &apos;H400&apos;</span><br><span class="line">mysql&gt; select SOUNDEX(&apos;Quadratically&apos;);</span><br><span class="line">    -&gt; &apos;Q36324&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="SPACE-N"><a href="#SPACE-N" class="headerlink" title="SPACE(N)"></a>SPACE(N)</h6><h6 id="返回由N个空格字符组成的一个字符串。"><a href="#返回由N个空格字符组成的一个字符串。" class="headerlink" title="返回由N个空格字符组成的一个字符串。"></a>返回由N个空格字符组成的一个字符串。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select SPACE(6);</span><br><span class="line">    -&gt; &apos;     &apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="REPLACE-str-from-str-to-str"><a href="#REPLACE-str-from-str-to-str" class="headerlink" title="REPLACE(str,from_str,to_str)"></a>REPLACE(str,from_str,to_str)</h6><h6 id="返回字符串str，其字符串from-str的所有出现由字符串to-str代替。"><a href="#返回字符串str，其字符串from-str的所有出现由字符串to-str代替。" class="headerlink" title="返回字符串str，其字符串from_str的所有出现由字符串to_str代替。"></a>返回字符串str，其字符串from_str的所有出现由字符串to_str代替。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select REPLACE(&apos;www.mysql.com&apos;, &apos;w&apos;, &apos;Ww&apos;);</span><br><span class="line">    -&gt; &apos;WwWwWw.mysql.com&apos;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该函数对多字节是可靠的。 </p>
+</blockquote>
+<h6 id="REPEAT-str-count"><a href="#REPEAT-str-count" class="headerlink" title="REPEAT(str,count)"></a>REPEAT(str,count)</h6><h6 id="返回由重复countTimes次的字符串str组成的一个字符串。如果count-lt-0，返回一个空字符串。如果str或count是NULL，返回NULL。"><a href="#返回由重复countTimes次的字符串str组成的一个字符串。如果count-lt-0，返回一个空字符串。如果str或count是NULL，返回NULL。" class="headerlink" title="返回由重复countTimes次的字符串str组成的一个字符串。如果count &lt;= 0，返回一个空字符串。如果str或count是NULL，返回NULL。"></a>返回由重复countTimes次的字符串str组成的一个字符串。如果count &lt;= 0，返回一个空字符串。如果str或count是NULL，返回NULL。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select REPEAT(&apos;MySQL&apos;, 3);</span><br><span class="line">    -&gt; &apos;MySQLMySQLMySQL&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="REVERSE-str"><a href="#REVERSE-str" class="headerlink" title="REVERSE(str)"></a>REVERSE(str)</h6><h6 id="返回颠倒字符顺序的字符串str。"><a href="#返回颠倒字符顺序的字符串str。" class="headerlink" title="返回颠倒字符顺序的字符串str。"></a>返回颠倒字符顺序的字符串str。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select REVERSE(&apos;abc&apos;);</span><br><span class="line">    -&gt; &apos;cba&apos;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该函数对多字节可靠的。 </p>
+</blockquote>
+<h6 id="INSERT-str-pos-len-newstr"><a href="#INSERT-str-pos-len-newstr" class="headerlink" title="INSERT(str,pos,len,newstr)"></a>INSERT(str,pos,len,newstr)</h6><h6 id="返回字符串str，在位置pos起始的子串且len个字符长得子串由字符串newstr代替。"><a href="#返回字符串str，在位置pos起始的子串且len个字符长得子串由字符串newstr代替。" class="headerlink" title="返回字符串str，在位置pos起始的子串且len个字符长得子串由字符串newstr代替。"></a>返回字符串str，在位置pos起始的子串且len个字符长得子串由字符串newstr代替。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select INSERT(&apos;Quadratic&apos;, 3, 4, &apos;What&apos;);</span><br><span class="line">    -&gt; &apos;QuWhattic&apos;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该函数对多字节是可靠的。 </p>
+</blockquote>
+<h6 id="ELT-N-str1-str2-str3-…"><a href="#ELT-N-str1-str2-str3-…" class="headerlink" title="ELT(N,str1,str2,str3,…)"></a>ELT(N,str1,str2,str3,…)</h6><h6 id="如果N-1，返回str1，如果N-2，返回str2，等等。如果N小于1或大于参数个数，返回NULL。ELT-是FIELD-反运算。"><a href="#如果N-1，返回str1，如果N-2，返回str2，等等。如果N小于1或大于参数个数，返回NULL。ELT-是FIELD-反运算。" class="headerlink" title="如果N= 1，返回str1，如果N= 2，返回str2，等等。如果N小于1或大于参数个数，返回NULL。ELT()是FIELD()反运算。"></a>如果N= 1，返回str1，如果N= 2，返回str2，等等。如果N小于1或大于参数个数，返回NULL。ELT()是FIELD()反运算。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select ELT(1, &apos;ej&apos;, &apos;Heja&apos;, &apos;hej&apos;, &apos;foo&apos;);</span><br><span class="line">    -&gt; &apos;ej&apos;</span><br><span class="line">mysql&gt; select ELT(4, &apos;ej&apos;, &apos;Heja&apos;, &apos;hej&apos;, &apos;foo&apos;);</span><br><span class="line">    -&gt; &apos;foo&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="FIELD-str-str1-str2-str3-…"><a href="#FIELD-str-str1-str2-str3-…" class="headerlink" title="FIELD(str,str1,str2,str3,…)"></a>FIELD(str,str1,str2,str3,…)</h6><h6 id="返回str在str1-str2-str3-…清单的索引。如果str没找到，返回0。FIELD-是ELT-反运算。"><a href="#返回str在str1-str2-str3-…清单的索引。如果str没找到，返回0。FIELD-是ELT-反运算。" class="headerlink" title="返回str在str1, str2, str3, …清单的索引。如果str没找到，返回0。FIELD()是ELT()反运算。"></a>返回str在str1, str2, str3, …清单的索引。如果str没找到，返回0。FIELD()是ELT()反运算。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select FIELD(&apos;ej&apos;, &apos;Hej&apos;, &apos;ej&apos;, &apos;Heja&apos;, &apos;hej&apos;, &apos;foo&apos;);</span><br><span class="line">    -&gt; 2</span><br><span class="line">mysql&gt; select FIELD(&apos;fo&apos;, &apos;Hej&apos;, &apos;ej&apos;, &apos;Heja&apos;, &apos;hej&apos;, &apos;foo&apos;);</span><br><span class="line">    -&gt; 0</span><br></pre></td></tr></table></figure>
+
+<h6 id="FIND-IN-SET-str-strlist"><a href="#FIND-IN-SET-str-strlist" class="headerlink" title="FIND_IN_SET(str,strlist)"></a>FIND_IN_SET(str,strlist)</h6><h6 id="如果字符串str在由N子串组成的表strlist之中，返回一个1到N的值。一个字符串表是被“-”分隔的子串组成的一个字符串。如果第一个参数是一个常数字符串并且第二个参数是一种类型为SET的列，FIND-IN-SET-函数被优化而使用位运算！如果str不是在strlist里面或如果strlist是空字符串，返回0。如果任何一个参数是NULL，返回NULL。如果第一个参数包含一个“-”，该函数将工作不正常。"><a href="#如果字符串str在由N子串组成的表strlist之中，返回一个1到N的值。一个字符串表是被“-”分隔的子串组成的一个字符串。如果第一个参数是一个常数字符串并且第二个参数是一种类型为SET的列，FIND-IN-SET-函数被优化而使用位运算！如果str不是在strlist里面或如果strlist是空字符串，返回0。如果任何一个参数是NULL，返回NULL。如果第一个参数包含一个“-”，该函数将工作不正常。" class="headerlink" title="如果字符串str在由N子串组成的表strlist之中，返回一个1到N的值。一个字符串表是被“,”分隔的子串组成的一个字符串。如果第一个参数是一个常数字符串并且第二个参数是一种类型为SET的列，FIND_IN_SET()函数被优化而使用位运算！如果str不是在strlist里面或如果strlist是空字符串，返回0。如果任何一个参数是NULL，返回NULL。如果第一个参数包含一个“,”，该函数将工作不正常。"></a>如果字符串str在由N子串组成的表strlist之中，返回一个1到N的值。一个字符串表是被“,”分隔的子串组成的一个字符串。如果第一个参数是一个常数字符串并且第二个参数是一种类型为SET的列，FIND_IN_SET()函数被优化而使用位运算！如果str不是在strlist里面或如果strlist是空字符串，返回0。如果任何一个参数是NULL，返回NULL。如果第一个参数包含一个“,”，该函数将工作不正常。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT FIND_IN_SET(&apos;b&apos;,&apos;a,b,c,d&apos;);</span><br><span class="line">    -&gt; 2</span><br></pre></td></tr></table></figure>
+
+<h6 id="MAKE-SET-bits-str1-str2-…"><a href="#MAKE-SET-bits-str1-str2-…" class="headerlink" title="MAKE_SET(bits,str1,str2,…)"></a>MAKE_SET(bits,str1,str2,…)</h6><h6 id="返回一个集合-包含由“-”字符分隔的子串组成的一个字符串-，由相应的位在bits集合中的的字符串组成。str1对应于位0，str2对应位1，等等。在str1-str2-…中的NULL串不添加到结果中。"><a href="#返回一个集合-包含由“-”字符分隔的子串组成的一个字符串-，由相应的位在bits集合中的的字符串组成。str1对应于位0，str2对应位1，等等。在str1-str2-…中的NULL串不添加到结果中。" class="headerlink" title="返回一个集合 (包含由“,”字符分隔的子串组成的一个字符串)，由相应的位在bits集合中的的字符串组成。str1对应于位0，str2对应位1，等等。在str1, str2, …中的NULL串不添加到结果中。"></a>返回一个集合 (包含由“,”字符分隔的子串组成的一个字符串)，由相应的位在bits集合中的的字符串组成。str1对应于位0，str2对应位1，等等。在str1, str2, …中的NULL串不添加到结果中。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT MAKE_SET(1,&apos;a&apos;,&apos;b&apos;,&apos;c&apos;);</span><br><span class="line">    -&gt; &apos;a&apos;</span><br><span class="line">mysql&gt; SELECT MAKE_SET(1 | 4,&apos;hello&apos;,&apos;nice&apos;,&apos;world&apos;);</span><br><span class="line">    -&gt; &apos;hello,world&apos;</span><br><span class="line">mysql&gt; SELECT MAKE_SET(0,&apos;a&apos;,&apos;b&apos;,&apos;c&apos;);</span><br><span class="line">    -&gt; &apos;&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="EXPORT-SET-bits-on-off-separator-number-of-bits"><a href="#EXPORT-SET-bits-on-off-separator-number-of-bits" class="headerlink" title="EXPORT_SET(bits,on,off,[separator,[number_of_bits]])"></a>EXPORT_SET(bits,on,off,[separator,[number_of_bits]])</h6><h6 id="返回一个字符串，在这里对于在“bits”中设定每一位，你得到一个“on”字符串，并且对于每个复位-reset-的位，你得到一个“off”字符串。每个字符串用“separator”分隔-缺省“-”-，并且只有“bits”的“number-of-bits”-缺省64-位被使用。"><a href="#返回一个字符串，在这里对于在“bits”中设定每一位，你得到一个“on”字符串，并且对于每个复位-reset-的位，你得到一个“off”字符串。每个字符串用“separator”分隔-缺省“-”-，并且只有“bits”的“number-of-bits”-缺省64-位被使用。" class="headerlink" title="返回一个字符串，在这里对于在“bits”中设定每一位，你得到一个“on”字符串，并且对于每个复位(reset)的位，你得到一个“off”字符串。每个字符串用“separator”分隔(缺省“,”)，并且只有“bits”的“number_of_bits” (缺省64)位被使用。"></a>返回一个字符串，在这里对于在“bits”中设定每一位，你得到一个“on”字符串，并且对于每个复位(reset)的位，你得到一个“off”字符串。每个字符串用“separator”分隔(缺省“,”)，并且只有“bits”的“number_of_bits” (缺省64)位被使用。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select EXPORT_SET(5,&apos;Y&apos;,&apos;N&apos;,&apos;,&apos;,4)</span><br><span class="line">    -&gt; Y,N,Y,N</span><br></pre></td></tr></table></figure>
+
+<h6 id="LCASE-str"><a href="#LCASE-str" class="headerlink" title="LCASE(str) 　"></a>LCASE(str) 　</h6><h6 id="LOWER-str"><a href="#LOWER-str" class="headerlink" title="LOWER(str)"></a>LOWER(str)</h6><h6 id="返回字符串str，根据当前字符集映射-缺省是ISO-8859-1-Latin1-把所有的字符改变成小写。该函数对多字节是可靠的。"><a href="#返回字符串str，根据当前字符集映射-缺省是ISO-8859-1-Latin1-把所有的字符改变成小写。该函数对多字节是可靠的。" class="headerlink" title="返回字符串str，根据当前字符集映射(缺省是ISO-8859-1 Latin1)把所有的字符改变成小写。该函数对多字节是可靠的。"></a>返回字符串str，根据当前字符集映射(缺省是ISO-8859-1 Latin1)把所有的字符改变成小写。该函数对多字节是可靠的。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select LCASE(&apos;QUADRATICALLY&apos;);</span><br><span class="line">    -&gt; &apos;quadratically&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="UCASE-str"><a href="#UCASE-str" class="headerlink" title="UCASE(str) 　"></a>UCASE(str) 　</h6><h6 id="UPPER-str"><a href="#UPPER-str" class="headerlink" title="UPPER(str)"></a>UPPER(str)</h6><h6 id="返回字符串str，根据当前字符集映射-缺省是ISO-8859-1-Latin1-把所有的字符改变成大写。该函数对多字节是可靠的。"><a href="#返回字符串str，根据当前字符集映射-缺省是ISO-8859-1-Latin1-把所有的字符改变成大写。该函数对多字节是可靠的。" class="headerlink" title="返回字符串str，根据当前字符集映射(缺省是ISO-8859-1 Latin1)把所有的字符改变成大写。该函数对多字节是可靠的。"></a>返回字符串str，根据当前字符集映射(缺省是ISO-8859-1 Latin1)把所有的字符改变成大写。该函数对多字节是可靠的。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select UCASE(&apos;Hej&apos;);</span><br><span class="line">    -&gt; &apos;HEJ&apos;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该函数对多字节是可靠的。 </p>
+</blockquote>
+<h6 id="LOAD-FILE-file-name"><a href="#LOAD-FILE-file-name" class="headerlink" title="LOAD_FILE(file_name)"></a>LOAD_FILE(file_name)</h6><h6 id="读入文件并且作为一个字符串返回文件内容。文件必须在服务器上，你必须指定到文件的完整路径名，而且你必须有file权限。文件必须所有内容都是可读的并且小于max-allowed-packet。如果文件不存在或由于上面原因之一不能被读出，函数返回NULL。"><a href="#读入文件并且作为一个字符串返回文件内容。文件必须在服务器上，你必须指定到文件的完整路径名，而且你必须有file权限。文件必须所有内容都是可读的并且小于max-allowed-packet。如果文件不存在或由于上面原因之一不能被读出，函数返回NULL。" class="headerlink" title="读入文件并且作为一个字符串返回文件内容。文件必须在服务器上，你必须指定到文件的完整路径名，而且你必须有file权限。文件必须所有内容都是可读的并且小于max_allowed_packet。如果文件不存在或由于上面原因之一不能被读出，函数返回NULL。"></a>读入文件并且作为一个字符串返回文件内容。文件必须在服务器上，你必须指定到文件的完整路径名，而且你必须有file权限。文件必须所有内容都是可读的并且小于max_allowed_packet。如果文件不存在或由于上面原因之一不能被读出，函数返回NULL。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; UPDATE table_name</span><br><span class="line">      SET blob_column=LOAD_FILE(&quot;/tmp/picture&quot;)</span><br><span class="line">      WHERE id=1;</span><br></pre></td></tr></table></figure>
+
+<h6 id="MySQL必要时自动变换数字为字符串，并且反过来也如此："><a href="#MySQL必要时自动变换数字为字符串，并且反过来也如此：" class="headerlink" title="MySQL必要时自动变换数字为字符串，并且反过来也如此："></a>MySQL必要时自动变换数字为字符串，并且反过来也如此：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT 1+&quot;1&quot;;</span><br><span class="line">    -&gt; 2</span><br><span class="line">mysql&gt; SELECT CONCAT(2,&apos; test&apos;);</span><br><span class="line">    -&gt; &apos;2 test&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="如果你想要明确地变换一个数字到一个字符串，把它作为参数传递到CONCAT-。"><a href="#如果你想要明确地变换一个数字到一个字符串，把它作为参数传递到CONCAT-。" class="headerlink" title="如果你想要明确地变换一个数字到一个字符串，把它作为参数传递到CONCAT()。"></a>如果你想要明确地变换一个数字到一个字符串，把它作为参数传递到CONCAT()。</h6><h6 id="如果字符串函数提供一个二进制字符串作为参数，结果字符串也是一个二进制字符串。被变换到一个字符串的数字被当作是一个二进制字符串。这仅影响比较"><a href="#如果字符串函数提供一个二进制字符串作为参数，结果字符串也是一个二进制字符串。被变换到一个字符串的数字被当作是一个二进制字符串。这仅影响比较" class="headerlink" title="如果字符串函数提供一个二进制字符串作为参数，结果字符串也是一个二进制字符串。被变换到一个字符串的数字被当作是一个二进制字符串。这仅影响比较"></a>如果字符串函数提供一个二进制字符串作为参数，结果字符串也是一个二进制字符串。被变换到一个字符串的数字被当作是一个二进制字符串。这仅影响比较</h6><h2 id="mysql-时间函数用法集合"><a href="#mysql-时间函数用法集合" class="headerlink" title="mysql 时间函数用法集合"></a>mysql 时间函数用法集合</h2><h6 id="这里是一个使用日期函数的例子。下面的查询选择了所有记录，其date-col的值是在最后30天以内："><a href="#这里是一个使用日期函数的例子。下面的查询选择了所有记录，其date-col的值是在最后30天以内：" class="headerlink" title="这里是一个使用日期函数的例子。下面的查询选择了所有记录，其date_col的值是在最后30天以内："></a>这里是一个使用日期函数的例子。下面的查询选择了所有记录，其date_col的值是在最后30天以内：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT something FROM table  </span><br><span class="line">WHERE TO_DAYS(NOW()) - TO_DAYS(date_col) &lt;= 30;</span><br></pre></td></tr></table></figure>
+
+<h6 id="DAYOFWEEK-date"><a href="#DAYOFWEEK-date" class="headerlink" title="DAYOFWEEK(date)"></a>DAYOFWEEK(date)</h6><h6 id="返回日期date的星期索引-1-星期天，2-星期一-……7-星期六-。这些索引值对应于ODBC标准。"><a href="#返回日期date的星期索引-1-星期天，2-星期一-……7-星期六-。这些索引值对应于ODBC标准。" class="headerlink" title="返回日期date的星期索引(1=星期天，2=星期一, ……7=星期六)。这些索引值对应于ODBC标准。"></a>返回日期date的星期索引(1=星期天，2=星期一, ……7=星期六)。这些索引值对应于ODBC标准。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select DAYOFWEEK(&apos;1998-02-03&apos;);  </span><br><span class="line">-&gt; 3</span><br></pre></td></tr></table></figure>
+
+<h6 id="WEEKDAY-date"><a href="#WEEKDAY-date" class="headerlink" title="WEEKDAY(date)"></a>WEEKDAY(date)</h6><h6 id="返回date的星期索引-0-星期一，1-星期二-……6-星期天-。"><a href="#返回date的星期索引-0-星期一，1-星期二-……6-星期天-。" class="headerlink" title="返回date的星期索引(0=星期一，1=星期二, ……6= 星期天)。"></a>返回date的星期索引(0=星期一，1=星期二, ……6= 星期天)。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select WEEKDAY(&apos;1997-10-04 22:23:00&apos;);  </span><br><span class="line">-&gt; 5  </span><br><span class="line">mysql&gt; select WEEKDAY(&apos;1997-11-05&apos;);  </span><br><span class="line">-&gt; 2</span><br></pre></td></tr></table></figure>
+
+<h6 id="DAYOFMONTH-date"><a href="#DAYOFMONTH-date" class="headerlink" title="DAYOFMONTH(date)"></a>DAYOFMONTH(date)</h6><h6 id="返回date的月份中日期，在1到31范围内。"><a href="#返回date的月份中日期，在1到31范围内。" class="headerlink" title="返回date的月份中日期，在1到31范围内。"></a>返回date的月份中日期，在1到31范围内。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select DAYOFMONTH(&apos;1998-02-03&apos;);  </span><br><span class="line">-&gt; 3</span><br></pre></td></tr></table></figure>
+
+<h6 id="DAYOFYEAR-date"><a href="#DAYOFYEAR-date" class="headerlink" title="DAYOFYEAR(date)"></a>DAYOFYEAR(date)</h6><h6 id="返回date在一年中的日数-在1到366范围内。"><a href="#返回date在一年中的日数-在1到366范围内。" class="headerlink" title="返回date在一年中的日数, 在1到366范围内。"></a>返回date在一年中的日数, 在1到366范围内。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select DAYOFYEAR(&apos;1998-02-03&apos;);  </span><br><span class="line">-&gt; 34</span><br></pre></td></tr></table></figure>
+
+<h6 id="MONTH-date"><a href="#MONTH-date" class="headerlink" title="MONTH(date)"></a>MONTH(date)</h6><h6 id="返回date的月份，范围1到12。"><a href="#返回date的月份，范围1到12。" class="headerlink" title="返回date的月份，范围1到12。"></a>返回date的月份，范围1到12。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select MONTH(&apos;1998-02-03&apos;);  </span><br><span class="line">-&gt; 2</span><br></pre></td></tr></table></figure>
+
+<h6 id="DAYNAME-date"><a href="#DAYNAME-date" class="headerlink" title="DAYNAME(date)"></a>DAYNAME(date)</h6><h6 id="返回date的星期名字。"><a href="#返回date的星期名字。" class="headerlink" title="返回date的星期名字。"></a>返回date的星期名字。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select DAYNAME(&quot;1998-02-05&quot;);  </span><br><span class="line">-&gt; &apos;Thursday&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="MONTHNAME-date"><a href="#MONTHNAME-date" class="headerlink" title="MONTHNAME(date)"></a>MONTHNAME(date)</h6><h6 id="返回date的月份名字。"><a href="#返回date的月份名字。" class="headerlink" title="返回date的月份名字。"></a>返回date的月份名字。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select MONTHNAME(&quot;1998-02-05&quot;);  </span><br><span class="line">-&gt; &apos;February&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="QUARTER-date"><a href="#QUARTER-date" class="headerlink" title="QUARTER(date)"></a>QUARTER(date)</h6><h6 id="返回date一年中的季度，范围1到4。"><a href="#返回date一年中的季度，范围1到4。" class="headerlink" title="返回date一年中的季度，范围1到4。"></a>返回date一年中的季度，范围1到4。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select QUARTER(&apos;98-04-01&apos;);  </span><br><span class="line">-&gt; 2</span><br></pre></td></tr></table></figure>
+
+<h6 id="WEEK-date"><a href="#WEEK-date" class="headerlink" title="WEEK(date)"></a>WEEK(date)</h6><h6 id="WEEK-date-first"><a href="#WEEK-date-first" class="headerlink" title="WEEK(date,first)"></a>WEEK(date,first)</h6><h6 id="对于星期天是一周的第一天的地方，有一个单个参数，返回date的周数，范围在0到52。2个参数形式WEEK-允许你指定星期是否开始于星期天或星期一。如果第二个参数是0，星期从星期天开始，如果第二个参数是1，从星期一开始。"><a href="#对于星期天是一周的第一天的地方，有一个单个参数，返回date的周数，范围在0到52。2个参数形式WEEK-允许你指定星期是否开始于星期天或星期一。如果第二个参数是0，星期从星期天开始，如果第二个参数是1，从星期一开始。" class="headerlink" title="对于星期天是一周的第一天的地方，有一个单个参数，返回date的周数，范围在0到52。2个参数形式WEEK()允许你指定星期是否开始于星期天或星期一。如果第二个参数是0，星期从星期天开始，如果第二个参数是1，从星期一开始。"></a>对于星期天是一周的第一天的地方，有一个单个参数，返回date的周数，范围在0到52。2个参数形式WEEK()允许你指定星期是否开始于星期天或星期一。如果第二个参数是0，星期从星期天开始，如果第二个参数是1，从星期一开始。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select WEEK(&apos;1998-02-20&apos;);  </span><br><span class="line">-&gt; 7  </span><br><span class="line">mysql&gt; select WEEK(&apos;1998-02-20&apos;,0);  </span><br><span class="line">-&gt; 7  </span><br><span class="line">mysql&gt; select WEEK(&apos;1998-02-20&apos;,1);  </span><br><span class="line">-&gt; 8</span><br></pre></td></tr></table></figure>
+
+<h6 id="YEAR-date"><a href="#YEAR-date" class="headerlink" title="YEAR(date)"></a>YEAR(date)</h6><h6 id="返回date的年份，范围在1000到9999。"><a href="#返回date的年份，范围在1000到9999。" class="headerlink" title="返回date的年份，范围在1000到9999。"></a>返回date的年份，范围在1000到9999。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select YEAR(&apos;98-02-03&apos;);  </span><br><span class="line">-&gt; 1998</span><br></pre></td></tr></table></figure>
+
+<h6 id="HOUR-time"><a href="#HOUR-time" class="headerlink" title="HOUR(time)"></a>HOUR(time)</h6><h6 id="返回time的小时，范围是0到23。"><a href="#返回time的小时，范围是0到23。" class="headerlink" title="返回time的小时，范围是0到23。"></a>返回time的小时，范围是0到23。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select HOUR(&apos;10:05:03&apos;);  </span><br><span class="line">-&gt; 10</span><br></pre></td></tr></table></figure>
+
+<h6 id="MINUTE-time"><a href="#MINUTE-time" class="headerlink" title="MINUTE(time)"></a>MINUTE(time)</h6><h6 id="返回time的分钟，范围是0到59。"><a href="#返回time的分钟，范围是0到59。" class="headerlink" title="返回time的分钟，范围是0到59。"></a>返回time的分钟，范围是0到59。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select MINUTE(&apos;98-02-03 10:05:03&apos;);  </span><br><span class="line">-&gt; 5</span><br></pre></td></tr></table></figure>
+
+<h6 id="SECOND-time"><a href="#SECOND-time" class="headerlink" title="SECOND(time)"></a>SECOND(time)</h6><h6 id="回来time的秒数，范围是0到59。"><a href="#回来time的秒数，范围是0到59。" class="headerlink" title="回来time的秒数，范围是0到59。"></a>回来time的秒数，范围是0到59。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select SECOND(&apos;10:05:03&apos;);  </span><br><span class="line">-&gt; 3</span><br></pre></td></tr></table></figure>
+
+<h6 id="PERIOD-ADD-P-N"><a href="#PERIOD-ADD-P-N" class="headerlink" title="PERIOD_ADD(P,N)"></a>PERIOD_ADD(P,N)</h6><h6 id="增加N个月到阶段P（以格式YYMM或YYYYMM-。以格式YYYYMM返回值。注意阶段参数P不是日期值。"><a href="#增加N个月到阶段P（以格式YYMM或YYYYMM-。以格式YYYYMM返回值。注意阶段参数P不是日期值。" class="headerlink" title="增加N个月到阶段P（以格式YYMM或YYYYMM)。以格式YYYYMM返回值。注意阶段参数P不是日期值。"></a>增加N个月到阶段P（以格式YYMM或YYYYMM)。以格式YYYYMM返回值。注意阶段参数P不是日期值。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select PERIOD_ADD(9801,2);  </span><br><span class="line">-&gt; 199803</span><br></pre></td></tr></table></figure>
+
+<h6 id="PERIOD-DIFF-P1-P2"><a href="#PERIOD-DIFF-P1-P2" class="headerlink" title="PERIOD_DIFF(P1,P2)"></a>PERIOD_DIFF(P1,P2)</h6><h6 id="返回在时期P1和P2之间月数，P1和P2应该以格式YYMM或YYYYMM。注意，时期参数P1和P2不是日期值。"><a href="#返回在时期P1和P2之间月数，P1和P2应该以格式YYMM或YYYYMM。注意，时期参数P1和P2不是日期值。" class="headerlink" title="返回在时期P1和P2之间月数，P1和P2应该以格式YYMM或YYYYMM。注意，时期参数P1和P2不是日期值。"></a>返回在时期P1和P2之间月数，P1和P2应该以格式YYMM或YYYYMM。注意，时期参数P1和P2不是日期值。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select PERIOD_DIFF(9802,199703);  </span><br><span class="line">-&gt; 11</span><br></pre></td></tr></table></figure>
+
+<h6 id="DATE-ADD-date-INTERVAL-expr-type"><a href="#DATE-ADD-date-INTERVAL-expr-type" class="headerlink" title="DATE_ADD(date,INTERVAL expr type)"></a>DATE_ADD(date,INTERVAL expr type)</h6><h6 id="DATE-SUB-date-INTERVAL-expr-type"><a href="#DATE-SUB-date-INTERVAL-expr-type" class="headerlink" title="DATE_SUB(date,INTERVAL expr type)"></a>DATE_SUB(date,INTERVAL expr type)</h6><h6 id="ADDDATE-date-INTERVAL-expr-type"><a href="#ADDDATE-date-INTERVAL-expr-type" class="headerlink" title="ADDDATE(date,INTERVAL expr type)"></a>ADDDATE(date,INTERVAL expr type)</h6><h6 id="SUBDATE-date-INTERVAL-expr-type"><a href="#SUBDATE-date-INTERVAL-expr-type" class="headerlink" title="SUBDATE(date,INTERVAL expr type)"></a>SUBDATE(date,INTERVAL expr type)</h6><h6 id="这些功能执行日期运算。对于MySQL-3-22，他们是新的。ADDDATE-和SUBDATE-是DATE-ADD-和DATE-SUB-的同义词。-在MySQL-3-23中，你可以使用-和-而不是DATE-ADD-和DATE-SUB-。（见例子）date是一个指定开始日期的DATETIME或DATE值，expr是指定加到开始日期或从开始日期减去的间隔值一个表达式，expr是一个字符串；它可以以一个“-”开始表示负间隔。type是一个关键词，指明表达式应该如何被解释。EXTRACT-type-FROM-date-函数从日期-中返回“type”间隔。下表显示了type和expr参数怎样被关联：-type值-含义-期望的expr格式"><a href="#这些功能执行日期运算。对于MySQL-3-22，他们是新的。ADDDATE-和SUBDATE-是DATE-ADD-和DATE-SUB-的同义词。-在MySQL-3-23中，你可以使用-和-而不是DATE-ADD-和DATE-SUB-。（见例子）date是一个指定开始日期的DATETIME或DATE值，expr是指定加到开始日期或从开始日期减去的间隔值一个表达式，expr是一个字符串；它可以以一个“-”开始表示负间隔。type是一个关键词，指明表达式应该如何被解释。EXTRACT-type-FROM-date-函数从日期-中返回“type”间隔。下表显示了type和expr参数怎样被关联：-type值-含义-期望的expr格式" class="headerlink" title="这些功能执行日期运算。对于MySQL 3.22，他们是新的。ADDDATE()和SUBDATE()是DATE_ADD()和DATE_SUB()的同义词。 在MySQL 3.23中，你可以使用+和-而不是DATE_ADD()和DATE_SUB()。（见例子）date是一个指定开始日期的DATETIME或DATE值，expr是指定加到开始日期或从开始日期减去的间隔值一个表达式，expr是一个字符串；它可以以一个“-”开始表示负间隔。type是一个关键词，指明表达式应该如何被解释。EXTRACT(type FROM date)函数从日期 中返回“type”间隔。下表显示了type和expr参数怎样被关联： type值 含义 期望的expr格式"></a>这些功能执行日期运算。对于MySQL 3.22，他们是新的。ADDDATE()和SUBDATE()是DATE_ADD()和DATE_SUB()的同义词。 在MySQL 3.23中，你可以使用+和-而不是DATE_ADD()和DATE_SUB()。（见例子）date是一个指定开始日期的DATETIME或DATE值，expr是指定加到开始日期或从开始日期减去的间隔值一个表达式，expr是一个字符串；它可以以一个“-”开始表示负间隔。type是一个关键词，指明表达式应该如何被解释。EXTRACT(type FROM date)函数从日期 中返回“type”间隔。下表显示了type和expr参数怎样被关联： type值 含义 期望的expr格式</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">SECOND 秒 SECONDS  </span><br><span class="line">MINUTE 分钟 MINUTES  </span><br><span class="line">HOUR 时间 HOURS  </span><br><span class="line">DAY 天 DAYS  </span><br><span class="line">MONTH 月 MONTHS  </span><br><span class="line">YEAR 年 YEARS  </span><br><span class="line">MINUTE_SECOND 分钟和秒 &quot;MINUTES:SECONDS&quot;  </span><br><span class="line">HOUR_MINUTE 小时和分钟 &quot;HOURS:MINUTES&quot;  </span><br><span class="line">DAY_HOUR 天和小时 &quot;DAYS HOURS&quot;  </span><br><span class="line">YEAR_MONTH 年和月 &quot;YEARS-MONTHS&quot;  </span><br><span class="line">HOUR_SECOND 小时, 分钟， &quot;HOURS:MINUTES:SECONDS&quot;  </span><br><span class="line">DAY_MINUTE 天, 小时, 分钟 &quot;DAYS HOURS:MINUTES&quot;  </span><br><span class="line">DAY_SECOND 天, 小时, 分钟, 秒 &quot;DAYS HOURS:MINUTES:SECONDS&quot;</span><br></pre></td></tr></table></figure>
+
+<h6 id="MySQL在expr格式中允许任何标点分隔符。表示显示的是建议的分隔符。如果date参数是一个DATE值并且你的计算仅仅包含YEAR、MONTH和DAY部分-即，没有时间部分-，结果是一个DATE值。否则结果是一个DATETIME值。"><a href="#MySQL在expr格式中允许任何标点分隔符。表示显示的是建议的分隔符。如果date参数是一个DATE值并且你的计算仅仅包含YEAR、MONTH和DAY部分-即，没有时间部分-，结果是一个DATE值。否则结果是一个DATETIME值。" class="headerlink" title="MySQL在expr格式中允许任何标点分隔符。表示显示的是建议的分隔符。如果date参数是一个DATE值并且你的计算仅仅包含YEAR、MONTH和DAY部分(即，没有时间部分)，结果是一个DATE值。否则结果是一个DATETIME值。"></a>MySQL在expr格式中允许任何标点分隔符。表示显示的是建议的分隔符。如果date参数是一个DATE值并且你的计算仅仅包含YEAR、MONTH和DAY部分(即，没有时间部分)，结果是一个DATE值。否则结果是一个DATETIME值。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT &quot;1997-12-31 23:59:59&quot; + INTERVAL 1 SECOND;  </span><br><span class="line">-&gt; 1998-01-01 00:00:00  </span><br><span class="line">mysql&gt; SELECT INTERVAL 1 DAY + &quot;1997-12-31&quot;;  </span><br><span class="line">-&gt; 1998-01-01  </span><br><span class="line">mysql&gt; SELECT &quot;1998-01-01&quot; - INTERVAL 1 SECOND;  </span><br><span class="line">-&gt; 1997-12-31 23:59:59  </span><br><span class="line">mysql&gt; SELECT DATE_ADD(&quot;1997-12-31 23:59:59&quot;,  </span><br><span class="line">INTERVAL 1 SECOND);  </span><br><span class="line">-&gt; 1998-01-01 00:00:00  </span><br><span class="line">mysql&gt; SELECT DATE_ADD(&quot;1997-12-31 23:59:59&quot;,  </span><br><span class="line">INTERVAL 1 DAY);  </span><br><span class="line">-&gt; 1998-01-01 23:59:59  </span><br><span class="line">mysql&gt; SELECT DATE_ADD(&quot;1997-12-31 23:59:59&quot;,  </span><br><span class="line">INTERVAL &quot;1:1&quot; MINUTE_SECOND);  </span><br><span class="line">-&gt; 1998-01-01 00:01:00  </span><br><span class="line">mysql&gt; SELECT DATE_SUB(&quot;1998-01-01 00:00:00&quot;,  </span><br><span class="line">INTERVAL &quot;1 1:1:1&quot; DAY_SECOND);  </span><br><span class="line">-&gt; 1997-12-30 22:58:59  </span><br><span class="line">mysql&gt; SELECT DATE_ADD(&quot;1998-01-01 00:00:00&quot;,  </span><br><span class="line">INTERVAL &quot;-1 10&quot; DAY_HOUR);  </span><br><span class="line">-&gt; 1997-12-30 14:00:00  </span><br><span class="line">mysql&gt; SELECT DATE_SUB(&quot;1998-01-02&quot;, INTERVAL 31 DAY);  </span><br><span class="line">-&gt; 1997-12-02  </span><br><span class="line">mysql&gt; SELECT EXTRACT(YEAR FROM &quot;1999-07-02&quot;);  </span><br><span class="line">-&gt; 1999  </span><br><span class="line">mysql&gt; SELECT EXTRACT(YEAR_MONTH FROM &quot;1999-07-02 01:02:03&quot;);  </span><br><span class="line">-&gt; 199907  </span><br><span class="line">mysql&gt; SELECT EXTRACT(DAY_MINUTE FROM &quot;1999-07-02 01:02:03&quot;);  </span><br><span class="line">-&gt; 20102</span><br></pre></td></tr></table></figure>
+
+<h6 id="如果你指定太短的间隔值-不包括type关键词期望的间隔部分-，MySQL假设你省掉了间隔值的最左面部分。例如，如果你指定一个type是DAY-SECOND，值expr被希望有天、小时、分钟和秒部分。如果你象”1-10”这样指定值，MySQL假设日子和小时部分是丢失的并且值代表分钟和秒。换句话说，”1-10”-DAY-SECOND以它等价于”1-10”-MINUTE-SECOND的方式解释，这对那MySQL解释TIME值表示经过的时间而非作为一天的时间的方式有二义性。如果你使用确实不正确的日期，结果是NULL。如果你增加MONTH、YEAR-MONTH或YEAR并且结果日期大于新月份的最大值天数，日子在新月用最大的天调整。"><a href="#如果你指定太短的间隔值-不包括type关键词期望的间隔部分-，MySQL假设你省掉了间隔值的最左面部分。例如，如果你指定一个type是DAY-SECOND，值expr被希望有天、小时、分钟和秒部分。如果你象”1-10”这样指定值，MySQL假设日子和小时部分是丢失的并且值代表分钟和秒。换句话说，”1-10”-DAY-SECOND以它等价于”1-10”-MINUTE-SECOND的方式解释，这对那MySQL解释TIME值表示经过的时间而非作为一天的时间的方式有二义性。如果你使用确实不正确的日期，结果是NULL。如果你增加MONTH、YEAR-MONTH或YEAR并且结果日期大于新月份的最大值天数，日子在新月用最大的天调整。" class="headerlink" title="如果你指定太短的间隔值(不包括type关键词期望的间隔部分)，MySQL假设你省掉了间隔值的最左面部分。例如，如果你指定一个type是DAY_SECOND，值expr被希望有天、小时、分钟和秒部分。如果你象”1:10”这样指定值，MySQL假设日子和小时部分是丢失的并且值代表分钟和秒。换句话说，”1:10” DAY_SECOND以它等价于”1:10” MINUTE_SECOND的方式解释，这对那MySQL解释TIME值表示经过的时间而非作为一天的时间的方式有二义性。如果你使用确实不正确的日期，结果是NULL。如果你增加MONTH、YEAR_MONTH或YEAR并且结果日期大于新月份的最大值天数，日子在新月用最大的天调整。"></a>如果你指定太短的间隔值(不包括type关键词期望的间隔部分)，MySQL假设你省掉了间隔值的最左面部分。例如，如果你指定一个type是DAY_SECOND，值expr被希望有天、小时、分钟和秒部分。如果你象”1:10”这样指定值，MySQL假设日子和小时部分是丢失的并且值代表分钟和秒。换句话说，”1:10” DAY_SECOND以它等价于”1:10” MINUTE_SECOND的方式解释，这对那MySQL解释TIME值表示经过的时间而非作为一天的时间的方式有二义性。如果你使用确实不正确的日期，结果是NULL。如果你增加MONTH、YEAR_MONTH或YEAR并且结果日期大于新月份的最大值天数，日子在新月用最大的天调整。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select DATE_ADD(&apos;1998-01-30&apos;, Interval 1 month);  </span><br><span class="line">-&gt; 1998-02-28</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意，从前面的例子中词INTERVAL和type关键词不是区分大小写的。  
+　　</p>
+</blockquote>
+<h6 id="TO-DAYS-date"><a href="#TO-DAYS-date" class="headerlink" title="TO_DAYS(date)"></a>TO_DAYS(date)</h6><h6 id="给出一个日期date，返回一个天数-从0年的天数-。"><a href="#给出一个日期date，返回一个天数-从0年的天数-。" class="headerlink" title="给出一个日期date，返回一个天数(从0年的天数)。"></a>给出一个日期date，返回一个天数(从0年的天数)。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select TO_DAYS(950501);  </span><br><span class="line">-&gt; 728779  </span><br><span class="line">mysql&gt; select TO_DAYS(&apos;1997-10-07&apos;);  </span><br><span class="line">-&gt; 729669</span><br></pre></td></tr></table></figure>
+
+<h6 id="TO-DAYS"><a href="#TO-DAYS" class="headerlink" title="TO_DAYS()"></a>TO_DAYS()</h6><h6 id="不打算用于使用格列高里历-1582-出现前的值。"><a href="#不打算用于使用格列高里历-1582-出现前的值。" class="headerlink" title="不打算用于使用格列高里历(1582)出现前的值。"></a>不打算用于使用格列高里历(1582)出现前的值。</h6><h6 id="FROM-DAYS-N"><a href="#FROM-DAYS-N" class="headerlink" title="FROM_DAYS(N)"></a>FROM_DAYS(N)</h6><h6 id="给出一个天数N，返回一个DATE值。"><a href="#给出一个天数N，返回一个DATE值。" class="headerlink" title="给出一个天数N，返回一个DATE值。"></a>给出一个天数N，返回一个DATE值。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select FROM_DAYS(729669);  </span><br><span class="line">-&gt; &apos;1997-10-07&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="DATE-FORMAT-date-format"><a href="#DATE-FORMAT-date-format" class="headerlink" title="DATE_FORMAT(date,format)"></a>DATE_FORMAT(date,format)</h6><h6 id="根据format字符串格式化date值。下列修饰符可以被用在format字符串中：-M-月名字-January……December"><a href="#根据format字符串格式化date值。下列修饰符可以被用在format字符串中：-M-月名字-January……December" class="headerlink" title="根据format字符串格式化date值。下列修饰符可以被用在format字符串中： %M 月名字(January……December)"></a>根据format字符串格式化date值。下列修饰符可以被用在format字符串中： %M 月名字(January……December)</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">%W 星期名字(Sunday……Saturday)  </span><br><span class="line">%D 有英语前缀的月份的日期(1st, 2nd, 3rd, 等等。）  </span><br><span class="line">%Y 年, 数字, 4 位  </span><br><span class="line">%y 年, 数字, 2 位  </span><br><span class="line">%a 缩写的星期名字(Sun……Sat)  </span><br><span class="line">%d 月份中的天数, 数字(00……31)  </span><br><span class="line">%e 月份中的天数, 数字(0……31)  </span><br><span class="line">%m 月, 数字(01……12)  </span><br><span class="line">%c 月, 数字(1……12)  </span><br><span class="line">%b 缩写的月份名字(Jan……Dec)  </span><br><span class="line">%j 一年中的天数(001……366)  </span><br><span class="line">%H 小时(00……23)  </span><br><span class="line">%k 小时(0……23)  </span><br><span class="line">%h 小时(01……12)  </span><br><span class="line">%I 小时(01……12)  </span><br><span class="line">%l 小时(1……12)  </span><br><span class="line">%i 分钟, 数字(00……59)  </span><br><span class="line">%r 时间,12 小时(hh:mm:ss [AP]M)  </span><br><span class="line">%T 时间,24 小时(hh:mm:ss)  </span><br><span class="line">%S 秒(00……59)  </span><br><span class="line">%s 秒(00……59)  </span><br><span class="line">%p AM或PM  </span><br><span class="line">%w 一个星期中的天数(0=Sunday ……6=Saturday ）  </span><br><span class="line">%U 星期(0……52), 这里星期天是星期的第一天  </span><br><span class="line">%u 星期(0……52), 这里星期一是星期的第一天  </span><br><span class="line">%% 一个文字“%”。</span><br></pre></td></tr></table></figure>
+
+<h6 id="所有的其他字符不做解释被复制到结果中。"><a href="#所有的其他字符不做解释被复制到结果中。" class="headerlink" title="所有的其他字符不做解释被复制到结果中。"></a>所有的其他字符不做解释被复制到结果中。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select DATE_FORMAT(&apos;1997-10-04 22:23:00&apos;, &apos;%W %M %Y&apos;);  </span><br><span class="line">-&gt; &apos;Saturday October 1997&apos;  </span><br><span class="line">mysql&gt; select DATE_FORMAT(&apos;1997-10-04 22:23:00&apos;, &apos;%H:%i:%s&apos;);  </span><br><span class="line">-&gt; &apos;22:23:00&apos;  </span><br><span class="line">mysql&gt; select DATE_FORMAT(&apos;1997-10-04 22:23:00&apos;, &apos;%D %y %a %d %m %b %j&apos;);  </span><br><span class="line">-&gt; &apos;4th 97 Sat 04 10 Oct 277&apos;  </span><br><span class="line">mysql&gt; select DATE_FORMAT(&apos;1997-10-04 22:23:00&apos;, &apos;%H %k %I %r %T %S %w&apos;);  </span><br><span class="line">-&gt; &apos;22 22 10 10:23:00 PM 22:23:00 00 6&apos;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>MySQL3.23中，在格式修饰符字符前需要%。在MySQL更早的版本中，%是可选的。 </p>
+</blockquote>
+<h6 id="TIME-FORMAT-time-format"><a href="#TIME-FORMAT-time-format" class="headerlink" title="TIME_FORMAT(time,format)"></a>TIME_FORMAT(time,format)</h6><h6 id="这象上面的DATE-FORMAT-函数一样使用，但是format字符串只能包含处理小时、分钟和秒的那些格式修饰符。其他修饰符产生一个NULL值或0。"><a href="#这象上面的DATE-FORMAT-函数一样使用，但是format字符串只能包含处理小时、分钟和秒的那些格式修饰符。其他修饰符产生一个NULL值或0。" class="headerlink" title="这象上面的DATE_FORMAT()函数一样使用，但是format字符串只能包含处理小时、分钟和秒的那些格式修饰符。其他修饰符产生一个NULL值或0。"></a>这象上面的DATE_FORMAT()函数一样使用，但是format字符串只能包含处理小时、分钟和秒的那些格式修饰符。其他修饰符产生一个NULL值或0。</h6><p>　　</p>
+<h6 id="CURDATE"><a href="#CURDATE" class="headerlink" title="CURDATE()  　"></a>CURDATE()  　</h6><h6 id="CURRENT-DATE"><a href="#CURRENT-DATE" class="headerlink" title="CURRENT_DATE"></a>CURRENT_DATE</h6><h6 id="以’YYYY-MM-DD’或YYYYMMDD格式返回今天日期值，取决于函数是在一个字符串还是数字上下文被使用。"><a href="#以’YYYY-MM-DD’或YYYYMMDD格式返回今天日期值，取决于函数是在一个字符串还是数字上下文被使用。" class="headerlink" title="以’YYYY-MM-DD’或YYYYMMDD格式返回今天日期值，取决于函数是在一个字符串还是数字上下文被使用。"></a>以’YYYY-MM-DD’或YYYYMMDD格式返回今天日期值，取决于函数是在一个字符串还是数字上下文被使用。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select CURDATE();  </span><br><span class="line">-&gt; &apos;1997-12-15&apos;  </span><br><span class="line">mysql&gt; select CURDATE() + 0;  </span><br><span class="line">-&gt; 19971215</span><br></pre></td></tr></table></figure>
+
+<h6 id="CURTIME"><a href="#CURTIME" class="headerlink" title="CURTIME()"></a>CURTIME()</h6><h6 id="CURRENT-TIME"><a href="#CURRENT-TIME" class="headerlink" title="CURRENT_TIME"></a>CURRENT_TIME</h6><h6 id="以’HH-MM-SS’或HHMMSS格式返回当前时间值，取决于函数是在一个字符串还是在数字的上下文被使用。"><a href="#以’HH-MM-SS’或HHMMSS格式返回当前时间值，取决于函数是在一个字符串还是在数字的上下文被使用。" class="headerlink" title="以’HH:MM:SS’或HHMMSS格式返回当前时间值，取决于函数是在一个字符串还是在数字的上下文被使用。"></a>以’HH:MM:SS’或HHMMSS格式返回当前时间值，取决于函数是在一个字符串还是在数字的上下文被使用。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select CURTIME();  </span><br><span class="line">-&gt; &apos;23:50:26&apos;  </span><br><span class="line">mysql&gt; select CURTIME() + 0;  </span><br><span class="line">-&gt; 235026</span><br></pre></td></tr></table></figure>
+
+<h6 id="NOW"><a href="#NOW" class="headerlink" title="NOW()"></a>NOW()</h6><h6 id="SYSDATE"><a href="#SYSDATE" class="headerlink" title="SYSDATE()"></a>SYSDATE()</h6><h6 id="CURRENT-TIMESTAMP"><a href="#CURRENT-TIMESTAMP" class="headerlink" title="CURRENT_TIMESTAMP"></a>CURRENT_TIMESTAMP</h6><h6 id="以’YYYY-MM-DD-HH-MM-SS’或YYYYMMDDHHMMSS格式返回当前的日期和时间，取决于函数是在一个字符串还是在数字的上下文被使用。"><a href="#以’YYYY-MM-DD-HH-MM-SS’或YYYYMMDDHHMMSS格式返回当前的日期和时间，取决于函数是在一个字符串还是在数字的上下文被使用。" class="headerlink" title="以’YYYY-MM-DD HH:MM:SS’或YYYYMMDDHHMMSS格式返回当前的日期和时间，取决于函数是在一个字符串还是在数字的上下文被使用。"></a>以’YYYY-MM-DD HH:MM:SS’或YYYYMMDDHHMMSS格式返回当前的日期和时间，取决于函数是在一个字符串还是在数字的上下文被使用。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select NOW();  </span><br><span class="line">-&gt; &apos;1997-12-15 23:50:26&apos;  </span><br><span class="line">mysql&gt; select NOW() + 0;  </span><br><span class="line">-&gt; 19971215235026</span><br></pre></td></tr></table></figure>
+
+<h6 id="UNIX-TIMESTAMP"><a href="#UNIX-TIMESTAMP" class="headerlink" title="UNIX_TIMESTAMP()"></a>UNIX_TIMESTAMP()</h6><h6 id="UNIX-TIMESTAMP-date"><a href="#UNIX-TIMESTAMP-date" class="headerlink" title="UNIX_TIMESTAMP(date)"></a>UNIX_TIMESTAMP(date)</h6><h6 id="如果没有参数调用，返回一个Unix时间戳记-从’1970-01-01-00-00-00’GMT开始的秒数-。如果UNIX-TIMESTAMP-用一个date参数被调用，它返回从’1970-01-01-00-00-00’-GMT开始的秒数值。date可以是一个DATE字符串、一个DATETIME字符串、一个TIMESTAMP或以YYMMDD或YYYYMMDD格式的本地时间的一个数字。"><a href="#如果没有参数调用，返回一个Unix时间戳记-从’1970-01-01-00-00-00’GMT开始的秒数-。如果UNIX-TIMESTAMP-用一个date参数被调用，它返回从’1970-01-01-00-00-00’-GMT开始的秒数值。date可以是一个DATE字符串、一个DATETIME字符串、一个TIMESTAMP或以YYMMDD或YYYYMMDD格式的本地时间的一个数字。" class="headerlink" title="如果没有参数调用，返回一个Unix时间戳记(从’1970-01-01 00:00:00’GMT开始的秒数)。如果UNIX_TIMESTAMP()用一个date参数被调用，它返回从’1970-01-01 00:00:00’ GMT开始的秒数值。date可以是一个DATE字符串、一个DATETIME字符串、一个TIMESTAMP或以YYMMDD或YYYYMMDD格式的本地时间的一个数字。"></a>如果没有参数调用，返回一个Unix时间戳记(从’1970-01-01 00:00:00’GMT开始的秒数)。如果UNIX_TIMESTAMP()用一个date参数被调用，它返回从’1970-01-01 00:00:00’ GMT开始的秒数值。date可以是一个DATE字符串、一个DATETIME字符串、一个TIMESTAMP或以YYMMDD或YYYYMMDD格式的本地时间的一个数字。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select UNIX_TIMESTAMP();  </span><br><span class="line">-&gt; 882226357  </span><br><span class="line">mysql&gt; select UNIX_TIMESTAMP(&apos;1997-10-04 22:23:00&apos;);  </span><br><span class="line">-&gt; 875996580</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当UNIX_TIMESTAMP被用于一个TIMESTAMP列，函数将直接接受值，没有隐含的“string-to-unix-timestamp”变换。 </p>
+</blockquote>
+<h6 id="FROM-UNIXTIME-unix-timestamp"><a href="#FROM-UNIXTIME-unix-timestamp" class="headerlink" title="FROM_UNIXTIME(unix_timestamp)"></a>FROM_UNIXTIME(unix_timestamp)</h6><h6 id="以’YYYY-MM-DD-HH-MM-SS’或YYYYMMDDHHMMSS格式返回unix-timestamp参数所表示的值，取决于函数是在一个字符串还是或数字上下文中被使用。"><a href="#以’YYYY-MM-DD-HH-MM-SS’或YYYYMMDDHHMMSS格式返回unix-timestamp参数所表示的值，取决于函数是在一个字符串还是或数字上下文中被使用。" class="headerlink" title="以’YYYY-MM-DD HH:MM:SS’或YYYYMMDDHHMMSS格式返回unix_timestamp参数所表示的值，取决于函数是在一个字符串还是或数字上下文中被使用。"></a>以’YYYY-MM-DD HH:MM:SS’或YYYYMMDDHHMMSS格式返回unix_timestamp参数所表示的值，取决于函数是在一个字符串还是或数字上下文中被使用。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select FROM_UNIXTIME(875996580);  </span><br><span class="line">-&gt; &apos;1997-10-04 22:23:00&apos;  </span><br><span class="line">mysql&gt; select FROM_UNIXTIME(875996580) + 0;  </span><br><span class="line">-&gt; 19971004222300</span><br></pre></td></tr></table></figure>
+
+<h6 id="FROM-UNIXTIME-unix-timestamp-format"><a href="#FROM-UNIXTIME-unix-timestamp-format" class="headerlink" title="FROM_UNIXTIME(unix_timestamp,format)"></a>FROM_UNIXTIME(unix_timestamp,format)</h6><h6 id="返回表示-Unix-时间标记的一个字符串，根据format字符串格式化。format可以包含与DATE-FORMAT-函数列出的条目同样的修饰符。"><a href="#返回表示-Unix-时间标记的一个字符串，根据format字符串格式化。format可以包含与DATE-FORMAT-函数列出的条目同样的修饰符。" class="headerlink" title="返回表示 Unix 时间标记的一个字符串，根据format字符串格式化。format可以包含与DATE_FORMAT()函数列出的条目同样的修饰符。"></a>返回表示 Unix 时间标记的一个字符串，根据format字符串格式化。format可以包含与DATE_FORMAT()函数列出的条目同样的修饰符。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select FROM_UNIXTIME(UNIX_TIMESTAMP(), &apos;%Y %D %M %h:%i:%s %x&apos;);  </span><br><span class="line">-&gt; &apos;1997 23rd December 03:43:30 x&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="SEC-TO-TIME-seconds"><a href="#SEC-TO-TIME-seconds" class="headerlink" title="SEC_TO_TIME(seconds)"></a>SEC_TO_TIME(seconds)</h6><h6 id="返回seconds参数，变换成小时、分钟和秒，值以’HH-MM-SS’或HHMMSS格式化，取决于函数是在一个字符串还是在数字上下文中被使用。"><a href="#返回seconds参数，变换成小时、分钟和秒，值以’HH-MM-SS’或HHMMSS格式化，取决于函数是在一个字符串还是在数字上下文中被使用。" class="headerlink" title="返回seconds参数，变换成小时、分钟和秒，值以’HH:MM:SS’或HHMMSS格式化，取决于函数是在一个字符串还是在数字上下文中被使用。"></a>返回seconds参数，变换成小时、分钟和秒，值以’HH:MM:SS’或HHMMSS格式化，取决于函数是在一个字符串还是在数字上下文中被使用。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select SEC_TO_TIME(2378);  </span><br><span class="line">-&gt; &apos;00:39:38&apos;  </span><br><span class="line">mysql&gt; select SEC_TO_TIME(2378) + 0;  </span><br><span class="line">-&gt; 3938</span><br></pre></td></tr></table></figure>
+
+<h6 id="TIME-TO-SEC-time"><a href="#TIME-TO-SEC-time" class="headerlink" title="TIME_TO_SEC(time)"></a>TIME_TO_SEC(time)</h6><h6 id="返回time参数，转换成秒。"><a href="#返回time参数，转换成秒。" class="headerlink" title="返回time参数，转换成秒。"></a>返回time参数，转换成秒。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select TIME_TO_SEC(&apos;22:23:00&apos;);  </span><br><span class="line">-&gt; 80580  </span><br><span class="line">mysql&gt; select TIME_TO_SEC(&apos;00:39:38&apos;);  </span><br><span class="line">-&gt; 2378</span><br></pre></td></tr></table></figure>
+
+<h6 id="Mysql取系统函数："><a href="#Mysql取系统函数：" class="headerlink" title="Mysql取系统函数："></a>Mysql取系统函数：</h6><h6 id="Select-curtime"><a href="#Select-curtime" class="headerlink" title="Select curtime();"></a>Select curtime();</h6><h6 id="Select-curdate"><a href="#Select-curdate" class="headerlink" title="Select curdate():"></a>Select curdate():</h6><h6 id="Select-sysdate"><a href="#Select-sysdate" class="headerlink" title="Select sysdate():"></a>Select sysdate():</h6><h6 id="select-now"><a href="#select-now" class="headerlink" title="select now();"></a>select now();</h6><h3 id="一、-控制流程函数"><a href="#一、-控制流程函数" class="headerlink" title="一、 控制流程函数"></a>一、 控制流程函数</h3><h5 id="a-CASE-WHEN-THEN-函数"><a href="#a-CASE-WHEN-THEN-函数" class="headerlink" title="a)   CASE WHEN THEN 函数"></a>a)   CASE WHEN THEN 函数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法： CASE value WHEN [compare-value] THEN result [WHEN [compare-value] THEN result ……] [ELSE result ] END CASE WHEN [condition] THEN result [WHEN[condition] THEN result ……] [ELSE result] END ；</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>函数用法说明：在第一个方案的返回结果中， value =compare-value 。而第二个方案的返回结果是第一种情况的真实结果。如果没有匹配的结果值，则返回结果为 ELSE 后的结果，如果没有 ELSE 部分，则返回值为 NULL</p>
+</blockquote>
+<h5 id="b-IF-函数用法"><a href="#b-IF-函数用法" class="headerlink" title="b)        IF 函数用法"></a>b)        IF 函数用法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法： IF(expr1,expr2,expr3)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>函数用法说明：如果 expr1 是 TRUE (expr1 &lt;&gt; 0 and expr1 &lt;&gt; NULL) ，则 IF() 的返回值为 expr2 ; 否则返回值则为 expr3 。 IF() 的返回值为数字值或字符串值，具体情况视其所在语境而定</p>
+</blockquote>
+<h5 id="c-IFNULL-函数"><a href="#c-IFNULL-函数" class="headerlink" title="c)        IFNULL 函数"></a>c)        IFNULL 函数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法： IFNULL(expr1,expr2)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>函数用法说明：假如 expr1 不为 NULL ，则 IFNULL() 的返回值为 expr1 ; 否则其返回值为 expr2 。 IFNULL() 的返回值是数字或是字符串，具体情况取决于其所使用的语境</p>
+</blockquote>
+<h3 id="二、-字符串比较函数"><a href="#二、-字符串比较函数" class="headerlink" title="二、 字符串比较函数"></a>二、 字符串比较函数</h3><h5 id="a-函数-ascii-str"><a href="#a-函数-ascii-str" class="headerlink" title="a)         函数 ascii(str)"></a>a)         函数 ascii(str)</h5><blockquote>
+<p>函数用法说明：返回值为字符串 str 的最左字符的数值。假如 str 为空字符串，则返回值为 0 。假如 str 为 NULL ，则返回值为 NULL 。 ASCII() 用于带有从 0 到 255 的数值的字符</p>
+</blockquote>
+<h5 id="b-函数-BIN-N"><a href="#b-函数-BIN-N" class="headerlink" title="b)        函数 BIN(N)"></a>b)        函数 BIN(N)</h5><blockquote>
+<p>函数用法说明：返回值为 N 的二进制值的字符串表示，其中   N 为一个 longlong (BIGINT) 数字。这等同于 CONV(N ,10,2) 。假如 N 为 NULL ，则返回值为 NULL 。</p>
+</blockquote>
+<h5 id="c-函数CHAR-N-…-USING-charset"><a href="#c-函数CHAR-N-…-USING-charset" class="headerlink" title="c)        函数CHAR(N ,… [USING charset ])"></a>c)        函数CHAR(N ,… [USING charset ])</h5><blockquote>
+<p>函数用法说明： CHAR() 将每个参数 N 理解为一个整数，其返回值为一个包含这些整数的代码值所给出的字符的字符串。 NULL 值被省略。</p>
+</blockquote>
+<h5 id="d-函数CHAR-LENGTH-str"><a href="#d-函数CHAR-LENGTH-str" class="headerlink" title="d)        函数CHAR_LENGTH(str )"></a>d)        函数CHAR_LENGTH(str )</h5><blockquote>
+<p>函数使用说明：返回值为字符串 str 的长度，长度的单位为字符。一个多字节字符算作一个单字符。对于一个 包含五个二字节字符集 , LENGTH() 返回值为 10, 而 CHAR_LENGTH() 的返回值为 5</p>
+</blockquote>
+<h5 id="e-函数-CHARACTER-LENGTH-str"><a href="#e-函数-CHARACTER-LENGTH-str" class="headerlink" title="e)         函数 CHARACTER_LENGTH(str )"></a>e)         函数 CHARACTER_LENGTH(str )</h5><blockquote>
+<p>函数使用说明： CHARACTER_LENGTH() 是 CHAR_LENGTH() 的同义词。</p>
+</blockquote>
+<h5 id="f-函数-COMPRESS-string-to-compress"><a href="#f-函数-COMPRESS-string-to-compress" class="headerlink" title="f)         函数 COMPRESS(string_to_compress )"></a>f)         函数 COMPRESS(string_to_compress )</h5><blockquote>
+<p>函数使用说明： COMPRESS( 压缩一个字符串。这个函数要求 MySQL 已经用一个诸如 zlib 的压缩库压缩过。    否则，返回值始终是 NULL 。 UNCOMPRESS() 可将压缩过的字符串进行解压缩 ) 。</p>
+</blockquote>
+<h5 id="g-函数-CONCAT-str1-str2-…"><a href="#g-函数-CONCAT-str1-str2-…" class="headerlink" title="g)        函数 CONCAT(str1 ,str2 ,…)"></a>g)        函数 CONCAT(str1 ,str2 ,…)</h5><blockquote>
+<p>函数使用说明：返回结果为连接参数产生的字符串。如有任何一个参数为 NULL ，则返回值为 NULL 。或许有一个或多个参数。 如果所有参数均为非二进制字符串，则结果为非二进制字符串。 如果自变量中含有任一二进制字符串，则结果为一个二进制字符串。一个数字参数被转化为与之相等的二进制字符串格式；若要避免这种情况，可使用显式类型 cast, 例如： SELECT CONCAT(CAST(int_col AS CHAR), char_col)</p>
+</blockquote>
+<h5 id="h-函数-CONCAT-WS-separator-str1-str2-…"><a href="#h-函数-CONCAT-WS-separator-str1-str2-…" class="headerlink" title="h)        函数 CONCAT_WS(separator ,str1 ,str2 ,…)"></a>h)        函数 CONCAT_WS(separator ,str1 ,str2 ,…)</h5><blockquote>
+<p>函数使用说明： CONCAT_WS() 代表 CONCAT With Separator ，是 CONCAT() 的特殊形式。第一个参数是其它参数的分隔符。分隔符的位置放在要连接的两个字符串之间。分隔符可以是一个字符串，也可以是其它参数。如果分隔符为 NULL ，则结果为 NULL 。函数会忽略任何分隔符参数后的 NULL 值。</p>
+</blockquote>
+<h5 id="i-函数CONV-N-from-base-to-base"><a href="#i-函数CONV-N-from-base-to-base" class="headerlink" title="i)      函数CONV(N from_base, to_base)"></a>i)      函数CONV(N from_base, to_base)</h5><blockquote>
+<p>函数使用说明：不同数基间转换数字。返回值为数字的 N 字符串表示，由 from_base 基转化为 to_base 基。如有任意一个参数为 NULL ，则返回值为 NULL 。自变量 N 被理解为一个整数，但是可以被指定为一个整数或字符串。最小基数为 2 ，而最大基数则为 36 。 If to_base 是一个负数，则 N 被看作一个带符号数。否则， N 被看作无符号数。 CONV() 的运行精确度为64 比特。</p>
+</blockquote>
+<h5 id="j-函数-ELT-N-str1-str2-str3-…"><a href="#j-函数-ELT-N-str1-str2-str3-…" class="headerlink" title="j)          函数 ELT(N ,str1 ,str2 ,str3 ,…)"></a>j)          函数 ELT(N ,str1 ,str2 ,str3 ,…)</h5><blockquote>
+<p>函数使用说明：若 N = 1 ，则返回值为   str1 ，若 N = 2 ，则返回值为 str2 ，以此类推。若 N 小于 1 或大于参数的数目，则返回值为 NULL 。 ELT() 是   FIELD() 的补数</p>
+</blockquote>
+<h5 id="k-函数-EXPORT-SET-bits-on-off-separator-number-of-bits"><a href="#k-函数-EXPORT-SET-bits-on-off-separator-number-of-bits" class="headerlink" title="k)      函数 EXPORT_SET(bits ,on ,off [,separator [,number_of_bits ]])"></a>k)      函数 EXPORT_SET(bits ,on ,off [,separator [,number_of_bits ]])</h5><blockquote>
+<p>函数使用说明： 返回值为一个字符串，其中对于 bits 值中的每个位组，可以得到一个 on 字符串，而对于每个清零比特位，可以得到一个 off 字符串。 bits 中的比特值按照从右到左的顺序接受检验 ( 由低位比特到高位比特 ) 。字符串被分隔字符串分开 ( 默认为逗号‘,’) ，按照从左到右的顺序被添加到结果中。 number_of_bits 会给出被检验的二进制位数 ( 默认为 64) 。</p>
+</blockquote>
+<h5 id="l-函数-FIELD-str-str1-str2-str3-……"><a href="#l-函数-FIELD-str-str1-str2-str3-……" class="headerlink" title="l)          函数 FIELD(str, str1, str2, str3, ……)"></a>l)          函数 FIELD(str, str1, str2, str3, ……)</h5><blockquote>
+<p>函数使用说明：返回值为 str1 , str2 , str3 ,…… 列表中的 str 指数。在找不到 str 的情况下，返回值为 0 。如果所有对于 FIELD() 的参数均为字符串，则所有参数均按照字符串进行比较。如果所有的参数均为数字，则按照数字进行比较。否则，参数按照双倍进行比较。如果 str 为 NULL ，则返回值为 0 ，原因是 NULL 不能同任何值进行同等比较。 FIELD() 是 ELT() 的补数。</p>
+</blockquote>
+<h5 id="m-函数FIND-IN-SET-str-strlist"><a href="#m-函数FIND-IN-SET-str-strlist" class="headerlink" title="m)      函数FIND_IN_SET(str, strlist)"></a>m)      函数FIND_IN_SET(str, strlist)</h5><blockquote>
+<p>函数使用说明： 假如字符串 str 在由 N 子链组成的字符串列表 strlist 中，则返回值的范围在 1 到 N 之间 。一个字符串列表就是一个由一些被 ‘,’ 符号分开的自链组成的字符串。如果第一个参数是一个常数字符串，而第二个是 type SET 列，则    FIND_IN_SET()函数被优化，使用比特计算。如果 str 不在 strlist 或 strlist 为空字符串，则返回值为 0 。如任意一个参数为 NULL ，则返回值为 NULL 。 这个函数在第一个参数包含一个逗号 (‘,’) 时将无法正常运行。</p>
+</blockquote>
+<h5 id="n-函数-FORMAT-X-D"><a href="#n-函数-FORMAT-X-D" class="headerlink" title="n)        函数 FORMAT(X ,D )"></a>n)        函数 FORMAT(X ,D )</h5><blockquote>
+<p>函数使用说明： 将 number X 设置为格式 ‘#,###,###.##’, 以四舍五入的方式保留到小数点后 D 位 , 而返回结果为一个字符串。</p>
+</blockquote>
+<h5 id="o-函数-HEX-N-or-S"><a href="#o-函数-HEX-N-or-S" class="headerlink" title="o)        函数 HEX(N_or_S )"></a>o)        函数 HEX(N_or_S )</h5><blockquote>
+<p>函数使用说明：如果N_OR_S 是一个数字，则返回一个 十六进制值 N 的 字符串表示，在这里，   N 是一个longlong (BIGINT) 数。这相当于 CONV(N,10,16) 。如果N_OR_S 是一个字符串，则返回值为一个N_OR_S 的十六进制字符串表示，其中每个N_OR_S 里的每个字符被转化为两个十六进制数字。</p>
+</blockquote>
+<h5 id="p-函数INSTR-str-substr"><a href="#p-函数INSTR-str-substr" class="headerlink" title="p)      函数INSTR(str,substr)"></a>p)      函数INSTR(str,substr)</h5><blockquote>
+<p>函数使用说明：返回字符串 str 中子字符串的第一个出现位置。这和LOCATE() 的双参数形式相同，除非参数的顺序被颠倒。</p>
+</blockquote>
+<h5 id="q-函数LCASE-str"><a href="#q-函数LCASE-str" class="headerlink" title="q)      函数LCASE(str)"></a>q)      函数LCASE(str)</h5><blockquote>
+<p>函数使用说明：LCASE() 是 LOWER() 的同义词</p>
+</blockquote>
+<h5 id="r-函数LEFT-str-len"><a href="#r-函数LEFT-str-len" class="headerlink" title="r)      函数LEFT(str,len)"></a>r)      函数LEFT(str,len)</h5><blockquote>
+<p>函数使用说明：返回从字符串str 开始的len 最左字符</p>
+</blockquote>
+<h5 id="s-函数-LENGTH-str"><a href="#s-函数-LENGTH-str" class="headerlink" title="s)      函数 LENGTH(str )"></a>s)      函数 LENGTH(str )</h5><blockquote>
+<p>函数使用说明： 返回值为字符串 str 的长度，单位为字节。一个多字节字符算作多字节。这意味着 对于一个包含 5 个 2 字节字符的字符串， LENGTH() 的返回值为 10, 而CHAR_LENGTH() 的返回值则为5 。</p>
+</blockquote>
+<h5 id="t-函数-LOAD-FILE-file-name"><a href="#t-函数-LOAD-FILE-file-name" class="headerlink" title="t)          函数 LOAD_FILE(file_name)"></a>t)          函数 LOAD_FILE(file_name)</h5><blockquote>
+<p>函数使用说明：读取文件并将这一文件按照字符串的格式返回。 文件的位置必须在服务器上 , 你必须为文件制定路径全名，而且你还必须拥有 FILE 特许权。文件必须可读取，文件容量必须小于 max_allowed_packet 字节。若文件不存在，或因不满足上述条件而不能被读取， 则函数返回值为 NULL</p>
+</blockquote>
+<h5 id="u-函数-LOCATE-substr-str-LOCATE-substr-str-pos"><a href="#u-函数-LOCATE-substr-str-LOCATE-substr-str-pos" class="headerlink" title="u)      函数 LOCATE(substr ,str ) , LOCATE(substr ,str ,pos )"></a>u)      函数 LOCATE(substr ,str ) , LOCATE(substr ,str ,pos )</h5><blockquote>
+<p>函数使用说明：第一个语法返回字符串 str 中子字符串substr 的第一个出现位置。第二个语法返回字符串 str 中子字符串substr 的第一个出现位置, 起始位置在pos 。如若substr 不在str中，则返回值为0 。</p>
+</blockquote>
+<h5 id="v-函数LOWER-str"><a href="#v-函数LOWER-str" class="headerlink" title="v)      函数LOWER(str )"></a>v)      函数LOWER(str )</h5><blockquote>
+<p>函数使用说明：返回字符串 str 以及所有根据最新的字符集映射表变为小写字母的字符</p>
+</blockquote>
+<h5 id="w-函数LPAD-str-len-padstr"><a href="#w-函数LPAD-str-len-padstr" class="headerlink" title="w)      函数LPAD(str ,len ,padstr )"></a>w)      函数LPAD(str ,len ,padstr )</h5><blockquote>
+<p>函数使用说明：返回字符串 str , 其左边由字符串padstr 填补到len 字符长度。假如str 的长度大于len , 则返回值被缩短至 len 字符。</p>
+</blockquote>
+<h5 id="x-函数LTRIM-str"><a href="#x-函数LTRIM-str" class="headerlink" title="x)      函数LTRIM(str )"></a>x)      函数LTRIM(str )</h5><blockquote>
+<p>函数使用说明：返回字符串 str ，其引导空格字符被删除。</p>
+</blockquote>
+<h5 id="y-函数-MAKE-SET-bits-str1-str2-…"><a href="#y-函数-MAKE-SET-bits-str1-str2-…" class="headerlink" title="y)      函数 MAKE_SET(bits ,str1 ,str2 ,…)"></a>y)      函数 MAKE_SET(bits ,str1 ,str2 ,…)</h5><blockquote>
+<p>函数使用说明： 返回一个设定值 ( 一个包含被 ‘,’ 号分开的字字符串的字符串 ) ，由在 bits 组中具有相应的比特的字符串组成。 str1 对应比特 0, str2 对应比特 1, 以此类推。 str1 , str2 , … 中的 NULL 值不会被添加到结果中。</p>
+</blockquote>
+<h5 id="z-函数-MID-str-pos-len"><a href="#z-函数-MID-str-pos-len" class="headerlink" title="z)      函数 MID(str ,pos ,len )"></a>z)      函数 MID(str ,pos ,len )</h5><blockquote>
+<p>函数使用说明： MID(str ,pos ,len ) 是 SUBSTRING(str ,pos ,len ) 的同义词。</p>
+</blockquote>
+<h5 id="aa-函数-OCT-N"><a href="#aa-函数-OCT-N" class="headerlink" title="aa) 函数 OCT(N )"></a>aa) 函数 OCT(N )</h5><blockquote>
+<p>函数使用说明：返回一个 N 的八进制值的字符串表示，其中 N 是一个 longlong (BIGINT) 数。这等同于 CONV(N,10,8) 。若 N 为 NULL ，则返回值为 NULL 。</p>
+</blockquote>
+<h5 id="bb-函数-OCTET-LENGTH-str"><a href="#bb-函数-OCTET-LENGTH-str" class="headerlink" title="bb) 函数 OCTET_LENGTH(str )"></a>bb) 函数 OCTET_LENGTH(str )</h5><blockquote>
+<p>函数使用说明： OCTET_LENGTH() 是 LENGTH() 的同义词。</p>
+</blockquote>
+<h5 id="cc-函数ORD-str"><a href="#cc-函数ORD-str" class="headerlink" title="cc) 函数ORD(str )"></a>cc) 函数ORD(str )</h5><blockquote>
+<p>函数使用说明：若字符串str 的最左字符是一个多字节字符，则返回该字符的代码， 代码的计算通过使用以下公式计算其组成字节的数值而得出:(1st byte code)(2nd byte code × 256)(3rd byte code × 2562) …假如最左字符不是一个多字节字符，那么 ORD() 和函数ASCII() 返回相同的值</p>
+</blockquote>
+<h5 id="dd-函数-POSITION-substr-IN-str"><a href="#dd-函数-POSITION-substr-IN-str" class="headerlink" title="dd) 函数 POSITION(substr IN str )"></a>dd) 函数 POSITION(substr IN str )</h5><blockquote>
+<p>函数使用说明：POSITION(substr IN str ) 是 LOCATE(substr ,str ) 同义词</p>
+</blockquote>
+<h5 id="ee-函数QUOTE-str"><a href="#ee-函数QUOTE-str" class="headerlink" title="ee) 函数QUOTE(str )"></a>ee) 函数QUOTE(str )</h5><blockquote>
+<p>函数使用说明：引证一个字符串，由此产生一个在SQL 语句中可用作完全转义数据值的结果。 返回的字符串由单引号标注，每例都带有单引号 (‘’’) 、 反斜线符号 (‘\’) 、 ASCII NUL以及前面有反斜线符号的Control-Z 。如果自变量的值为NULL, 则返回不带单引号的单词 “NULL” 。</p>
+</blockquote>
+<h5 id="ff-函数REPEAT-str-count"><a href="#ff-函数REPEAT-str-count" class="headerlink" title="ff) 函数REPEAT(str ,count )"></a>ff) 函数REPEAT(str ,count )</h5><blockquote>
+<p>函数使用说明：返回一个由重复的字符串str 组成的字符串，字符串str 的数目等于count 。 若 count &lt;= 0, 则返回一个空字符串。若str 或 count 为 NULL ，则返回 NULL 。</p>
+</blockquote>
+<h5 id="gg-函数REPLACE-str-from-str-to-str"><a href="#gg-函数REPLACE-str-from-str-to-str" class="headerlink" title="gg) 函数REPLACE(str ,from_str ,to_str )"></a>gg) 函数REPLACE(str ,from_str ,to_str )</h5><blockquote>
+<p>函数使用说明：返回字符串str 以及所有被字符串to_str 替代的字符串from_str 。</p>
+</blockquote>
+<h5 id="hh-函数REVERSE-str"><a href="#hh-函数REVERSE-str" class="headerlink" title="hh) 函数REVERSE(str )"></a>hh) 函数REVERSE(str )</h5><blockquote>
+<p>函数使用说明：返回字符串 str ，顺序和字符顺序相反。</p>
+</blockquote>
+<h5 id="ii-函数RIGHT-str-len"><a href="#ii-函数RIGHT-str-len" class="headerlink" title="ii) 函数RIGHT(str ,len )"></a>ii) 函数RIGHT(str ,len )</h5><blockquote>
+<p>函数使用说明：从字符串str 开始，返回最右len 字符。</p>
+</blockquote>
+<h5 id="jj-函数RPAD-str-len-padstr"><a href="#jj-函数RPAD-str-len-padstr" class="headerlink" title="jj) 函数RPAD(str ,len ,padstr )"></a>jj) 函数RPAD(str ,len ,padstr )</h5><blockquote>
+<p>函数使用说明：返回字符串str , 其右边被字符串 padstr 填补至len 字符长度。假如字符串str 的长度大于 len , 则返回值被缩短到与 len 字符相同长度</p>
+</blockquote>
+<h5 id="kk-函数RTRIM-str"><a href="#kk-函数RTRIM-str" class="headerlink" title="kk) 函数RTRIM(str )"></a>kk) 函数RTRIM(str )</h5><blockquote>
+<p>函数使用说明：返回字符串 str ，结尾空格字符被删去。</p>
+</blockquote>
+<h5 id="ll-函数-SOUNDEX-str"><a href="#ll-函数-SOUNDEX-str" class="headerlink" title="ll) 函数 SOUNDEX(str )"></a>ll) 函数 SOUNDEX(str )</h5><blockquote>
+<p>函数使用说明：从str 返回一个soundex 字符串。 两个具有几乎同样探测的字符串应该具有同样的 soundex 字符串。一个标准的soundex 字符串的长度为4 个字符，然而SOUNDEX() 函数会返回一个人以长度的字符串。 可使用结果中的SUBSTRING() 来得到一个标准 soundex 字符串。在str 中， 会忽略所有未按照字母顺序排列的字符。所有不在A-Z 范围之内的国际字母符号被视为元音字母。</p>
+</blockquote>
+<h5 id="mm-函数expr1-SOUNDS-LIKE-expr2"><a href="#mm-函数expr1-SOUNDS-LIKE-expr2" class="headerlink" title="mm) 函数expr1 SOUNDS LIKE expr2"></a>mm) 函数expr1 SOUNDS LIKE expr2</h5><blockquote>
+<p>函数使用说明： 这相当于SOUNDEX(expr1 ) = SOUNDEX(expr2 ) 。</p>
+</blockquote>
+<h5 id="nn-函数SPACE-N"><a href="#nn-函数SPACE-N" class="headerlink" title="nn) 函数SPACE(N )"></a>nn) 函数SPACE(N )</h5><blockquote>
+<p>函数使用说明：返回一个由N 间隔符号组成的字符串</p>
+</blockquote>
+<h5 id="oo-函数SUBSTRING-str-pos-SUBSTRING-str-FROM-pos-SUBSTRING-str-pos-len-SUBSTRING-str-FROM-pos-FOR-len"><a href="#oo-函数SUBSTRING-str-pos-SUBSTRING-str-FROM-pos-SUBSTRING-str-pos-len-SUBSTRING-str-FROM-pos-FOR-len" class="headerlink" title="oo) 函数SUBSTRING(str ,pos ) , SUBSTRING(str FROM pos ) SUBSTRING(str ,pos ,len ) , SUBSTRING(str FROM pos FOR len )"></a>oo) 函数SUBSTRING(str ,pos ) , SUBSTRING(str FROM pos ) SUBSTRING(str ,pos ,len ) , SUBSTRING(str FROM pos FOR len )</h5><blockquote>
+<p>函数使用说明：不带有len 参数的格式从字符串str 返回一个子字符串，起始于位置 pos 。带有len 参数的格式从字符串str 返回一个长度同len 字符相同的子字符串，起始于位置 pos 。 使用FROM 的格式为标准 SQL 语法。也可能对pos 使用一个负值。假若这样，则子字符串的位置起始于字符串结尾的pos 字符，而不是字符串的开头位置。在以下格式的函数中可以对pos 使用一个负值。</p>
+</blockquote>
+<h5 id="pp-函数SUBSTRING-INDEX-str-delim-count"><a href="#pp-函数SUBSTRING-INDEX-str-delim-count" class="headerlink" title="pp) 函数SUBSTRING_INDEX(str ,delim ,count )"></a>pp) 函数SUBSTRING_INDEX(str ,delim ,count )</h5><blockquote>
+<p>函数使用说明：在定界符 delim 以及count 出现前，从字符串str 返回自字符串。若count 为正值, 则返回最终定界符( 从左边开始) 左边的一切内容。若count 为负值，则返回定界符（从右边开始）右边的一切内容。</p>
+</blockquote>
+<h5 id="qq-函数-TRIM-BOTH-LEADING-TRAILING-remstr-FROM-str-TRIM-remstr-FROM-str"><a href="#qq-函数-TRIM-BOTH-LEADING-TRAILING-remstr-FROM-str-TRIM-remstr-FROM-str" class="headerlink" title="qq) 函数 TRIM([{BOTH | LEADING | TRAILING} [remstr ] FROM] str ) TRIM(remstr FROM] str )"></a>qq) 函数 TRIM([{BOTH | LEADING | TRAILING} [remstr ] FROM] str ) TRIM(remstr FROM] str )</h5><blockquote>
+<p>函数使用说明：返回字符串 str ， 其中所有remstr 前缀和/ 或后缀都已被删除。若分类符BOTH 、LEADIN 或TRAILING 中没有一个是给定的, 则假设为BOTH 。 remstr 为可选项，在未指定情况下，可删除空格</p>
+</blockquote>
+<h5 id="rr-函数UCASE-str"><a href="#rr-函数UCASE-str" class="headerlink" title="rr) 函数UCASE(str)"></a>rr) 函数UCASE(str)</h5><blockquote>
+<p>函数使用说明：UCASE() 是UPPER() 的同义词</p>
+</blockquote>
+<h5 id="ss-函数UNCOMPRESS-string-to-uncompress"><a href="#ss-函数UNCOMPRESS-string-to-uncompress" class="headerlink" title="ss) 函数UNCOMPRESS(string_to_uncompress )"></a>ss) 函数UNCOMPRESS(string_to_uncompress )</h5><blockquote>
+<p>函数使用说明：对经COMPRESS() 函数压缩后的字符串进行解压缩。若参数为压缩值，则结果为 NULL 。这个函数要求 MySQL 已被诸如zlib 之类的压缩库编译过。否则, 返回值将始终是NULL</p>
+</blockquote>
+<h5 id="tt-函数-UNCOMPRESSED-LENGTH-compressed-string"><a href="#tt-函数-UNCOMPRESSED-LENGTH-compressed-string" class="headerlink" title="tt) 函数 UNCOMPRESSED_LENGTH(compressed_string )"></a>tt) 函数 UNCOMPRESSED_LENGTH(compressed_string )</h5><blockquote>
+<p>函数使用说明： 返回压缩字符串压缩前的长度。</p>
+</blockquote>
+<h5 id="uu-函数-UNHEX-str"><a href="#uu-函数-UNHEX-str" class="headerlink" title="uu)     函数 UNHEX(str)"></a>uu)     函数 UNHEX(str)</h5><blockquote>
+<p>函数使用说明：执行从 HEX(str ) 的反向操作。就是说，它将参数中的每一对十六进制数字理解为一个数字，并将其转化为该数字代表的字符。结果字符以二进制字符串的形式返回</p>
+</blockquote>
+<h5 id="vv-函数-UPPER-str"><a href="#vv-函数-UPPER-str" class="headerlink" title="vv)     函数 UPPER(str )"></a>vv)     函数 UPPER(str )</h5><blockquote>
+<p>函数使用说明：返回字符串 str ， 以及根据最新字符集映射转化为大写字母的字符</p>
+</blockquote>
+<h3 id="三、-数学函数"><a href="#三、-数学函数" class="headerlink" title="三、 数学函数"></a>三、 数学函数</h3><h5 id="a-函数-ABS-X"><a href="#a-函数-ABS-X" class="headerlink" title="a)         函数 ABS(X)"></a>a)         函数 ABS(X)</h5><blockquote>
+<p>函数使用说明：返回 X 的绝对值</p>
+</blockquote>
+<h5 id="b-函数-ACOS-X"><a href="#b-函数-ACOS-X" class="headerlink" title="b)        函数 ACOS(X )"></a>b)        函数 ACOS(X )</h5><blockquote>
+<p>函数使用说明：返回 X 反余弦 , 即 , 余弦是 X 的值。若 X 不在 -1 到 1 的范围之内，则返回 NULL 。</p>
+</blockquote>
+<h5 id="c-函数-ASIN-（-X-）"><a href="#c-函数-ASIN-（-X-）" class="headerlink" title="c)        函数 ASIN （ X ）"></a>c)        函数 ASIN （ X ）</h5><blockquote>
+<p>函数使用说明：返回X 的反正弦，即，正弦为X 的值。若X   若X 不在-1 到 1 的范围之内，则返回 NULL 。</p>
+</blockquote>
+<h5 id="d-函数ATAN-X"><a href="#d-函数ATAN-X" class="headerlink" title="d)      函数ATAN(X )"></a>d)      函数ATAN(X )</h5><blockquote>
+<p>函数使用说明：返回 X 的反正切，即，正切为 X 的值。</p>
+</blockquote>
+<h5 id="e-函数-ATAN-Y-X-ATAN2-Y-X"><a href="#e-函数-ATAN-Y-X-ATAN2-Y-X" class="headerlink" title="e)         函数 ATAN(Y ,X ) , ATAN2(Y ,X )"></a>e)         函数 ATAN(Y ,X ) , ATAN2(Y ,X )</h5><blockquote>
+<p>函数使用说明：返回两个变量 X 及 Y 的反正切。 它类似于 Y 或 X 的反正切计算 , 除非两个参数的符号均用于确定结果所在象限。</p>
+</blockquote>
+<h5 id="f-函数-CEILING-X-CEIL-X"><a href="#f-函数-CEILING-X-CEIL-X" class="headerlink" title="f)         函数 CEILING(X ) CEIL(X )"></a>f)         函数 CEILING(X ) CEIL(X )</h5><blockquote>
+<p>函数使用说明：返回不小于 X 的最小整数值。</p>
+</blockquote>
+<h5 id="g-函数-COS-X"><a href="#g-函数-COS-X" class="headerlink" title="g)        函数 COS(X )"></a>g)        函数 COS(X )</h5><blockquote>
+<p>函数使用说明：返回 X 的余弦，其中 X 在弧度上已知。</p>
+</blockquote>
+<h5 id="h-函数-COT-X"><a href="#h-函数-COT-X" class="headerlink" title="h)        函数 COT(X )"></a>h)        函数 COT(X )</h5><blockquote>
+<p>函数使用说明：返回 X 的余切</p>
+</blockquote>
+<h5 id="i-函数-CRC32-expr"><a href="#i-函数-CRC32-expr" class="headerlink" title="i)          函数 CRC32(expr )"></a>i)          函数 CRC32(expr )</h5><blockquote>
+<p>函数使用说明：计算循环冗余码校验值并返回一个 32 比特无符号值。若参数为 NULL ，则结果为 NULL 。该参数应为一个字符串，而且在不是字符串的情况下会被作为字符串处理（若有可能）</p>
+</blockquote>
+<h5 id="j-函数-DEGREES-X"><a href="#j-函数-DEGREES-X" class="headerlink" title="j)          函数 DEGREES(X )"></a>j)          函数 DEGREES(X )</h5><blockquote>
+<p>函数使用说明：返回参数 X , 该参数由弧度被转化为度。</p>
+</blockquote>
+<h5 id="k-函数-EXP-X"><a href="#k-函数-EXP-X" class="headerlink" title="k)        函数 EXP(X )"></a>k)        函数 EXP(X )</h5><blockquote>
+<p>函数使用说明：返回 e 的 X 乘方后的值 ( 自然对数的底 ) 。</p>
+</blockquote>
+<h5 id="l-函数-FLOOR-X"><a href="#l-函数-FLOOR-X" class="headerlink" title="l)          函数 FLOOR(X )"></a>l)          函数 FLOOR(X )</h5><blockquote>
+<p>函数使用说明：返回不大于 X 的最大整数值 。</p>
+</blockquote>
+<h5 id="m-函数-FORMAT-X-D"><a href="#m-函数-FORMAT-X-D" class="headerlink" title="m)      函数 FORMAT(X ,D )"></a>m)      函数 FORMAT(X ,D )</h5><blockquote>
+<p>函数使用说明：将数字 X 的格式写成 ‘#,###,###.##’ 格式 , 即保留小数点后 D 位，而第 D 位的保留方式为四舍五入，然后将结果以字符串的形式返回</p>
+</blockquote>
+<h5 id="n-函数-LN-X"><a href="#n-函数-LN-X" class="headerlink" title="n)        函数 LN(X )"></a>n)        函数 LN(X )</h5><blockquote>
+<p>函数使用说明：返回 X 的自然对数 , 即 , X 相对于基数 e 的对数</p>
+</blockquote>
+<h5 id="o-函数-LOG-X-LOG-B-X"><a href="#o-函数-LOG-X-LOG-B-X" class="headerlink" title="o)        函数 LOG(X ) LOG(B ,X )"></a>o)        函数 LOG(X ) LOG(B ,X )</h5><blockquote>
+<p>函数使用说明：若用一个参数调用，这个函数就会返回 X 的自然对数。</p>
+</blockquote>
+<h5 id="p-函数-LOG2-X"><a href="#p-函数-LOG2-X" class="headerlink" title="p)        函数 LOG2(X )"></a>p)        函数 LOG2(X )</h5><blockquote>
+<p>函数使用说明：返回 X 的基数为 2 的对数。</p>
+</blockquote>
+<h5 id="q-函数-LOG10-X"><a href="#q-函数-LOG10-X" class="headerlink" title="q)        函数 LOG10(X )"></a>q)        函数 LOG10(X )</h5><blockquote>
+<p>函数使用说明：返回 X 的基数为 10 的对数。</p>
+</blockquote>
+<h5 id="r-函数-MOD-N-M-N-M-N-MOD-M"><a href="#r-函数-MOD-N-M-N-M-N-MOD-M" class="headerlink" title="r)         函数 MOD(N ,M ) , N % M N MOD M"></a>r)         函数 MOD(N ,M ) , N % M N MOD M</h5><blockquote>
+<p>函数使用说明： 模操作。返回 N 被 M 除后的余数。</p>
+</blockquote>
+<h5 id="s-函数-PI"><a href="#s-函数-PI" class="headerlink" title="s)         函数 PI()"></a>s)         函数 PI()</h5><blockquote>
+<p>函数使用说明：返回 ϖ (pi) 的值。默认的显示小数位数是 7 位 , 然而 MySQL 内部会使用完全双精度值。</p>
+</blockquote>
+<h5 id="t-函数-POW-X-Y-POWER-X-Y"><a href="#t-函数-POW-X-Y-POWER-X-Y" class="headerlink" title="t)          函数 POW(X ,Y ) , POWER(X ,Y )"></a>t)          函数 POW(X ,Y ) , POWER(X ,Y )</h5><blockquote>
+<p>函数使用说明：返回 X 的 Y 乘方的结果值。</p>
+</blockquote>
+<h5 id="u-函数-RADIANS-X"><a href="#u-函数-RADIANS-X" class="headerlink" title="u)        函数 RADIANS(X )"></a>u)        函数 RADIANS(X )</h5><blockquote>
+<p>函数使用说明：返回由度转化为弧度的参数 X , ( 注意 ϖ 弧度等于 180 度）。</p>
+</blockquote>
+<h5 id="v-函数-RAND-RAND-N"><a href="#v-函数-RAND-RAND-N" class="headerlink" title="v)        函数 RAND() RAND(N )"></a>v)        函数 RAND() RAND(N )</h5><blockquote>
+<p>函数使用说明：返回一个随机浮点值 v ，范围在 0 到 1 之间 ( 即 , 其范围为 0 ≤ v ≤ 1.0) 。若已指定一个整数参数 N ，则它被用作种子值，用来产生重复序列。</p>
+</blockquote>
+<h5 id="w-函数-ROUND-X-ROUND-X-D"><a href="#w-函数-ROUND-X-ROUND-X-D" class="headerlink" title="w)      函数 ROUND(X ) ROUND(X ,D )"></a>w)      函数 ROUND(X ) ROUND(X ,D )</h5><blockquote>
+<p>函数使用说明：返回参数 X , 其值接近于最近似的整数。在有两个参数的情况下，返回 X ，其值保留到小数点后 D 位，而第 D 位的保留方式为四舍五入。若要接保留 X 值小数点左边的 D位，可将 D 设为负值。</p>
+</blockquote>
+<h5 id="x-函数-SIGN-X"><a href="#x-函数-SIGN-X" class="headerlink" title="x)        函数 SIGN(X )"></a>x)        函数 SIGN(X )</h5><blockquote>
+<p>函数使用说明：返回参数作为 -1 、 0 或 1 的符号，该符号取决于 X 的值为负、零或正。</p>
+</blockquote>
+<h5 id="y-函数-SIN-X"><a href="#y-函数-SIN-X" class="headerlink" title="y)        函数 SIN(X )"></a>y)        函数 SIN(X )</h5><blockquote>
+<p>函数使用说明：返回 X 正弦，其中 X 在弧度中被给定。</p>
+</blockquote>
+<h5 id="z-函数-SQRT-X"><a href="#z-函数-SQRT-X" class="headerlink" title="z)      函数 SQRT(X )"></a>z)      函数 SQRT(X )</h5><blockquote>
+<p>函数使用说明： 返回非负数 X 的二次方根。</p>
+</blockquote>
+<h5 id="aa-函数TAN-X"><a href="#aa-函数TAN-X" class="headerlink" title="aa) 函数TAN(X )"></a>aa) 函数TAN(X )</h5><blockquote>
+<p>函数使用说明： 返回 X 的正切，其中 X 在弧度中被给定。</p>
+</blockquote>
+<h5 id="bb-函数TRUNCATE-X-D"><a href="#bb-函数TRUNCATE-X-D" class="headerlink" title="bb) 函数TRUNCATE(X ,D )"></a>bb) 函数TRUNCATE(X ,D )</h5><blockquote>
+<p>函数使用说明： 返回被舍去至小数点后 D 位的数字 X 。若 D 的值为 0, 则结果不带有小数点或不带有小数部分。可以将 D 设为负数 , 若要截去 ( 归零 ) X 小数点左起第 D 位开始后面所有低位的值</p>
+</blockquote>
+<h3 id="四、-日期和时间函数"><a href="#四、-日期和时间函数" class="headerlink" title="四、            日期和时间函数"></a>四、            日期和时间函数</h3><h5 id="a-函数ADDDATE-date-INTERVAL-expr-type-ADDDATE-expr-days"><a href="#a-函数ADDDATE-date-INTERVAL-expr-type-ADDDATE-expr-days" class="headerlink" title="a)      函数ADDDATE(date ,INTERVAL expr type ) ADDDATE(expr ,days )"></a>a)      函数ADDDATE(date ,INTERVAL expr type ) ADDDATE(expr ,days )</h5><blockquote>
+<p>函数使用说明： 当被第二个参数的 INTERVAL 格式激活后， ADDDATE() 就是 DATE_ADD() 的同义词。相关函数 SUBDATE() 则是 DATE_SUB() 的同义词。对于 INTERVAL 参数上的信息 ，请参见关于 DATE_ADD() 的论述。</p>
+</blockquote>
+<h5 id="b-函数-ADDTIME-expr-expr2"><a href="#b-函数-ADDTIME-expr-expr2" class="headerlink" title="b)        函数 ADDTIME(expr ,expr2 )"></a>b)        函数 ADDTIME(expr ,expr2 )</h5><blockquote>
+<p>函数使用说明： ADDTIME() 将 expr2 添加至 expr 然后返回结果。 expr 是一个时间或时间日期表达式，而 expr2 是一个时间表达式。</p>
+</blockquote>
+<h5 id="c-函数-CONVERT-TZ-dt-from-tz-to-tz"><a href="#c-函数-CONVERT-TZ-dt-from-tz-to-tz" class="headerlink" title="c)      函数 CONVERT_TZ(dt ,from_tz ,to_tz )"></a>c)      函数 CONVERT_TZ(dt ,from_tz ,to_tz )</h5><blockquote>
+<p>函数使用说明： CONVERT_TZ() 将时间日期值 dt 从 from_tz 给出的时区转到 to_tz 给出的时区，然后返回结果值。关于可能指定的时区的详细论述，若自变量无效，则这个函数会返回NULL</p>
+</blockquote>
+<h5 id="d-函数-CURDATE"><a href="#d-函数-CURDATE" class="headerlink" title="d)        函数 CURDATE()"></a>d)        函数 CURDATE()</h5><blockquote>
+<p>函数使用说明：将当前日期按照 ‘YYYY-MM-DD’ 或 YYYYMMDD 格式的值返回，具体格式根据函数用在字符串或是数字语境中而定。</p>
+</blockquote>
+<h5 id="e-函数-CURRENT-DATE-CURRENT-DATE"><a href="#e-函数-CURRENT-DATE-CURRENT-DATE" class="headerlink" title="e)         函数 CURRENT_DATE CURRENT_DATE()"></a>e)         函数 CURRENT_DATE CURRENT_DATE()</h5><blockquote>
+<p>函数使用说明： CURRENT_DATE 和 CURRENT_DATE() 是的同义词 .</p>
+</blockquote>
+<h5 id="f-函数-CURTIME"><a href="#f-函数-CURTIME" class="headerlink" title="f)      函数 CURTIME()"></a>f)      函数 CURTIME()</h5><blockquote>
+<p>函数使用说明： 将当前时间以 ‘HH:MM:SS’ 或 HHMMSS 的格式返回， 具体格式根据函数用在字符串或是数字语境中而定。</p>
+</blockquote>
+<h5 id="g-函数-CURRENT-TIME-CURRENT-TIME"><a href="#g-函数-CURRENT-TIME-CURRENT-TIME" class="headerlink" title="g)      函数 CURRENT_TIME, CURRENT_TIME()"></a>g)      函数 CURRENT_TIME, CURRENT_TIME()</h5><blockquote>
+<p>函数使用说明： CURRENT_TIME 和 CURRENT_TIME() 是 CURTIME() 的同义词。</p>
+</blockquote>
+<h5 id="h-函数-CURRENT-TIMESTAMP-CURRENT-TIMESTAMP"><a href="#h-函数-CURRENT-TIMESTAMP-CURRENT-TIMESTAMP" class="headerlink" title="h)      函数 CURRENT_TIMESTAMP, CURRENT_TIMESTAMP()"></a>h)      函数 CURRENT_TIMESTAMP, CURRENT_TIMESTAMP()</h5><blockquote>
+<p>函数使用说明： CURRENT_TIMESTAMP 和 CURRENT_TIMESTAMP() 是 NOW() 的同义词</p>
+</blockquote>
+<h5 id="i-函数-DATE-expr"><a href="#i-函数-DATE-expr" class="headerlink" title="i)      函数 DATE(expr )"></a>i)      函数 DATE(expr )</h5><blockquote>
+<p>函数使用说明： 提取日期或时间日期表达式 expr 中的日期部分。</p>
+</blockquote>
+<h5 id="j-函数-DATEDIFF-expr-expr2"><a href="#j-函数-DATEDIFF-expr-expr2" class="headerlink" title="j)          函数 DATEDIFF(expr ,expr2 )"></a>j)          函数 DATEDIFF(expr ,expr2 )</h5><blockquote>
+<p>函数使用说明： DATEDIFF() 返回起始时间 expr 和结束时间 expr2 之间的天数。 Expr 和 expr2 为日期或 date-and-time 表达式。计算中只用到这些值的日期部分。</p>
+</blockquote>
+<h5 id="k-函数-DATE-ADD-date-INTERVAL-expr-type-DATE-SUB-date-INTERVAL-expr-type"><a href="#k-函数-DATE-ADD-date-INTERVAL-expr-type-DATE-SUB-date-INTERVAL-expr-type" class="headerlink" title="k)        函数 DATE_ADD(date ,INTERVAL expr type ) DATE_SUB(date ,INTERVAL expr type )"></a>k)        函数 DATE_ADD(date ,INTERVAL expr type ) DATE_SUB(date ,INTERVAL expr type )</h5><blockquote>
+<p>函数使用说明：这些函数执行日期运算。 date 是一个 DATETIME 或 DATE 值，用来指定起始时间。 expr 是一个表达式，用来指定从起始日期添加或减去的时间间隔值。   Expr 是一个字符串 ; 对于负值的时间间隔，它可以以一个 ‘-’ 开头。 type 为关键词，它指示了表达式被解释的方式。</p>
+</blockquote>
+<h5 id="l-函数-DATE-FORMAT-date-format"><a href="#l-函数-DATE-FORMAT-date-format" class="headerlink" title="l)          函数 DATE_FORMAT(date ,format )"></a>l)          函数 DATE_FORMAT(date ,format )</h5><blockquote>
+<p>函数使用说明：根据 format 字符串安排 date 值的格式。</p>
+</blockquote>
+<h5 id="m-函数-DAY-date"><a href="#m-函数-DAY-date" class="headerlink" title="m)      函数 DAY(date )"></a>m)      函数 DAY(date )</h5><blockquote>
+<p>函数使用说明： DAY() 和 DAYOFMONTH() 的意义相同</p>
+</blockquote>
+<h5 id="n-函数-DAYNAME-date"><a href="#n-函数-DAYNAME-date" class="headerlink" title="n)        函数 DAYNAME(date )"></a>n)        函数 DAYNAME(date )</h5><blockquote>
+<p>函数使用说明：返回 date 对应的工作日名称。</p>
+</blockquote>
+<h5 id="o-函数-DAYOFMONTH-date"><a href="#o-函数-DAYOFMONTH-date" class="headerlink" title="o)        函数 DAYOFMONTH(date )"></a>o)        函数 DAYOFMONTH(date )</h5><blockquote>
+<p>函数使用说明：返回 date 对应的该月日期，范围是从 1 到 31</p>
+</blockquote>
+<h5 id="p-函数-DAYOFWEEK-date"><a href="#p-函数-DAYOFWEEK-date" class="headerlink" title="p)        函数 DAYOFWEEK(date )"></a>p)        函数 DAYOFWEEK(date )</h5><blockquote>
+<p>函数使用说明：返回 date (1 = 周日 , 2 = 周一 , …, 7 = 周六 ) 对应的工作日索引。这些索引值符合 ODBC 标准</p>
+</blockquote>
+<h5 id="q-函数-DAYOFYEAR-date"><a href="#q-函数-DAYOFYEAR-date" class="headerlink" title="q)        函数 DAYOFYEAR(date )"></a>q)        函数 DAYOFYEAR(date )</h5><blockquote>
+<p>函数使用说明：返回date 对应的一年中的天数，范围是从 1 到366 。</p>
+</blockquote>
+<h5 id="r-函数-EXTRACT-type-FROM-date"><a href="#r-函数-EXTRACT-type-FROM-date" class="headerlink" title="r)         函数 EXTRACT(type FROM date )"></a>r)         函数 EXTRACT(type FROM date )</h5><blockquote>
+<p>函数使用说明： EXTRACT() 函数所使用的时间间隔类型说明符同 DATE_ADD() 或 DATE_SUB() 的相同 , 但它从日期中提取其部分，而不是执行日期运算。</p>
+</blockquote>
+<h5 id="s-函数FROM-DAYS-N"><a href="#s-函数FROM-DAYS-N" class="headerlink" title="s)      函数FROM_DAYS(N )"></a>s)      函数FROM_DAYS(N )</h5><blockquote>
+<p>函数使用说明： 给定一个天数   N , 返回一个 DATE 值。</p>
+</blockquote>
+<h5 id="t-函数-FROM-UNIXTIME-unix-timestamp-ROM-UNIXTIME-unix-timestamp-format"><a href="#t-函数-FROM-UNIXTIME-unix-timestamp-ROM-UNIXTIME-unix-timestamp-format" class="headerlink" title="t)          函数 FROM_UNIXTIME(unix_timestamp )ROM_UNIXTIME(unix_timestamp ,format )"></a>t)          函数 FROM_UNIXTIME(unix_timestamp )ROM_UNIXTIME(unix_timestamp ,format )</h5><blockquote>
+<p>函数使用说明：返回’YYYY-MM-DD HH:MM:SS’ 或YYYYMMDDHHMMSS 格式值的unix_timestamp 参数表示，具体格式取决于该函数是否用在字符串中或是数字语境中。 若format 已经给出，则结果的格式是根据format 字符串而定。 format 可以包含同DATE_FORMAT() 函数输入项列表中相同的说明符。</p>
+</blockquote>
+<h5 id="u-函数-GET-FORMAT-DATE-TIME-DATETIME-‘EUR’-’USA’-’JIS’-’ISO’-’INTERNAL’"><a href="#u-函数-GET-FORMAT-DATE-TIME-DATETIME-‘EUR’-’USA’-’JIS’-’ISO’-’INTERNAL’" class="headerlink" title="u)        函数 GET_FORMAT(DATE|TIME|DATETIME, ‘EUR’|’USA’|’JIS’|’ISO’|’INTERNAL’)"></a>u)        函数 GET_FORMAT(DATE|TIME|DATETIME, ‘EUR’|’USA’|’JIS’|’ISO’|’INTERNAL’)</h5><blockquote>
+<p>函数使用说明：返回一个格式字符串。这个函数在同 DATE_FORMAT() 及 STR_TO_DATE() 函数结合时很有用</p>
+</blockquote>
+<h5 id="v-函数-HOUR-time"><a href="#v-函数-HOUR-time" class="headerlink" title="v)        函数 HOUR(time )"></a>v)        函数 HOUR(time )</h5><blockquote>
+<p>函数使用说明：返回 time 对应的小时数。对于日时值的返回值范围是从 0 到 23</p>
+</blockquote>
+<h5 id="w-函数-LAST-DAY-date"><a href="#w-函数-LAST-DAY-date" class="headerlink" title="w)      函数 LAST_DAY(date )"></a>w)      函数 LAST_DAY(date )</h5><blockquote>
+<p>函数使用说明：获取一个日期或日期时间值，返回该月最后一天对应的值。若参数无效，则返回 NULL 。</p>
+</blockquote>
+<h5 id="x-函数-LOCALTIME-LOCALTIME"><a href="#x-函数-LOCALTIME-LOCALTIME" class="headerlink" title="x)        函数 LOCALTIME, LOCALTIME()"></a>x)        函数 LOCALTIME, LOCALTIME()</h5><blockquote>
+<p>函数使用说明： LOCALTIME 及 LOCALTIME() 和 NOW() 具有相同意义。</p>
+</blockquote>
+<h5 id="y-函数-LOCALTIMESTAMP-LOCALTIMESTAMP"><a href="#y-函数-LOCALTIMESTAMP-LOCALTIMESTAMP" class="headerlink" title="y)      函数 LOCALTIMESTAMP, LOCALTIMESTAMP()"></a>y)      函数 LOCALTIMESTAMP, LOCALTIMESTAMP()</h5><blockquote>
+<p>函数使用说明： LOCALTIMESTAMP 和 LOCALTIMESTAMP() 和 NOW() 具有相同意义。</p>
+</blockquote>
+<h5 id="z-函数-MAKEDATE-year-dayofyear"><a href="#z-函数-MAKEDATE-year-dayofyear" class="headerlink" title="z)         函数 MAKEDATE(year ,dayofyear )"></a>z)         函数 MAKEDATE(year ,dayofyear )</h5><blockquote>
+<p>函数使用说明：给出年份值和一年中的天数值，返回一个日期。 dayofyear 必须大于 0 ，否则结果为 NULL 。</p>
+</blockquote>
+<h5 id="aa-函数-MAKETIME-hour-minute-second"><a href="#aa-函数-MAKETIME-hour-minute-second" class="headerlink" title="aa) 函数 MAKETIME(hour ,minute ,second )"></a>aa) 函数 MAKETIME(hour ,minute ,second )</h5><blockquote>
+<p>函数使用说明： 返回由 hour 、 minute 和 second 参数计算得出的时间值</p>
+</blockquote>
+<h5 id="bb-函数-CROSECOND-expr"><a href="#bb-函数-CROSECOND-expr" class="headerlink" title="bb)     函数 CROSECOND(expr )"></a>bb)     函数 CROSECOND(expr )</h5><blockquote>
+<p>函数使用说明：从时间或日期时间表达式 expr 返回微秒值，其数字范围从 0 到 999999 。</p>
+</blockquote>
+<h5 id="cc-函数-MINUTE-time"><a href="#cc-函数-MINUTE-time" class="headerlink" title="cc)     函数 MINUTE(time )"></a>cc)     函数 MINUTE(time )</h5><blockquote>
+<p>函数使用说明：返回 time 对应的分钟数 , 范围是从 0 到 59 。</p>
+</blockquote>
+<h5 id="dd-函数-MONTH-date"><a href="#dd-函数-MONTH-date" class="headerlink" title="dd)     函数 MONTH(date )"></a>dd)     函数 MONTH(date )</h5><blockquote>
+<p>函数使用说明：返回 date 对应的月份，范围时从 1 到 12 。</p>
+</blockquote>
+<h5 id="ee-函数-MONTHNAME-date"><a href="#ee-函数-MONTHNAME-date" class="headerlink" title="ee) 函数 MONTHNAME(date )"></a>ee) 函数 MONTHNAME(date )</h5><blockquote>
+<p>函数使用说明： 返回 date 对应月份的全名</p>
+</blockquote>
+<h5 id="ff-函数-NOW"><a href="#ff-函数-NOW" class="headerlink" title="ff)       函数 NOW()"></a>ff)       函数 NOW()</h5><blockquote>
+<p>函数使用说明：返回当前日期和时间值，其格式为 ‘YYYY-MM-DD HH:MM:SS’ 或 YYYYMMDDHHMMSS ， 具体格式取决于该函数是否用在字符串中或数字语境中。</p>
+</blockquote>
+<h5 id="gg-函数-PERIOD-ADD-P-N"><a href="#gg-函数-PERIOD-ADD-P-N" class="headerlink" title="gg)     函数 PERIOD_ADD(P ,N )"></a>gg)     函数 PERIOD_ADD(P ,N )</h5><blockquote>
+<p>函数使用说明：添加 N 个月至周期 P ( 格式为 YYMM 或 YYYYMM) ，返回值的格式为 YYYYMM 。注意周期参数 P 不是 日期值。 </p>
+</blockquote>
+<h5 id="hh-函数-PERIOD-DIFF-P1-P2"><a href="#hh-函数-PERIOD-DIFF-P1-P2" class="headerlink" title="hh)     函数 PERIOD_DIFF(P1 ,P2 )"></a>hh)     函数 PERIOD_DIFF(P1 ,P2 )</h5><blockquote>
+<p>函数使用说明：返回周期 P1 和 P2 之间的月份数。 P1 和 P2 的格式应该为 YYMM 或 YYYYMM 。注意周期参数 P1 和 P2 不是 日期值。</p>
+</blockquote>
+<h5 id="ii-函数-QUARTER-date"><a href="#ii-函数-QUARTER-date" class="headerlink" title="ii)         函数 QUARTER(date )"></a>ii)         函数 QUARTER(date )</h5><blockquote>
+<p>函数使用说明：返回 date 对应的一年中的季度值，范围是从 1 到 4</p>
+</blockquote>
+<h5 id="jj-函数-SECOND-time"><a href="#jj-函数-SECOND-time" class="headerlink" title="jj)         函数 SECOND(time )"></a>jj)         函数 SECOND(time )</h5><blockquote>
+<p>函数使用说明：返回 time 对应的秒数 , 范围是从 0 到 59 。</p>
+</blockquote>
+<h5 id="kk-函数-SEC-TO-TIME-seconds"><a href="#kk-函数-SEC-TO-TIME-seconds" class="headerlink" title="kk) 函数 SEC_TO_TIME(seconds )"></a>kk) 函数 SEC_TO_TIME(seconds )</h5><blockquote>
+<p>函数使用说明： 返回被转化为小时、 分钟和秒数的 seconds 参数值 , 其格式为 ‘HH:MM:SS’ 或 HHMMSS ，具体格式根据该函数是否用在字符串或数字语境中而定</p>
+</blockquote>
+<h5 id="ll-函数-STR-TO-DATE-str-format"><a href="#ll-函数-STR-TO-DATE-str-format" class="headerlink" title="ll) 函数 STR_TO_DATE(str ,format )"></a>ll) 函数 STR_TO_DATE(str ,format )</h5><blockquote>
+<p>函数使用说明：这是 DATE_FORMAT() 函数的倒转。它获取一个字符串 str 和一个格式字符串 format 。若格式字符串包含日期和时间部分，则 STR_TO_DATE() 返回一个 DATETIME值， 若该字符串只包含日期部分或时间部分，则返回一个 DATE 或 TIME 值。</p>
+</blockquote>
+<h5 id="mm-函数-SUBDATE-date-INTERVAL-expr-type-SUBDATE-expr-days"><a href="#mm-函数-SUBDATE-date-INTERVAL-expr-type-SUBDATE-expr-days" class="headerlink" title="mm) 函数 SUBDATE(date ,INTERVAL expr type ) SUBDATE(expr ,days )"></a>mm) 函数 SUBDATE(date ,INTERVAL expr type ) SUBDATE(expr ,days )</h5><blockquote>
+<p>函数使用说明：当被第二个参数的 INTERVAL 型式调用时 , SUBDATE() 和 DATE_SUB() 的意义相同。对于有关 INTERVAL 参数的信息， 见有关 DATE_ADD() 的讨论。</p>
+</blockquote>
+<h5 id="nn-函数-SUBTIME-expr-expr2"><a href="#nn-函数-SUBTIME-expr-expr2" class="headerlink" title="nn)     函数 SUBTIME(expr ,expr2 )"></a>nn)     函数 SUBTIME(expr ,expr2 )</h5><blockquote>
+<p>函数使用说明： SUBTIME() 从 expr 中提取 expr2 ，然后返回结果。 expr 是一个时间或日期时间表达式，而 xpr2 是一个时间表达式。</p>
+</blockquote>
+<h5 id="oo-函数-SYSDATE"><a href="#oo-函数-SYSDATE" class="headerlink" title="oo)     函数 SYSDATE()"></a>oo)     函数 SYSDATE()</h5><blockquote>
+<p>函数使用说明：返回当前日期和时间值，格式为 ‘YYYY-MM-DD HH:MM:SS’ 或 YYYYMMDDHHMMSS ， 具体格式根据函数是否用在字符串或数字语境而定。</p>
+</blockquote>
+<h5 id="pp-函数-TIME-expr"><a href="#pp-函数-TIME-expr" class="headerlink" title="pp)     函数 TIME(expr )"></a>pp)     函数 TIME(expr )</h5><blockquote>
+<p>函数使用说明：提取一个时间或日期时间表达式的时间部分，并将其以字符串形式返回。</p>
+</blockquote>
+<h5 id="qq-函数-TIMEDIFF-expr-expr2"><a href="#qq-函数-TIMEDIFF-expr-expr2" class="headerlink" title="qq)     函数 TIMEDIFF(expr ,expr2 )"></a>qq)     函数 TIMEDIFF(expr ,expr2 )</h5><blockquote>
+<p>函数使用说明： TIMEDIFF() 返回起始时间 expr 和结束时间 expr2 之间的时间。 expr 和 expr2 为时间或 date-and-time 表达式 , 两个的类型必须一样。 </p>
+</blockquote>
+<h5 id="rr-函数TIMESTAMP-expr-TIMESTAMP-expr-expr2"><a href="#rr-函数TIMESTAMP-expr-TIMESTAMP-expr-expr2" class="headerlink" title="rr) 函数TIMESTAMP(expr ) , TIMESTAMP(expr ,expr2 )"></a>rr) 函数TIMESTAMP(expr ) , TIMESTAMP(expr ,expr2 )</h5><blockquote>
+<p>函数使用说明： 对于一个单参数 , 该函数将日期或日期时间表达式 expr 作为日期时间值返回 . 对于两个参数 , 它将时间表达式 expr2 添加到日期或日期时间表达式 expr 中，将 theresult作为日期时间值返回。</p>
+</blockquote>
+<h5 id="ss-函数-TIMESTAMPADD-interval-int-expr-datetime-expr"><a href="#ss-函数-TIMESTAMPADD-interval-int-expr-datetime-expr" class="headerlink" title="ss)      函数 TIMESTAMPADD(interval ,int_expr ,datetime_expr )"></a>ss)      函数 TIMESTAMPADD(interval ,int_expr ,datetime_expr )</h5><blockquote>
+<p>函数使用说明：将整型表达式int_expr 添加到日期或日期时间表达式 datetime_expr 中。 int_expr 的单位被时间间隔参数给定，该参数必须是以下值的其中一个： FRAC_SECOND、SECOND 、 MINUTE 、 HOUR 、 DAY 、 WEEK 、 MONTH 、 QUARTER 或 YEAR 。可使用所显示的关键词指定Interval 值，或使用SQL_TSI_ 前缀。例如, DAY 或SQL_TSI_DAY都是正确的</p>
+</blockquote>
+<h5 id="tt-函数-TIMESTAMPDIFF-interval-datetime-expr1-datetime-expr2"><a href="#tt-函数-TIMESTAMPDIFF-interval-datetime-expr1-datetime-expr2" class="headerlink" title="tt)        函数 TIMESTAMPDIFF(interval ,datetime_expr1 ,datetime_expr2 )"></a>tt)        函数 TIMESTAMPDIFF(interval ,datetime_expr1 ,datetime_expr2 )</h5><blockquote>
+<p>函数使用说明：返回日期或日期时间表达式 datetime_expr1 和 datetime_expr2 the 之间的整数差。其结果的单位由 interval 参数给出。 interval 的法定值同 TIMESTAMPADD() 函数说明中所列出的相同。</p>
+</blockquote>
+<h5 id="uu-函数-TIME-FORMAT-time-format"><a href="#uu-函数-TIME-FORMAT-time-format" class="headerlink" title="uu)     函数 TIME_FORMAT(time ,format )"></a>uu)     函数 TIME_FORMAT(time ,format )</h5><blockquote>
+<p>函数使用说明：其使用和 DATE_FORMAT() 函数相同 , 然而 format 字符串可能仅会包含处理小时、分钟和秒的格式说明符。其它说明符产生一个 NULL 值或 0 。</p>
+</blockquote>
+<h5 id="vv-函数-TIME-TO-SEC-time"><a href="#vv-函数-TIME-TO-SEC-time" class="headerlink" title="vv)     函数 TIME_TO_SEC(time )"></a>vv)     函数 TIME_TO_SEC(time )</h5><blockquote>
+<p>函数使用说明：返回已转化为秒的 time 参数</p>
+</blockquote>
+<h5 id="ww-函数-TO-DAYS-date"><a href="#ww-函数-TO-DAYS-date" class="headerlink" title="ww) 函数 TO_DAYS(date )"></a>ww) 函数 TO_DAYS(date )</h5><blockquote>
+<p>函数使用说明：给定一个日期 date , 返回一个天数 ( 从年份 0 开始的天数 ) 。</p>
+</blockquote>
+<h5 id="xx-函数-UNIX-TIMESTAMP-UNIX-TIMESTAMP-date"><a href="#xx-函数-UNIX-TIMESTAMP-UNIX-TIMESTAMP-date" class="headerlink" title="xx)     函数 UNIX_TIMESTAMP(), UNIX_TIMESTAMP(date )"></a>xx)     函数 UNIX_TIMESTAMP(), UNIX_TIMESTAMP(date )</h5><blockquote>
+<p>函数使用说明：若无参数调用，则返回一个 Unix timestamp (‘1970-01-01 00:00:00’ GMT 之后的秒数 ) 作为无符号整数。若用 date 来调用 UNIX_TIMESTAMP() ，它会将参数值以’1970-01-01 00:00:00’ GMT 后的秒数的形式返回。 date 可以是一个 DATE 字符串、一个 DATETIME 字符串、一个 TIMESTAMP 或一个当地时间的 YYMMDD 或 YYYMMDD 格式的数字。</p>
+</blockquote>
+<h5 id="yy-函数-UTC-DATE-UTC-DATE"><a href="#yy-函数-UTC-DATE-UTC-DATE" class="headerlink" title="yy) 函数 UTC_DATE, UTC_DATE()"></a>yy) 函数 UTC_DATE, UTC_DATE()</h5><blockquote>
+<p>函数使用说明：返回当前 UTC 日期值，其格式为 ‘YYYY-MM-DD’ 或 YYYYMMDD ，具体格式取决于函数是否用在字符串或数字语境中。</p>
+</blockquote>
+<h5 id="zz-函数-UTC-TIME-UTC-TIME"><a href="#zz-函数-UTC-TIME-UTC-TIME" class="headerlink" title="zz)      函数 UTC_TIME, UTC_TIME()"></a>zz)      函数 UTC_TIME, UTC_TIME()</h5><blockquote>
+<p>函数使用说明：返回当前 UTC 值，其格式为   ‘HH:MM:SS’ 或 HHMMSS ，具体格式根据该函数是否用在字符串或数字语境而定。</p>
+</blockquote>
+<h5 id="aaa-函数-UTC-TIMESTAMP-UTC-TIMESTAMP"><a href="#aaa-函数-UTC-TIMESTAMP-UTC-TIMESTAMP" class="headerlink" title="aaa)   函数 UTC_TIMESTAMP, UTC_TIMESTAMP()"></a>aaa)   函数 UTC_TIMESTAMP, UTC_TIMESTAMP()</h5><blockquote>
+<p>函数使用说明：返回当前 UTC 日期及时间值，格式为 ‘YYYY-MM-DD HH:MM:SS’ 或 YYYYMMDDHHMMSS ，具体格式根据该函数是否用在字符串或数字语境而定</p>
+</blockquote>
+<h5 id="bbb-函数-WEEK-date-mode"><a href="#bbb-函数-WEEK-date-mode" class="headerlink" title="bbb) 函数 WEEK(date [,mode ])"></a>bbb) 函数 WEEK(date [,mode ])</h5><blockquote>
+<p>函数使用说明：该函数返回 date 对应的星期数。 WEEK() 的双参数形式允许你指定该星期是否起始于周日或周一， 以及返回值的范围是否为从 0 到 53 或从 1 到 53 。若 mode 参数被省略，则使用 default_week_format 系统自变量的值。</p>
+</blockquote>
+<h5 id="ccc-函数-WEEKDAY-date"><a href="#ccc-函数-WEEKDAY-date" class="headerlink" title="ccc) 函数 WEEKDAY(date )"></a>ccc) 函数 WEEKDAY(date )</h5><blockquote>
+<p>函数使用说明：返回 date (0 = 周一 , 1 = 周二 , … 6 = 周日 ) 对应的工作日索引   weekday index for</p>
+</blockquote>
+<h5 id="ddd-函数-WEEKOFYEAR-date"><a href="#ddd-函数-WEEKOFYEAR-date" class="headerlink" title="ddd) 函数 WEEKOFYEAR(date )"></a>ddd) 函数 WEEKOFYEAR(date )</h5><blockquote>
+<p>函数使用说明：将该日期的阳历周以数字形式返回，范围是从 1 到 53 。它是一个兼容度函数，相当于 WEEK(date ,3) 。</p>
+</blockquote>
+<h5 id="eee-函数-YEAR-date"><a href="#eee-函数-YEAR-date" class="headerlink" title="eee)   函数 YEAR(date )"></a>eee)   函数 YEAR(date )</h5><blockquote>
+<p>函数使用说明：返回 date 对应的年份 , 范围是从 1000 到 9999 。</p>
+</blockquote>
+<h5 id="fff-函数-YEARWEEK-date-YEARWEEK-date-start"><a href="#fff-函数-YEARWEEK-date-YEARWEEK-date-start" class="headerlink" title="fff)    函数 YEARWEEK(date ), YEARWEEK(date ,start )"></a>fff)    函数 YEARWEEK(date ), YEARWEEK(date ,start )</h5><blockquote>
+<p>函数使用说明：返回一个日期对应的年或周。 start 参数的工作同 start 参数对 WEEK() 的工作相同。结果中的年份可以和该年的第一周和最后一周对应的日期参数有所不同。</p>
+</blockquote>
+<h3 id="五、-全文搜索功能函数"><a href="#五、-全文搜索功能函数" class="headerlink" title="五、 全文搜索功能函数"></a>五、 全文搜索功能函数</h3><h5 id="a-函数-MATCH-col1-col2-…-AGAINST-expr-IN-BOOLEAN-MODE-WITH-QUERY-EXPANSION"><a href="#a-函数-MATCH-col1-col2-…-AGAINST-expr-IN-BOOLEAN-MODE-WITH-QUERY-EXPANSION" class="headerlink" title="a)         函数 MATCH (col1,col2,…) AGAINST (expr [IN BOOLEAN MODE | WITH QUERY EXPANSION])"></a>a)         函数 MATCH (col1,col2,…) AGAINST (expr [IN BOOLEAN MODE | WITH QUERY EXPANSION])</h5><h3 id="六、-加密函数"><a href="#六、-加密函数" class="headerlink" title="六、 加密函数"></a>六、 加密函数</h3><h5 id="a-函数-AES-ENCRYPT-str-key-str-AES-DECRYPT-crypt-str-key-str"><a href="#a-函数-AES-ENCRYPT-str-key-str-AES-DECRYPT-crypt-str-key-str" class="headerlink" title="a)         函数 AES_ENCRYPT(str ,key_str ) , AES_DECRYPT(crypt_str ,key_str )"></a>a)         函数 AES_ENCRYPT(str ,key_str ) , AES_DECRYPT(crypt_str ,key_str )</h5><blockquote>
+<p>函数使用说明：这些函数允许使用官方 AES 进行加密和数据加密 ( 高级加密标准 ) 算法 , 即以前人们所熟知的 “Rijndael” 。 保密关键字的长度为 128 比特，不过你可以通过改变源而将其延长到 256 比特。我们选择了 128 比特的原因是它的速度要快得多，且对于大多数用途而言这个保密程度已经够用。</p>
+</blockquote>
+<h5 id="b-函数DECODE-crypt-str-pass-str"><a href="#b-函数DECODE-crypt-str-pass-str" class="headerlink" title="b)      函数DECODE(crypt_str ,pass_str )"></a>b)      函数DECODE(crypt_str ,pass_str )</h5><blockquote>
+<p>函数使用说明：使用 pass_str 作为密码，解密加密字符串 crypt_str ， crypt_str 应该是由 ENCODE() 返回的字符串。</p>
+</blockquote>
+<h5 id="c-函数-ENCODE-str-pass-str"><a href="#c-函数-ENCODE-str-pass-str" class="headerlink" title="c)        函数 ENCODE(str ,pass_str )"></a>c)        函数 ENCODE(str ,pass_str )</h5><blockquote>
+<p>函数使用说明：使用 pass_str 作为密码，解密 str 。 使用 DECODE() 解密结果。</p>
+</blockquote>
+<h5 id="d-函数-DES-DECRYPT-crypt-str-key-str"><a href="#d-函数-DES-DECRYPT-crypt-str-key-str" class="headerlink" title="d)        函数 DES_DECRYPT(crypt_str [,key_str ])"></a>d)        函数 DES_DECRYPT(crypt_str [,key_str ])</h5><blockquote>
+<p>函数使用说明：使用 DES_ENCRYPT() 加密一个字符串。若出现错误，这个函数会返回 NULL 。</p>
+</blockquote>
+<h5 id="e-函数-DES-ENCRYPT-str-key-num-key-str"><a href="#e-函数-DES-ENCRYPT-str-key-num-key-str" class="headerlink" title="e)         函数 DES_ENCRYPT(str [,(key_num |key_str )])"></a>e)         函数 DES_ENCRYPT(str [,(key_num |key_str )])</h5><blockquote>
+<p>函数使用说明：用 Triple-DES 算法给出的关键字加密字符串。若出现错误，这个函数会返回 NULL 。</p>
+</blockquote>
+<h5 id="f-函数-ENCRYPT-str-salt"><a href="#f-函数-ENCRYPT-str-salt" class="headerlink" title="f)         函数 ENCRYPT(str [,salt ])"></a>f)         函数 ENCRYPT(str [,salt ])</h5><blockquote>
+<p>函数使用说明：使用 Unix crypt() 系统调用加密 str 。 salt 参数应为一个至少包含 2 个字符的字符串。若没有给出 salt 参数，则使用任意值。</p>
+</blockquote>
+<h5 id="g-函数-MD5-str"><a href="#g-函数-MD5-str" class="headerlink" title="g)        函数 MD5(str )"></a>g)        函数 MD5(str )</h5><blockquote>
+<p>函数使用说明：为字符串算出一个 MD5 128 比特检查和。该值以 32 位十六进制数字的二进制字符串的形式返回 , 若参数为 NULL 则会返回 NULL 。例如，返回值可被用作散列关键字</p>
+</blockquote>
+<h5 id="h-函数-OLD-PASSWORD-str"><a href="#h-函数-OLD-PASSWORD-str" class="headerlink" title="h)        函数 OLD_PASSWORD(str )"></a>h)        函数 OLD_PASSWORD(str )</h5><blockquote>
+<p>函数使用说明：当 PASSWORD() 的执行变为改善安全性时， OLD_PASSWORD() 会被添加到 MySQL 。 OLD_PASSWORD() 返回从前的 PASSWORD() 执行值 ( 4.1 之前 ) ，同时允许你为任何 4.1 之前的需要连接到你的 5.1 版本 MySQL 服务器前客户端设置密码，从而不至于将它们切断</p>
+</blockquote>
+<h5 id="i-函数PASSWORD-str"><a href="#i-函数PASSWORD-str" class="headerlink" title="i)      函数PASSWORD(str )"></a>i)      函数PASSWORD(str )</h5><blockquote>
+<p>函数使用说明：从原文密码str 计算并返回密码字符串，当参数为 NULL 时返回 NULL 。这个函数用于用户授权表的Password 列中的加密MySQL 密码存储</p>
+</blockquote>
+<h3 id="七、-信息函数"><a href="#七、-信息函数" class="headerlink" title="七、 信息函数"></a>七、 信息函数</h3><h5 id="a-函数-BENCHMARK-count-expr"><a href="#a-函数-BENCHMARK-count-expr" class="headerlink" title="a)         函数 BENCHMARK(count ,expr )"></a>a)         函数 BENCHMARK(count ,expr )</h5><blockquote>
+<p>函数使用说明： BENCHMARK() 函数重复 count 次执行表达式 expr 。 它可以被用于计算   MySQL 处理表达式的速度。结果值通常为 0 。另一种用处来自 mysql 客户端内部 , 能够报告问询执行的次数</p>
+</blockquote>
+<h5 id="b-函数-CHARSET-str"><a href="#b-函数-CHARSET-str" class="headerlink" title="b)        函数 CHARSET(str )"></a>b)        函数 CHARSET(str )</h5><blockquote>
+<p>函数使用说明：返回字符串自变量的字符集。</p>
+</blockquote>
+<h5 id="c-函数-COERCIBILITY-str"><a href="#c-函数-COERCIBILITY-str" class="headerlink" title="c)        函数 COERCIBILITY(str )"></a>c)        函数 COERCIBILITY(str )</h5><blockquote>
+<p>函数使用说明：返回字符串自变量的整序可压缩性值。</p>
+</blockquote>
+<h5 id="d-函数-COLLATION-str"><a href="#d-函数-COLLATION-str" class="headerlink" title="d)      函数 COLLATION(str )"></a>d)      函数 COLLATION(str )</h5><blockquote>
+<p>函数使用说明：返回惠字符串参数的排序方式。</p>
+</blockquote>
+<h5 id="e-函数-CONNECTION-ID"><a href="#e-函数-CONNECTION-ID" class="headerlink" title="e)         函数 CONNECTION_ID()"></a>e)         函数 CONNECTION_ID()</h5><blockquote>
+<p>函数使用说明：返回对于连接的连接 ID ( 线程 ID) 。每个连接都有各自的唯一 ID 。</p>
+</blockquote>
+<h5 id="f-函数-CURRENT-USER-CURRENT-USER"><a href="#f-函数-CURRENT-USER-CURRENT-USER" class="headerlink" title="f)         函数 CURRENT_USER, CURRENT_USER()"></a>f)         函数 CURRENT_USER, CURRENT_USER()</h5><blockquote>
+<p>函数使用说明：返回当前话路被验证的用户名和主机名组合。这个值符合确定你的存取权限的 MySQL 账户。在被指定 SQL SECURITY DEFINER 特征的存储程序内， CURRENT_USER() 返回程序的创建者</p>
+</blockquote>
+<h5 id="g-函数-DATABASE"><a href="#g-函数-DATABASE" class="headerlink" title="g)        函数 DATABASE()"></a>g)        函数 DATABASE()</h5><blockquote>
+<p>函数使用说明：返回使用 utf8 字符集的默认 ( 当前 ) 数据库名。在存储程序里，默认数据库是同该程序向关联的数据库，但并不一定与调用语境的默认数据库相同。</p>
+</blockquote>
+<h5 id="h-函数-FOUND-ROWS"><a href="#h-函数-FOUND-ROWS" class="headerlink" title="h)        函数 FOUND_ROWS()"></a>h)        函数 FOUND_ROWS()</h5><blockquote>
+<p>函数使用说明： A SELECT 语句可能包括一个 LIMIT 子句，用来限制服务器返回客户端的行数。在有些情况下，需要不用再次运行该语句而得知在没有 LIMIT 时到底该语句返回了多少行。为了知道这个行数 , 包括在 SELECT 语句中选择   SQL_CALC_FOUND_ROWS ，随后调用 FOUND_ROWS()</p>
+</blockquote>
+<h5 id="i-函数-LAST-INSERT-ID-LAST-INSERT-ID-expr"><a href="#i-函数-LAST-INSERT-ID-LAST-INSERT-ID-expr" class="headerlink" title="i)      函数 LAST_INSERT_ID() LAST_INSERT_ID(expr )"></a>i)      函数 LAST_INSERT_ID() LAST_INSERT_ID(expr )</h5><blockquote>
+<p>函数使用说明：自动返回最后一个 INSERT 或 UPDATE 问询为 AUTO_INCREMENT 列设置的第一个 发生的值。</p>
+</blockquote>
+<h5 id="j-函数-ROW-COUNT"><a href="#j-函数-ROW-COUNT" class="headerlink" title="j)      函数 ROW_COUNT()"></a>j)      函数 ROW_COUNT()</h5><blockquote>
+<p>函数使用说明： ROW_COUNT() 返回被前面语句升级的、插入的或删除的行数。 这个行数和 mysql 客户端显示的行数及 mysql_affected_rows() C API 函数返回的值相同。</p>
+</blockquote>
+<h5 id="k-函数-SCHEMA"><a href="#k-函数-SCHEMA" class="headerlink" title="k)      函数 SCHEMA()"></a>k)      函数 SCHEMA()</h5><blockquote>
+<p>函数使用说明：这个函数和 DATABASE() 具有相同的意义</p>
+</blockquote>
+<h5 id="l-函数-SESSION-USER"><a href="#l-函数-SESSION-USER" class="headerlink" title="l)          函数 SESSION_USER()"></a>l)          函数 SESSION_USER()</h5><blockquote>
+<p>函数使用说明： SESSION_USER() 和 USER() 具有相同的意义。</p>
+</blockquote>
+<h5 id="m-函数-SYSTEM-USER"><a href="#m-函数-SYSTEM-USER" class="headerlink" title="m)      函数 SYSTEM_USER()"></a>m)      函数 SYSTEM_USER()</h5><blockquote>
+<p>函数使用说明： SYSTEM_USER() 合 USER() 具有相同的意义</p>
+</blockquote>
+<h5 id="n-函数-USER"><a href="#n-函数-USER" class="headerlink" title="n)        函数 USER()"></a>n)        函数 USER()</h5><blockquote>
+<p>函数使用说明：返回当前 MySQL 用户名和机主名</p>
+</blockquote>
+<h5 id="o-函数-VERSION"><a href="#o-函数-VERSION" class="headerlink" title="o)      函数 VERSION()"></a>o)      函数 VERSION()</h5><blockquote>
+<p>函数使用说明：返回指示 MySQL 服务器版本的字符串。这个字符串使用 utf8 字符集。</p>
+</blockquote>
+<h3 id="八、-其他函数"><a href="#八、-其他函数" class="headerlink" title="八、 其他函数"></a>八、 其他函数</h3><h5 id="a-函数-DEFAULT-col-name"><a href="#a-函数-DEFAULT-col-name" class="headerlink" title="a)         函数 DEFAULT(col_name )"></a>a)         函数 DEFAULT(col_name )</h5><blockquote>
+<p>函数使用说明：返回一个表列的默认值。若该列没有默认值则会产生错误。</p>
+</blockquote>
+<h5 id="b-函数-FORMAT-X-D"><a href="#b-函数-FORMAT-X-D" class="headerlink" title="b)        函数 FORMAT(X ,D )"></a>b)        函数 FORMAT(X ,D )</h5><blockquote>
+<p>函数使用说明：将数字 X 的格式写为 ‘#,###,###.##’, 以四舍五入的方式保留小数点后 D 位， 并将结果以字符串的形式返回。若   D 为 0, 则返回结果不带有小数点，或不含小数部分。</p>
+</blockquote>
+<h5 id="c-函数-GET-LOCK-str-timeout"><a href="#c-函数-GET-LOCK-str-timeout" class="headerlink" title="c)        函数 GET_LOCK(str ,timeout )"></a>c)        函数 GET_LOCK(str ,timeout )</h5><blockquote>
+<p>函数使用说明：设法使用字符串 str 给定的名字得到一个锁， 超时为 timeout 秒。若成功得到锁，则返回 1 ，若操作超时则返回 0 ( 例如 , 由于另一个客户端已提前封锁了这个名字 ), 若发生错误则返回 NULL ( 诸如缺乏记忆或线程 mysqladmin kill 被断开 ) 。假如你有一个用 GET_LOCK() 得到的锁，当你执行 RELEASE_LOCK() 或你的连接断开 ( 正常或非正常 ) 时，这个锁就会解除</p>
+</blockquote>
+<h5 id="d-函数-INET-ATON-expr"><a href="#d-函数-INET-ATON-expr" class="headerlink" title="d)        函数 INET_ATON(expr )"></a>d)        函数 INET_ATON(expr )</h5><blockquote>
+<p>函数使用说明：给出一个作为字符串的网络地址的点地址表示，返回一个代表该地址数值的整数。地址可以是 4 或 8 比特地址。</p>
+</blockquote>
+<h5 id="e-函数-INET-NTOA-expr"><a href="#e-函数-INET-NTOA-expr" class="headerlink" title="e)         函数 INET_NTOA(expr )"></a>e)         函数 INET_NTOA(expr )</h5><blockquote>
+<p>函数使用说明：给定一个数字网络地址 (4 或 8 比特 ), 返回作为字符串的该地址的电地址表示</p>
+</blockquote>
+<h5 id="f-函数-IS-FREE-LOCK-str"><a href="#f-函数-IS-FREE-LOCK-str" class="headerlink" title="f)         函数 IS_FREE_LOCK(str )"></a>f)         函数 IS_FREE_LOCK(str )</h5><blockquote>
+<p>函数使用说明：检查名为 str 的锁是否可以使用 ( 换言之 , 没有被封锁 ) 。若锁可以使用，则返回   1 ( 没有人在用这个锁 ), 若这个锁正在被使用，则返回 0 ，出现错误则返回 NULL ( 诸如不正确的参数 ) 。</p>
+</blockquote>
+<h5 id="g-函数-IS-USED-LOCK-str"><a href="#g-函数-IS-USED-LOCK-str" class="headerlink" title="g)        函数 IS_USED_LOCK(str )"></a>g)        函数 IS_USED_LOCK(str )</h5><blockquote>
+<p>函数使用说明：检查名为 str 的锁是否正在被使用 ( 换言之 , 被封锁 ) 。若被封锁，则返回使用该锁的客户端的连接标识符。否则返回 NULL 。</p>
+</blockquote>
+<h5 id="h-函数-MASTER-POS-WAIT-log-name-log-pos-timeout"><a href="#h-函数-MASTER-POS-WAIT-log-name-log-pos-timeout" class="headerlink" title="h)      函数 MASTER_POS_WAIT(log_name ,log_pos [,timeout ])"></a>h)      函数 MASTER_POS_WAIT(log_name ,log_pos [,timeout ])</h5><blockquote>
+<p>函数使用说明：该函数对于控制主从同步很有用处。它会持续封锁，直到从设备阅读和应用主机记录中所有补充资料到指定的位置。返回值是其为到达指定位置而必须等待的记录事件的数目。若从设备 SQL 线程没有被启动、从设备主机信息尚未初始化、参数不正确或出现任何错误，则该函数返回 NULL 。若超时时间被超过，则返回 -1 。若在 MASTER_POS_WAIT() 等待期间，从设备 SQL 线程中止，则该函数返回 NULL 。若从设备由指定位置通过，则函数会立即返回结果。</p>
+</blockquote>
+<h5 id="i-函数-NAME-CONST-name-value"><a href="#i-函数-NAME-CONST-name-value" class="headerlink" title="i)          函数 NAME_CONST(name ,value )"></a>i)          函数 NAME_CONST(name ,value )</h5><blockquote>
+<p>函数使用说明：返回给定值。 当用来产生一个结果集合列时 , NAME_CONST() 促使该列使用给定名称。</p>
+</blockquote>
+<h5 id="j-函数-RELEASE-LOCK-str"><a href="#j-函数-RELEASE-LOCK-str" class="headerlink" title="j)          函数 RELEASE_LOCK(str )"></a>j)          函数 RELEASE_LOCK(str )</h5><blockquote>
+<p>函数使用说明：解开被 GET_LOCK() 获取的，用字符串 str 所命名的锁。若锁被解开，则返回   1 ，若改线程尚未创建锁，则返回 0 ( 此时锁没有被解开 ), 若命名的锁不存在，则返回 NULL。若该锁从未被对 GET_LOCK() 的调用获取，或锁已经被提前解开，则该锁不存在。</p>
+</blockquote>
+<h5 id="k-函数-SLEEP-duration"><a href="#k-函数-SLEEP-duration" class="headerlink" title="k)        函数 SLEEP(duration )"></a>k)        函数 SLEEP(duration )</h5><blockquote>
+<p>函数使用说明：睡眠 ( 暂停 ) 时间为 duration 参数给定的秒数，然后返回 0 。若 SLEEP() 被中断 , 它会返回 1 。 duration 或许或包括一个给定的以微秒为单位的分数部分。</p>
+</blockquote>
+<h5 id="l-函数-UUID"><a href="#l-函数-UUID" class="headerlink" title="l)          函数 UUID()"></a>l)          函数 UUID()</h5><blockquote>
+<p>函数使用说明：返回一个通用唯一标识符 (UUID) ， UUID 被设计成一个在时间和空间上都独一无二的数字。 2 个对 UUID() 的调用应产生 2 个不同的值，即使这些调用的执行是在两个互不相连的单独电脑上进行。</p>
+</blockquote>
+<h5 id="m-函数-VALUES-col-name"><a href="#m-函数-VALUES-col-name" class="headerlink" title="m)      函数 VALUES(col_name )"></a>m)      函数 VALUES(col_name )</h5><blockquote>
+<p>函数使用说明：在一个 INSERT … ON DUPLICATE KEY UPDATE … 语句中，你可以在 UPDATE 子句中使用 VALUES(col_name ) 函数，用来访问来自该语句的 INSERT 部分的列值。换言之， UPDATE 子句中的 VALUES(col_name ) 访问需要被插入的 col_name 的值 , 并不会发生重复键冲突。这个函数在多行插入中特别有用。   VALUES() 函数只在 INSERT … UPDATE 语句中有意义，而在其它情况下只会返回 NULL</p>
+</blockquote>
+<h3 id="九、-聚合函数"><a href="#九、-聚合函数" class="headerlink" title="九、 聚合函数"></a>九、 聚合函数</h3><h5 id="a-函数-AVG-DISTINCT-expr"><a href="#a-函数-AVG-DISTINCT-expr" class="headerlink" title="a)         函数 AVG([DISTINCT] expr )"></a>a)         函数 AVG([DISTINCT] expr )</h5><blockquote>
+<p>函数使用说明：返回 expr 的平均值。 DISTINCT 选项可用于返回 expr 的不同值的平均值。</p>
+</blockquote>
+<h5 id="b-函数-BIT-AND-expr"><a href="#b-函数-BIT-AND-expr" class="headerlink" title="b)        函数 BIT_AND(expr )"></a>b)        函数 BIT_AND(expr )</h5><blockquote>
+<p>函数使用说明：返回expr 中所有比特的 bitwise AND 。计算执行的精确度为64 比特(BIGINT) 。若找不到匹配的行，则这个函数返回18446744073709551615 。( 这是无符号 BIGINT值，所有比特被设置为 1 ）。</p>
+</blockquote>
+<h5 id="c-函数-BIT-OR-expr"><a href="#c-函数-BIT-OR-expr" class="headerlink" title="c)      函数 BIT_OR(expr )"></a>c)      函数 BIT_OR(expr )</h5><blockquote>
+<p>函数使用说明：返回expr 中所有比特的bitwise OR 。计算执行的精确度为64 比特(BIGINT) 。若找不到匹配的行，则函数返回 0 。</p>
+</blockquote>
+<h5 id="d-函数BIT-XOR-expr"><a href="#d-函数BIT-XOR-expr" class="headerlink" title="d)      函数BIT_XOR(expr )"></a>d)      函数BIT_XOR(expr )</h5><blockquote>
+<p>函数使用说明：返回expr 中所有比特的bitwise XOR 。计算执行的精确度为64 比特(BIGINT) 。若找不到匹配的行，则函数返回 0 。</p>
+</blockquote>
+<h5 id="e-函数-COUNT-expr"><a href="#e-函数-COUNT-expr" class="headerlink" title="e)         函数 COUNT(expr )"></a>e)         函数 COUNT(expr )</h5><blockquote>
+<p>函数使用说明：返回SELECT 语句检索到的行中非NULL 值的数目。若找不到匹配的行，则COUNT() 返回 0</p>
+</blockquote>
+<h5 id="f-函数-COUNT-DISTINCT-expr-expr-…"><a href="#f-函数-COUNT-DISTINCT-expr-expr-…" class="headerlink" title="f)         函数 COUNT(DISTINCT expr ,[expr …])"></a>f)         函数 COUNT(DISTINCT expr ,[expr …])</h5><blockquote>
+<p>函数使用说明：返回不同的非NULL 值数目。若找不到匹配的项，则COUNT(DISTINCT) 返回 0</p>
+</blockquote>
+<h5 id="g-函数-GROUP-CONCAT-expr"><a href="#g-函数-GROUP-CONCAT-expr" class="headerlink" title="g)        函数 GROUP_CONCAT(expr )"></a>g)        函数 GROUP_CONCAT(expr )</h5><blockquote>
+<p>函数使用说明：该函数返回带有来自一个组的连接的非NULL 值的字符串结果。其完整的语法如下所示：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GROUP_CONCAT([DISTINCT] expr [,expr ...]</span><br><span class="line">[ORDER BY &#123;unsigned_integer | col_name | expr &#125;</span><br><span class="line">[ASC | DESC] [,col_name ...]]</span><br><span class="line">[SEPARATOR str_val ])</span><br></pre></td></tr></table></figure>
+
+<h5 id="h-函数-MIN-DISTINCT-expr-MAX-DISTINCT-expr"><a href="#h-函数-MIN-DISTINCT-expr-MAX-DISTINCT-expr" class="headerlink" title="h)        函数 MIN([DISTINCT] expr ), MAX([DISTINCT] expr )"></a>h)        函数 MIN([DISTINCT] expr ), MAX([DISTINCT] expr )</h5><blockquote>
+<p>函数使用说明：返回 expr 的最小值和最大值。 MIN() 和 MAX() 的取值可以是一个字符串参数；在这些情况下， 它们返回最小或最大字符串值。</p>
+</blockquote>
+<h5 id="i-函数-STD-expr-STDDEV-expr"><a href="#i-函数-STD-expr-STDDEV-expr" class="headerlink" title="i)          函数 STD(expr ) STDDEV(expr )"></a>i)          函数 STD(expr ) STDDEV(expr )</h5><blockquote>
+<p>函数使用说明：返回 expr 的总体标准偏差。这是标准 SQL 的延伸。这个函数的 STDDEV() 形式用来提供和 Oracle 的兼容性。可使用标准 SQL 函数 STDDEV_POP() 进行代替</p>
+</blockquote>
+<h5 id="j-函数-STDDEV-POP-expr"><a href="#j-函数-STDDEV-POP-expr" class="headerlink" title="j)          函数 STDDEV_POP(expr )"></a>j)          函数 STDDEV_POP(expr )</h5><blockquote>
+<p>函数使用说明：返回expr 的总体标准偏差(VAR_POP() 的平方根) 。你也可以使用 STD() 或STDDEV(), 它们具有相同的意义，然而不是标准的 SQL 。若找不到匹配的行，则STDDEV_POP() 返回 NULL</p>
+</blockquote>
+<h5 id="k-函数-STDDEV-SAMP-expr"><a href="#k-函数-STDDEV-SAMP-expr" class="headerlink" title="k)        函数 STDDEV_SAMP(expr )"></a>k)        函数 STDDEV_SAMP(expr )</h5><blockquote>
+<p>函数使用说明：返回expr 的样本标准差 ( VAR_SAMP() 的平方根) 。若找不到匹配的行，则STDDEV_SAMP() 返回 NULL</p>
+</blockquote>
+<h5 id="l-函数-SUM-DISTINCT-expr"><a href="#l-函数-SUM-DISTINCT-expr" class="headerlink" title="l)          函数 SUM([DISTINCT] expr )"></a>l)          函数 SUM([DISTINCT] expr )</h5><blockquote>
+<p>函数使用说明：返回expr 的总数。 若返回集合中无任何行，则 SUM() 返回NULL 。DISTINCT 关键词可用于 MySQL 5.1 中，求得expr 不同值的总和。 若找不到匹配的行，则SUM() 返回NULL</p>
+</blockquote>
+<h5 id="m-函数-VAR-POP-expr"><a href="#m-函数-VAR-POP-expr" class="headerlink" title="m)      函数 VAR_POP(expr )"></a>m)      函数 VAR_POP(expr )</h5><blockquote>
+<p>函数使用说明：返回 expr 总体标准方差。它将行视为总体，而不是一个样本， 所以它将行数作为分母。你也可以使用 VARIANCE(), 它具有相同的意义然而不是 标准的 SQL</p>
+</blockquote>
+<h5 id="n-函数-VAR-SAMP-expr"><a href="#n-函数-VAR-SAMP-expr" class="headerlink" title="n)        函数 VAR_SAMP(expr )"></a>n)        函数 VAR_SAMP(expr )</h5><blockquote>
+<p>函数使用说明：返回expr 的样本方差。更确切的说，分母的数字是行数减去1 。若找不到匹配的行，则VAR_SAMP() 返回NULL</p>
+</blockquote>
+<h5 id="o-函数VARIANCE-expr"><a href="#o-函数VARIANCE-expr" class="headerlink" title="o)      函数VARIANCE(expr )"></a>o)      函数VARIANCE(expr )</h5><blockquote>
+<p>函数使用说明：返回expr 的总体标准方差。这是标准SQL 的延伸。可使用标准SQL 函数 VAR_POP() 进行代替。若找不到匹配的项，则VARIANCE() 返回NULL</p>
+</blockquote>
+
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get" action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            明明～
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140" alt="个人头像" class="author-image">
+            <p class="author-description"></p><p>Zming-ming</p>
+<p></p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/23/MySQL-函数/">MySQL 函数</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/Linux-守护进程的启动方法/">Linux 守护进程的启动方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/常用-Git-命令清单/">常用 Git 命令清单</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/30/基于个推（GeTui）官方SDK集成-Laravel-5/">基于个推（GeTui）官方SDK集成 Laravel 5.* </a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/19/laravel5-5的定时任务详解/">laravel5.5的定时任务详解</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/17/微信小程序的更新机制/">微信小程序的更新机制</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/21/Markdown-语法/">Markdown 语法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/21/Laravel-Excel-实现-Excel-CSV-文件导入导出功能/">Laravel Excel 实现 Excel/CSV 文件导入导出功能</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/17/npm启动内存溢出问题/">npm启动内存溢出问题</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/redis安装及数据类型简介/">redis安装及数据类型简介</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/07/hello-world/">Hello World</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/laravel的资源路由resource/">laravel的资源路由resource</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/17/npm启动内存溢出问题/">npm启动内存溢出问题</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/24/保存网络图片/">php如何实现保存网络图片</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/24/冒泡排序/">php中常用的冒泡排序&amp;快速排序算法以及二分查找&amp;顺序查找的算法实现</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/常用-Git-命令清单/">常用 Git 命令清单</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/07/搭建hexo/">搭建hexo</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/25/laravel-Valet安装使用教程/">Valet 安装使用详细教程</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/laravel小程序微信支付/">laravel小程序微信支付</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/13/ySql函数字典/">MySql函数字典</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2018/09/13/ySql函数字典/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2018/09/13/ySql函数字典/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2018/09/13/ySql函数字典/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/Excel/" style="font-size: 10.706480291847587px;" class="tag-cloud-link">Excel</a>
+    
+    <a href="/tags/Laravel/" style="font-size: 15.697849432820384px;" class="tag-cloud-link">Laravel</a>
+    
+    <a href="/tags/markdown/" style="font-size: 10.567484443772841px;" class="tag-cloud-link">markdown</a>
+    
+    <a href="/tags/Linux/" style="font-size: 13.793236859986415px;" class="tag-cloud-link">Linux</a>
+    
+    <a href="/tags/定时任务/" style="font-size: 11.96419590946553px;" class="tag-cloud-link">定时任务</a>
+    
+    <a href="/tags/npm/" style="font-size: 19.547217505627927px;" class="tag-cloud-link">npm</a>
+    
+    <a href="/tags/vue/" style="font-size: 15.362698047137702px;" class="tag-cloud-link">vue</a>
+    
+    <a href="/tags/PHP/" style="font-size: 14.786659607500365px;" class="tag-cloud-link">PHP</a>
+    
+    <a href="/tags/GeTui/" style="font-size: 8.985244906251467px;" class="tag-cloud-link">GeTui</a>
+    
+    <a href="/tags/composer/" style="font-size: 8.136727707987056px;" class="tag-cloud-link">composer</a>
+    
+    <a href="/tags/GIT/" style="font-size: 17.82809748352108px;" class="tag-cloud-link">GIT</a>
+    
+    <a href="/tags/小程序/" style="font-size: 17.29966500285881px;" class="tag-cloud-link">小程序</a>
+    
+    <a href="/tags/支付/" style="font-size: 9.379397383853334px;" class="tag-cloud-link">支付</a>
+    
+    <a href="/tags/Redis/" style="font-size: 11.050444291415602px;" class="tag-cloud-link">Redis</a>
+    
+    <a href="/tags/MySql/" style="font-size: 14.361911699250896px;" class="tag-cloud-link">MySql</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://kdays.net/days/" target="_blank">KDays Forum</a>
+    </li>
+    
+    <li>
+        <a href="http://www.gal123.com/" target="_blank">绅士导航♂</a>
+    </li>
+    
+    <li>
+        <a href="http://www.moe123.com/" target="_blank">萌导航</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/ZEROKISEKI/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com/people/aonosora/activities" target="_blank">知乎</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 明明～ Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+</html>

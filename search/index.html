@@ -12,7 +12,7 @@
     
     
     
-    <title>archive_a | 明明～</title>
+    <title>search | 明明～</title>
     <link href="”https://zming-ming.github.io“" rel="”prefetch”">
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -95,7 +95,7 @@
                 
                 
                 
-                <li class="current">
+                <li class>
                     <a href="/archives">
                         <i class="fa fa-archive"></i>归档
                     </a>
@@ -184,123 +184,216 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-archive">
-    <div class="breadcrumb">
-        <i class="fa fa-home"></i>
-        <a href="https://zming-ming.github.io">明明～</a>
-        >
-        <span>归档</span>
-    </div>
-    <!-- 大型设备详细文章 -->
-    <div class="hidden-xs">
-        <div class="title-article">
-            <h1>
-                <a href="/archives">归档</a>
-            </h1>
-        </div>
-    </div>
-    <!-- 小型设备详细文章 -->
-    <div class="visible-xs">
-        <center>
-            <div class="title-article">
-                <h4>
-                    <a href="/archives">归档</a>
-                </h4>
-            </div>
-        </center>
-    </div>
-    <div class="content-article" style="margin-top: 30px;">
-        
-        
-            <h1 style="font-size: 24px; margin-top: 40px;">2018年</h1>
-            
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-             
-             
-                        <a href="/2018/11/23/MySQL-函数/">MySQL 函数</a>
-                        <br>
-            
-             
-                        <a href="/2018/11/02/Linux-守护进程的启动方法/">Linux 守护进程的启动方法</a>
-                        <br>
-            
-             
-                        <a href="/2018/11/02/常用-Git-命令清单/">常用 Git 命令清单</a>
-                        <br>
-            
-             
-                        <a href="/2018/10/30/基于个推（GeTui）官方SDK集成-Laravel-5/">基于个推（GeTui）官方SDK集成 Laravel 5.* </a>
-                        <br>
-            
-             
-                        <a href="/2018/10/19/laravel5-5的定时任务详解/">laravel5.5的定时任务详解</a>
-                        <br>
-            
-             
-                        <a href="/2018/10/17/微信小程序的更新机制/">微信小程序的更新机制</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/21/Markdown-语法/">Markdown 语法</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/21/Laravel-Excel-实现-Excel-CSV-文件导入导出功能/">Laravel Excel 实现 Excel/CSV 文件导入导出功能</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/17/npm启动内存溢出问题/">npm启动内存溢出问题</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/14/redis安装及数据类型简介/">redis安装及数据类型简介</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/14/laravel的资源路由resource/">laravel的资源路由resource</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/14/laravel小程序微信支付/">laravel小程序微信支付</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/14/常用-Git-命令/">常用 Git 命令</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/13/ySql函数字典/">MySql函数字典</a>
-                        <br>
-            
-             
-                        <a href="/2018/08/25/laravel-Valet安装使用教程/">Valet 安装使用详细教程</a>
-                        <br>
-            
-             
-                        <a href="/2018/08/24/保存网络图片/">php如何实现保存网络图片</a>
-                        <br>
-            
-             
-                        <a href="/2018/08/24/冒泡排序/">php中常用的冒泡排序&amp;快速排序算法以及二分查找&amp;顺序查找的算法实现</a>
-                        <br>
-            
-             
-                        <a href="/2018/08/24/递归方法/">php实现无限极分类的方法：递归方法和引用方法</a>
-                        <br>
-            
-             
-                        <a href="/2018/08/07/搭建hexo/">搭建hexo</a>
-                        <br>
-            
-             
-                        <a href="/2018/08/07/hello-world/">Hello World</a>
-                        <br>
-            
-                    </div>
-        
-    </div>
-</article>
+                    <!-- 搜索页面(尽可能接近ZanBlog搜索功能) -->
+
+<!-- search自定义页面 -->
+<script type="text/javascript">
+
+	var htmlEntityMap = {
+		'&': '&amp;',
+		'<': '&lt;',
+		'>': '&gt;',
+		'"': '&quot;',
+		'\'': '&#39;',
+		'/': '&#x2F;'
+	};
+
+	// 参照hexo过滤html的方法(事实上感觉静态也没什么可以过滤的)
+	function escapeKey(str) {
+		if (typeof str !== 'string') throw new TypeError('str must be a string!');
+
+		// http://stackoverflow.com/a/12034334
+		return str.replace(/[&<>"'\/]/g, function(a) {
+			return htmlEntityMap[a];
+		});
+	}
+
+	var query = decodeURIComponent(window.location.search).substring(1).split('&')
+    // 获取搜索关键词
+    var s = escapeKey(query[0].split('=')[1])
+    // 获取当前页数
+    var p = query.length > 1 ? query[1].split('=')[1] : 1
+    // 获取每页的页码数
+    var pageSize = '10'
+    var useLeancloud = ''
+    var useComment = ('false' === 'true')
+    $.getJSON('/content.json', function (json) {
+      $('#search-breadcrumb').append(`搜索'${s}'的结果`)
+      var result = getArticles(s, 'posts', json).concat(getArticles(s, 'pages', json))
+      if (result.length === 0 || result.length <= (p - 1) * pageSize) {
+      	// TODO 显示404页面
+      } else {
+        displaySearchResult(result.slice((p - 1) * pageSize, p * pageSize))
+        displayPagination(result)
+      }
+    })
+
+    function getArticles(val, type, json) {
+      return json[type].filter((e) => {
+        return e.title.indexOf(val) !== -1 || e.text.indexOf(val) !== -1
+      })
+    }
+
+    function displaySearchResult(result) {
+      var resultList = $('#article-list')
+      result.forEach(function (article) {
+      	var [month, day] = article.date.split('-')
+        ''
+        ''
+        var defaultPreview = '/imgs/preview/preview3.jpg'
+        var preview = article.preview ? article.preview : defaultPreview
+        var path = '/' + article.path
+        resultList.append(`<div class="article well clearfix article-body article-excerpt" data-aos="flip-up">
+                                <div class="data-article hidden-xs">
+                                    <span class="month">${month}月</span>
+                                    <span class="day">${day}</span>
+                                </div>
+                                <section class="hidden-xs">
+                                    <div class="title-article">
+                                        <h1>
+                                            <a href="${path}">
+                                                <span>${article.title}</span>
+                                            </a>
+                                        </h1>
+                                    </div>
+                                    <div class="tag-article">
+                                    ${ article.tags.length > 0 ? `<span class="label label-gal"><i class="fa fa-tags"></i>${
+                                    	article.tags.map(function (tag) {
+						                 return `<a href=${ tag.permalink }>${ tag.name }</a>`
+                                    	}).join(', ') }</span>` : '' }
+                                    ${ useLeancloud ? '<span class="label label-gal"><i class="fa fa-eye"></i></span>' : ''}
+                                    </div>
+                                    <div class="alert alert-gal article-body content-article">
+                                         <div class="item">
+                                            <a href="${path}">
+                                                <div class="img">
+                                                    <img src="${preview}" alt="${article.title}">
+                                                </div>
+                                                <div class="info">
+                                                    <p>${article.excerpt}</p>
+                                                </div>
+                                            </a>
+                                         </div>
+					                </div>
+					            </section>
+                           </div>`)
+      })
+      if (useLeancloud) {
+        var Counter = AV.Object.extend('Counter')
+        showPostsTime(Counter)
+      }
+      if (useComment) {
+      	showCommentCount()
+      }
+    }
+
+    function displayPagination(result) {
+      var pgContainer = $('#gal-pagination')
+      var pg = $(pgContainer.find('.pagination-gal')[0])
+      if(result.length > 0) {
+        pgContainer.css('display', 'block')
+      }
+      var num = Math.ceil(result.length / pageSize)
+      var root = '/search'
+      var link = root + `/index.html?s=${s}`
+      if(p > 1) {
+      	pg.append(`<li class="prev"><a href="${link}&page=${p-1}">«</a></li>`)
+      }
+      if(p > 7) {
+      	pg.append(`<li><a href="${link}">1</a></li>
+                   <li><span>...</span></li>`)
+        for(var i = p - 3; i < p; i++) {
+          pg.append(`<li><a href="${link}&page=${i}">${i}</a></li>`)
+        }
+      } else {
+      	for(var j = 1; j < p; j++) {
+          pg.append(`<li><a href="${link}${j === 1 ? '' : `&page=${j}`}">${j}</a></li>`)
+        }
+      }
+      pg.append(`<li class="current"><span>${p}</span></li>`)
+      if(p + 7 < num) {
+      	for(var i = p + 1; i <= p + 3; i++) {
+          pg.append(`<li><a href="${link}&page=${i}">${i}</a></li>`)
+        }
+        pg.append(`<li><span>...</span></li>`)
+      } else {
+      	for(var j = p + 1; j <= num; j++) {
+          pg.append(`<li><a href="${link}&page=${j}">${j}</a></li>`)
+        }
+      }
+      if(p < num) {
+      	pg.append(`<li class="next"><a href="${link}&page=${p+1}">»</a></li>`)
+      }
+    }
+
+    function showPostsTime(Counter) {
+      var entries = []
+      var excerpts = $('.article-excerpt')
+      excerpts.each(function () {
+        entries.push($(this).find('.title-article').first().find('a').attr('href').trim())
+      })
+      var query = new AV.Query(Counter)
+      query.containedIn('url', entries)
+      query.find().then(function (result) {
+        excerpts.each(function () {
+          var href = $(this).find('.title-article').first().find('a').attr('href').trim()
+          var r = result.filter(function (e) {
+            return e.get('url') === href
+          })
+          if(r.length > 0) {
+            $(this).find('i.fa-eye').each(function () {
+              $(this).after(' ' + r[0].get('time') + ' ℃')
+            })
+          } else {
+            $(this).find('i.fa-eye').each(function () {
+              $(this).after(' 0 ℃')
+            })
+          }
+        })
+      }).then(function (error) {
+        console.log('Error:' + error.code + ' ' + error.message)
+      })
+    }
+
+    function showCommentCount() {
+      const excerpts = $('.article-excerpt')
+      const owner = window.commentConfig.owner
+      const repo = window.commentConfig.repo
+      $.ajax({
+        url: "https://api.github.com/repos/" + owner + '/' + repo + '/issues',
+        data: {
+          creator: owner
+        }
+      }).done(function(issues) {
+        excerpts.each(function () {
+          const that = $(this)
+          that.find('h1 > a > span').each(function () {
+            const title = $(this).text()
+            const tags = that.find('div.tag-article')
+            const issue = issues.filter(function (issue) {
+              return issue.title === title
+            })
+            const comments = issue.length > 0 ? issue[0].comments : 0
+            tags.each(function () {
+              $(this).append('<span class="label label-gal"><i class="fa fa-comments"></i><a> ' + comments + '</a></span>')
+            })
+          })
+        })
+      }).fail(function (error) {
+        console.log(error)
+      });
+    }
+
+</script>
+<div class="breadcrumb breadcrumb-gal" id="search-breadcrumb">
+    <i class="fa fa-home"></i>
+</div>
+<div id="article-list"></div>
+<div id="gal-pagination" class="clearfix" style="display: none;">
+    <ul class="pagination pagination-gal pull-right"></ul>
+</div>
+<!-- 404页面 -->
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -432,7 +525,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/08/07/hello-world/">Hello World</a>
+                    <a href="/2018/09/21/Laravel-Excel-实现-Excel-CSV-文件导入导出功能/">Laravel Excel 实现 Excel/CSV 文件导入导出功能</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/21/Markdown-语法/">Markdown 语法</a>
                 </span>
             </li>
             
@@ -450,25 +549,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/09/17/npm启动内存溢出问题/">npm启动内存溢出问题</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2018/08/24/保存网络图片/">php如何实现保存网络图片</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/10/17/微信小程序的更新机制/">微信小程序的更新机制</a>
+                    <a href="/2018/08/24/冒泡排序/">php中常用的冒泡排序&amp;快速排序算法以及二分查找&amp;顺序查找的算法实现</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/11/02/Linux-守护进程的启动方法/">Linux 守护进程的启动方法</a>
+                    <a href="/2018/09/14/常用-Git-命令/">常用 Git 命令</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/07/搭建hexo/">搭建hexo</a>
                 </span>
             </li>
             
@@ -480,13 +579,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/09/14/redis安装及数据类型简介/">redis安装及数据类型简介</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/09/13/ySql函数字典/">MySql函数字典</a>
+                    <a href="/2018/09/14/laravel小程序微信支付/">laravel小程序微信支付</a>
                 </span>
             </li>
             
@@ -501,17 +594,17 @@
 
                 
                 <li>
-                    <a href="/archives/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/search/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/search/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/search/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -519,35 +612,35 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/Excel/" style="font-size: 14.022636335440959px;" class="tag-cloud-link">Excel</a>
+    <a href="/tags/Excel/" style="font-size: 19.709639382908293px;" class="tag-cloud-link">Excel</a>
     
-    <a href="/tags/Laravel/" style="font-size: 10.066591245962663px;" class="tag-cloud-link">Laravel</a>
+    <a href="/tags/Laravel/" style="font-size: 14.836496128980354px;" class="tag-cloud-link">Laravel</a>
     
-    <a href="/tags/markdown/" style="font-size: 9.458182532129664px;" class="tag-cloud-link">markdown</a>
+    <a href="/tags/markdown/" style="font-size: 16.17387268092903px;" class="tag-cloud-link">markdown</a>
     
-    <a href="/tags/Linux/" style="font-size: 12.879622798528647px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Linux/" style="font-size: 16.878267599293032px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/定时任务/" style="font-size: 10.456116884949552px;" class="tag-cloud-link">定时任务</a>
+    <a href="/tags/定时任务/" style="font-size: 17.309908590611464px;" class="tag-cloud-link">定时任务</a>
     
-    <a href="/tags/npm/" style="font-size: 18.862317600953297px;" class="tag-cloud-link">npm</a>
+    <a href="/tags/npm/" style="font-size: 19.278518749784833px;" class="tag-cloud-link">npm</a>
     
-    <a href="/tags/vue/" style="font-size: 8.539997814230428px;" class="tag-cloud-link">vue</a>
+    <a href="/tags/vue/" style="font-size: 18.58060991191512px;" class="tag-cloud-link">vue</a>
     
-    <a href="/tags/PHP/" style="font-size: 14.27139465183442px;" class="tag-cloud-link">PHP</a>
+    <a href="/tags/PHP/" style="font-size: 17.305087199149174px;" class="tag-cloud-link">PHP</a>
     
-    <a href="/tags/GeTui/" style="font-size: 17.198456004396164px;" class="tag-cloud-link">GeTui</a>
+    <a href="/tags/GeTui/" style="font-size: 13.106804241455478px;" class="tag-cloud-link">GeTui</a>
     
-    <a href="/tags/composer/" style="font-size: 19.63462266813093px;" class="tag-cloud-link">composer</a>
+    <a href="/tags/composer/" style="font-size: 11.67955207381534px;" class="tag-cloud-link">composer</a>
     
-    <a href="/tags/GIT/" style="font-size: 10.594358333397683px;" class="tag-cloud-link">GIT</a>
+    <a href="/tags/GIT/" style="font-size: 10.762064119689231px;" class="tag-cloud-link">GIT</a>
     
-    <a href="/tags/小程序/" style="font-size: 15.247713729173718px;" class="tag-cloud-link">小程序</a>
+    <a href="/tags/小程序/" style="font-size: 11.72587498995599px;" class="tag-cloud-link">小程序</a>
     
-    <a href="/tags/支付/" style="font-size: 15.895317194563306px;" class="tag-cloud-link">支付</a>
+    <a href="/tags/支付/" style="font-size: 18.850598034614208px;" class="tag-cloud-link">支付</a>
     
-    <a href="/tags/Redis/" style="font-size: 8.368684293809357px;" class="tag-cloud-link">Redis</a>
+    <a href="/tags/Redis/" style="font-size: 17.265854676803777px;" class="tag-cloud-link">Redis</a>
     
-    <a href="/tags/MySql/" style="font-size: 13.801706604789512px;" class="tag-cloud-link">MySql</a>
+    <a href="/tags/MySql/" style="font-size: 15.983224886704148px;" class="tag-cloud-link">MySql</a>
     
 </div>
                 

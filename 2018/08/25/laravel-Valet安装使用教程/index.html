@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="明明～">
+    
+    <meta name="description" content="Zming-ming">
+    
+    
+    
+    
+    
+    
+    <title>Valet 安装使用详细教程 | 明明～</title>
+    <link href="”https://zming-ming.github.io“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-navbar-collapse" aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://zming-ming.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">明明～</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class>
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class>
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/categories/PHP/">PHP</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/服务器/">服务器</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/前端/">前端</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/categories">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/Excel/">Excel</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Laravel/">Laravel</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/markdown/">markdown</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/tags">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class>
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://zming-ming.github.io">明明～</a>
+        >
+        <span>Valet 安装使用详细教程</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2018/08/25/laravel-Valet安装使用教程/">Valet 安装使用详细教程</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/PHP/">PHP</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-08-25
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2018/08/25/laravel-Valet安装使用教程/">Valet 安装使用详细教程</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2018-08-25
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/PHP/">PHP</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Valet 是为 Mac 打造的极简开发环境，没有Vagrant，没有虚拟机，也无需配置 /etc/hosts 文件，还可以使用本地隧道公开分享你的站点。</p>
+<p>启动 Mac 后，Laravel Valet 会在后台静默运行 Nginx，然后通过 DnsMasq，Valet 会代理所有针对 *.dev 域名的请求指向本地安装的站点目录。</p>
+<p>此外，这样一个极速的 Laravel 开发环境只需要占用 7M 内存。Valet 并不是想要替代 Vagrant 或者 Homestead，只是提供了另外一种选择，更加灵活、极速、以及占用更小的内存空间。正是基于这些原因，我们将 Valet 称之为轻量级的开发环境。</p>
+<p>Valet 开箱支持但不限于以下软件和工具：</p>
+<ul>
+<li>Laravel</li>
+<li>Lumen</li>
+<li>Bedrock</li>
+<li>CakePHP 3</li>
+<li>Concrete5</li>
+<li>Contao</li>
+<li>Craft</li>
+<li>Drupal</li>
+<li>Jigsaw</li>
+<li>Joomla</li>
+<li>Katana</li>
+<li>Kirby</li>
+<li>Magento</li>
+<li>OctoberCMS</li>
+<li>Sculpin</li>
+<li>Slim</li>
+<li>Statamic</li>
+<li>Static HTML</li>
+<li>Symfony</li>
+<li>WordPress</li>
+<li>Zend<br>以上支持的驱动文件位于 ~/.composer/vendor/laravel/valet/cli/drivers 目录下，当然，你还可以通过自定义驱动扩展 Valet，自定义的驱动文件存放在 ~/.valet/Drivers 目录。</li>
+</ul>
+<h4 id="Valet-还是-Homestead"><a href="#Valet-还是-Homestead" class="headerlink" title="Valet 还是 Homestead"></a>Valet 还是 Homestead</h4><p>正如我们上篇教程所介绍的，Laravel 还提供了另外一个开发环境 Homestead。Homestead 和 Valet 的不同之处在于两者的目标受众和本地开发方式。</p>
+<p>Homestead 提供了一个完整的、包含自动化 Nginx 配置的 Ubuntu 虚拟机，如果你需要一个完整的虚拟化 Linux 开发环境或者使用的是 Windows/Linux 操作系统，那么 Homestead 无疑是最佳选择，此外，学院君以为如果是公司团队进行正规的工程化开发，还是使用 Homestead 为佳，原因我在上篇教程中以及提及。</p>
+<p>Valet 官方默认只支持 Mac，并且要求本地另外安装 PHP 和数据库服务器，当然这可以通过 Homebrew 命令轻松实现（brew install php71 以及 brew install mysql），Valet 通过最小的资源消耗提供了一个极速的本地开发环境，如果你只需要 PHP/MySQL 并且不需要完整的虚拟化开发环境，那么 Valet 将是最好的选择，学院君建议如果是 Mac 环境本地尝鲜，所以尝鲜就是以学习为目的或者只是快速做个 Demo 原型，那 Valet 无疑是很棒的选择。</p>
+<p>最后，建议归建议，Valet 和 Homestead 都是搭建本地 Laravel 开发环境的好工具，最终选择使用哪一个取决于你个人的喜好或团队的需求。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>注：已安装的可直接跳到升级部分。</p>
+<p>Valet 要求 Mac 操作系统和 Homebrew。安装之前，还要确保没有其他程序如Apache 或 Nginx 绑定到本地的80端口。安装步骤如下：</p>
+<ul>
+<li><p>使用 brew update 安装或更新 Homebrew 到最新版本</p>
+</li>
+<li><p>通过 Homebrew 安装 PHP 7.1： brew install homebrew/php/php71</p>
+</li>
+<li><p>通过 Composer 安装 Valet： composer global require laravel/valet</p>
+</li>
+<li><p>运行 valet install 命令，这将会配置并安装 Valet 和 DnsMasq，然后注册 Valet 后台随机启动。</p>
+</li>
+<li><p>安装完 Valet 后，尝试使用命令如 ping foobar.dev 在终端 ping 一下任意 *.dev 域名，如果 Valet 安装正确就会看到来自 127.0.0.1 的响应：</p>
+<ul>
+<li>PING foobar.dev (127.0.0.1): 56 data bytes</li>
+<li>64 bytes from 127.0.0.1: icmp_seq=0 ttl=64 time=0.069 ms</li>
+<li>64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.077 ms</li>
+<li>64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.072 ms</li>
+<li>64 bytes from 127.0.0.1: icmp_seq=3 ttl=64 time=0.082 ms</li>
+</ul>
+</li>
+<li><p>每次系统启动的时候 Valet 会在后台自动启动，不需要再次手动运行 valet start 或 valet install。</p>
+</li>
+<li><p>使用其他域名</p>
+<ul>
+<li><p>默认情况下，Valet 使用 .dev 域名后缀，如果你想要使用其他域名，可以使用 valet domain tld-name 命令。</p>
+</li>
+<li><p>例如，你想使用 .com 域名后缀取代 .dev，运行 valet domain com，Valet 将会自动将站点域名后缀改为 *.com：</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>￼</p>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p>注：已安装 MySQL 数据库忽略本条。</p>
+<p>如果你需要数据库，可以在命令行通过 brew install mysql 安装MySQL，安装完成后就可以通过 brew services start mysql 来启动它，然后通过用户名 root 和一个空密码连接到本地数据库。</p>
+<h3 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h3><p>你可以在终端使用 composer global update 命令来升级 Valet。升级之后，最好运行下 valet install 命令以便 Valet 在必要情况下对配置文件进行升级：</p>
+<p>￼</p>
+<h3 id="升级到-Valet-2-0"><a href="#升级到-Valet-2-0" class="headerlink" title="升级到 Valet 2.0"></a>升级到 Valet 2.0</h3><p>注：先通过 valet –version 查看本机安装的 Valet 版本，如果版本已经大于 2.0 则可以跳过本段教程。</p>
+<p>Valet 2.0 将 Valet 底层的 web 服务器从 Caddy 替换成了 Nginx，升级到这个版本之前需要运行以下命令来停止和卸载已经在后台运行的 Caddy：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">valet stop</span><br><span class="line">valet uninstall</span><br></pre></td></tr></table></figure>
+
+<p>接下来，需要升级到最新版本的 Valet。基于 Valet 的安装方式，你可以通过 Git 或 Composer 来实现，如果你是通过 Composer 安装的 Valet，需要通过如下方式更新到最新的主版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer global require laravel/valet</span><br></pre></td></tr></table></figure>
+
+<p>最新的 Valet 源码下载好之后，运行 install 命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">valet install</span><br><span class="line">valet restart</span><br></pre></td></tr></table></figure>
+
+<p>升级之后，需要 re-park 和 re-link 站点。</p>
+<h3 id="访问站点"><a href="#访问站点" class="headerlink" title="访问站点"></a>访问站点</h3><p>Valet 安装完成后，就可以启动服务站点，Valet 为此提供了两个命令：park 和 link。</p>
+<h3 id="park-命令"><a href="#park-命令" class="headerlink" title="park 命令"></a>park 命令</h3><p>在 Mac 系统中创建一个新目录，例如 mkdir ~/Sites，然后进入这个目录并运行 valet park。这个命令会将当前所在目录作为 Web 根目录。<br>接下来，在新建的目录中创建一个新的 Laravel 站点： laravel new blog。<br>接下来，在浏览器中访问 <a href="http://blog.com（我通过" target="_blank" rel="noopener">http://blog.com（我通过</a> valet domain com 将域名后缀改成了 .com）。<br>￼</p>
+<p>这就是我们要做的全部工作。现在，所有在 Sites 目录中创建的 Laravel 项目都可以通过 <a href="http://folder-name.com" target="_blank" rel="noopener">http://folder-name.com</a> 这种方式在浏览器中访问，是不是很方便？</p>
+<h3 id="link-命令"><a href="#link-命令" class="headerlink" title="link 命令"></a>link 命令</h3><p>link 命令也可以用于访问本地 Laravel 站点，当你想要提供单个访问站点时这个命令很有用。</p>
+<p>要使用这个命令，先切换到你的某个项目并运行 valet link app-name，这样 Valet 会在 ~/.valet/Sites 中创建一个符号链接指向当前工作目录。<br>运行完 link 命令后，可以在浏览器中通过 <a href="http://app-name.com" target="_blank" rel="noopener">http://app-name.com</a> 访问站点。<br>要查看所有的链接目录，可以运行 valet links 命令。你也可以通过 valet unlink app-name 来删除符号链接。</p>
+<p>你还可以使用 valet link 将多个（子）域名指向同一个应用，要添加子域名或其它域名到应用，可以在应用目录下运行 valet link subdomain.app-name，如这里我们在一个新应用下运行 valet link forum.blog：</p>
+<p>￼</p>
+<p>一般来说我们使用 park 命令更方便一些，省去了后面新建应用重复执行命令，但是如果有子域名这类特殊需求，只能使用 link 命令来实现了。</p>
+<p>通过TLS让站点更安全<br>默认情况下，Valet 使用 HTTP 协议，如果你想要使用 HTTP/2 通过加密的 TLS 为站点提供服务，可以使用 secure 命令。例如，如果你的站点域名是 blog.com，可以使用如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">valet secure blog</span><br></pre></td></tr></table></figure>
+
+<p>要想回到”非安全”的 HTTP，可以使用 unsecure 命令。和 secure 命令一样，该命令接收主机名作为参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">valet unsecure blog</span><br></pre></td></tr></table></figure>
+
+<h3 id="分享站点"><a href="#分享站点" class="headerlink" title="分享站点"></a>分享站点</h3><p>Valet 还提供了一个命令用于将本地站点共享给其他人，这不需要任何额外工具即可实现，和 Homestead 一样，底层也是通过 Ngrok 实现。</p>
+<p>要共享站点，切换到站点所在目录并运行 valet share，这会生成一个可以公开访问的 URL 并插入剪贴板，以便你直接复制到浏览器地址栏，就是这么简单：</p>
+<p>￼</p>
+<p>你可以通过 <a href="http://4c59137d.ngrok.io" target="_blank" rel="noopener">http://4c59137d.ngrok.io</a> 或 <a href="https://4c59137d.ngrok.io" target="_blank" rel="noopener">https://4c59137d.ngrok.io</a> 从任意联网机器访问站点（因为已经公开到互联网上）：</p>
+<p>￼</p>
+<p>要停止共享站点，使用 Control + C 快捷键结束该命令即可。</p>
+<p>valet share 目前尚不支持分享使用 valet secure 命令进行安全处理的站点，所以需要先通过 valet unsecrue 命令解除安全访问。</p>
+<h3 id="自定义-Valet-驱动"><a href="#自定义-Valet-驱动" class="headerlink" title="自定义 Valet 驱动"></a>自定义 Valet 驱动</h3><p>你还可以编写自定义的 Valet 驱动为非 Valet 原生支持的 PHP 应用提供服务。安装完 Valet 时系统会创建一个 ~/.valet/Drivers 目录，该目录中有一个 SampleValetDriver.php 文件，这个文件中有一个演示如何编写自定义驱动的示例。编写一个驱动只需要实现三个方法：serves、isStaticFile 和frontControllerPath。</p>
+<p>这三个方法接收 $sitePath、$siteName 和 $uri 值作为参数，其中 $sitePath 表示站点目录，如 ~/Sites/my-project，$siteName 表示主域名部分，如 my-project，而 $uri 则是输入的请求地址，如 /foo/bar。</p>
+<p>编写好自定义的 Valet 驱动后，将其放到 ~/.valet/Drivers 目录并遵循 FrameworkValetDriver.php 这种命名方式，举个例子，如果你是在为 WordPress 编写自定义的 Valet 驱动，对应的文件名称为 WordPressValetDriver.php。</p>
+<p>下面我们来具体讨论并演示自定义 Valet 驱动需要实现的三个方法。</p>
+<h4 id="serves-方法"><a href="#serves-方法" class="headerlink" title="serves 方法"></a>serves 方法</h4><p>如果自定义驱动需要继续处理输入请求，serves 方法会返回true，否则该方法返回 false。因此，在这个方法中应该判断给定的 $sitePath 是否包含你服务类型的项目。</p>
+<p>例如，假设我们编写的是 WordPressValetDriver，那么对应 serves 方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Determine if the driver serves the request.</span><br><span class="line"> *</span><br><span class="line"> * @param  string  $sitePath</span><br><span class="line"> * @param  string  $siteName</span><br><span class="line"> * @param  string  $uri</span><br><span class="line"> * @return void</span><br><span class="line"> * @translator laravelacademy.org</span><br><span class="line"> */</span><br><span class="line">public function serves($sitePath, $siteName, $uri)</span><br><span class="line">&#123;</span><br><span class="line">    return is_dir($sitePath.&apos;/wp-admin&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="isStaticFile-方法"><a href="#isStaticFile-方法" class="headerlink" title="isStaticFile 方法"></a>isStaticFile 方法</h4><p>isStaticFile 方法会判断输入请求是否是静态文件，例如图片或样式文件，如果文件是静态的，该方法会返回磁盘上的完整路径，如果输入请求不是请求静态文件，则返回 false：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Determine if the incoming request is for a static file.</span><br><span class="line"> *</span><br><span class="line"> * @param  string  $sitePath</span><br><span class="line"> * @param  string  $siteName</span><br><span class="line"> * @param  string  $uri</span><br><span class="line"> * @return string|false</span><br><span class="line"> */</span><br><span class="line">public function isStaticFile($sitePath, $siteName, $uri)</span><br><span class="line">&#123;</span><br><span class="line">    if (file_exists($staticFilePath = $sitePath.&apos;/public/&apos;.$uri)) &#123;</span><br><span class="line">        return $staticFilePath;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line">注：isStaticFile 方法只有在 serves 方法返回 true 并且请求 URI 不是 / 的时候才会被调用。</span><br></pre></td></tr></table></figure>
+
+<h4 id="frontControllerPath-方法"><a href="#frontControllerPath-方法" class="headerlink" title="frontControllerPath 方法"></a>frontControllerPath 方法</h4><p>frontControllerPath 方法会返回前端控制器的完整路径，通常是 index.php：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Get the fully resolved path to the application&apos;s front controller.</span><br><span class="line"> *</span><br><span class="line"> * @param  string  $sitePath</span><br><span class="line"> * @param  string  $siteName</span><br><span class="line"> * @param  string  $uri</span><br><span class="line"> * @return string</span><br><span class="line"> */</span><br><span class="line">public function frontControllerPath($sitePath, $siteName, $uri)</span><br><span class="line">&#123;</span><br><span class="line">    return $sitePath.&apos;/public/index.php&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>关于自定义 Valet 驱动可以参考学院君为 Flarum 论坛编写的扩展教程：在 Mac 开发环境 Laravel Valet 中配置运行 Flarum 论坛系统。</p>
+<h4 id="本地驱动"><a href="#本地驱动" class="headerlink" title="本地驱动"></a>本地驱动</h4><p>如果你想要为单应用程序定义一个自定义的 Valet 驱动，在应用根目录下创建一个 LocalValetDriver.php 文件，自定义驱动类可以继承自 ValetDriver 基类或者继承自已存在的应用指定驱动类如 LaravelValetDriver：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class LocalValetDriver extends LaravelValetDriver</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * Determine if the driver serves the request.</span><br><span class="line">     *</span><br><span class="line">     * @param  string  $sitePath</span><br><span class="line">     * @param  string  $siteName</span><br><span class="line">     * @param  string  $uri</span><br><span class="line">     * @return bool</span><br><span class="line">     */</span><br><span class="line">    public function serves($sitePath, $siteName, $uri)</span><br><span class="line">    &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Get the fully resolved path to the application&apos;s front controller.</span><br><span class="line">     *</span><br><span class="line">     * @param  string  $sitePath</span><br><span class="line">     * @param  string  $siteName</span><br><span class="line">     * @param  string  $uri</span><br><span class="line">     * @return string</span><br><span class="line">     */</span><br><span class="line">    public function frontControllerPath($sitePath, $siteName, $uri)</span><br><span class="line">    &#123;</span><br><span class="line">        return $sitePath.&apos;/public_html/index.php&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="其他常用-Valet-命令"><a href="#其他常用-Valet-命令" class="headerlink" title="其他常用 Valet 命令"></a>其他常用 Valet 命令</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>valet forget</td>
+<td>从”parked”目录运行该命令以便从 parked 目录列表中移除该目录</td>
+</tr>
+<tr>
+<td>valet paths</td>
+<td>查看你的”parked”路径</td>
+</tr>
+<tr>
+<td>valet restart</td>
+<td>重启 Valet</td>
+</tr>
+<tr>
+<td>valet start</td>
+<td>启动 Valet</td>
+</tr>
+<tr>
+<td>valet stop</td>
+<td>关闭 Valet</td>
+</tr>
+<tr>
+<td>valet uninstall</td>
+<td>卸载 Valet</td>
+</tr>
+</tbody></table>
+
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get" action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            明明～
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140" alt="个人头像" class="author-image">
+            <p class="author-description"></p><p>Zming-ming</p>
+<p></p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/23/MySQL-函数/">MySQL 函数</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/Linux-守护进程的启动方法/">Linux 守护进程的启动方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/常用-Git-命令清单/">常用 Git 命令清单</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/30/基于个推（GeTui）官方SDK集成-Laravel-5/">基于个推（GeTui）官方SDK集成 Laravel 5.* </a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/19/laravel5-5的定时任务详解/">laravel5.5的定时任务详解</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/17/微信小程序的更新机制/">微信小程序的更新机制</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/21/Markdown-语法/">Markdown 语法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/21/Laravel-Excel-实现-Excel-CSV-文件导入导出功能/">Laravel Excel 实现 Excel/CSV 文件导入导出功能</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/17/npm启动内存溢出问题/">npm启动内存溢出问题</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/redis安装及数据类型简介/">redis安装及数据类型简介</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/21/Laravel-Excel-实现-Excel-CSV-文件导入导出功能/">Laravel Excel 实现 Excel/CSV 文件导入导出功能</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/19/laravel5-5的定时任务详解/">laravel5.5的定时任务详解</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/24/保存网络图片/">php如何实现保存网络图片</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/30/基于个推（GeTui）官方SDK集成-Laravel-5/">基于个推（GeTui）官方SDK集成 Laravel 5.* </a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/常用-Git-命令/">常用 Git 命令</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/常用-Git-命令清单/">常用 Git 命令清单</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/17/微信小程序的更新机制/">微信小程序的更新机制</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/laravel小程序微信支付/">laravel小程序微信支付</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/23/MySQL-函数/">MySQL 函数</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/13/ySql函数字典/">MySql函数字典</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2018/08/25/laravel-Valet安装使用教程/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2018/08/25/laravel-Valet安装使用教程/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2018/08/25/laravel-Valet安装使用教程/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/Excel/" style="font-size: 19.081073085904773px;" class="tag-cloud-link">Excel</a>
+    
+    <a href="/tags/Laravel/" style="font-size: 17.590421901384097px;" class="tag-cloud-link">Laravel</a>
+    
+    <a href="/tags/markdown/" style="font-size: 8.208335919734528px;" class="tag-cloud-link">markdown</a>
+    
+    <a href="/tags/Linux/" style="font-size: 17.43681730794678px;" class="tag-cloud-link">Linux</a>
+    
+    <a href="/tags/定时任务/" style="font-size: 18.518709427886403px;" class="tag-cloud-link">定时任务</a>
+    
+    <a href="/tags/npm/" style="font-size: 18.731782534993883px;" class="tag-cloud-link">npm</a>
+    
+    <a href="/tags/vue/" style="font-size: 18.717859596868642px;" class="tag-cloud-link">vue</a>
+    
+    <a href="/tags/PHP/" style="font-size: 12.016663649657765px;" class="tag-cloud-link">PHP</a>
+    
+    <a href="/tags/GeTui/" style="font-size: 10.434445495244887px;" class="tag-cloud-link">GeTui</a>
+    
+    <a href="/tags/composer/" style="font-size: 13.928131634752418px;" class="tag-cloud-link">composer</a>
+    
+    <a href="/tags/GIT/" style="font-size: 16.83002877845075px;" class="tag-cloud-link">GIT</a>
+    
+    <a href="/tags/小程序/" style="font-size: 16.781192522124634px;" class="tag-cloud-link">小程序</a>
+    
+    <a href="/tags/支付/" style="font-size: 16.429320020027873px;" class="tag-cloud-link">支付</a>
+    
+    <a href="/tags/Redis/" style="font-size: 14.217288885457641px;" class="tag-cloud-link">Redis</a>
+    
+    <a href="/tags/MySql/" style="font-size: 12.632909663278838px;" class="tag-cloud-link">MySql</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://kdays.net/days/" target="_blank">KDays Forum</a>
+    </li>
+    
+    <li>
+        <a href="http://www.gal123.com/" target="_blank">绅士导航♂</a>
+    </li>
+    
+    <li>
+        <a href="http://www.moe123.com/" target="_blank">萌导航</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/ZEROKISEKI/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com/people/aonosora/activities" target="_blank">知乎</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 明明～ Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+</html>

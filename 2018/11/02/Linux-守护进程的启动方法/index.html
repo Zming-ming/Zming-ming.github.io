@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="明明～">
+    
+    <meta name="description" content="Zming-ming">
+    
+    
+    
+    
+    
+    
+    <title>Linux 守护进程的启动方法 | 明明～</title>
+    <link href="”https://zming-ming.github.io“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/avatar.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-navbar-collapse" aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://zming-ming.github.io">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">明明～</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class>
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class>
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/categories/PHP/">PHP</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/服务器/">服务器</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/前端/">前端</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/categories">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/Excel/">Excel</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Laravel/">Laravel</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/markdown/">markdown</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/tags">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class>
+                    <a href="/about">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://zming-ming.github.io">明明～</a>
+        >
+        <span>Linux 守护进程的启动方法</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2018/11/02/Linux-守护进程的启动方法/">Linux 守护进程的启动方法</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Linux/">Linux</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-11-02
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2018/11/02/Linux-守护进程的启动方法/">Linux 守护进程的启动方法</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2018-11-02
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Linux/">Linux</a>
+                
+                
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <h3 id="一、问题的由来"><a href="#一、问题的由来" class="headerlink" title="一、问题的由来"></a>一、问题的由来</h3><h6 id="Web应用写好后，下一件事就是启动，让它一直在后台运行。"><a href="#Web应用写好后，下一件事就是启动，让它一直在后台运行。" class="headerlink" title="Web应用写好后，下一件事就是启动，让它一直在后台运行。"></a>Web应用写好后，下一件事就是启动，让它一直在后台运行。</h6><h6 id="这并不容易。举例来说，下面是一个最简单的Node应用server-js，只有6行。"><a href="#这并不容易。举例来说，下面是一个最简单的Node应用server-js，只有6行。" class="headerlink" title="这并不容易。举例来说，下面是一个最简单的Node应用server.js，只有6行。"></a>这并不容易。举例来说，下面是一个最简单的Node应用<code>server.js</code>，只有6行。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var http = require(&apos;http&apos;);</span><br><span class="line"></span><br><span class="line">http.createServer(function(req, res) &#123;</span><br><span class="line">  res.writeHead(200, &#123;&apos;Content-Type&apos;: &apos;text/plain&apos;&#125;);</span><br><span class="line">  res.end(&apos;Hello World&apos;);</span><br><span class="line">&#125;).listen(5000);</span><br></pre></td></tr></table></figure>
+
+<h6 id="你在命令行下启动它。"><a href="#你在命令行下启动它。" class="headerlink" title="你在命令行下启动它。"></a>你在命令行下启动它。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node server.js</span><br></pre></td></tr></table></figure>
+
+<h6 id="看上去一切正常，所有人都能快乐地访问-5000-端口了。但是，一旦你退出命令行窗口，这个应用就一起退出了，无法访问了。"><a href="#看上去一切正常，所有人都能快乐地访问-5000-端口了。但是，一旦你退出命令行窗口，这个应用就一起退出了，无法访问了。" class="headerlink" title="看上去一切正常，所有人都能快乐地访问 5000 端口了。但是，一旦你退出命令行窗口，这个应用就一起退出了，无法访问了。"></a>看上去一切正常，所有人都能快乐地访问 5000 端口了。但是，一旦你退出命令行窗口，这个应用就一起退出了，无法访问了。</h6><h6 id="怎么才能让它变成系统的守护进程（daemon），成为一种服务（service），一直在那里运行呢？"><a href="#怎么才能让它变成系统的守护进程（daemon），成为一种服务（service），一直在那里运行呢？" class="headerlink" title="怎么才能让它变成系统的守护进程（daemon），成为一种服务（service），一直在那里运行呢？"></a>怎么才能让它变成系统的守护进程（daemon），成为一种服务（service），一直在那里运行呢？</h6><h3 id="二、前台任务与后台任务"><a href="#二、前台任务与后台任务" class="headerlink" title="二、前台任务与后台任务"></a>二、前台任务与后台任务</h3><h6 id="上面这样启动的脚本，称为”前台任务”（foreground-job）。它会独占命令行窗口，只有运行完了或者手动中止，才能执行其他命令。"><a href="#上面这样启动的脚本，称为”前台任务”（foreground-job）。它会独占命令行窗口，只有运行完了或者手动中止，才能执行其他命令。" class="headerlink" title="上面这样启动的脚本，称为”前台任务”（foreground job）。它会独占命令行窗口，只有运行完了或者手动中止，才能执行其他命令。"></a>上面这样启动的脚本，称为”前台任务”（foreground job）。它会独占命令行窗口，只有运行完了或者手动中止，才能执行其他命令。</h6><h6 id="变成守护进程的第一步，就是把它改成”后台任务”（background-job）。"><a href="#变成守护进程的第一步，就是把它改成”后台任务”（background-job）。" class="headerlink" title="变成守护进程的第一步，就是把它改成”后台任务”（background job）。"></a>变成守护进程的第一步，就是把它改成”后台任务”（background job）。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node server.js &amp;</span><br></pre></td></tr></table></figure>
+
+<h6 id="只要在命令的尾部加上符号-amp-，启动的进程就会成为”后台任务”。如果要让正在运行的”前台任务”变为”后台任务”，可以先按ctrl-z，然后执行bg命令（让最近一个暂停的”后台任务”继续执行）。"><a href="#只要在命令的尾部加上符号-amp-，启动的进程就会成为”后台任务”。如果要让正在运行的”前台任务”变为”后台任务”，可以先按ctrl-z，然后执行bg命令（让最近一个暂停的”后台任务”继续执行）。" class="headerlink" title="只要在命令的尾部加上符号&amp;，启动的进程就会成为”后台任务”。如果要让正在运行的”前台任务”变为”后台任务”，可以先按ctrl + z，然后执行bg命令（让最近一个暂停的”后台任务”继续执行）。"></a>只要在命令的尾部加上符号<code>&amp;</code>，启动的进程就会成为”后台任务”。如果要让正在运行的”前台任务”变为”后台任务”，可以先按<code>ctrl + z</code>，然后执行<code>bg</code>命令（让最近一个暂停的”后台任务”继续执行）。</h6><h6 id="“后台任务”有两个特点。"><a href="#“后台任务”有两个特点。" class="headerlink" title="“后台任务”有两个特点。"></a>“后台任务”有两个特点。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">继承当前 session （对话）的标准输出（stdout）和标准错误（stderr）。因此，后台任务的所有输出依然会同步地在命令行下显示。</span><br><span class="line">不再继承当前 session 的标准输入（stdin）。你无法向这个任务输入指令了。如果它试图读取标准输入，就会暂停执行（halt）。</span><br></pre></td></tr></table></figure>
+
+<h6 id="可以看到，”后台任务”与”前台任务”的本质区别只有一个：是否继承标准输入。所以，执行后台任务的同时，用户还可以输入其他命令。"><a href="#可以看到，”后台任务”与”前台任务”的本质区别只有一个：是否继承标准输入。所以，执行后台任务的同时，用户还可以输入其他命令。" class="headerlink" title="可以看到，”后台任务”与”前台任务”的本质区别只有一个：是否继承标准输入。所以，执行后台任务的同时，用户还可以输入其他命令。"></a>可以看到，”后台任务”与”前台任务”的本质区别只有一个：是否继承标准输入。所以，执行后台任务的同时，用户还可以输入其他命令。</h6><h3 id="三、SIGHUP信号"><a href="#三、SIGHUP信号" class="headerlink" title="三、SIGHUP信号"></a>三、SIGHUP信号</h3><h6 id="变为”后台任务”后，一个进程是否就成为了守护进程呢？或者说，用户退出-session-以后，”后台任务”是否还会继续执行？"><a href="#变为”后台任务”后，一个进程是否就成为了守护进程呢？或者说，用户退出-session-以后，”后台任务”是否还会继续执行？" class="headerlink" title="变为”后台任务”后，一个进程是否就成为了守护进程呢？或者说，用户退出 session 以后，”后台任务”是否还会继续执行？"></a>变为”后台任务”后，一个进程是否就成为了守护进程呢？或者说，用户退出 session 以后，”后台任务”是否还会继续执行？</h6><h6 id="Linux系统是这样设计的。"><a href="#Linux系统是这样设计的。" class="headerlink" title="Linux系统是这样设计的。"></a>Linux系统是这样设计的。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">用户准备退出 session</span><br><span class="line">系统向该 session 发出SIGHUP信号</span><br><span class="line">session 将SIGHUP信号发给所有子进程</span><br><span class="line">子进程收到SIGHUP信号后，自动退出</span><br></pre></td></tr></table></figure>
+
+<h6 id="上面的流程解释了，为什么”前台任务”会随着-session-的退出而退出：因为它收到了SIGHUP信号。"><a href="#上面的流程解释了，为什么”前台任务”会随着-session-的退出而退出：因为它收到了SIGHUP信号。" class="headerlink" title="上面的流程解释了，为什么”前台任务”会随着 session 的退出而退出：因为它收到了SIGHUP信号。"></a>上面的流程解释了，为什么”前台任务”会随着 session 的退出而退出：因为它收到了<code>SIGHUP</code>信号。</h6><h6 id="那么，”后台任务”是否也会收到SIGHUP信号？"><a href="#那么，”后台任务”是否也会收到SIGHUP信号？" class="headerlink" title="那么，”后台任务”是否也会收到SIGHUP信号？"></a>那么，”后台任务”是否也会收到<code>SIGHUP</code>信号？</h6><h6 id="这由-Shell-的huponexit参数决定的。"><a href="#这由-Shell-的huponexit参数决定的。" class="headerlink" title="这由 Shell 的huponexit参数决定的。"></a>这由 Shell 的<code>huponexit</code>参数决定的。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ shopt | grep huponexit</span><br></pre></td></tr></table></figure>
+
+<h6 id="执行上面的命令，就会看到huponexit参数的值。"><a href="#执行上面的命令，就会看到huponexit参数的值。" class="headerlink" title="执行上面的命令，就会看到huponexit参数的值。"></a>执行上面的命令，就会看到<code>huponexit</code>参数的值。</h6><h6 id="大多数Linux系统，这个参数默认关闭（off）。因此，session-退出的时候，不会把SIGHUP信号发给”后台任务”。所以，一般来说，”后台任务”不会随着-session-一起退出"><a href="#大多数Linux系统，这个参数默认关闭（off）。因此，session-退出的时候，不会把SIGHUP信号发给”后台任务”。所以，一般来说，”后台任务”不会随着-session-一起退出" class="headerlink" title="大多数Linux系统，这个参数默认关闭（off）。因此，session 退出的时候，不会把SIGHUP信号发给”后台任务”。所以，一般来说，”后台任务”不会随着 session 一起退出"></a>大多数Linux系统，这个参数默认关闭（<code>off</code>）。因此，session 退出的时候，不会把<code>SIGHUP</code>信号发给”后台任务”。所以，一般来说，”后台任务”不会随着 session 一起退出</h6><h3 id="四、disown-命令"><a href="#四、disown-命令" class="headerlink" title="四、disown 命令"></a>四、disown 命令</h3><h6 id="通过”后台任务”启动”守护进程”并不保险，因为有的系统的huponexit参数可能是打开的（on）。"><a href="#通过”后台任务”启动”守护进程”并不保险，因为有的系统的huponexit参数可能是打开的（on）。" class="headerlink" title="通过”后台任务”启动”守护进程”并不保险，因为有的系统的huponexit参数可能是打开的（on）。"></a>通过”后台任务”启动”守护进程”并不保险，因为有的系统的<code>huponexit</code>参数可能是打开的（<code>on</code>）。</h6><h6 id="更保险的方法是使用disown命令。它可以将指定任务从”后台任务”列表（jobs命令的返回结果）之中移除。一个”后台任务”只要不在这个列表之中，session-就肯定不会向它发出SIGHUP信号。"><a href="#更保险的方法是使用disown命令。它可以将指定任务从”后台任务”列表（jobs命令的返回结果）之中移除。一个”后台任务”只要不在这个列表之中，session-就肯定不会向它发出SIGHUP信号。" class="headerlink" title="更保险的方法是使用disown命令。它可以将指定任务从”后台任务”列表（jobs命令的返回结果）之中移除。一个”后台任务”只要不在这个列表之中，session 就肯定不会向它发出SIGHUP信号。"></a>更保险的方法是使用<code>disown</code>命令。它可以将指定任务从”后台任务”列表（<code>jobs</code>命令的返回结果）之中移除。一个”后台任务”只要不在这个列表之中，session 就肯定不会向它发出<code>SIGHUP</code>信号。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node server.js &amp;</span><br><span class="line">$ disown</span><br></pre></td></tr></table></figure>
+
+<h6 id="执行上面的命令以后，server-js进程就被移出了”后台任务”列表。你可以执行jobs命令验证，输出结果里面，不会有这个进程。"><a href="#执行上面的命令以后，server-js进程就被移出了”后台任务”列表。你可以执行jobs命令验证，输出结果里面，不会有这个进程。" class="headerlink" title="执行上面的命令以后，server.js进程就被移出了”后台任务”列表。你可以执行jobs命令验证，输出结果里面，不会有这个进程。"></a>执行上面的命令以后，<code>server.js</code>进程就被移出了”后台任务”列表。你可以执行<code>jobs</code>命令验证，输出结果里面，不会有这个进程。</h6><h6 id="disown的用法如下。"><a href="#disown的用法如下。" class="headerlink" title="disown的用法如下。"></a><code>disown</code>的用法如下。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 移出最近一个正在执行的后台任务</span><br><span class="line">$ disown</span><br><span class="line"></span><br><span class="line"># 移出所有正在执行的后台任务</span><br><span class="line">$ disown -r</span><br><span class="line"></span><br><span class="line"># 移出所有后台任务</span><br><span class="line">$ disown -a</span><br><span class="line"></span><br><span class="line"># 不移出后台任务，但是让它们不会收到SIGHUP信号</span><br><span class="line">$ disown -h</span><br><span class="line"></span><br><span class="line"># 根据jobId，移出指定的后台任务</span><br><span class="line">$ disown %2</span><br><span class="line">$ disown -h %2</span><br></pre></td></tr></table></figure>
+
+<h3 id="五、标准-I-O"><a href="#五、标准-I-O" class="headerlink" title="五、标准 I/O"></a>五、标准 I/O</h3><h6 id="使用disown命令之后，还有一个问题。那就是，退出-session-以后，如果后台进程与标准I-O有交互，它还是会挂掉。"><a href="#使用disown命令之后，还有一个问题。那就是，退出-session-以后，如果后台进程与标准I-O有交互，它还是会挂掉。" class="headerlink" title="使用disown命令之后，还有一个问题。那就是，退出 session 以后，如果后台进程与标准I/O有交互，它还是会挂掉。"></a>使用<code>disown</code>命令之后，还有一个问题。那就是，退出 session 以后，如果后台进程与标准I/O有交互，它还是会挂掉。</h6><h6 id="还是以上面的脚本为例，现在加入一行。"><a href="#还是以上面的脚本为例，现在加入一行。" class="headerlink" title="还是以上面的脚本为例，现在加入一行。"></a>还是以上面的脚本为例，现在加入一行。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var http = require(&apos;http&apos;);</span><br><span class="line"></span><br><span class="line">http.createServer(function(req, res) &#123;</span><br><span class="line">  console.log(&apos;server starts...&apos;); // 加入此行</span><br><span class="line">  res.writeHead(200, &#123;&apos;Content-Type&apos;: &apos;text/plain&apos;&#125;);</span><br><span class="line">  res.end(&apos;Hello World&apos;);</span><br><span class="line">&#125;).listen(5000);</span><br></pre></td></tr></table></figure>
+
+<h6 id="启动上面的脚本，然后再执行disown命令。"><a href="#启动上面的脚本，然后再执行disown命令。" class="headerlink" title="启动上面的脚本，然后再执行disown命令。"></a>启动上面的脚本，然后再执行disown命令。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node server.js &amp;</span><br><span class="line">$ disown</span><br></pre></td></tr></table></figure>
+
+<h6 id="接着，你退出-session，访问5000端口，就会发现连不上。"><a href="#接着，你退出-session，访问5000端口，就会发现连不上。" class="headerlink" title="接着，你退出 session，访问5000端口，就会发现连不上。"></a>接着，你退出 session，访问5000端口，就会发现连不上。</h6><h6 id="这是因为”后台任务”的标准-I-O-继承自当前-session，disown命令并没有改变这一点。一旦”后台任务”读写标准-I-O，就会发现它已经不存在了，所以就报错终止执行。"><a href="#这是因为”后台任务”的标准-I-O-继承自当前-session，disown命令并没有改变这一点。一旦”后台任务”读写标准-I-O，就会发现它已经不存在了，所以就报错终止执行。" class="headerlink" title="这是因为”后台任务”的标准 I/O 继承自当前 session，disown命令并没有改变这一点。一旦”后台任务”读写标准 I/O，就会发现它已经不存在了，所以就报错终止执行。"></a>这是因为”后台任务”的标准 I/O 继承自当前 session，<code>disown</code>命令并没有改变这一点。一旦”后台任务”读写标准 I/O，就会发现它已经不存在了，所以就报错终止执行。</h6><h6 id="为了解决这个问题，需要对”后台任务”的标准-I-O-进行重定向。"><a href="#为了解决这个问题，需要对”后台任务”的标准-I-O-进行重定向。" class="headerlink" title="为了解决这个问题，需要对”后台任务”的标准 I/O 进行重定向。"></a>为了解决这个问题，需要对”后台任务”的标准 I/O 进行重定向。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node server.js &gt; stdout.txt 2&gt; stderr.txt &lt; /dev/null &amp;</span><br><span class="line">$ disown</span><br></pre></td></tr></table></figure>
+
+<h6 id="上面这样执行，基本上就没有问题了"><a href="#上面这样执行，基本上就没有问题了" class="headerlink" title="上面这样执行，基本上就没有问题了"></a>上面这样执行，基本上就没有问题了</h6><h3 id="六、nohup-命令"><a href="#六、nohup-命令" class="headerlink" title="六、nohup 命令"></a>六、nohup 命令</h3><h6 id="还有比disown更方便的命令，就是nohup。"><a href="#还有比disown更方便的命令，就是nohup。" class="headerlink" title="还有比disown更方便的命令，就是nohup。"></a>还有比<code>disown</code>更方便的命令，就是<code>nohup</code>。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nohup node server.js &amp;</span><br></pre></td></tr></table></figure>
+
+<h6 id="nohup命令对server-js进程做了三件事。"><a href="#nohup命令对server-js进程做了三件事。" class="headerlink" title="nohup命令对server.js进程做了三件事。"></a><code>nohup</code>命令对<code>server.js</code>进程做了三件事。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">阻止SIGHUP信号发到这个进程。</span><br><span class="line">关闭标准输入。该进程不再能够接收任何输入，即使运行在前台。</span><br><span class="line">重定向标准输出和标准错误到文件nohup.out。</span><br></pre></td></tr></table></figure>
+
+<h6 id="也就是说，nohup命令实际上将子进程与它所在的-session-分离了。"><a href="#也就是说，nohup命令实际上将子进程与它所在的-session-分离了。" class="headerlink" title="也就是说，nohup命令实际上将子进程与它所在的 session 分离了。"></a>也就是说，<code>nohup</code>命令实际上将子进程与它所在的 session 分离了。</h6><blockquote>
+<p>注意，<code>nohup</code>命令不会自动把进程变为”后台任务”，所以必须加上<code>&amp;</code>符号。</p>
+</blockquote>
+<h3 id="七、Screen-命令与-Tmux-命令"><a href="#七、Screen-命令与-Tmux-命令" class="headerlink" title="七、Screen 命令与 Tmux 命令"></a>七、Screen 命令与 Tmux 命令</h3><h6 id="另一种思路是使用-terminal-multiplexer-（终端复用器：在同一个终端里面，管理多个session），典型的就是-Screen-命令和-Tmux-命令。"><a href="#另一种思路是使用-terminal-multiplexer-（终端复用器：在同一个终端里面，管理多个session），典型的就是-Screen-命令和-Tmux-命令。" class="headerlink" title="另一种思路是使用 terminal multiplexer （终端复用器：在同一个终端里面，管理多个session），典型的就是 Screen 命令和 Tmux 命令。"></a>另一种思路是使用 terminal multiplexer （终端复用器：在同一个终端里面，管理多个session），典型的就是 Screen 命令和 Tmux 命令。</h6><h6 id="它们可以在当前-session-里面，新建另一个-session。这样的话，当前-session-一旦结束，不影响其他-session。而且，以后重新登录，还可以再连上早先新建的-session。"><a href="#它们可以在当前-session-里面，新建另一个-session。这样的话，当前-session-一旦结束，不影响其他-session。而且，以后重新登录，还可以再连上早先新建的-session。" class="headerlink" title="它们可以在当前 session 里面，新建另一个 session。这样的话，当前 session 一旦结束，不影响其他 session。而且，以后重新登录，还可以再连上早先新建的 session。"></a>它们可以在当前 session 里面，新建另一个 session。这样的话，当前 session 一旦结束，不影响其他 session。而且，以后重新登录，还可以再连上早先新建的 session。</h6><h6 id="Screen-的用法如下。"><a href="#Screen-的用法如下。" class="headerlink" title="Screen 的用法如下。"></a>Screen 的用法如下。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 新建一个 session</span><br><span class="line">$ screen</span><br><span class="line">$ node server.js</span><br></pre></td></tr></table></figure>
+
+<h6 id="然后，按下ctrl-A和ctrl-D，回到原来的-session，从那里退出登录。下次登录时，再切回去。"><a href="#然后，按下ctrl-A和ctrl-D，回到原来的-session，从那里退出登录。下次登录时，再切回去。" class="headerlink" title="然后，按下ctrl + A和ctrl + D，回到原来的 session，从那里退出登录。下次登录时，再切回去。"></a>然后，按下<code>ctrl + A</code>和<code>ctrl + D</code>，回到原来的 session，从那里退出登录。下次登录时，再切回去。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ screen -r</span><br></pre></td></tr></table></figure>
+
+<h6 id="如果新建多个后台-session，就需要为它们指定名字。"><a href="#如果新建多个后台-session，就需要为它们指定名字。" class="headerlink" title="如果新建多个后台 session，就需要为它们指定名字。"></a>如果新建多个后台 session，就需要为它们指定名字。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ screen -S name</span><br><span class="line"></span><br><span class="line"># 切回指定 session</span><br><span class="line">$ screen -r name</span><br><span class="line">$ screen -r pid_number</span><br><span class="line"></span><br><span class="line"># 列出所有 session</span><br><span class="line">$ screen -ls</span><br></pre></td></tr></table></figure>
+
+<h6 id="如果要停掉某个-session，可以先切回它，然后按下ctrl-c和ctrl-d。"><a href="#如果要停掉某个-session，可以先切回它，然后按下ctrl-c和ctrl-d。" class="headerlink" title="如果要停掉某个 session，可以先切回它，然后按下ctrl + c和ctrl + d。"></a>如果要停掉某个 session，可以先切回它，然后按下<code>ctrl + c</code>和<code>ctrl + d</code>。</h6><h6 id="Tmux-比-Screen-功能更多、更强大，它的基本用法如下。"><a href="#Tmux-比-Screen-功能更多、更强大，它的基本用法如下。" class="headerlink" title="Tmux 比 Screen 功能更多、更强大，它的基本用法如下。"></a>Tmux 比 Screen 功能更多、更强大，它的基本用法如下。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ tmux</span><br><span class="line">$ node server.js</span><br><span class="line"></span><br><span class="line"># 返回原来的session</span><br><span class="line">$ tmux detach</span><br></pre></td></tr></table></figure>
+
+<h6 id="除了tmux-detach，另一种方法是按下Ctrl-B和d，也可以回到原来的-session。"><a href="#除了tmux-detach，另一种方法是按下Ctrl-B和d，也可以回到原来的-session。" class="headerlink" title="除了tmux detach，另一种方法是按下Ctrl + B和d，也可以回到原来的 session。"></a>除了<code>tmux detach</code>，另一种方法是按下<code>Ctrl + B</code>和<code>d</code>，也可以回到原来的 session。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 下次登录时，返回后台正在运行服务session</span><br><span class="line">$ tmux attach</span><br></pre></td></tr></table></figure>
+
+<h6 id="如果新建多个-session，就需要为每个-session-指定名字。"><a href="#如果新建多个-session，就需要为每个-session-指定名字。" class="headerlink" title="如果新建多个 session，就需要为每个 session 指定名字。"></a>如果新建多个 session，就需要为每个 session 指定名字。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 新建 session</span><br><span class="line">$ tmux new -s session_name</span><br><span class="line"></span><br><span class="line"># 切换到指定 session</span><br><span class="line">$ tmux attach -t session_name</span><br><span class="line"></span><br><span class="line"># 列出所有 session</span><br><span class="line">$ tmux list-sessions</span><br><span class="line"></span><br><span class="line"># 退出当前 session，返回前一个 session </span><br><span class="line">$ tmux detach</span><br><span class="line"></span><br><span class="line"># 杀死指定 session</span><br><span class="line">$ tmux kill-session -t session-name</span><br></pre></td></tr></table></figure>
+
+<h3 id="八、Node-工具"><a href="#八、Node-工具" class="headerlink" title="八、Node 工具"></a>八、Node 工具</h3><h6 id="对于-Node-应用来说，可以不用上面的方法，有一些专门用来启动的工具：forever，nodemon-和-pm2。"><a href="#对于-Node-应用来说，可以不用上面的方法，有一些专门用来启动的工具：forever，nodemon-和-pm2。" class="headerlink" title="对于 Node 应用来说，可以不用上面的方法，有一些专门用来启动的工具：forever，nodemon 和 pm2。"></a>对于 Node 应用来说，可以不用上面的方法，有一些专门用来启动的工具：forever，nodemon 和 pm2。</h6><h6 id="forever-的功能很简单，就是保证进程退出时，应用会自动重启。"><a href="#forever-的功能很简单，就是保证进程退出时，应用会自动重启。" class="headerlink" title="forever 的功能很简单，就是保证进程退出时，应用会自动重启。"></a>forever 的功能很简单，就是保证进程退出时，应用会自动重启。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 作为前台任务启动</span><br><span class="line">$ forever server.js</span><br><span class="line"></span><br><span class="line"># 作为服务进程启动 </span><br><span class="line">$ forever start app.js</span><br><span class="line"></span><br><span class="line"># 停止服务进程</span><br><span class="line">$ forever stop Id</span><br><span class="line"></span><br><span class="line"># 重启服务进程</span><br><span class="line">$ forever restart Id</span><br><span class="line"></span><br><span class="line"># 监视当前目录的文件变动，一有变动就重启</span><br><span class="line">$ forever -w server.js</span><br><span class="line"></span><br><span class="line"># -m 参数指定最多重启次数</span><br><span class="line">$ forever -m 5 server.js </span><br><span class="line"></span><br><span class="line"># 列出所有进程</span><br><span class="line">$ forever list</span><br></pre></td></tr></table></figure>
+
+<h6 id="nodemon一般只在开发时使用，它最大的长处在于-watch-功能，一旦文件发生变化，就自动重启进程。"><a href="#nodemon一般只在开发时使用，它最大的长处在于-watch-功能，一旦文件发生变化，就自动重启进程。" class="headerlink" title="nodemon一般只在开发时使用，它最大的长处在于 watch 功能，一旦文件发生变化，就自动重启进程。"></a><code>nodemon</code>一般只在开发时使用，它最大的长处在于 watch 功能，一旦文件发生变化，就自动重启进程。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 默认监视当前目录的文件变化</span><br><span class="line">$ nodemon server.js</span><br><span class="line"></span><br><span class="line">＃ 监视指定文件的变化   </span><br><span class="line">$ nodemon --watch app --watch libs server.js</span><br></pre></td></tr></table></figure>
+
+<h6 id="pm2-的功能最强大，除了重启进程以外，还能实时收集日志和监控。"><a href="#pm2-的功能最强大，除了重启进程以外，还能实时收集日志和监控。" class="headerlink" title="pm2 的功能最强大，除了重启进程以外，还能实时收集日志和监控。"></a>pm2 的功能最强大，除了重启进程以外，还能实时收集日志和监控。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"># 启动应用</span><br><span class="line">$ pm2 start app.js</span><br><span class="line"></span><br><span class="line"># 指定同时起多少个进程（由CPU核心数决定），组成一个集群</span><br><span class="line">$ pm2 start app.js -i max</span><br><span class="line"></span><br><span class="line"># 列出所有任务</span><br><span class="line">$ pm2 list</span><br><span class="line"></span><br><span class="line"># 停止指定任务</span><br><span class="line">$ pm2 stop 0</span><br><span class="line"></span><br><span class="line">＃ 重启指定任务</span><br><span class="line">$ pm2 restart 0</span><br><span class="line"></span><br><span class="line"># 删除指定任务</span><br><span class="line">$ pm2 delete 0</span><br><span class="line"></span><br><span class="line"># 保存当前的所有任务，以后可以恢复</span><br><span class="line">$ pm2 save</span><br><span class="line"></span><br><span class="line"># 列出每个进程的统计数据</span><br><span class="line">$ pm2 monit</span><br><span class="line"></span><br><span class="line"># 查看所有日志</span><br><span class="line">$ pm2 logs</span><br><span class="line"></span><br><span class="line"># 导出数据</span><br><span class="line">$ pm2 dump</span><br><span class="line"></span><br><span class="line"># 重启所有进程</span><br><span class="line">$ pm2 kill</span><br><span class="line">$ pm2 resurect</span><br><span class="line"></span><br><span class="line"># 启动web界面 http://localhost:9615</span><br><span class="line">$ pm2 web</span><br></pre></td></tr></table></figure>
+    </div>
+</article>
+
+
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get" action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            明明～
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/avatar.jpg" width="140" height="140" alt="个人头像" class="author-image">
+            <p class="author-description"></p><p>Zming-ming</p>
+<p></p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/23/MySQL-函数/">MySQL 函数</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/Linux-守护进程的启动方法/">Linux 守护进程的启动方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/常用-Git-命令清单/">常用 Git 命令清单</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/30/基于个推（GeTui）官方SDK集成-Laravel-5/">基于个推（GeTui）官方SDK集成 Laravel 5.* </a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/19/laravel5-5的定时任务详解/">laravel5.5的定时任务详解</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/17/微信小程序的更新机制/">微信小程序的更新机制</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/21/Markdown-语法/">Markdown 语法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/21/Laravel-Excel-实现-Excel-CSV-文件导入导出功能/">Laravel Excel 实现 Excel/CSV 文件导入导出功能</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/17/npm启动内存溢出问题/">npm启动内存溢出问题</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/redis安装及数据类型简介/">redis安装及数据类型简介</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/21/Laravel-Excel-实现-Excel-CSV-文件导入导出功能/">Laravel Excel 实现 Excel/CSV 文件导入导出功能</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/17/npm启动内存溢出问题/">npm启动内存溢出问题</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/24/冒泡排序/">php中常用的冒泡排序&amp;快速排序算法以及二分查找&amp;顺序查找的算法实现</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/30/基于个推（GeTui）官方SDK集成-Laravel-5/">基于个推（GeTui）官方SDK集成 Laravel 5.* </a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/常用-Git-命令清单/">常用 Git 命令清单</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/02/Linux-守护进程的启动方法/">Linux 守护进程的启动方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/25/laravel-Valet安装使用教程/">Valet 安装使用详细教程</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/redis安装及数据类型简介/">redis安装及数据类型简介</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/24/递归方法/">php实现无限极分类的方法：递归方法和引用方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/23/MySQL-函数/">MySQL 函数</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="gal-sets">
+        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+            <ul class="nav nav-pills pills-gal">
+
+                
+                <li>
+                    <a href="/2018/11/02/Linux-守护进程的启动方法/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2018/11/02/Linux-守护进程的启动方法/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                </li>
+                
+                
+                <li>
+                    <a href="/2018/11/02/Linux-守护进程的启动方法/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                </li>
+                
+            </ul>
+            <div class="tab-content">
+                
+                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/Excel/" style="font-size: 17.3439192318573px;" class="tag-cloud-link">Excel</a>
+    
+    <a href="/tags/Laravel/" style="font-size: 17.65939359206829px;" class="tag-cloud-link">Laravel</a>
+    
+    <a href="/tags/markdown/" style="font-size: 16.21296803183081px;" class="tag-cloud-link">markdown</a>
+    
+    <a href="/tags/Linux/" style="font-size: 18.036064652434494px;" class="tag-cloud-link">Linux</a>
+    
+    <a href="/tags/定时任务/" style="font-size: 11.190869163886827px;" class="tag-cloud-link">定时任务</a>
+    
+    <a href="/tags/npm/" style="font-size: 18.67082810658873px;" class="tag-cloud-link">npm</a>
+    
+    <a href="/tags/vue/" style="font-size: 16.665490812376834px;" class="tag-cloud-link">vue</a>
+    
+    <a href="/tags/PHP/" style="font-size: 9.183875897274763px;" class="tag-cloud-link">PHP</a>
+    
+    <a href="/tags/GeTui/" style="font-size: 15.113727168774018px;" class="tag-cloud-link">GeTui</a>
+    
+    <a href="/tags/composer/" style="font-size: 18.454144772895862px;" class="tag-cloud-link">composer</a>
+    
+    <a href="/tags/GIT/" style="font-size: 11.801478323011054px;" class="tag-cloud-link">GIT</a>
+    
+    <a href="/tags/小程序/" style="font-size: 8.996845796972803px;" class="tag-cloud-link">小程序</a>
+    
+    <a href="/tags/支付/" style="font-size: 15.66698058092938px;" class="tag-cloud-link">支付</a>
+    
+    <a href="/tags/Redis/" style="font-size: 18.157143994898px;" class="tag-cloud-link">Redis</a>
+    
+    <a href="/tags/MySql/" style="font-size: 10.41452599935181px;" class="tag-cloud-link">MySql</a>
+    
+</div>
+                
+                
+                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://kdays.net/days/" target="_blank">KDays Forum</a>
+    </li>
+    
+    <li>
+        <a href="http://www.gal123.com/" target="_blank">绅士导航♂</a>
+    </li>
+    
+    <li>
+        <a href="http://www.moe123.com/" target="_blank">萌导航</a>
+    </li>
+    
+</div>
+                
+                
+                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/ZEROKISEKI/" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
+    </li>
+    
+    <li>
+        <a href="https://www.zhihu.com/people/aonosora/activities" target="_blank">知乎</a>
+    </li>
+    
+</div>
+                
+            </div>
+        </div>
+    </aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        Copyright © 2018 明明～ Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+</body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+
+</html>

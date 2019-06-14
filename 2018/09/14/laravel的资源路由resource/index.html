@@ -12,7 +12,7 @@
     
     
     
-    <title>archive_a | 明明～</title>
+    <title>laravel的资源路由resource | 明明～</title>
     <link href="”https://zming-ming.github.io“" rel="”prefetch”">
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -95,7 +95,7 @@
                 
                 
                 
-                <li class="current">
+                <li class>
                     <a href="/archives">
                         <i class="fa fa-archive"></i>归档
                     </a>
@@ -184,19 +184,34 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-archive">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="https://zming-ming.github.io">明明～</a>
         >
-        <span>归档</span>
+        <span>laravel的资源路由resource</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/archives">归档</a>
+                <a href="/2018/09/14/laravel的资源路由resource/">laravel的资源路由resource</a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Laravel/">Laravel</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-09-14
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -204,103 +219,33 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/archives">归档</a>
+                    <a href="/2018/09/14/laravel的资源路由resource/">laravel的资源路由resource</a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2018-09-14
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Laravel/">Laravel</a>
+                
+                
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        
-        
-            <h1 style="font-size: 24px; margin-top: 40px;">2018年</h1>
-            
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-             
-             
-                        <a href="/2018/11/23/MySQL-函数/">MySQL 函数</a>
-                        <br>
-            
-             
-                        <a href="/2018/11/02/Linux-守护进程的启动方法/">Linux 守护进程的启动方法</a>
-                        <br>
-            
-             
-                        <a href="/2018/11/02/常用-Git-命令清单/">常用 Git 命令清单</a>
-                        <br>
-            
-             
-                        <a href="/2018/10/30/基于个推（GeTui）官方SDK集成-Laravel-5/">基于个推（GeTui）官方SDK集成 Laravel 5.* </a>
-                        <br>
-            
-             
-                        <a href="/2018/10/19/laravel5-5的定时任务详解/">laravel5.5的定时任务详解</a>
-                        <br>
-            
-             
-                        <a href="/2018/10/17/微信小程序的更新机制/">微信小程序的更新机制</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/21/Markdown-语法/">Markdown 语法</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/21/Laravel-Excel-实现-Excel-CSV-文件导入导出功能/">Laravel Excel 实现 Excel/CSV 文件导入导出功能</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/17/npm启动内存溢出问题/">npm启动内存溢出问题</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/14/redis安装及数据类型简介/">redis安装及数据类型简介</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/14/laravel的资源路由resource/">laravel的资源路由resource</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/14/laravel小程序微信支付/">laravel小程序微信支付</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/14/常用-Git-命令/">常用 Git 命令</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/13/ySql函数字典/">MySql函数字典</a>
-                        <br>
-            
-             
-                        <a href="/2018/08/25/laravel-Valet安装使用教程/">Valet 安装使用详细教程</a>
-                        <br>
-            
-             
-                        <a href="/2018/08/24/保存网络图片/">php如何实现保存网络图片</a>
-                        <br>
-            
-             
-                        <a href="/2018/08/24/冒泡排序/">php中常用的冒泡排序&amp;快速排序算法以及二分查找&amp;顺序查找的算法实现</a>
-                        <br>
-            
-             
-                        <a href="/2018/08/24/递归方法/">php实现无限极分类的方法：递归方法和引用方法</a>
-                        <br>
-            
-             
-                        <a href="/2018/08/07/搭建hexo/">搭建hexo</a>
-                        <br>
-            
-             
-                        <a href="/2018/08/07/hello-world/">Hello World</a>
-                        <br>
-            
-                    </div>
-        
+    <div class="content-article">
+        <h3 id="路由列表"><a href="#路由列表" class="headerlink" title="路由列表"></a>路由列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Route::resource(&apos;re&apos;,&apos;Admin\ReController&apos;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Controller"><a href="#Controller" class="headerlink" title="Controller　"></a>Controller　</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"> </span><br><span class="line">namespace App\Http\Controllers\Admin;</span><br><span class="line"> </span><br><span class="line">use Illuminate\Http\Request;</span><br><span class="line">use App\Http\Controllers\Controller;</span><br><span class="line">use Illuminate\Support\Facades\Input;</span><br><span class="line"> </span><br><span class="line">class ReController extends Controller</span><br><span class="line">&#123;</span><br><span class="line">    //get.re  全部分类列表</span><br><span class="line">    public function index($id = null)&#123;</span><br><span class="line">        echo &quot;这里是index方法不能传入参数&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">       //get.re/create   添加分类</span><br><span class="line">    public function create()&#123;</span><br><span class="line">        echo &quot;这里是create方法不能传入参数&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    //post.re  添加分类提交</span><br><span class="line">    public function store()&#123;</span><br><span class="line">        echo &quot;这里是store方法不能传入参数&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    //get.re/&#123;id&#125;  显示单个分类</span><br><span class="line">    public function show($id)&#123;</span><br><span class="line">        echo &quot;这里是show方法传入的参数是：&quot;.$id;</span><br><span class="line">        dd(Input::all());</span><br><span class="line">    &#125;</span><br><span class="line">    //get.re/&#123;id&#125;/edit    更新分类</span><br><span class="line">    public function edit($id)&#123;</span><br><span class="line">        echo &quot;这里是edit方法传入的参数是：&quot;.$id;</span><br><span class="line">        dd(Input::all());</span><br><span class="line">    &#125;</span><br><span class="line">    //put.re/&#123;id&#125;  显示单个分类信息</span><br><span class="line">    public function update($id)&#123;</span><br><span class="line">        echo &quot;这里是update方法传入的参数是：&quot;.$id;</span><br><span class="line">        dd(Input::all());</span><br><span class="line">    &#125;</span><br><span class="line">    //delete.re/&#123;id&#125;   删除单个分类</span><br><span class="line">    public function destroy($id)&#123;</span><br><span class="line">        echo &quot;这里是destory方法传入的参数是：&quot;.$id;</span><br><span class="line">        dd(Input::all());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="blade模板"><a href="#blade模板" class="headerlink" title="blade模板"></a>blade模板</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</span><br><span class="line">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;form action=&quot;&#123;&#123;url(&apos;re&apos;)&#125;&#125;&quot; method= &quot;get&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;这里是index方法&quot; /&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;form action=&quot;&#123;&#123;url(&apos;re/create&apos;)&#125;&#125;&quot; method= &quot;get&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;这里是create方法&quot; /&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">    &lt;form action=&quot;&#123;&#123;url(&apos;re/&apos;)&#125;&#125;&quot; method= &quot;post&quot;&gt;</span><br><span class="line">         &#123;&#123;csrf_field()&#125;&#125;</span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;这里是store方法&quot; /&gt;</span><br><span class="line">        </span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">    &lt;form action=&quot;&#123;&#123;url(&apos;re/123&apos;)&#125;&#125;&quot; method= &quot;get&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;这里是show方法&quot; /&gt;</span><br><span class="line">        </span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">    &lt;form action=&quot;&#123;&#123;url(&apos;re/123/edit&apos;)&#125;&#125;&quot; method= &quot;get&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;这里是edit方法&quot; /&gt;    </span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">    &lt;form action=&quot;&#123;&#123;url(&apos;re/123&apos;)&#125;&#125;&quot; method= &quot;POST&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;这里是update方法&quot; /&gt;</span><br><span class="line">        &lt;input type=&quot;hidden&quot; name=&quot;_method&quot; value=&quot;PUT&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;hidden&quot; name=&quot;_token&quot; value=&quot;&#123;&#123;csrf_token()&#125;&#125;&quot; /&gt;    </span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">    &lt;form action=&quot;&#123;&#123;url(&apos;re/123&apos;)&#125;&#125;&quot; method= &quot;post&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;这里是destory方法&quot; /&gt;</span><br><span class="line">        &lt;input type=&quot;hidden&quot; name=&quot;_method&quot; value=&quot;DELETE&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;hidden&quot; name=&quot;_token&quot; value=&quot;&#123;&#123;csrf_token()&#125;&#125;&quot; /&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">    </span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
     </div>
 </article>
+
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -432,19 +377,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/08/07/hello-world/">Hello World</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/10/19/laravel5-5的定时任务详解/">laravel5.5的定时任务详解</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/09/14/laravel的资源路由resource/">laravel的资源路由resource</a>
+                    <a href="/2018/09/21/Laravel-Excel-实现-Excel-CSV-文件导入导出功能/">Laravel Excel 实现 Excel/CSV 文件导入导出功能</a>
                 </span>
             </li>
             
@@ -462,6 +395,12 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2018/08/07/搭建hexo/">搭建hexo</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2018/10/17/微信小程序的更新机制/">微信小程序的更新机制</a>
                 </span>
             </li>
@@ -474,13 +413,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/08/25/laravel-Valet安装使用教程/">Valet 安装使用详细教程</a>
+                    <a href="/2018/09/14/laravel小程序微信支付/">laravel小程序微信支付</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/09/14/redis安装及数据类型简介/">redis安装及数据类型简介</a>
+                    <a href="/2018/08/24/递归方法/">php实现无限极分类的方法：递归方法和引用方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/23/MySQL-函数/">MySQL 函数</a>
                 </span>
             </li>
             
@@ -501,17 +446,17 @@
 
                 
                 <li>
-                    <a href="/archives/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/09/14/laravel的资源路由resource/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/09/14/laravel的资源路由resource/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/09/14/laravel的资源路由resource/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -519,35 +464,35 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/Excel/" style="font-size: 14.022636335440959px;" class="tag-cloud-link">Excel</a>
+    <a href="/tags/Excel/" style="font-size: 13.111084937163628px;" class="tag-cloud-link">Excel</a>
     
-    <a href="/tags/Laravel/" style="font-size: 10.066591245962663px;" class="tag-cloud-link">Laravel</a>
+    <a href="/tags/Laravel/" style="font-size: 10.17268721155019px;" class="tag-cloud-link">Laravel</a>
     
-    <a href="/tags/markdown/" style="font-size: 9.458182532129664px;" class="tag-cloud-link">markdown</a>
+    <a href="/tags/markdown/" style="font-size: 16.383003159209828px;" class="tag-cloud-link">markdown</a>
     
-    <a href="/tags/Linux/" style="font-size: 12.879622798528647px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Linux/" style="font-size: 19.114382458488596px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/定时任务/" style="font-size: 10.456116884949552px;" class="tag-cloud-link">定时任务</a>
+    <a href="/tags/定时任务/" style="font-size: 9.565354543120666px;" class="tag-cloud-link">定时任务</a>
     
-    <a href="/tags/npm/" style="font-size: 18.862317600953297px;" class="tag-cloud-link">npm</a>
+    <a href="/tags/npm/" style="font-size: 11.901818206377197px;" class="tag-cloud-link">npm</a>
     
-    <a href="/tags/vue/" style="font-size: 8.539997814230428px;" class="tag-cloud-link">vue</a>
+    <a href="/tags/vue/" style="font-size: 16.487059383259975px;" class="tag-cloud-link">vue</a>
     
-    <a href="/tags/PHP/" style="font-size: 14.27139465183442px;" class="tag-cloud-link">PHP</a>
+    <a href="/tags/PHP/" style="font-size: 9.866103353866272px;" class="tag-cloud-link">PHP</a>
     
-    <a href="/tags/GeTui/" style="font-size: 17.198456004396164px;" class="tag-cloud-link">GeTui</a>
+    <a href="/tags/GeTui/" style="font-size: 12.861223963553204px;" class="tag-cloud-link">GeTui</a>
     
-    <a href="/tags/composer/" style="font-size: 19.63462266813093px;" class="tag-cloud-link">composer</a>
+    <a href="/tags/composer/" style="font-size: 12.689300529555057px;" class="tag-cloud-link">composer</a>
     
-    <a href="/tags/GIT/" style="font-size: 10.594358333397683px;" class="tag-cloud-link">GIT</a>
+    <a href="/tags/GIT/" style="font-size: 13.742325529168681px;" class="tag-cloud-link">GIT</a>
     
-    <a href="/tags/小程序/" style="font-size: 15.247713729173718px;" class="tag-cloud-link">小程序</a>
+    <a href="/tags/小程序/" style="font-size: 12.220037102514357px;" class="tag-cloud-link">小程序</a>
     
-    <a href="/tags/支付/" style="font-size: 15.895317194563306px;" class="tag-cloud-link">支付</a>
+    <a href="/tags/支付/" style="font-size: 14.531665066574883px;" class="tag-cloud-link">支付</a>
     
-    <a href="/tags/Redis/" style="font-size: 8.368684293809357px;" class="tag-cloud-link">Redis</a>
+    <a href="/tags/Redis/" style="font-size: 11.034278023958777px;" class="tag-cloud-link">Redis</a>
     
-    <a href="/tags/MySql/" style="font-size: 13.801706604789512px;" class="tag-cloud-link">MySql</a>
+    <a href="/tags/MySql/" style="font-size: 19.593130022009934px;" class="tag-cloud-link">MySql</a>
     
 </div>
                 
