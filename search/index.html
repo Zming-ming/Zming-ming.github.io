@@ -242,7 +242,7 @@
     // 获取每页的页码数
     var pageSize = '10'
     var useLeancloud = 'ExPYzACyKFnWERdWAp46xdjI'
-    var useComment = ('true' === 'true')
+    var useComment = ('false' === 'true')
     $.getJSON('/content.json', function (json) {
       $('#search-breadcrumb').append(`搜索'${s}'的结果`)
       var result = getArticles(s, 'posts', json).concat(getArticles(s, 'pages', json))
@@ -448,18 +448,6 @@
     </div>
 </aside>
     
-    <aside id="sidebar-recent_comments">
-    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
-        <div class="panel-heading">
-            <i class="fa fa-comments"></i>
-            最新评论
-            <i class="fa fa-times-circle panel-remove"></i>
-            <i class="fa fa-chevron-circle-up panel-toggle"></i>
-        </div>
-        <ul class="list-group list-group-flush"></ul>
-    </div>
-</aside>
-    
     <!-- 要配置好leancloud才能开启此小工具 -->
     
     <aside id="sidebar-hot_posts">
@@ -563,31 +551,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/09/21/Laravel-Excel-实现-Excel-CSV-文件导入导出功能/">Laravel Excel 实现 Excel/CSV 文件导入导出功能</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2018/09/21/Markdown-语法/">Markdown 语法</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/10/19/laravel5-5的定时任务详解/">laravel5.5的定时任务详解</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/09/17/npm启动内存溢出问题/">npm启动内存溢出问题</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/09/14/常用-Git-命令/">常用 Git 命令</a>
+                    <a href="/2018/10/30/基于个推（GeTui）官方SDK集成-Laravel-5/">基于个推（GeTui）官方SDK集成 Laravel 5.* </a>
                 </span>
             </li>
             
@@ -605,7 +575,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/08/07/搭建hexo/">搭建hexo</a>
+                    <a href="/2018/11/02/Linux-守护进程的启动方法/">Linux 守护进程的启动方法</a>
                 </span>
             </li>
             
@@ -618,6 +588,24 @@
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2018/09/14/laravel小程序微信支付/">laravel小程序微信支付</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/14/redis安装及数据类型简介/">redis安装及数据类型简介</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/23/MySQL-函数/">MySQL 函数</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/13/ySql函数字典/">MySql函数字典</a>
                 </span>
             </li>
             
@@ -650,35 +638,35 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/Excel/" style="font-size: 17.92876804979366px;" class="tag-cloud-link">Excel</a>
+    <a href="/tags/Excel/" style="font-size: 16.14401019625827px;" class="tag-cloud-link">Excel</a>
     
-    <a href="/tags/Laravel/" style="font-size: 9.529002982403021px;" class="tag-cloud-link">Laravel</a>
+    <a href="/tags/Laravel/" style="font-size: 12.296396346564812px;" class="tag-cloud-link">Laravel</a>
     
-    <a href="/tags/markdown/" style="font-size: 18.931315892777075px;" class="tag-cloud-link">markdown</a>
+    <a href="/tags/markdown/" style="font-size: 10.162818182362654px;" class="tag-cloud-link">markdown</a>
     
-    <a href="/tags/Linux/" style="font-size: 9.866334469466036px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Linux/" style="font-size: 14.835909029184226px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/定时任务/" style="font-size: 19.07454300008126px;" class="tag-cloud-link">定时任务</a>
+    <a href="/tags/定时任务/" style="font-size: 13.202678795349993px;" class="tag-cloud-link">定时任务</a>
     
-    <a href="/tags/npm/" style="font-size: 10.446853318708623px;" class="tag-cloud-link">npm</a>
+    <a href="/tags/npm/" style="font-size: 13.176734285068047px;" class="tag-cloud-link">npm</a>
     
-    <a href="/tags/vue/" style="font-size: 19.070385923486px;" class="tag-cloud-link">vue</a>
+    <a href="/tags/vue/" style="font-size: 10.388352155502414px;" class="tag-cloud-link">vue</a>
     
-    <a href="/tags/PHP/" style="font-size: 8.356971716041947px;" class="tag-cloud-link">PHP</a>
+    <a href="/tags/PHP/" style="font-size: 10.395135296891542px;" class="tag-cloud-link">PHP</a>
     
-    <a href="/tags/GeTui/" style="font-size: 19.77636975407497px;" class="tag-cloud-link">GeTui</a>
+    <a href="/tags/GIT/" style="font-size: 18.419426841035563px;" class="tag-cloud-link">GIT</a>
     
-    <a href="/tags/composer/" style="font-size: 10.048964104189372px;" class="tag-cloud-link">composer</a>
+    <a href="/tags/GeTui/" style="font-size: 16.761117558429333px;" class="tag-cloud-link">GeTui</a>
     
-    <a href="/tags/GIT/" style="font-size: 11.242249035859285px;" class="tag-cloud-link">GIT</a>
+    <a href="/tags/composer/" style="font-size: 11.006203255529476px;" class="tag-cloud-link">composer</a>
     
-    <a href="/tags/小程序/" style="font-size: 13.58809541998382px;" class="tag-cloud-link">小程序</a>
+    <a href="/tags/小程序/" style="font-size: 14.498124142768088px;" class="tag-cloud-link">小程序</a>
     
-    <a href="/tags/支付/" style="font-size: 17.792247806579017px;" class="tag-cloud-link">支付</a>
+    <a href="/tags/支付/" style="font-size: 12.12868938880527px;" class="tag-cloud-link">支付</a>
     
-    <a href="/tags/Redis/" style="font-size: 13.972391444016626px;" class="tag-cloud-link">Redis</a>
+    <a href="/tags/Redis/" style="font-size: 16.083817296889464px;" class="tag-cloud-link">Redis</a>
     
-    <a href="/tags/MySql/" style="font-size: 17.05211918579541px;" class="tag-cloud-link">MySql</a>
+    <a href="/tags/MySql/" style="font-size: 8.369723089065104px;" class="tag-cloud-link">MySql</a>
     
 </div>
                 
@@ -703,7 +691,7 @@
                 <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
     
     <li>
-        <a href="https://github.com/ZEROKISEKI/" target="_blank">Github</a>
+        <a href="https://github.com/Zming-ming/" target="_blank">Github</a>
     </li>
     
     <li>
@@ -794,27 +782,5 @@
 </script>
 <script src="/js/comment/leancloud.js"></script>
 
-
-<script src="https://myau.moe/js/comment/gitment.browser.js"></script>
-<script>
-    if(window.commentConfig) {
-      window.commentConfig.id = 'Thu Sep 06 2018 18:01:42 GMT+0800'
-      window.commentConfig.owner = 'Zming-ming'
-      window.commentConfig.repo = 'hexo-comment'
-      window.commentConfig.client_id = '82271dfef419a24c76ac'
-      window.commentConfig.client_secret = '15a712d18c3f44e11496d92eed12287c9b460784'
-      window.commentConfig.redirect_uri = ''
-    } else {
-      window.commentConfig = {
-      	id: 'Thu Sep 06 2018 18:01:42 GMT+0800',
-        owner: 'Zming-ming',
-        repo: 'hexo-comment',
-        client_id: '82271dfef419a24c76ac',
-        client_secret: '15a712d18c3f44e11496d92eed12287c9b460784',
-        redirect_uri: ''
-      }
-    }
-</script>
-<script src="/js/comment/gitment.js"></script>
 
 </html>
