@@ -33,6 +33,14 @@
         }
     </style>
     
+    <script src="//cdn1.lncld.net/static/js/3.4.2/av-min.js"></script>
+    <script>
+      AV.init({
+        appId: 'QMjuuJU9D2ss1vdmFKmmq2jv-gzGzoHsz',
+        appKey: 'ExPYzACyKFnWERdWAp46xdjI'
+      })
+    </script>
+    
     <!--<script type="text/javascript">
       if (document.images) {
         var avatar = new Image();
@@ -59,6 +67,24 @@
     </ul>
 </section>
     <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <div class="gal-menu gal-dropdown">
+    <div class="circle" id="gal">
+        <div class="ring">
+            <a href="https://zming-ming.github.io" class="menuItem" style="left: 50%; top: 15%;">首页</a>
+            
+            <a class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
+            
+            <a href="/archives" class="menuItem" style="left: 80.3109%; top: 67.5%;">归档</a>
+            <a href="/about" class="menuItem" style="left: 50%; top: 85%;">关于</a>
+            <a href="/categories" class="menuItem" style="left: 19.6891%; top: 67.5%;">分类</a>
+            
+            <a class="menuItem" style="left: 19.6891%; top: 32.5%;">上一页</a>
+            
+        </div>
+        <audio id="audio" src="/imgs/oni.mp3"></audio>
+    </div>
+</div>
     
     <header class="navbar navbar-inverse" id="gal-header">
     <div class="container">
@@ -261,6 +287,18 @@
     
     <!-- 要配置好leancloud才能开启此小工具 -->
     
+    <aside id="sidebar-hot_posts">
+    <div class="panel panel-gal hot hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-fire"></i>
+            最热文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
     
     <aside id="sidebar-recent_posts">
     <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
@@ -350,31 +388,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/09/21/Laravel-Excel-实现-Excel-CSV-文件导入导出功能/">Laravel Excel 实现 Excel/CSV 文件导入导出功能</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2018/09/21/Markdown-语法/">Markdown 语法</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/08/24/冒泡排序/">php中常用的冒泡排序&amp;快速排序算法以及二分查找&amp;顺序查找的算法实现</a>
+                    <a href="/2018/09/14/laravel的资源路由resource/">laravel的资源路由resource</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/10/30/基于个推（GeTui）官方SDK集成-Laravel-5/">基于个推（GeTui）官方SDK集成 Laravel 5.* </a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/09/14/常用-Git-命令/">常用 Git 命令</a>
+                    <a href="/2018/08/24/保存网络图片/">php如何实现保存网络图片</a>
                 </span>
             </li>
             
@@ -386,7 +412,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/10/17/微信小程序的更新机制/">微信小程序的更新机制</a>
+                    <a href="/2018/08/07/搭建hexo/">搭建hexo</a>
                 </span>
             </li>
             
@@ -398,13 +424,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2018/08/25/laravel-Valet安装使用教程/">Valet 安装使用详细教程</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2018/09/14/laravel小程序微信支付/">laravel小程序微信支付</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/11/23/MySQL-函数/">MySQL 函数</a>
+                    <a href="/2018/08/24/递归方法/">php实现无限极分类的方法：递归方法和引用方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/13/ySql函数字典/">MySql函数字典</a>
                 </span>
             </li>
             
@@ -437,35 +475,35 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/Excel/" style="font-size: 12.064647015447356px;" class="tag-cloud-link">Excel</a>
+    <a href="/tags/Excel/" style="font-size: 17.046052897796027px;" class="tag-cloud-link">Excel</a>
     
-    <a href="/tags/Laravel/" style="font-size: 17.312101276435445px;" class="tag-cloud-link">Laravel</a>
+    <a href="/tags/Laravel/" style="font-size: 8.845159876741228px;" class="tag-cloud-link">Laravel</a>
     
-    <a href="/tags/markdown/" style="font-size: 17.846348012881865px;" class="tag-cloud-link">markdown</a>
+    <a href="/tags/markdown/" style="font-size: 10.477782991363767px;" class="tag-cloud-link">markdown</a>
     
-    <a href="/tags/Linux/" style="font-size: 19.991436806465174px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Linux/" style="font-size: 10.326854673145558px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/定时任务/" style="font-size: 13.05424272468424px;" class="tag-cloud-link">定时任务</a>
+    <a href="/tags/npm/" style="font-size: 18.94473616028203px;" class="tag-cloud-link">npm</a>
     
-    <a href="/tags/npm/" style="font-size: 13.652464538399027px;" class="tag-cloud-link">npm</a>
+    <a href="/tags/vue/" style="font-size: 9.796242547307113px;" class="tag-cloud-link">vue</a>
     
-    <a href="/tags/vue/" style="font-size: 17.686999237610284px;" class="tag-cloud-link">vue</a>
+    <a href="/tags/定时任务/" style="font-size: 17.76302290593059px;" class="tag-cloud-link">定时任务</a>
     
-    <a href="/tags/PHP/" style="font-size: 10.333969418345326px;" class="tag-cloud-link">PHP</a>
+    <a href="/tags/PHP/" style="font-size: 19.874193418833144px;" class="tag-cloud-link">PHP</a>
     
-    <a href="/tags/GeTui/" style="font-size: 15.68634880894694px;" class="tag-cloud-link">GeTui</a>
+    <a href="/tags/GeTui/" style="font-size: 9.996988331835075px;" class="tag-cloud-link">GeTui</a>
     
-    <a href="/tags/composer/" style="font-size: 11.802842895915148px;" class="tag-cloud-link">composer</a>
+    <a href="/tags/composer/" style="font-size: 12.594078576519992px;" class="tag-cloud-link">composer</a>
     
-    <a href="/tags/GIT/" style="font-size: 10.051956415466364px;" class="tag-cloud-link">GIT</a>
+    <a href="/tags/GIT/" style="font-size: 17.633797609456543px;" class="tag-cloud-link">GIT</a>
     
-    <a href="/tags/小程序/" style="font-size: 13.391511374934389px;" class="tag-cloud-link">小程序</a>
+    <a href="/tags/小程序/" style="font-size: 17.567142536457787px;" class="tag-cloud-link">小程序</a>
     
-    <a href="/tags/支付/" style="font-size: 16.051354012767025px;" class="tag-cloud-link">支付</a>
+    <a href="/tags/支付/" style="font-size: 19.71775577714538px;" class="tag-cloud-link">支付</a>
     
-    <a href="/tags/Redis/" style="font-size: 17.490028069204293px;" class="tag-cloud-link">Redis</a>
+    <a href="/tags/Redis/" style="font-size: 17.994796743780217px;" class="tag-cloud-link">Redis</a>
     
-    <a href="/tags/MySql/" style="font-size: 11.681084853773092px;" class="tag-cloud-link">MySql</a>
+    <a href="/tags/MySql/" style="font-size: 15.032720926833536px;" class="tag-cloud-link">MySql</a>
     
 </div>
                 
@@ -572,6 +610,14 @@
 <script src="/js/hs.js"></script>
 <script src="/js/blog.js"></script>
 
+<script src="/js/oni.js"></script>
+
+
+<script>
+    window.hot_posts_count = '10'
+    // window.use_leancloud = 'true'
+</script>
+<script src="/js/comment/leancloud.js"></script>
 
 
 </html>

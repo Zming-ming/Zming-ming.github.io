@@ -33,6 +33,14 @@
         }
     </style>
     
+    <script src="//cdn1.lncld.net/static/js/3.4.2/av-min.js"></script>
+    <script>
+      AV.init({
+        appId: 'QMjuuJU9D2ss1vdmFKmmq2jv-gzGzoHsz',
+        appKey: 'ExPYzACyKFnWERdWAp46xdjI'
+      })
+    </script>
+    
     <!--<script type="text/javascript">
       if (document.images) {
         var avatar = new Image();
@@ -59,6 +67,24 @@
     </ul>
 </section>
     <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <div class="gal-menu gal-dropdown">
+    <div class="circle" id="gal">
+        <div class="ring">
+            <a href="https://zming-ming.github.io" class="menuItem" style="left: 50%; top: 15%;">首页</a>
+            
+            <a class="menuItem" style="left: 80.3109%; top: 32.5%;">下一页</a>
+            
+            <a href="/archives" class="menuItem" style="left: 80.3109%; top: 67.5%;">归档</a>
+            <a href="/about" class="menuItem" style="left: 50%; top: 85%;">关于</a>
+            <a href="/categories" class="menuItem" style="left: 19.6891%; top: 67.5%;">分类</a>
+            
+            <a class="menuItem" style="left: 19.6891%; top: 32.5%;">上一页</a>
+            
+        </div>
+        <audio id="audio" src="/imgs/oni.mp3"></audio>
+    </div>
+</div>
     
     <header class="navbar navbar-inverse" id="gal-header">
     <div class="container">
@@ -264,6 +290,18 @@
     
     <!-- 要配置好leancloud才能开启此小工具 -->
     
+    <aside id="sidebar-hot_posts">
+    <div class="panel panel-gal hot hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-fire"></i>
+            最热文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
     
     <aside id="sidebar-recent_posts">
     <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
@@ -353,25 +391,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/09/21/Laravel-Excel-实现-Excel-CSV-文件导入导出功能/">Laravel Excel 实现 Excel/CSV 文件导入导出功能</a>
+                    <a href="/2018/08/07/hello-world/">Hello World</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/09/17/npm启动内存溢出问题/">npm启动内存溢出问题</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2018/10/19/laravel5-5的定时任务详解/">laravel5.5的定时任务详解</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/09/14/laravel的资源路由resource/">laravel的资源路由resource</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/08/24/冒泡排序/">php中常用的冒泡排序&amp;快速排序算法以及二分查找&amp;顺序查找的算法实现</a>
                 </span>
             </li>
             
@@ -407,7 +439,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/09/13/ySql函数字典/">MySql函数字典</a>
+                    <a href="/2018/08/24/递归方法/">php实现无限极分类的方法：递归方法和引用方法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/23/MySQL-函数/">MySQL 函数</a>
                 </span>
             </li>
             
@@ -440,35 +478,35 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/Excel/" style="font-size: 18.45929523829328px;" class="tag-cloud-link">Excel</a>
+    <a href="/tags/Excel/" style="font-size: 18.923804101983215px;" class="tag-cloud-link">Excel</a>
     
-    <a href="/tags/Laravel/" style="font-size: 12.557485495565052px;" class="tag-cloud-link">Laravel</a>
+    <a href="/tags/Laravel/" style="font-size: 8.394018074076012px;" class="tag-cloud-link">Laravel</a>
     
-    <a href="/tags/markdown/" style="font-size: 15.13513109680845px;" class="tag-cloud-link">markdown</a>
+    <a href="/tags/markdown/" style="font-size: 18.44964203871698px;" class="tag-cloud-link">markdown</a>
     
-    <a href="/tags/Linux/" style="font-size: 10.90307862360345px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Linux/" style="font-size: 11.090008552921198px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/定时任务/" style="font-size: 17.293502176786095px;" class="tag-cloud-link">定时任务</a>
+    <a href="/tags/npm/" style="font-size: 18.04309973566682px;" class="tag-cloud-link">npm</a>
     
-    <a href="/tags/npm/" style="font-size: 10.46161811159627px;" class="tag-cloud-link">npm</a>
+    <a href="/tags/vue/" style="font-size: 17.113456997627516px;" class="tag-cloud-link">vue</a>
     
-    <a href="/tags/vue/" style="font-size: 13.365552356204244px;" class="tag-cloud-link">vue</a>
+    <a href="/tags/定时任务/" style="font-size: 19.117015353256942px;" class="tag-cloud-link">定时任务</a>
     
-    <a href="/tags/PHP/" style="font-size: 12.465351389374597px;" class="tag-cloud-link">PHP</a>
+    <a href="/tags/PHP/" style="font-size: 18.93293963664592px;" class="tag-cloud-link">PHP</a>
     
-    <a href="/tags/GeTui/" style="font-size: 10.26550566822807px;" class="tag-cloud-link">GeTui</a>
+    <a href="/tags/GeTui/" style="font-size: 10.99592482516353px;" class="tag-cloud-link">GeTui</a>
     
-    <a href="/tags/composer/" style="font-size: 18.57752523006243px;" class="tag-cloud-link">composer</a>
+    <a href="/tags/composer/" style="font-size: 8.326913808115737px;" class="tag-cloud-link">composer</a>
     
-    <a href="/tags/GIT/" style="font-size: 18.372221072823404px;" class="tag-cloud-link">GIT</a>
+    <a href="/tags/GIT/" style="font-size: 18.18226886176801px;" class="tag-cloud-link">GIT</a>
     
-    <a href="/tags/小程序/" style="font-size: 17.043582967425635px;" class="tag-cloud-link">小程序</a>
+    <a href="/tags/小程序/" style="font-size: 12.938950532994575px;" class="tag-cloud-link">小程序</a>
     
-    <a href="/tags/支付/" style="font-size: 9.777775613935919px;" class="tag-cloud-link">支付</a>
+    <a href="/tags/支付/" style="font-size: 18.225526092778303px;" class="tag-cloud-link">支付</a>
     
-    <a href="/tags/Redis/" style="font-size: 16.5291503029032px;" class="tag-cloud-link">Redis</a>
+    <a href="/tags/Redis/" style="font-size: 19.24989629782483px;" class="tag-cloud-link">Redis</a>
     
-    <a href="/tags/MySql/" style="font-size: 14.700614452430152px;" class="tag-cloud-link">MySql</a>
+    <a href="/tags/MySql/" style="font-size: 17.495573722261142px;" class="tag-cloud-link">MySql</a>
     
 </div>
                 
@@ -575,6 +613,14 @@
 <script src="/js/hs.js"></script>
 <script src="/js/blog.js"></script>
 
+<script src="/js/oni.js"></script>
+
+
+<script>
+    window.hot_posts_count = '10'
+    // window.use_leancloud = 'true'
+</script>
+<script src="/js/comment/leancloud.js"></script>
 
 
 </html>
